@@ -12,25 +12,24 @@ namespace AlphaElectric_DataAccessLayer
     using System;
     using System.Collections.Generic;
     
-    public partial class Product
+    public partial class Contact
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Product()
+        public Contact()
         {
-            this.Product_CustomerOrderBT = new HashSet<Product_CustomerOrderBT>();
-            this.Product_PurchaseOrderBT = new HashSet<Product_PurchaseOrderBT>();
+            this.CustomerOrders = new HashSet<CustomerOrder>();
+            this.PurchaseOrders = new HashSet<PurchaseOrder>();
         }
     
         public int ID { get; set; }
-        public string SerialNo { get; set; }
-        public string Name { get; set; }
-        public int MakeID { get; set; }
+        public string CompanyName { get; set; }
+        public int Phone { get; set; }
+        public string Email { get; set; }
+        public string Address { get; set; }
     
-        public virtual Inventory Inventory { get; set; }
-        public virtual Make Make { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Product_CustomerOrderBT> Product_CustomerOrderBT { get; set; }
+        public virtual ICollection<CustomerOrder> CustomerOrders { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Product_PurchaseOrderBT> Product_PurchaseOrderBT { get; set; }
+        public virtual ICollection<PurchaseOrder> PurchaseOrders { get; set; }
     }
 }

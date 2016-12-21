@@ -12,10 +12,13 @@ namespace AlphaElectric_DataAccessLayer
     using System;
     using System.Collections.Generic;
     
-    public partial class Part : Product
+    public partial class Product_PurchaseOrderBT
     {
-        public int PaTypeID { get; set; }
+        public int Quantity { get; set; }
+        public int ProductID { get; set; }
+        public int PurchaseOrderID { get; set; }
     
-        public virtual PaType PaType { get; set; }
+        public virtual Product Product { get; set; }
+        public virtual PurchaseOrder PurchaseOrder { get; set; }
     }
 }

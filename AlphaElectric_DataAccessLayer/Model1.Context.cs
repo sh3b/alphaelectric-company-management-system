@@ -30,13 +30,17 @@ namespace AlphaElectric_DataAccessLayer
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<Inventory> Inventories { get; set; }
         public virtual DbSet<Location> Locations { get; set; }
-        public virtual DbSet<Panel> Panels { get; set; }
         public virtual DbSet<PanelShellGradeProtection> PanelShellGradeProtections { get; set; }
         public virtual DbSet<SizeType> SizeTypes { get; set; }
         public virtual DbSet<Type> Types { get; set; }
         public virtual DbSet<Certification> Certifications { get; set; }
-        public virtual DbSet<Part> Parts { get; set; }
         public virtual DbSet<Make> Makes { get; set; }
         public virtual DbSet<PaType> PaTypes { get; set; }
+        public virtual DbSet<CustomerOrder> CustomerOrders { get; set; }
+        public virtual DbSet<Product_CustomerOrderBT> Product_CustomerOrderBT { get; set; }
+        public virtual DbSet<Contact> Contacts { get; set; }
+        public virtual DbSet<PurchaseOrder> PurchaseOrders { get; set; }
+        public virtual DbSet<Product_PurchaseOrderBT> Product_PurchaseOrderBT { get; set; }
+        public virtual DbSet<Project> Projects { get; set; }
     }
 }

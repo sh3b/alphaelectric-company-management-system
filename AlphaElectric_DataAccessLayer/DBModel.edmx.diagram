@@ -4,16 +4,16 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="368f6c008cba43f28917b883d8c032de" Name="Diagram1" ZoomLevel="85" >
-        <EntityTypeShape EntityType="DBModel.Employee" Width="1.5" PointX="14.5" PointY="9.5" />
-        <EntityTypeShape EntityType="DBModel.Designation" Width="1.5" PointX="14.875" PointY="6.5" />
+      <Diagram DiagramId="368f6c008cba43f28917b883d8c032de" Name="Diagram1" ZoomLevel="77" >
+        <EntityTypeShape EntityType="DBModel.Employee" Width="1.5" PointX="12.75" PointY="8" FillColor="Navy" />
+        <EntityTypeShape EntityType="DBModel.Designation" Width="1.5" PointX="10.75" PointY="8.5" />
         <AssociationConnector Association="DBModel.EmployeeDesignation" />
-        <EntityTypeShape EntityType="DBModel.Product" Width="1.5" PointX="6.125" PointY="2.875" />
-        <EntityTypeShape EntityType="DBModel.Inventory" Width="1.5" PointX="3.875" PointY="2.125" />
-        <EntityTypeShape EntityType="DBModel.Location" Width="1.5" PointX="1.5" PointY="1.25" />
+        <EntityTypeShape EntityType="DBModel.Product" Width="1.5" PointX="6.125" PointY="2.875" FillColor="Navy" />
+        <EntityTypeShape EntityType="DBModel.Inventory" Width="1.5" PointX="3.875" PointY="0.5" FillColor="Navy" />
+        <EntityTypeShape EntityType="DBModel.Location" Width="1.5" PointX="1" PointY="0.5" />
         <AssociationConnector Association="DBModel.InventoryLocation" />
         <AssociationConnector Association="DBModel.ProductInventory" />
-        <EntityTypeShape EntityType="DBModel.Panel" Width="2.625" PointX="3.375" PointY="6.25" />
+        <EntityTypeShape EntityType="DBModel.Panel" Width="2.625" PointX="3.375" PointY="6.25" FillColor="Navy" />
         <EntityTypeShape EntityType="DBModel.PanelShellGradeProtection" Width="1.75" PointX="0.875" PointY="3.75" />
         <EntityTypeShape EntityType="DBModel.SizeType" Width="1.5" PointX="1" PointY="5.625" />
         <EntityTypeShape EntityType="DBModel.Type" Width="1.5" PointX="1" PointY="9.125" />
@@ -23,11 +23,34 @@
         <AssociationConnector Association="DBModel.PanelCertification" />
         <AssociationConnector Association="DBModel.PanelType" ManuallyRouted="false" >
         </AssociationConnector>
-        <EntityTypeShape EntityType="DBModel.Part" Width="1.5" PointX="8.5" PointY="5.75" />
-        <EntityTypeShape EntityType="DBModel.Make" Width="1.5" PointX="8.75" PointY="3.25" />
+        <EntityTypeShape EntityType="DBModel.Part" Width="1.5" PointX="6.25" PointY="6.25" FillColor="Navy" />
+        <EntityTypeShape EntityType="DBModel.Make" Width="1.5" PointX="3.875" PointY="2.5" FillColor="Navy" />
         <AssociationConnector Association="DBModel.ProductMake" />
-        <EntityTypeShape EntityType="DBModel.PaType" Width="1.5" PointX="10.75" PointY="5.75" />
+        <EntityTypeShape EntityType="DBModel.PaType" Width="1.5" PointX="6.25" PointY="8.125" />
         <AssociationConnector Association="DBModel.PartPaType" />
+        <InheritanceConnector EntityType="DBModel.Part" />
+        <InheritanceConnector EntityType="DBModel.Panel" ManuallyRouted="true" >
+          <ConnectorPoint PointX="6.875" PointY="5.4321907552083326" />
+          <ConnectorPoint PointX="6.875" PointY="5.875" />
+          <ConnectorPoint PointX="5.802083333333333" PointY="5.8749999999999991" />
+          <ConnectorPoint PointX="5.635416666666667" PointY="5.875" />
+          <ConnectorPoint PointX="4.6875" PointY="5.875" />
+          <ConnectorPoint PointX="4.6875" PointY="6.25" />
+        </InheritanceConnector>
+        <EntityTypeShape EntityType="DBModel.CustomerOrder" Width="1.5" PointX="12.625" PointY="2.75" FillColor="Navy" />
+        <EntityTypeShape EntityType="DBModel.Product_CustomerOrderBT" Width="2.25" PointX="9.125" PointY="3" IsExpanded="true" FillColor="192, 192, 255" />
+        <AssociationConnector Association="DBModel.ProductProduct_CustomerOrderBT" />
+        <AssociationConnector Association="DBModel.Product_CustomerOrderBTCustomerOrder" />
+        <EntityTypeShape EntityType="DBModel.Contact" Width="1.5" PointX="15.375" PointY="3.875" FillColor="Navy" />
+        <EntityTypeShape EntityType="DBModel.PurchaseOrder" Width="1.5" PointX="12.625" PointY="5.625" FillColor="Navy" />
+        <EntityTypeShape EntityType="DBModel.Product_PurchaseOrderBT" Width="2.25" PointX="9.125" PointY="5.625" FillColor="192, 192, 255" />
+        <AssociationConnector Association="DBModel.ProductProduct_PurchaseOrderBT" ManuallyRouted="false" >
+        </AssociationConnector>
+        <AssociationConnector Association="DBModel.PurchaseOrderProduct_PurchaseOrderBT" />
+        <EntityTypeShape EntityType="DBModel.Project" Width="1.75" PointX="9.375" PointY="0.5" FillColor="Navy" />
+        <AssociationConnector Association="DBModel.ProjectCustomerOrder" />
+        <AssociationConnector Association="DBModel.CustomerOrderContact" />
+        <AssociationConnector Association="DBModel.PurchaseOrderContact" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

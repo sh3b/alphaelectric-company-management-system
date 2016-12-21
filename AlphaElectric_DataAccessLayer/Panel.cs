@@ -12,9 +12,8 @@ namespace AlphaElectric_DataAccessLayer
     using System;
     using System.Collections.Generic;
     
-    public partial class Panel
+    public partial class Panel : Product
     {
-        public int ID { get; set; }
         public int PanelShellGradeProtectionIPNumber { get; set; }
         public int SizeTypeID { get; set; }
         public int CertificationID { get; set; }
