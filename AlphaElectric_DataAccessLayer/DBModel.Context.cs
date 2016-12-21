@@ -13,10 +13,10 @@ namespace AlphaElectric_DataAccessLayer
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class DBModelContainer : DbContext
+    public partial class AlphaElectricEntitiesDB : DbContext
     {
-        public DBModelContainer()
-            : base("name=DBModelContainer")
+        public AlphaElectricEntitiesDB()
+            : base("name=AlphaElectricEntitiesDB")
         {
         }
     

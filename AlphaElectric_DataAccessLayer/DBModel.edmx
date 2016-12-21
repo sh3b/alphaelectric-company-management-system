@@ -479,86 +479,86 @@
 </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="DBModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
-        <EntityContainer Name="DBModelContainer" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Employees" EntityType="DBModel.Employee" />
-          <EntitySet Name="Designations" EntityType="DBModel.Designation" />
-          <AssociationSet Name="EmployeeDesignation" Association="DBModel.EmployeeDesignation">
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="AlphaElectricEntities" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="AlphaElectricEntitiesDB" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Employees" EntityType="AlphaElectricEntities.Employee" />
+          <EntitySet Name="Designations" EntityType="AlphaElectricEntities.Designation" />
+          <AssociationSet Name="EmployeeDesignation" Association="AlphaElectricEntities.EmployeeDesignation">
             <End Role="Employee" EntitySet="Employees" />
             <End Role="Designation" EntitySet="Designations" />
           </AssociationSet>
-          <EntitySet Name="Products" EntityType="DBModel.Product" />
-          <EntitySet Name="Inventories" EntityType="DBModel.Inventory" />
-          <EntitySet Name="Locations" EntityType="DBModel.Location" />
-          <AssociationSet Name="InventoryLocation" Association="DBModel.InventoryLocation">
+          <EntitySet Name="Products" EntityType="AlphaElectricEntities.Product" />
+          <EntitySet Name="Inventories" EntityType="AlphaElectricEntities.Inventory" />
+          <EntitySet Name="Locations" EntityType="AlphaElectricEntities.Location" />
+          <AssociationSet Name="InventoryLocation" Association="AlphaElectricEntities.InventoryLocation">
             <End Role="Inventory" EntitySet="Inventories" />
             <End Role="Location" EntitySet="Locations" />
           </AssociationSet>
-          <AssociationSet Name="ProductInventory" Association="DBModel.ProductInventory">
+          <AssociationSet Name="ProductInventory" Association="AlphaElectricEntities.ProductInventory">
             <End Role="Product" EntitySet="Products" />
             <End Role="Inventory" EntitySet="Inventories" />
           </AssociationSet>
-          <EntitySet Name="PanelShellGradeProtections" EntityType="DBModel.PanelShellGradeProtection" />
-          <EntitySet Name="SizeTypes" EntityType="DBModel.SizeType" />
-          <EntitySet Name="Types" EntityType="DBModel.Type" />
-          <EntitySet Name="Certifications" EntityType="DBModel.Certification" />
-          <AssociationSet Name="PanelPanelShellGradeProtection" Association="DBModel.PanelPanelShellGradeProtection">
+          <EntitySet Name="PanelShellGradeProtections" EntityType="AlphaElectricEntities.PanelShellGradeProtection" />
+          <EntitySet Name="SizeTypes" EntityType="AlphaElectricEntities.SizeType" />
+          <EntitySet Name="Types" EntityType="AlphaElectricEntities.Type" />
+          <EntitySet Name="Certifications" EntityType="AlphaElectricEntities.Certification" />
+          <AssociationSet Name="PanelPanelShellGradeProtection" Association="AlphaElectricEntities.PanelPanelShellGradeProtection">
             <End Role="Panel" EntitySet="Products" />
             <End Role="PanelShellGradeProtection" EntitySet="PanelShellGradeProtections" />
           </AssociationSet>
-          <AssociationSet Name="PanelSizeType" Association="DBModel.PanelSizeType">
+          <AssociationSet Name="PanelSizeType" Association="AlphaElectricEntities.PanelSizeType">
             <End Role="Panel" EntitySet="Products" />
             <End Role="SizeType" EntitySet="SizeTypes" />
           </AssociationSet>
-          <AssociationSet Name="PanelCertification" Association="DBModel.PanelCertification">
+          <AssociationSet Name="PanelCertification" Association="AlphaElectricEntities.PanelCertification">
             <End Role="Panel" EntitySet="Products" />
             <End Role="Certification" EntitySet="Certifications" />
           </AssociationSet>
-          <AssociationSet Name="PanelType" Association="DBModel.PanelType">
+          <AssociationSet Name="PanelType" Association="AlphaElectricEntities.PanelType">
             <End Role="Panel" EntitySet="Products" />
             <End Role="Type" EntitySet="Types" />
           </AssociationSet>
-          <EntitySet Name="Makes" EntityType="DBModel.Make" />
-          <AssociationSet Name="ProductMake" Association="DBModel.ProductMake">
+          <EntitySet Name="Makes" EntityType="AlphaElectricEntities.Make" />
+          <AssociationSet Name="ProductMake" Association="AlphaElectricEntities.ProductMake">
             <End Role="Product" EntitySet="Products" />
             <End Role="Make" EntitySet="Makes" />
           </AssociationSet>
-          <EntitySet Name="PaTypes" EntityType="DBModel.PaType" />
-          <AssociationSet Name="PartPaType" Association="DBModel.PartPaType">
+          <EntitySet Name="PaTypes" EntityType="AlphaElectricEntities.PaType" />
+          <AssociationSet Name="PartPaType" Association="AlphaElectricEntities.PartPaType">
             <End Role="Part" EntitySet="Products" />
             <End Role="PaType" EntitySet="PaTypes" />
           </AssociationSet>
-          <EntitySet Name="CustomerOrders" EntityType="DBModel.CustomerOrder" />
-          <EntitySet Name="Product_CustomerOrderBT" EntityType="DBModel.Product_CustomerOrderBT" />
-          <AssociationSet Name="ProductProduct_CustomerOrderBT" Association="DBModel.ProductProduct_CustomerOrderBT">
+          <EntitySet Name="CustomerOrders" EntityType="AlphaElectricEntities.CustomerOrder" />
+          <EntitySet Name="Product_CustomerOrderBT" EntityType="AlphaElectricEntities.Product_CustomerOrderBT" />
+          <AssociationSet Name="ProductProduct_CustomerOrderBT" Association="AlphaElectricEntities.ProductProduct_CustomerOrderBT">
             <End Role="Product" EntitySet="Products" />
             <End Role="Product_CustomerOrderBT" EntitySet="Product_CustomerOrderBT" />
           </AssociationSet>
-          <AssociationSet Name="Product_CustomerOrderBTCustomerOrder" Association="DBModel.Product_CustomerOrderBTCustomerOrder">
+          <AssociationSet Name="Product_CustomerOrderBTCustomerOrder" Association="AlphaElectricEntities.Product_CustomerOrderBTCustomerOrder">
             <End Role="Product_CustomerOrderBT" EntitySet="Product_CustomerOrderBT" />
             <End Role="CustomerOrder" EntitySet="CustomerOrders" />
           </AssociationSet>
-          <EntitySet Name="Contacts" EntityType="DBModel.Contact" />
-          <EntitySet Name="PurchaseOrders" EntityType="DBModel.PurchaseOrder" />
-          <EntitySet Name="Product_PurchaseOrderBT" EntityType="DBModel.Product_PurchaseOrderBT" />
-          <AssociationSet Name="ProductProduct_PurchaseOrderBT" Association="DBModel.ProductProduct_PurchaseOrderBT">
+          <EntitySet Name="Contacts" EntityType="AlphaElectricEntities.Contact" />
+          <EntitySet Name="PurchaseOrders" EntityType="AlphaElectricEntities.PurchaseOrder" />
+          <EntitySet Name="Product_PurchaseOrderBT" EntityType="AlphaElectricEntities.Product_PurchaseOrderBT" />
+          <AssociationSet Name="ProductProduct_PurchaseOrderBT" Association="AlphaElectricEntities.ProductProduct_PurchaseOrderBT">
             <End Role="Product" EntitySet="Products" />
             <End Role="Product_PurchaseOrderBT" EntitySet="Product_PurchaseOrderBT" />
           </AssociationSet>
-          <AssociationSet Name="PurchaseOrderProduct_PurchaseOrderBT" Association="DBModel.PurchaseOrderProduct_PurchaseOrderBT">
+          <AssociationSet Name="PurchaseOrderProduct_PurchaseOrderBT" Association="AlphaElectricEntities.PurchaseOrderProduct_PurchaseOrderBT">
             <End Role="PurchaseOrder" EntitySet="PurchaseOrders" />
             <End Role="Product_PurchaseOrderBT" EntitySet="Product_PurchaseOrderBT" />
           </AssociationSet>
-          <EntitySet Name="Projects" EntityType="DBModel.Project" />
-          <AssociationSet Name="ProjectCustomerOrder" Association="DBModel.ProjectCustomerOrder">
+          <EntitySet Name="Projects" EntityType="AlphaElectricEntities.Project" />
+          <AssociationSet Name="ProjectCustomerOrder" Association="AlphaElectricEntities.ProjectCustomerOrder">
             <End Role="Project" EntitySet="Projects" />
             <End Role="CustomerOrder" EntitySet="CustomerOrders" />
           </AssociationSet>
-          <AssociationSet Name="CustomerOrderContact" Association="DBModel.CustomerOrderContact">
+          <AssociationSet Name="CustomerOrderContact" Association="AlphaElectricEntities.CustomerOrderContact">
             <End Role="CustomerOrder" EntitySet="CustomerOrders" />
             <End Role="Contact" EntitySet="Contacts" />
           </AssociationSet>
-          <AssociationSet Name="PurchaseOrderContact" Association="DBModel.PurchaseOrderContact">
+          <AssociationSet Name="PurchaseOrderContact" Association="AlphaElectricEntities.PurchaseOrderContact">
             <End Role="PurchaseOrder" EntitySet="PurchaseOrders" />
             <End Role="Contact" EntitySet="Contacts" />
           </AssociationSet>
@@ -574,7 +574,7 @@
           <Property Name="Passport" Type="String" Nullable="false" />
           <Property Name="JoinDate" Type="DateTime" Nullable="false" />
           <Property Name="Address" Type="String" Nullable="false" />
-          <NavigationProperty Name="Designation" Relationship="DBModel.EmployeeDesignation" FromRole="Employee" ToRole="Designation" />
+          <NavigationProperty Name="Designation" Relationship="AlphaElectricEntities.EmployeeDesignation" FromRole="Employee" ToRole="Designation" />
           <Property Name="DesignationID" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="Designation">
@@ -583,11 +583,11 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" Nullable="false" />
-          <NavigationProperty Name="Employees" Relationship="DBModel.EmployeeDesignation" FromRole="Designation" ToRole="Employee" />
+          <NavigationProperty Name="Employees" Relationship="AlphaElectricEntities.EmployeeDesignation" FromRole="Designation" ToRole="Employee" />
         </EntityType>
         <Association Name="EmployeeDesignation">
-          <End Type="DBModel.Employee" Role="Employee" Multiplicity="*" />
-          <End Type="DBModel.Designation" Role="Designation" Multiplicity="1" />
+          <End Type="AlphaElectricEntities.Employee" Role="Employee" Multiplicity="*" />
+          <End Type="AlphaElectricEntities.Designation" Role="Designation" Multiplicity="1" />
           <ReferentialConstraint>
             <Principal Role="Designation">
               <PropertyRef Name="ID" />
@@ -604,11 +604,11 @@
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="SerialNo" Type="String" Nullable="false" />
           <Property Name="Name" Type="String" Nullable="false" />
-          <NavigationProperty Name="Inventory" Relationship="DBModel.ProductInventory" FromRole="Product" ToRole="Inventory" />
-          <NavigationProperty Name="Make" Relationship="DBModel.ProductMake" FromRole="Product" ToRole="Make" />
+          <NavigationProperty Name="Inventory" Relationship="AlphaElectricEntities.ProductInventory" FromRole="Product" ToRole="Inventory" />
+          <NavigationProperty Name="Make" Relationship="AlphaElectricEntities.ProductMake" FromRole="Product" ToRole="Make" />
           <Property Name="MakeID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Product_CustomerOrderBT" Relationship="DBModel.ProductProduct_CustomerOrderBT" FromRole="Product" ToRole="Product_CustomerOrderBT" />
-          <NavigationProperty Name="Product_PurchaseOrderBT" Relationship="DBModel.ProductProduct_PurchaseOrderBT" FromRole="Product" ToRole="Product_PurchaseOrderBT" />
+          <NavigationProperty Name="Product_CustomerOrderBT" Relationship="AlphaElectricEntities.ProductProduct_CustomerOrderBT" FromRole="Product" ToRole="Product_CustomerOrderBT" />
+          <NavigationProperty Name="Product_PurchaseOrderBT" Relationship="AlphaElectricEntities.ProductProduct_PurchaseOrderBT" FromRole="Product" ToRole="Product_PurchaseOrderBT" />
         </EntityType>
         <EntityType Name="Inventory">
           <Key>
@@ -616,8 +616,8 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="StockLevel" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Location" Relationship="DBModel.InventoryLocation" FromRole="Inventory" ToRole="Location" />
-          <NavigationProperty Name="Product" Relationship="DBModel.ProductInventory" FromRole="Inventory" ToRole="Product" />
+          <NavigationProperty Name="Location" Relationship="AlphaElectricEntities.InventoryLocation" FromRole="Inventory" ToRole="Location" />
+          <NavigationProperty Name="Product" Relationship="AlphaElectricEntities.ProductInventory" FromRole="Inventory" ToRole="Product" />
         </EntityType>
         <EntityType Name="Location">
           <Key>
@@ -625,11 +625,11 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" Nullable="false" />
-          <NavigationProperty Name="Inventory" Relationship="DBModel.InventoryLocation" FromRole="Location" ToRole="Inventory" />
+          <NavigationProperty Name="Inventory" Relationship="AlphaElectricEntities.InventoryLocation" FromRole="Location" ToRole="Inventory" />
         </EntityType>
         <Association Name="InventoryLocation">
-          <End Type="DBModel.Inventory" Role="Inventory" Multiplicity="1" />
-          <End Type="DBModel.Location" Role="Location" Multiplicity="1" >
+          <End Type="AlphaElectricEntities.Inventory" Role="Inventory" Multiplicity="1" />
+          <End Type="AlphaElectricEntities.Location" Role="Location" Multiplicity="1" >
           </End>
           <ReferentialConstraint>
             <Principal Role="Inventory">
@@ -641,8 +641,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="ProductInventory">
-          <End Type="DBModel.Product" Role="Product" Multiplicity="1" />
-          <End Type="DBModel.Inventory" Role="Inventory" Multiplicity="1" />
+          <End Type="AlphaElectricEntities.Product" Role="Product" Multiplicity="1" />
+          <End Type="AlphaElectricEntities.Inventory" Role="Inventory" Multiplicity="1" />
           <ReferentialConstraint>
             <Principal Role="Product">
               <PropertyRef Name="ID" />
@@ -652,14 +652,14 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="Panel" BaseType="DBModel.Product">
-          <NavigationProperty Name="PanelShellGradeProtection" Relationship="DBModel.PanelPanelShellGradeProtection" FromRole="Panel" ToRole="PanelShellGradeProtection" />
+        <EntityType Name="Panel" BaseType="AlphaElectricEntities.Product">
+          <NavigationProperty Name="PanelShellGradeProtection" Relationship="AlphaElectricEntities.PanelPanelShellGradeProtection" FromRole="Panel" ToRole="PanelShellGradeProtection" />
           <Property Name="PanelShellGradeProtectionIPNumber" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="SizeType" Relationship="DBModel.PanelSizeType" FromRole="Panel" ToRole="SizeType" />
+          <NavigationProperty Name="SizeType" Relationship="AlphaElectricEntities.PanelSizeType" FromRole="Panel" ToRole="SizeType" />
           <Property Name="SizeTypeID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Certification" Relationship="DBModel.PanelCertification" FromRole="Panel" ToRole="Certification" />
+          <NavigationProperty Name="Certification" Relationship="AlphaElectricEntities.PanelCertification" FromRole="Panel" ToRole="Certification" />
           <Property Name="CertificationID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Type" Relationship="DBModel.PanelType" FromRole="Panel" ToRole="Type" />
+          <NavigationProperty Name="Type" Relationship="AlphaElectricEntities.PanelType" FromRole="Panel" ToRole="Type" />
           <Property Name="TypeID" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="PanelShellGradeProtection">
@@ -669,7 +669,7 @@
           <Property Name="IPNumber" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="DescriptionSolids" Type="String" Nullable="false" />
           <Property Name="DescriptionLiquids" Type="String" Nullable="false" />
-          <NavigationProperty Name="Panels" Relationship="DBModel.PanelPanelShellGradeProtection" FromRole="PanelShellGradeProtection" ToRole="Panel" />
+          <NavigationProperty Name="Panels" Relationship="AlphaElectricEntities.PanelPanelShellGradeProtection" FromRole="PanelShellGradeProtection" ToRole="Panel" />
         </EntityType>
         <EntityType Name="SizeType">
           <Key>
@@ -677,7 +677,7 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Description" Type="String" Nullable="false" />
-          <NavigationProperty Name="Panels" Relationship="DBModel.PanelSizeType" FromRole="SizeType" ToRole="Panel" />
+          <NavigationProperty Name="Panels" Relationship="AlphaElectricEntities.PanelSizeType" FromRole="SizeType" ToRole="Panel" />
         </EntityType>
         <EntityType Name="Type">
           <Key>
@@ -685,7 +685,7 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Description" Type="String" Nullable="false" />
-          <NavigationProperty Name="Panels" Relationship="DBModel.PanelType" FromRole="Type" ToRole="Panel" />
+          <NavigationProperty Name="Panels" Relationship="AlphaElectricEntities.PanelType" FromRole="Type" ToRole="Panel" />
         </EntityType>
         <EntityType Name="Certification">
           <Key>
@@ -693,11 +693,11 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Description" Type="String" Nullable="false" />
-          <NavigationProperty Name="Panels" Relationship="DBModel.PanelCertification" FromRole="Certification" ToRole="Panel" />
+          <NavigationProperty Name="Panels" Relationship="AlphaElectricEntities.PanelCertification" FromRole="Certification" ToRole="Panel" />
         </EntityType>
         <Association Name="PanelPanelShellGradeProtection">
-          <End Type="DBModel.Panel" Role="Panel" Multiplicity="*" />
-          <End Type="DBModel.PanelShellGradeProtection" Role="PanelShellGradeProtection" Multiplicity="1" />
+          <End Type="AlphaElectricEntities.Panel" Role="Panel" Multiplicity="*" />
+          <End Type="AlphaElectricEntities.PanelShellGradeProtection" Role="PanelShellGradeProtection" Multiplicity="1" />
           <ReferentialConstraint>
             <Principal Role="PanelShellGradeProtection">
               <PropertyRef Name="IPNumber" />
@@ -708,8 +708,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="PanelSizeType">
-          <End Type="DBModel.Panel" Role="Panel" Multiplicity="*" />
-          <End Type="DBModel.SizeType" Role="SizeType" Multiplicity="1" />
+          <End Type="AlphaElectricEntities.Panel" Role="Panel" Multiplicity="*" />
+          <End Type="AlphaElectricEntities.SizeType" Role="SizeType" Multiplicity="1" />
           <ReferentialConstraint>
             <Principal Role="SizeType">
               <PropertyRef Name="ID" />
@@ -720,8 +720,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="PanelCertification">
-          <End Type="DBModel.Panel" Role="Panel" Multiplicity="*" />
-          <End Type="DBModel.Certification" Role="Certification" Multiplicity="1" />
+          <End Type="AlphaElectricEntities.Panel" Role="Panel" Multiplicity="*" />
+          <End Type="AlphaElectricEntities.Certification" Role="Certification" Multiplicity="1" />
           <ReferentialConstraint>
             <Principal Role="Certification">
               <PropertyRef Name="ID" />
@@ -732,8 +732,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="PanelType">
-          <End Type="DBModel.Panel" Role="Panel" Multiplicity="*" />
-          <End Type="DBModel.Type" Role="Type" Multiplicity="1" />
+          <End Type="AlphaElectricEntities.Panel" Role="Panel" Multiplicity="*" />
+          <End Type="AlphaElectricEntities.Type" Role="Type" Multiplicity="1" />
           <ReferentialConstraint>
             <Principal Role="Type">
               <PropertyRef Name="ID" />
@@ -743,8 +743,8 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="Part" BaseType="DBModel.Product">
-          <NavigationProperty Name="PaType" Relationship="DBModel.PartPaType" FromRole="Part" ToRole="PaType" />
+        <EntityType Name="Part" BaseType="AlphaElectricEntities.Product">
+          <NavigationProperty Name="PaType" Relationship="AlphaElectricEntities.PartPaType" FromRole="Part" ToRole="PaType" />
           <Property Name="PaTypeID" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="Make">
@@ -753,11 +753,11 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" Nullable="false" />
-          <NavigationProperty Name="Products" Relationship="DBModel.ProductMake" FromRole="Make" ToRole="Product" />
+          <NavigationProperty Name="Products" Relationship="AlphaElectricEntities.ProductMake" FromRole="Make" ToRole="Product" />
         </EntityType>
         <Association Name="ProductMake">
-          <End Type="DBModel.Product" Role="Product" Multiplicity="*" />
-          <End Type="DBModel.Make" Role="Make" Multiplicity="1" />
+          <End Type="AlphaElectricEntities.Product" Role="Product" Multiplicity="*" />
+          <End Type="AlphaElectricEntities.Make" Role="Make" Multiplicity="1" />
           <ReferentialConstraint>
             <Principal Role="Make">
               <PropertyRef Name="ID" />
@@ -773,11 +773,11 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" Nullable="false" />
-          <NavigationProperty Name="Parts" Relationship="DBModel.PartPaType" FromRole="PaType" ToRole="Part" />
+          <NavigationProperty Name="Parts" Relationship="AlphaElectricEntities.PartPaType" FromRole="PaType" ToRole="Part" />
         </EntityType>
         <Association Name="PartPaType">
-          <End Type="DBModel.Part" Role="Part" Multiplicity="*" />
-          <End Type="DBModel.PaType" Role="PaType" Multiplicity="1" />
+          <End Type="AlphaElectricEntities.Part" Role="Part" Multiplicity="*" />
+          <End Type="AlphaElectricEntities.PaType" Role="PaType" Multiplicity="1" />
           <ReferentialConstraint>
             <Principal Role="PaType">
               <PropertyRef Name="ID" />
@@ -794,9 +794,9 @@
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="OrderDate" Type="DateTime" Nullable="false" />
           <Property Name="DeliveryDate" Type="DateTime" Nullable="false" />
-          <NavigationProperty Name="Product_CustomerOrderBT" Relationship="DBModel.Product_CustomerOrderBTCustomerOrder" FromRole="CustomerOrder" ToRole="Product_CustomerOrderBT" />
-          <NavigationProperty Name="Projects" Relationship="DBModel.ProjectCustomerOrder" FromRole="CustomerOrder" ToRole="Project" />
-          <NavigationProperty Name="Contact" Relationship="DBModel.CustomerOrderContact" FromRole="CustomerOrder" ToRole="Contact" />
+          <NavigationProperty Name="Product_CustomerOrderBT" Relationship="AlphaElectricEntities.Product_CustomerOrderBTCustomerOrder" FromRole="CustomerOrder" ToRole="Product_CustomerOrderBT" />
+          <NavigationProperty Name="Projects" Relationship="AlphaElectricEntities.ProjectCustomerOrder" FromRole="CustomerOrder" ToRole="Project" />
+          <NavigationProperty Name="Contact" Relationship="AlphaElectricEntities.CustomerOrderContact" FromRole="CustomerOrder" ToRole="Contact" />
           <Property Name="ContactID" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="Product_CustomerOrderBT" >
@@ -804,15 +804,15 @@
             <PropertyRef Name="ProductID" />
             <PropertyRef Name="CustomerOrderID" />
           </Key>
-          <NavigationProperty Name="Product" Relationship="DBModel.ProductProduct_CustomerOrderBT" FromRole="Product_CustomerOrderBT" ToRole="Product" />
+          <NavigationProperty Name="Product" Relationship="AlphaElectricEntities.ProductProduct_CustomerOrderBT" FromRole="Product_CustomerOrderBT" ToRole="Product" />
           <Property Name="ProductID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="CustomerOrder" Relationship="DBModel.Product_CustomerOrderBTCustomerOrder" FromRole="Product_CustomerOrderBT" ToRole="CustomerOrder" />
+          <NavigationProperty Name="CustomerOrder" Relationship="AlphaElectricEntities.Product_CustomerOrderBTCustomerOrder" FromRole="Product_CustomerOrderBT" ToRole="CustomerOrder" />
           <Property Name="CustomerOrderID" Type="Int32" Nullable="false" />
           <Property Name="Quantity" Type="Int32" Nullable="false" />
         </EntityType>
         <Association Name="ProductProduct_CustomerOrderBT">
-          <End Type="DBModel.Product" Role="Product" Multiplicity="1" />
-          <End Type="DBModel.Product_CustomerOrderBT" Role="Product_CustomerOrderBT" Multiplicity="*" />
+          <End Type="AlphaElectricEntities.Product" Role="Product" Multiplicity="1" />
+          <End Type="AlphaElectricEntities.Product_CustomerOrderBT" Role="Product_CustomerOrderBT" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Product">
               <PropertyRef Name="ID" />
@@ -823,8 +823,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="Product_CustomerOrderBTCustomerOrder">
-          <End Type="DBModel.Product_CustomerOrderBT" Role="Product_CustomerOrderBT" Multiplicity="*" />
-          <End Type="DBModel.CustomerOrder" Role="CustomerOrder" Multiplicity="1" />
+          <End Type="AlphaElectricEntities.Product_CustomerOrderBT" Role="Product_CustomerOrderBT" Multiplicity="*" />
+          <End Type="AlphaElectricEntities.CustomerOrder" Role="CustomerOrder" Multiplicity="1" />
           <ReferentialConstraint>
             <Principal Role="CustomerOrder">
               <PropertyRef Name="ID" />
@@ -843,8 +843,8 @@
           <Property Name="Phone" Type="Int32" Nullable="false" />
           <Property Name="Email" Type="String" Nullable="false" />
           <Property Name="Address" Type="String" Nullable="false" />
-          <NavigationProperty Name="CustomerOrders" Relationship="DBModel.CustomerOrderContact" FromRole="Contact" ToRole="CustomerOrder" />
-          <NavigationProperty Name="PurchaseOrders" Relationship="DBModel.PurchaseOrderContact" FromRole="Contact" ToRole="PurchaseOrder" />
+          <NavigationProperty Name="CustomerOrders" Relationship="AlphaElectricEntities.CustomerOrderContact" FromRole="Contact" ToRole="CustomerOrder" />
+          <NavigationProperty Name="PurchaseOrders" Relationship="AlphaElectricEntities.PurchaseOrderContact" FromRole="Contact" ToRole="PurchaseOrder" />
         </EntityType>
         <EntityType Name="PurchaseOrder">
           <Key>
@@ -852,8 +852,8 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="PODate" Type="DateTime" Nullable="false" />
-          <NavigationProperty Name="Product_PurchaseOrderBT" Relationship="DBModel.PurchaseOrderProduct_PurchaseOrderBT" FromRole="PurchaseOrder" ToRole="Product_PurchaseOrderBT" />
-          <NavigationProperty Name="Contact" Relationship="DBModel.PurchaseOrderContact" FromRole="PurchaseOrder" ToRole="Contact" />
+          <NavigationProperty Name="Product_PurchaseOrderBT" Relationship="AlphaElectricEntities.PurchaseOrderProduct_PurchaseOrderBT" FromRole="PurchaseOrder" ToRole="Product_PurchaseOrderBT" />
+          <NavigationProperty Name="Contact" Relationship="AlphaElectricEntities.PurchaseOrderContact" FromRole="PurchaseOrder" ToRole="Contact" />
           <Property Name="ContactID" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="Product_PurchaseOrderBT">
@@ -862,14 +862,14 @@
             <PropertyRef Name="PurchaseOrderID" />
           </Key>
           <Property Name="Quantity" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Product" Relationship="DBModel.ProductProduct_PurchaseOrderBT" FromRole="Product_PurchaseOrderBT" ToRole="Product" />
+          <NavigationProperty Name="Product" Relationship="AlphaElectricEntities.ProductProduct_PurchaseOrderBT" FromRole="Product_PurchaseOrderBT" ToRole="Product" />
           <Property Name="ProductID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="PurchaseOrder" Relationship="DBModel.PurchaseOrderProduct_PurchaseOrderBT" FromRole="Product_PurchaseOrderBT" ToRole="PurchaseOrder" />
+          <NavigationProperty Name="PurchaseOrder" Relationship="AlphaElectricEntities.PurchaseOrderProduct_PurchaseOrderBT" FromRole="Product_PurchaseOrderBT" ToRole="PurchaseOrder" />
           <Property Name="PurchaseOrderID" Type="Int32" Nullable="false" />
         </EntityType>
         <Association Name="ProductProduct_PurchaseOrderBT">
-          <End Type="DBModel.Product" Role="Product" Multiplicity="1" />
-          <End Type="DBModel.Product_PurchaseOrderBT" Role="Product_PurchaseOrderBT" Multiplicity="*" />
+          <End Type="AlphaElectricEntities.Product" Role="Product" Multiplicity="1" />
+          <End Type="AlphaElectricEntities.Product_PurchaseOrderBT" Role="Product_PurchaseOrderBT" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Product">
               <PropertyRef Name="ID" />
@@ -880,8 +880,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="PurchaseOrderProduct_PurchaseOrderBT">
-          <End Type="DBModel.PurchaseOrder" Role="PurchaseOrder" Multiplicity="1" />
-          <End Type="DBModel.Product_PurchaseOrderBT" Role="Product_PurchaseOrderBT" Multiplicity="*" />
+          <End Type="AlphaElectricEntities.PurchaseOrder" Role="PurchaseOrder" Multiplicity="1" />
+          <End Type="AlphaElectricEntities.Product_PurchaseOrderBT" Role="Product_PurchaseOrderBT" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="PurchaseOrder">
               <PropertyRef Name="ID" />
@@ -899,12 +899,12 @@
           <Property Name="Name" Type="String" Nullable="false" />
           <Property Name="DeliveyDate" Type="DateTime" Nullable="false" />
           <Property Name="Status" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="CustomerOrder" Relationship="DBModel.ProjectCustomerOrder" FromRole="Project" ToRole="CustomerOrder" />
+          <NavigationProperty Name="CustomerOrder" Relationship="AlphaElectricEntities.ProjectCustomerOrder" FromRole="Project" ToRole="CustomerOrder" />
           <Property Name="CustomerOrderID" Type="Int32" Nullable="false" />
         </EntityType>
         <Association Name="ProjectCustomerOrder">
-          <End Type="DBModel.Project" Role="Project" Multiplicity="*" />
-          <End Type="DBModel.CustomerOrder" Role="CustomerOrder" Multiplicity="1" />
+          <End Type="AlphaElectricEntities.Project" Role="Project" Multiplicity="*" />
+          <End Type="AlphaElectricEntities.CustomerOrder" Role="CustomerOrder" Multiplicity="1" />
           <ReferentialConstraint>
             <Principal Role="CustomerOrder">
               <PropertyRef Name="ID" />
@@ -915,8 +915,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="CustomerOrderContact">
-          <End Type="DBModel.CustomerOrder" Role="CustomerOrder" Multiplicity="*" />
-          <End Type="DBModel.Contact" Role="Contact" Multiplicity="1" />
+          <End Type="AlphaElectricEntities.CustomerOrder" Role="CustomerOrder" Multiplicity="*" />
+          <End Type="AlphaElectricEntities.Contact" Role="Contact" Multiplicity="1" />
           <ReferentialConstraint>
             <Principal Role="Contact">
               <PropertyRef Name="ID" />
@@ -927,8 +927,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="PurchaseOrderContact">
-          <End Type="DBModel.PurchaseOrder" Role="PurchaseOrder" Multiplicity="*" />
-          <End Type="DBModel.Contact" Role="Contact" Multiplicity="1" />
+          <End Type="AlphaElectricEntities.PurchaseOrder" Role="PurchaseOrder" Multiplicity="*" />
+          <End Type="AlphaElectricEntities.Contact" Role="Contact" Multiplicity="1" />
           <ReferentialConstraint>
             <Principal Role="Contact">
               <PropertyRef Name="ID" />
@@ -943,9 +943,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
     <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="DBModelStoreContainer" CdmEntityContainer="DBModelContainer">
+  <EntityContainerMapping StorageEntityContainer="DBModelStoreContainer" CdmEntityContainer="AlphaElectricEntitiesDB">
     <EntitySetMapping Name="Employees">
-      <EntityTypeMapping TypeName="IsTypeOf(DBModel.Employee)">
+      <EntityTypeMapping TypeName="IsTypeOf(AlphaElectricEntities.Employee)">
         <MappingFragment StoreEntitySet="Employees">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="FirstName" ColumnName="FirstName" />
@@ -959,7 +959,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Designations">
-      <EntityTypeMapping TypeName="IsTypeOf(DBModel.Designation)">
+      <EntityTypeMapping TypeName="IsTypeOf(AlphaElectricEntities.Designation)">
         <MappingFragment StoreEntitySet="Designations">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="Name" ColumnName="Name" />
@@ -967,7 +967,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Products">
-      <EntityTypeMapping TypeName="IsTypeOf(DBModel.Product)">
+      <EntityTypeMapping TypeName="IsTypeOf(AlphaElectricEntities.Product)">
         <MappingFragment StoreEntitySet="Products">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="SerialNo" ColumnName="SerialNo" />
@@ -975,7 +975,7 @@
           <ScalarProperty Name="MakeID" ColumnName="MakeID" />
         </MappingFragment>
       </EntityTypeMapping>
-      <EntityTypeMapping TypeName="IsTypeOf(DBModel.Panel)">
+      <EntityTypeMapping TypeName="IsTypeOf(AlphaElectricEntities.Panel)">
         <MappingFragment StoreEntitySet="Products_Panel">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="PanelShellGradeProtectionIPNumber" ColumnName="PanelShellGradeProtectionIPNumber" />
@@ -984,7 +984,7 @@
           <ScalarProperty Name="TypeID" ColumnName="TypeID" />
         </MappingFragment>
       </EntityTypeMapping>
-      <EntityTypeMapping TypeName="IsTypeOf(DBModel.Part)">
+      <EntityTypeMapping TypeName="IsTypeOf(AlphaElectricEntities.Part)">
         <MappingFragment StoreEntitySet="Products_Part">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="PaTypeID" ColumnName="PaTypeID" />
@@ -992,7 +992,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Inventories">
-      <EntityTypeMapping TypeName="IsTypeOf(DBModel.Inventory)">
+      <EntityTypeMapping TypeName="IsTypeOf(AlphaElectricEntities.Inventory)">
         <MappingFragment StoreEntitySet="Inventories">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="StockLevel" ColumnName="StockLevel" />
@@ -1000,7 +1000,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Locations">
-      <EntityTypeMapping TypeName="IsTypeOf(DBModel.Location)">
+      <EntityTypeMapping TypeName="IsTypeOf(AlphaElectricEntities.Location)">
         <MappingFragment StoreEntitySet="Locations">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="Name" ColumnName="Name" />
@@ -1008,7 +1008,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="PanelShellGradeProtections">
-      <EntityTypeMapping TypeName="IsTypeOf(DBModel.PanelShellGradeProtection)">
+      <EntityTypeMapping TypeName="IsTypeOf(AlphaElectricEntities.PanelShellGradeProtection)">
         <MappingFragment StoreEntitySet="PanelShellGradeProtections">
           <ScalarProperty Name="IPNumber" ColumnName="IPNumber" />
           <ScalarProperty Name="DescriptionSolids" ColumnName="DescriptionSolids" />
@@ -1017,7 +1017,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="SizeTypes">
-      <EntityTypeMapping TypeName="IsTypeOf(DBModel.SizeType)">
+      <EntityTypeMapping TypeName="IsTypeOf(AlphaElectricEntities.SizeType)">
         <MappingFragment StoreEntitySet="SizeTypes">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="Description" ColumnName="Description" />
@@ -1025,7 +1025,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Types">
-      <EntityTypeMapping TypeName="IsTypeOf(DBModel.Type)">
+      <EntityTypeMapping TypeName="IsTypeOf(AlphaElectricEntities.Type)">
         <MappingFragment StoreEntitySet="Types">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="Description" ColumnName="Description" />
@@ -1033,7 +1033,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Certifications">
-      <EntityTypeMapping TypeName="IsTypeOf(DBModel.Certification)">
+      <EntityTypeMapping TypeName="IsTypeOf(AlphaElectricEntities.Certification)">
         <MappingFragment StoreEntitySet="Certifications">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="Description" ColumnName="Description" />
@@ -1041,7 +1041,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Makes">
-      <EntityTypeMapping TypeName="IsTypeOf(DBModel.Make)">
+      <EntityTypeMapping TypeName="IsTypeOf(AlphaElectricEntities.Make)">
         <MappingFragment StoreEntitySet="Makes">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="Name" ColumnName="Name" />
@@ -1049,7 +1049,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="PaTypes">
-      <EntityTypeMapping TypeName="IsTypeOf(DBModel.PaType)">
+      <EntityTypeMapping TypeName="IsTypeOf(AlphaElectricEntities.PaType)">
         <MappingFragment StoreEntitySet="PaTypes">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="Name" ColumnName="Name" />
@@ -1057,7 +1057,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="CustomerOrders">
-      <EntityTypeMapping TypeName="IsTypeOf(DBModel.CustomerOrder)">
+      <EntityTypeMapping TypeName="IsTypeOf(AlphaElectricEntities.CustomerOrder)">
         <MappingFragment StoreEntitySet="CustomerOrders">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
@@ -1067,7 +1067,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Product_CustomerOrderBT">
-      <EntityTypeMapping TypeName="IsTypeOf(DBModel.Product_CustomerOrderBT)">
+      <EntityTypeMapping TypeName="IsTypeOf(AlphaElectricEntities.Product_CustomerOrderBT)">
         <MappingFragment StoreEntitySet="Product_CustomerOrderBT">
           <ScalarProperty Name="ProductID" ColumnName="ProductID" />
           <ScalarProperty Name="CustomerOrderID" ColumnName="CustomerOrderID" />
@@ -1076,7 +1076,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Contacts">
-      <EntityTypeMapping TypeName="IsTypeOf(DBModel.Contact)">
+      <EntityTypeMapping TypeName="IsTypeOf(AlphaElectricEntities.Contact)">
         <MappingFragment StoreEntitySet="Contacts">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
@@ -1087,7 +1087,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="PurchaseOrders">
-      <EntityTypeMapping TypeName="IsTypeOf(DBModel.PurchaseOrder)">
+      <EntityTypeMapping TypeName="IsTypeOf(AlphaElectricEntities.PurchaseOrder)">
         <MappingFragment StoreEntitySet="PurchaseOrders">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="PODate" ColumnName="PODate" />
@@ -1096,7 +1096,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Product_PurchaseOrderBT">
-      <EntityTypeMapping TypeName="IsTypeOf(DBModel.Product_PurchaseOrderBT)">
+      <EntityTypeMapping TypeName="IsTypeOf(AlphaElectricEntities.Product_PurchaseOrderBT)">
         <MappingFragment StoreEntitySet="Product_PurchaseOrderBT">
           <ScalarProperty Name="ProductID" ColumnName="ProductID" />
           <ScalarProperty Name="PurchaseOrderID" ColumnName="PurchaseOrderID" />
@@ -1105,7 +1105,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Projects">
-      <EntityTypeMapping TypeName="IsTypeOf(DBModel.Project)">
+      <EntityTypeMapping TypeName="IsTypeOf(AlphaElectricEntities.Project)">
         <MappingFragment StoreEntitySet="Projects">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="Name" ColumnName="Name" />
