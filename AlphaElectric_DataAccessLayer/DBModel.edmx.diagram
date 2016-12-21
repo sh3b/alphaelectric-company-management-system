@@ -23,10 +23,10 @@
         <AssociationConnector Association="DBModel.PanelCertification" />
         <AssociationConnector Association="DBModel.PanelType" ManuallyRouted="false" >
         </AssociationConnector>
-        <EntityTypeShape EntityType="DBModel.Part" Width="1.5" PointX="10.375" PointY="6" />
+        <EntityTypeShape EntityType="DBModel.Part" Width="1.5" PointX="8.5" PointY="5.75" />
         <EntityTypeShape EntityType="DBModel.Make" Width="1.5" PointX="8.75" PointY="3.25" />
         <AssociationConnector Association="DBModel.ProductMake" />
-        <EntityTypeShape EntityType="DBModel.PaType" Width="1.5" PointX="12.875" PointY="6.25" />
+        <EntityTypeShape EntityType="DBModel.PaType" Width="1.5" PointX="10.75" PointY="5.75" />
         <AssociationConnector Association="DBModel.PartPaType" />
       </Diagram>
     </edmx:Diagrams>
