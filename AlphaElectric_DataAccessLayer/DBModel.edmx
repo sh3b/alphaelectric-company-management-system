@@ -1,0 +1,321 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DBModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="DBModelStoreContainer">
+    <EntitySet Name="Employees" EntityType="DBModel.Store.Employees" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Designations" EntityType="DBModel.Store.Designations" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="EmployeeDesignation" Association="DBModel.Store.EmployeeDesignation">
+      <End Role="Employee" EntitySet="Employees" />
+      <End Role="Designation" EntitySet="Designations" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Employees">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="LastName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Phone" Type="int" Nullable="false" />
+    <Property Name="Passport" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="JoinDate" Type="datetime" Nullable="false" />
+    <Property Name="Address" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="DesignationID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Designations">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <Association Name="EmployeeDesignation">
+    <End Role="Employee" Type="DBModel.Store.Employees" Multiplicity="*" />
+    <End Role="Designation" Type="DBModel.Store.Designations" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Designation">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Employee">
+        <PropertyRef Name="DesignationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="DBModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="DBModelContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Employees" EntityType="DBModel.Employee" />
+          <EntitySet Name="Designations" EntityType="DBModel.Designation" />
+          <AssociationSet Name="EmployeeDesignation" Association="DBModel.EmployeeDesignation">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="Designation" EntitySet="Designations" />
+          </AssociationSet>
+          <EntitySet Name="Products" EntityType="DBModel.Product" />
+          <EntitySet Name="Inventories" EntityType="DBModel.Inventory" />
+          <EntitySet Name="Locations" EntityType="DBModel.Location" />
+          <AssociationSet Name="InventoryLocation" Association="DBModel.InventoryLocation">
+            <End Role="Inventory" EntitySet="Inventories" />
+            <End Role="Location" EntitySet="Locations" />
+          </AssociationSet>
+          <AssociationSet Name="ProductInventory" Association="DBModel.ProductInventory">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="Inventory" EntitySet="Inventories" />
+          </AssociationSet>
+          <EntitySet Name="Panels" EntityType="DBModel.Panel" />
+          <EntitySet Name="PanelShellGradeProtections" EntityType="DBModel.PanelShellGradeProtection" />
+          <EntitySet Name="SizeTypes" EntityType="DBModel.SizeType" />
+          <EntitySet Name="Types" EntityType="DBModel.Type" />
+          <EntitySet Name="Certifications" EntityType="DBModel.Certification" />
+          <AssociationSet Name="PanelPanelShellGradeProtection" Association="DBModel.PanelPanelShellGradeProtection">
+            <End Role="Panel" EntitySet="Panels" />
+            <End Role="PanelShellGradeProtection" EntitySet="PanelShellGradeProtections" />
+          </AssociationSet>
+          <AssociationSet Name="PanelSizeType" Association="DBModel.PanelSizeType">
+            <End Role="Panel" EntitySet="Panels" />
+            <End Role="SizeType" EntitySet="SizeTypes" />
+          </AssociationSet>
+          <AssociationSet Name="PanelCertification" Association="DBModel.PanelCertification">
+            <End Role="Panel" EntitySet="Panels" />
+            <End Role="Certification" EntitySet="Certifications" />
+          </AssociationSet>
+          <AssociationSet Name="PanelType" Association="DBModel.PanelType">
+            <End Role="Panel" EntitySet="Panels" />
+            <End Role="Type" EntitySet="Types" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" Nullable="false" />
+          <Property Name="LastName" Type="String" Nullable="false" />
+          <Property Name="Phone" Type="Int32" Nullable="false" />
+          <Property Name="Passport" Type="String" Nullable="false" />
+          <Property Name="JoinDate" Type="DateTime" Nullable="false" />
+          <Property Name="Address" Type="String" Nullable="false" />
+          <NavigationProperty Name="Designation" Relationship="DBModel.EmployeeDesignation" FromRole="Employee" ToRole="Designation" />
+          <Property Name="DesignationID" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Designation">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <NavigationProperty Name="Employees" Relationship="DBModel.EmployeeDesignation" FromRole="Designation" ToRole="Employee" />
+        </EntityType>
+        <Association Name="EmployeeDesignation">
+          <End Type="DBModel.Employee" Role="Employee" Multiplicity="*" />
+          <End Type="DBModel.Designation" Role="Designation" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Designation">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="DesignationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <NavigationProperty Name="Inventory" Relationship="DBModel.ProductInventory" FromRole="Product" ToRole="Inventory" />
+        </EntityType>
+        <EntityType Name="Inventory">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StockLevel" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Location" Relationship="DBModel.InventoryLocation" FromRole="Inventory" ToRole="Location" />
+          <NavigationProperty Name="Product" Relationship="DBModel.ProductInventory" FromRole="Inventory" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="Location">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <NavigationProperty Name="Inventory" Relationship="DBModel.InventoryLocation" FromRole="Location" ToRole="Inventory" />
+        </EntityType>
+        <Association Name="InventoryLocation">
+          <End Type="DBModel.Inventory" Role="Inventory" Multiplicity="1" />
+          <End Type="DBModel.Location" Role="Location" Multiplicity="1" >
+          </End>
+          <ReferentialConstraint>
+            <Principal Role="Inventory">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Location">
+              <PropertyRef Name="ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ProductInventory">
+          <End Type="DBModel.Product" Role="Product" Multiplicity="1" />
+          <End Type="DBModel.Inventory" Role="Inventory" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Inventory">
+              <PropertyRef Name="ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Panel">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="PanelShellGradeProtection" Relationship="DBModel.PanelPanelShellGradeProtection" FromRole="Panel" ToRole="PanelShellGradeProtection" />
+          <Property Name="PanelShellGradeProtectionIPNumber" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="SizeType" Relationship="DBModel.PanelSizeType" FromRole="Panel" ToRole="SizeType" />
+          <Property Name="SizeTypeID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Certification" Relationship="DBModel.PanelCertification" FromRole="Panel" ToRole="Certification" />
+          <Property Name="CertificationID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Type" Relationship="DBModel.PanelType" FromRole="Panel" ToRole="Type" />
+          <Property Name="TypeID" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PanelShellGradeProtection">
+          <Key>
+            <PropertyRef Name="IPNumber" />
+          </Key>
+          <Property Name="IPNumber" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DescriptionSolids" Type="String" Nullable="false" />
+          <Property Name="DescriptionLiquids" Type="String" Nullable="false" />
+          <NavigationProperty Name="Panels" Relationship="DBModel.PanelPanelShellGradeProtection" FromRole="PanelShellGradeProtection" ToRole="Panel" />
+        </EntityType>
+        <EntityType Name="SizeType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" Nullable="false" />
+          <NavigationProperty Name="Panels" Relationship="DBModel.PanelSizeType" FromRole="SizeType" ToRole="Panel" />
+        </EntityType>
+        <EntityType Name="Type">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" Nullable="false" />
+          <NavigationProperty Name="Panels" Relationship="DBModel.PanelType" FromRole="Type" ToRole="Panel" />
+        </EntityType>
+        <EntityType Name="Certification">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" Nullable="false" />
+          <NavigationProperty Name="Panels" Relationship="DBModel.PanelCertification" FromRole="Certification" ToRole="Panel" />
+        </EntityType>
+        <Association Name="PanelPanelShellGradeProtection">
+          <End Type="DBModel.Panel" Role="Panel" Multiplicity="*" />
+          <End Type="DBModel.PanelShellGradeProtection" Role="PanelShellGradeProtection" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="PanelShellGradeProtection">
+              <PropertyRef Name="IPNumber" />
+            </Principal>
+            <Dependent Role="Panel">
+              <PropertyRef Name="PanelShellGradeProtectionIPNumber" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PanelSizeType">
+          <End Type="DBModel.Panel" Role="Panel" Multiplicity="*" />
+          <End Type="DBModel.SizeType" Role="SizeType" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="SizeType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Panel">
+              <PropertyRef Name="SizeTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PanelCertification">
+          <End Type="DBModel.Panel" Role="Panel" Multiplicity="*" />
+          <End Type="DBModel.Certification" Role="Certification" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Certification">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Panel">
+              <PropertyRef Name="CertificationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PanelType">
+          <End Type="DBModel.Panel" Role="Panel" Multiplicity="*" />
+          <End Type="DBModel.Type" Role="Type" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Type">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Panel">
+              <PropertyRef Name="TypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DBModelStoreContainer" CdmEntityContainer="DBModelContainer">
+    <EntitySetMapping Name="Employees">
+      <EntityTypeMapping TypeName="IsTypeOf(DBModel.Employee)">
+        <MappingFragment StoreEntitySet="Employees">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Passport" ColumnName="Passport" />
+          <ScalarProperty Name="JoinDate" ColumnName="JoinDate" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="DesignationID" ColumnName="DesignationID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Designations">
+      <EntityTypeMapping TypeName="IsTypeOf(DBModel.Designation)">
+        <MappingFragment StoreEntitySet="Designations">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
