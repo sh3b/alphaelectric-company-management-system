@@ -35,5 +35,8 @@ namespace AlphaElectric_DataAccessLayer
         public virtual DbSet<SizeType> SizeTypes { get; set; }
         public virtual DbSet<Type> Types { get; set; }
         public virtual DbSet<Certification> Certifications { get; set; }
+        public virtual DbSet<Part> Parts { get; set; }
+        public virtual DbSet<Make> Makes { get; set; }
+        public virtual DbSet<PaType> PaTypes { get; set; }
     }
 }

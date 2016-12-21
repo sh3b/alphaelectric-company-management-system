@@ -4,13 +4,13 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="368f6c008cba43f28917b883d8c032de" Name="Diagram1" ZoomLevel="74" >
-        <EntityTypeShape EntityType="DBModel.Employee" Width="1.5" PointX="8.25" PointY="7.375" />
-        <EntityTypeShape EntityType="DBModel.Designation" Width="1.5" PointX="10.75" PointY="5.75" />
+      <Diagram DiagramId="368f6c008cba43f28917b883d8c032de" Name="Diagram1" ZoomLevel="85" >
+        <EntityTypeShape EntityType="DBModel.Employee" Width="1.5" PointX="14.5" PointY="9.5" />
+        <EntityTypeShape EntityType="DBModel.Designation" Width="1.5" PointX="14.875" PointY="6.5" />
         <AssociationConnector Association="DBModel.EmployeeDesignation" />
-        <EntityTypeShape EntityType="DBModel.Product" Width="1.5" PointX="0.75" PointY="1" />
-        <EntityTypeShape EntityType="DBModel.Inventory" Width="1.5" PointX="3" PointY="0.875" />
-        <EntityTypeShape EntityType="DBModel.Location" Width="1.5" PointX="5.25" PointY="1" />
+        <EntityTypeShape EntityType="DBModel.Product" Width="1.5" PointX="6.125" PointY="2.875" />
+        <EntityTypeShape EntityType="DBModel.Inventory" Width="1.5" PointX="3.875" PointY="2.125" />
+        <EntityTypeShape EntityType="DBModel.Location" Width="1.5" PointX="1.5" PointY="1.25" />
         <AssociationConnector Association="DBModel.InventoryLocation" />
         <AssociationConnector Association="DBModel.ProductInventory" />
         <EntityTypeShape EntityType="DBModel.Panel" Width="2.625" PointX="3.375" PointY="6.25" />
@@ -23,6 +23,11 @@
         <AssociationConnector Association="DBModel.PanelCertification" />
         <AssociationConnector Association="DBModel.PanelType" ManuallyRouted="false" >
         </AssociationConnector>
+        <EntityTypeShape EntityType="DBModel.Part" Width="1.5" PointX="10.375" PointY="6" />
+        <EntityTypeShape EntityType="DBModel.Make" Width="1.5" PointX="8.75" PointY="3.25" />
+        <AssociationConnector Association="DBModel.ProductMake" />
+        <EntityTypeShape EntityType="DBModel.PaType" Width="1.5" PointX="12.875" PointY="6.25" />
+        <AssociationConnector Association="DBModel.PartPaType" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

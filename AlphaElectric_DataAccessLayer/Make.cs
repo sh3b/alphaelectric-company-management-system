@@ -12,14 +12,18 @@ namespace AlphaElectric_DataAccessLayer
     using System;
     using System.Collections.Generic;
     
-    public partial class Product
+    public partial class Make
     {
-        public int ID { get; set; }
-        public string SerialNo { get; set; }
-        public string Name { get; set; }
-        public int MakeID { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Make()
+        {
+            this.Products = new HashSet<Product>();
+        }
     
-        public virtual Inventory Inventory { get; set; }
-        public virtual Make Make { get; set; }
+        public int ID { get; set; }
+        public string Name { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Product> Products { get; set; }
     }
 }

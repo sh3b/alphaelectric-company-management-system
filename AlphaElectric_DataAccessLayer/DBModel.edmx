@@ -88,6 +88,17 @@
             <End Role="Panel" EntitySet="Panels" />
             <End Role="Type" EntitySet="Types" />
           </AssociationSet>
+          <EntitySet Name="Parts" EntityType="DBModel.Part" />
+          <EntitySet Name="Makes" EntityType="DBModel.Make" />
+          <AssociationSet Name="ProductMake" Association="DBModel.ProductMake">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="Make" EntitySet="Makes" />
+          </AssociationSet>
+          <EntitySet Name="PaTypes" EntityType="DBModel.PaType" />
+          <AssociationSet Name="PartPaType" Association="DBModel.PartPaType">
+            <End Role="Part" EntitySet="Parts" />
+            <End Role="PaType" EntitySet="PaTypes" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Employee">
           <Key>
@@ -128,8 +139,11 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SerialNo" Type="String" Nullable="false" />
           <Property Name="Name" Type="String" Nullable="false" />
           <NavigationProperty Name="Inventory" Relationship="DBModel.ProductInventory" FromRole="Product" ToRole="Inventory" />
+          <NavigationProperty Name="Make" Relationship="DBModel.ProductMake" FromRole="Product" ToRole="Make" />
+          <Property Name="MakeID" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="Inventory">
           <Key>
@@ -265,6 +279,54 @@
             </Principal>
             <Dependent Role="Panel">
               <PropertyRef Name="TypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Part">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="PaType" Relationship="DBModel.PartPaType" FromRole="Part" ToRole="PaType" />
+          <Property Name="PaTypeID" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Make">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <NavigationProperty Name="Products" Relationship="DBModel.ProductMake" FromRole="Make" ToRole="Product" />
+        </EntityType>
+        <Association Name="ProductMake">
+          <End Type="DBModel.Product" Role="Product" Multiplicity="*" />
+          <End Type="DBModel.Make" Role="Make" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Make">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="MakeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="PaType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <NavigationProperty Name="Parts" Relationship="DBModel.PartPaType" FromRole="PaType" ToRole="Part" />
+        </EntityType>
+        <Association Name="PartPaType">
+          <End Type="DBModel.Part" Role="Part" Multiplicity="*" />
+          <End Type="DBModel.PaType" Role="PaType" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="PaType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Part">
+              <PropertyRef Name="PaTypeID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
