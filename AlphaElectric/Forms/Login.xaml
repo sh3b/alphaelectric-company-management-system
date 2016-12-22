@@ -14,7 +14,7 @@
                       TextElement.Foreground="{DynamicResource MaterialDesignBody}"
                       Background="{DynamicResource MaterialDesignPaper}"
                       
-                      Height="400"
+                      Height="300"
                       Width="400"
                       ShowMinButton="True"
                       ResizeMode="CanMinimize"
@@ -58,14 +58,15 @@
         </UserControl.Resources>
 
 
-        <Grid Margin="20,116,20,0" VerticalAlignment="Top">
+        <Grid Margin="20,80,20,0" VerticalAlignment="Top">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="100" />
-                <ColumnDefinition Width="auto" />
-                <ColumnDefinition Width="150" />
+                <ColumnDefinition Width="auto" MinWidth="25" />
+                <ColumnDefinition Width="149" />
                 <ColumnDefinition Width="100" />
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
@@ -76,7 +77,7 @@
             <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource MaterialDesignHeadlineTextBlock}">Login</TextBlock>
 
             <!-- Start Name -->
-            <materialDesign:PackIcon Grid.Row="1" Grid.Column="1" Kind="Account" Foreground="{Binding ElementName=NameTextBox, Path=BorderBrush}" />
+            <materialDesign:PackIcon Grid.Row="1" Grid.Column="1" Kind="Account" Foreground="{Binding ElementName=NameTextBox, Path=BorderBrush}" Margin="4,11,0,12" />
             <TextBox Grid.Row="1" Grid.Column="2" 
 				    x:Name="NameTextBox"
 				    materialDesign:HintAssist.Hint="Username">
@@ -94,12 +95,26 @@
             <materialDesign:PackIcon Grid.Row="2" Grid.Column="1" Kind="Key"
                                  Margin="0,26,0,4"
                                  Foreground="{Binding ElementName=FloatingPasswordBox, Path=BorderBrush}" />
-            <PasswordBox Grid.Row="6" Grid.Column="2" 		
+            <PasswordBox Grid.Row="2" Grid.Column="2" 		
                      x:Name="FloatingPasswordBox"
                      Margin="0 12 0 0"
                      materialDesign:HintAssist.Hint="Password"
                      Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" />
             <!-- End Password -->
+
+
+
+
+            <TextBlock Grid.ColumnSpan="4"  Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="94,17,20,9" Width="260" RenderTransformOrigin="0.5,0.5" Height="36" >
+                         
+                    <Button 
+                        Style="{StaticResource MaterialDesignRaisedDarkButton}" Margin="10 0 40 0" Width="100"
+                        ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" Content="_DARK"/>
+          
+                    <Button 
+                        Style="{StaticResource MaterialDesignRaisedDarkButton}" Margin="0 0 40 0" Width="100"
+                        ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" Content="_DARK"/>
+            </TextBlock>
         </Grid>
     </UserControl>
 </Controls:MetroWindow>

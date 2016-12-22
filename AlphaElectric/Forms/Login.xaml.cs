@@ -35,10 +35,5 @@ namespace AlphaElectric.Forms
         {
 
         }
-
-        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
     }
 }
