@@ -60,6 +60,10 @@
     <Compile Include="CustomerOrder.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="DA\MakeDA.cs" />
+    <Compile Include="DA\InventoryDA.cs" />
+    <Compile Include="DA\ProductDA.cs" />
+    <Compile Include="DA\LocationDA.cs" />
     <Compile Include="DBModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -81,6 +85,10 @@
     <Compile Include="Employee.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Factories\MakeFactory.cs" />
+    <Compile Include="Factories\InventoryFactory.cs" />
+    <Compile Include="Factories\ProductFactory.cs" />
+    <Compile Include="Factories\LocationFactory.cs" />
     <Compile Include="Inventory.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>

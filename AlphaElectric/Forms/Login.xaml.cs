@@ -10,22 +10,35 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
-
-// MetroWindow
+// To access MetroWindow
 using MahApps.Metro.Controls;
 
-namespace AlphaElectric
+namespace AlphaElectric.Forms
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for Login.xaml
     /// </summary>
-    public partial class MainWindow : MetroWindow
+    public partial class Login : MetroWindow
     {
-        public MainWindow()
+        public Login()
         {
             InitializeComponent();
+        }
+
+        private void LoginButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Button1_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }
