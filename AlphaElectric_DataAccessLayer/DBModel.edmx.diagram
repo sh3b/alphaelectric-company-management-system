@@ -8,12 +8,12 @@
         <EntityTypeShape EntityType="AlphaElectricEntities.Employee" Width="1.5" PointX="12.75" PointY="8" FillColor="Navy" />
         <EntityTypeShape EntityType="AlphaElectricEntities.Designation" Width="1.5" PointX="10.75" PointY="8.5" />
         <AssociationConnector Association="AlphaElectricEntities.EmployeeDesignation" />
-        <EntityTypeShape EntityType="AlphaElectricEntities.Product" Width="1.5" PointX="6.125" PointY="2.875" FillColor="Navy" />
+        <EntityTypeShape EntityType="AlphaElectricEntities.Product" Width="1.5" PointX="6.375" PointY="2.125" FillColor="Navy" />
         <EntityTypeShape EntityType="AlphaElectricEntities.Inventory" Width="1.5" PointX="3.875" PointY="0.5" FillColor="Navy" />
         <EntityTypeShape EntityType="AlphaElectricEntities.Location" Width="1.5" PointX="1" PointY="0.5" />
         <AssociationConnector Association="AlphaElectricEntities.InventoryLocation" />
         <AssociationConnector Association="AlphaElectricEntities.ProductInventory" />
-        <EntityTypeShape EntityType="AlphaElectricEntities.Panel" Width="2.625" PointX="3.375" PointY="6.25" FillColor="Navy" />
+        <EntityTypeShape EntityType="AlphaElectricEntities.Panel" Width="2.625" PointX="3.125" PointY="6.25" FillColor="Navy" />
         <EntityTypeShape EntityType="AlphaElectricEntities.PanelShellGradeProtection" Width="1.75" PointX="0.875" PointY="3.75" />
         <EntityTypeShape EntityType="AlphaElectricEntities.SizeType" Width="1.5" PointX="1" PointY="5.625" />
         <EntityTypeShape EntityType="AlphaElectricEntities.Type" Width="1.5" PointX="1" PointY="9.125" />
@@ -23,21 +23,13 @@
         <AssociationConnector Association="AlphaElectricEntities.PanelCertification" />
         <AssociationConnector Association="AlphaElectricEntities.PanelType" ManuallyRouted="false" >
         </AssociationConnector>
-        <EntityTypeShape EntityType="AlphaElectricEntities.Part" Width="1.5" PointX="6.25" PointY="6.25" FillColor="Navy" />
+        <EntityTypeShape EntityType="AlphaElectricEntities.Part" Width="1.5" PointX="6.375" PointY="6.25" FillColor="Navy" />
         <EntityTypeShape EntityType="AlphaElectricEntities.Make" Width="1.5" PointX="3.875" PointY="2.5" FillColor="Navy" />
         <AssociationConnector Association="AlphaElectricEntities.ProductMake" />
-        <EntityTypeShape EntityType="AlphaElectricEntities.PaType" Width="1.5" PointX="6.25" PointY="8.125" />
+        <EntityTypeShape EntityType="AlphaElectricEntities.PaType" Width="1.5" PointX="6.375" PointY="8.875" />
         <AssociationConnector Association="AlphaElectricEntities.PartPaType" />
         <InheritanceConnector EntityType="AlphaElectricEntities.Part" />
-        <InheritanceConnector EntityType="AlphaElectricEntities.Panel" ManuallyRouted="true" >
-          <ConnectorPoint PointX="6.875" PointY="5.6244921875" />
-          <ConnectorPoint PointX="6.875" PointY="5.875" />
-          <ConnectorPoint PointX="6.239583333333333" PointY="5.8749999999999991" />
-          <ConnectorPoint PointX="6.072916666666667" PointY="5.875" />
-          <ConnectorPoint PointX="5.802083333333333" PointY="5.8749999999999991" />
-          <ConnectorPoint PointX="5.635416666666667" PointY="5.875" />
-          <ConnectorPoint PointX="4.6875" PointY="5.875" />
-          <ConnectorPoint PointX="4.6875" PointY="6.25" />
+        <InheritanceConnector EntityType="AlphaElectricEntities.Panel" ManuallyRouted="false" >
         </InheritanceConnector>
         <EntityTypeShape EntityType="AlphaElectricEntities.CustomerOrder" Width="1.5" PointX="12.625" PointY="2.75" FillColor="Navy" />
         <EntityTypeShape EntityType="AlphaElectricEntities.Product_CustomerOrderBT" Width="2.25" PointX="9.125" PointY="3" IsExpanded="true" FillColor="192, 192, 255" />
@@ -45,16 +37,19 @@
         <AssociationConnector Association="AlphaElectricEntities.Product_CustomerOrderBTCustomerOrder" />
         <EntityTypeShape EntityType="AlphaElectricEntities.Contact" Width="1.5" PointX="15.375" PointY="3.875" FillColor="Navy" />
         <EntityTypeShape EntityType="AlphaElectricEntities.PurchaseOrder" Width="1.5" PointX="12.625" PointY="5.625" FillColor="Navy" />
-        <EntityTypeShape EntityType="AlphaElectricEntities.Product_PurchaseOrderBT" Width="2.25" PointX="9.125" PointY="5.625" FillColor="192, 192, 255" />
-        <AssociationConnector Association="AlphaElectricEntities.ProductProduct_PurchaseOrderBT" ManuallyRouted="false" >
+        <EntityTypeShape EntityType="AlphaElectricEntities.Product_PurchaseOrderBT" Width="2.25" PointX="9" PointY="5.625" FillColor="192, 192, 255" />
+        <AssociationConnector Association="AlphaElectricEntities.ProductProduct_PurchaseOrderBT" ManuallyRouted="true" >
+          <ConnectorPoint PointX="7.875" PointY="4.5073864516166138" />
+          <ConnectorPoint PointX="8.4420179064923762" PointY="4.5073864516166138" />
+          <ConnectorPoint PointX="8.4420179064923762" PointY="6.6141646786430748" />
+          <ConnectorPoint PointX="9" PointY="6.6141646786430748" />
         </AssociationConnector>
         <AssociationConnector Association="AlphaElectricEntities.PurchaseOrderProduct_PurchaseOrderBT" />
         <EntityTypeShape EntityType="AlphaElectricEntities.Project" Width="1.75" PointX="9.375" PointY="0.5" FillColor="Navy" />
         <AssociationConnector Association="AlphaElectricEntities.ProjectCustomerOrder" />
         <AssociationConnector Association="AlphaElectricEntities.CustomerOrderContact" />
         <AssociationConnector Association="AlphaElectricEntities.PurchaseOrderContact" />
-        <AssociationConnector Association="AlphaElectricEntities.Products_Part" />
-        <EntityTypeShape EntityType="AlphaElectricEntities.Login" Width="1.5" PointX="7.75" PointY="11" />
+        <EntityTypeShape EntityType="AlphaElectricEntities.Login" Width="1.5" PointX="9" PointY="10.875" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -169,6 +169,7 @@
     <Content Include="DBModel2.edmx.sql" />
     <Content Include="DBModel3.edmx.sql" />
     <Content Include="DBModel4.edmx.sql" />
+    <Content Include="DBModel6.edmx.sql" />
     <Content Include="Model1.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Model1.cs</LastGenOutput>

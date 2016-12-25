@@ -18,7 +18,6 @@ namespace AlphaElectric_DataAccessLayer
         public PaType()
         {
             this.Parts = new HashSet<Part>();
-            this.Products = new HashSet<Product>();
         }
     
         public int ID { get; set; }
@@ -26,7 +25,5 @@ namespace AlphaElectric_DataAccessLayer
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Part> Parts { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Product> Products { get; set; }
     }
 }

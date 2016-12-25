@@ -32,6 +32,5 @@ namespace AlphaElectric_DataAccessLayer
         public virtual ICollection<Product_CustomerOrderBT> Product_CustomerOrderBT { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Product_PurchaseOrderBT> Product_PurchaseOrderBT { get; set; }
-        public virtual PaType PaType1 { get; set; }
     }
 }
