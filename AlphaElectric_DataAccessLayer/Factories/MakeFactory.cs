@@ -25,9 +25,9 @@ namespace AlphaElectric_DataAccessLayer.Factories
             return mkDa.SelectAll();
         }
 
-        public bool InsertStudent(Make mk)
+        public bool InsertMake(Make mk)
         {
-            return mkDa.InsertLocation(mk);
+            return mkDa.InsertMake(mk);
         }
     }
 }

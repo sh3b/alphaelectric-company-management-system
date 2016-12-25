@@ -25,9 +25,9 @@ namespace AlphaElectric_DataAccessLayer.Factories
             return prodDa.SelectAll();
         }
 
-        public bool InsertStudent(Product prod)
+        public bool InsertProduct(Product prod)
         {
-            return prodDa.InsertLocation(prod);
+            return prodDa.InsertProduct(prod);
         }
     }
 }

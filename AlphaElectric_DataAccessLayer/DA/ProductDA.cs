@@ -22,7 +22,7 @@ namespace AlphaElectric_DataAccessLayer.DA
             return db.Products.ToList();
         }
 
-        public bool InsertLocation(Product prod)
+        public bool InsertProduct(Product prod)
         {
             db.Products.Add(prod);
             return db.SaveChanges() > 0 ? true : false;

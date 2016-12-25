@@ -95,6 +95,9 @@
     <Compile Include="Location.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Login.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Make.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>

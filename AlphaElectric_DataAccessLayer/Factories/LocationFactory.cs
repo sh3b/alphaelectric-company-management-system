@@ -25,7 +25,7 @@ namespace AlphaElectric_DataAccessLayer.Factories
             return locDa.SelectAll();
         }
 
-        public bool InsertStudent(Location loc)
+        public bool InsertLocation(Location loc)
         {
             return locDa.InsertLocation(loc);
         }

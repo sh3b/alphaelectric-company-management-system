@@ -30,8 +30,10 @@
         <AssociationConnector Association="AlphaElectricEntities.PartPaType" />
         <InheritanceConnector EntityType="AlphaElectricEntities.Part" />
         <InheritanceConnector EntityType="AlphaElectricEntities.Panel" ManuallyRouted="true" >
-          <ConnectorPoint PointX="6.875" PointY="5.4321907552083326" />
+          <ConnectorPoint PointX="6.875" PointY="5.6244921875" />
           <ConnectorPoint PointX="6.875" PointY="5.875" />
+          <ConnectorPoint PointX="6.239583333333333" PointY="5.8749999999999991" />
+          <ConnectorPoint PointX="6.072916666666667" PointY="5.875" />
           <ConnectorPoint PointX="5.802083333333333" PointY="5.8749999999999991" />
           <ConnectorPoint PointX="5.635416666666667" PointY="5.875" />
           <ConnectorPoint PointX="4.6875" PointY="5.875" />
@@ -51,6 +53,8 @@
         <AssociationConnector Association="AlphaElectricEntities.ProjectCustomerOrder" />
         <AssociationConnector Association="AlphaElectricEntities.CustomerOrderContact" />
         <AssociationConnector Association="AlphaElectricEntities.PurchaseOrderContact" />
+        <AssociationConnector Association="AlphaElectricEntities.Products_Part" />
+        <EntityTypeShape EntityType="AlphaElectricEntities.Login" Width="1.5" PointX="7.75" PointY="11" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

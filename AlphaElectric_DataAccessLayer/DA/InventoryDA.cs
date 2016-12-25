@@ -22,7 +22,7 @@ namespace AlphaElectric_DataAccessLayer.DA
             return db.Inventories.ToList();
         }
 
-        public bool InsertLocation(Inventory inven)
+        public bool InsertInventory(Inventory inven)
         {
             db.Inventories.Add(inven);
             return db.SaveChanges() > 0 ? true : false;

@@ -42,5 +42,6 @@ namespace AlphaElectric_DataAccessLayer
         public virtual DbSet<PurchaseOrder> PurchaseOrders { get; set; }
         public virtual DbSet<Product_PurchaseOrderBT> Product_PurchaseOrderBT { get; set; }
         public virtual DbSet<Project> Projects { get; set; }
+        public virtual DbSet<Login> Logins { get; set; }
     }
 }

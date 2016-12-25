@@ -22,7 +22,7 @@ namespace AlphaElectric_DataAccessLayer.DA
             return db.Makes.ToList();
         }
 
-        public bool InsertLocation(Make mk)
+        public bool InsertMake(Make mk)
         {
             db.Makes.Add(mk);
             return db.SaveChanges() > 0 ? true : false;
