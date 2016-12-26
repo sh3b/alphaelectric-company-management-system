@@ -22,6 +22,7 @@ namespace AlphaElectric_DataAccessLayer
     
         public int ID { get; set; }
         public string Description { get; set; }
+        public string Name { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Panel> Panels { get; set; }

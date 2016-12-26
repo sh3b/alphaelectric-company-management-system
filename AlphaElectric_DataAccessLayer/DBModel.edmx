@@ -104,10 +104,10 @@
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="FirstName" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="LastName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar" Nullable="false" MaxLength="200" />
+    <Property Name="LastName" Type="nvarchar" Nullable="false" MaxLength="200" />
     <Property Name="Phone" Type="int" Nullable="false" />
-    <Property Name="Passport" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Passport" Type="nvarchar" Nullable="false" MaxLength="200" />
     <Property Name="JoinDate" Type="datetime" Nullable="false" />
     <Property Name="Address" Type="nvarchar" Nullable="false" MaxLength="200" />
     <Property Name="DesignationID" Type="int" Nullable="false" />
@@ -117,7 +117,7 @@
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="200" />
   </EntityType>
   <EntityType Name="Products">
     <Key>
@@ -144,9 +144,10 @@
   </EntityType>
   <EntityType Name="PanelShellGradeProtections">
     <Key>
-      <PropertyRef Name="IPNumber" />
+      <PropertyRef Name="ID" />
     </Key>
-    <Property Name="IPNumber" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IPNum" Type="nvarchar" Nullable="false" MaxLength="200" />
     <Property Name="DescriptionSolids" Type="nvarchar" Nullable="false" MaxLength="200" />
     <Property Name="DescriptionLiquids" Type="nvarchar" Nullable="false" MaxLength="200" />
   </EntityType>
@@ -170,6 +171,7 @@
     </Key>
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Description" Type="nvarchar" Nullable="false" MaxLength="200" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="200" />
   </EntityType>
   <EntityType Name="Makes">
     <Key>
@@ -245,8 +247,8 @@
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Username" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Username" Type="nvarchar" Nullable="false" MaxLength="200" />
+    <Property Name="Password" Type="nvarchar" Nullable="false" MaxLength="200" />
   </EntityType>
   <EntityType Name="Products_Panel">
     <Key>
@@ -306,7 +308,7 @@
     <End Role="PanelShellGradeProtection" Type="AlphaElectricEntities.Store.PanelShellGradeProtections" Multiplicity="1" />
     <ReferentialConstraint>
       <Principal Role="PanelShellGradeProtection">
-        <PropertyRef Name="IPNumber" />
+        <PropertyRef Name="ID" />
       </Principal>
       <Dependent Role="Panel">
         <PropertyRef Name="PanelShellGradeProtectionIPNumber" />
@@ -496,7 +498,7 @@
             <End Role="Employee" EntitySet="Employees" />
             <End Role="Designation" EntitySet="Designations" />
           </AssociationSet>
-          <EntitySet Name="Products" EntityType="AlphaElectricEntities.Product" />
+          <EntitySet Name="Products" EntityType="AlphaElectricEntities.Product" cg:GetterAccess="Internal" />
           <EntitySet Name="Inventories" EntityType="AlphaElectricEntities.Inventory" />
           <EntitySet Name="Locations" EntityType="AlphaElectricEntities.Location" />
           <AssociationSet Name="InventoryLocation" Association="AlphaElectricEntities.InventoryLocation">
@@ -578,10 +580,10 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
-          <Property Name="LastName" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="200" Unicode="true" FixedLength="false" />
           <Property Name="Phone" Type="Int32" Nullable="false" />
-          <Property Name="Passport" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Passport" Type="String" Nullable="false" MaxLength="200" Unicode="true" FixedLength="false" />
           <Property Name="JoinDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Address" Type="String" Nullable="false" MaxLength="200" Unicode="true" FixedLength="false" />
           <NavigationProperty Name="Designation" Relationship="AlphaElectricEntities.EmployeeDesignation" FromRole="Employee" ToRole="Designation" />
@@ -592,7 +594,7 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="200" Unicode="true" FixedLength="false" />
           <NavigationProperty Name="Employees" Relationship="AlphaElectricEntities.EmployeeDesignation" FromRole="Designation" ToRole="Employee" />
         </EntityType>
         <Association Name="EmployeeDesignation">
@@ -607,7 +609,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="Product">
+        <EntityType Name="Product" Abstract="true" cg:TypeAccess="Public">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
@@ -674,9 +676,10 @@
         </EntityType>
         <EntityType Name="PanelShellGradeProtection">
           <Key>
-            <PropertyRef Name="IPNumber" />
+            <PropertyRef Name="ID" />
           </Key>
-          <Property Name="IPNumber" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IPNum" Type="String" Nullable="false" MaxLength="200" />
           <Property Name="DescriptionSolids" Type="String" Nullable="false" MaxLength="200" Unicode="true" FixedLength="false" />
           <Property Name="DescriptionLiquids" Type="String" Nullable="false" MaxLength="200" Unicode="true" FixedLength="false" />
           <NavigationProperty Name="Panels" Relationship="AlphaElectricEntities.PanelPanelShellGradeProtection" FromRole="PanelShellGradeProtection" ToRole="Panel" />
@@ -704,13 +707,14 @@
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Description" Type="String" Nullable="false" MaxLength="200" Unicode="true" FixedLength="false" />
           <NavigationProperty Name="Panels" Relationship="AlphaElectricEntities.PanelCertification" FromRole="Certification" ToRole="Panel" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="200" />
         </EntityType>
         <Association Name="PanelPanelShellGradeProtection">
           <End Type="AlphaElectricEntities.Panel" Role="Panel" Multiplicity="*" />
           <End Type="AlphaElectricEntities.PanelShellGradeProtection" Role="PanelShellGradeProtection" Multiplicity="1" />
           <ReferentialConstraint>
             <Principal Role="PanelShellGradeProtection">
-              <PropertyRef Name="IPNumber" />
+              <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="Panel">
               <PropertyRef Name="PanelShellGradeProtectionIPNumber" />
@@ -953,8 +957,8 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Username" Type="String" Nullable="false" />
-          <Property Name="Password" Type="String" Nullable="false" />
+          <Property Name="Username" Type="String" Nullable="false" MaxLength="200" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="200" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1028,7 +1032,8 @@
     <EntitySetMapping Name="PanelShellGradeProtections">
       <EntityTypeMapping TypeName="IsTypeOf(AlphaElectricEntities.PanelShellGradeProtection)">
         <MappingFragment StoreEntitySet="PanelShellGradeProtections">
-          <ScalarProperty Name="IPNumber" ColumnName="IPNumber" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="IPNum" ColumnName="IPNum" />
           <ScalarProperty Name="DescriptionSolids" ColumnName="DescriptionSolids" />
           <ScalarProperty Name="DescriptionLiquids" ColumnName="DescriptionLiquids" />
         </MappingFragment>
@@ -1055,6 +1060,7 @@
         <MappingFragment StoreEntitySet="Certifications">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

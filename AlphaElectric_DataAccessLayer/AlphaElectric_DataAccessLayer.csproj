@@ -60,9 +60,14 @@
     <Compile Include="CustomerOrder.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="DA\PanelShellGradeProtectionDA.cs" />
     <Compile Include="DA\MakeDA.cs" />
     <Compile Include="DA\InventoryDA.cs" />
+    <Compile Include="DA\PaTypeDA.cs" />
+    <Compile Include="DA\CertificationDA.cs" />
     <Compile Include="DA\ProductDA.cs" />
+    <Compile Include="DA\TypeDA.cs" />
+    <Compile Include="DA\SizeTypeDA.cs" />
     <Compile Include="DA\LocationDA.cs" />
     <Compile Include="DBModel.Context.cs">
       <AutoGen>True</AutoGen>
@@ -85,8 +90,13 @@
     <Compile Include="Employee.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Factories\PanelShellGradeProtectionFactory.cs" />
     <Compile Include="Factories\MakeFactory.cs" />
     <Compile Include="Factories\InventoryFactory.cs" />
+    <Compile Include="Factories\PaTypeFactory.cs" />
+    <Compile Include="Factories\CertificationFactory.cs" />
+    <Compile Include="Factories\TypeFactory.cs" />
+    <Compile Include="Factories\SizeTypeFactory.cs" />
     <Compile Include="Factories\ProductFactory.cs" />
     <Compile Include="Factories\LocationFactory.cs" />
     <Compile Include="Inventory.cs">
@@ -170,6 +180,8 @@
     <Content Include="DBModel3.edmx.sql" />
     <Content Include="DBModel4.edmx.sql" />
     <Content Include="DBModel6.edmx.sql" />
+    <Content Include="DBModel7.edmx.sql" />
+    <Content Include="DBModel8.edmx.sql" />
     <Content Include="Model1.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Model1.cs</LastGenOutput>

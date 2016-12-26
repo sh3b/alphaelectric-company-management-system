@@ -18,6 +18,7 @@ namespace AlphaElectric_DataAccessLayer
         public AlphaElectricEntitiesDB()
             : base("name=AlphaElectricEntitiesDB")
         {
+            Products = Set<Product>();
         }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -27,7 +28,7 @@ namespace AlphaElectric_DataAccessLayer
     
         public virtual DbSet<Employee> Employees { get; set; }
         public virtual DbSet<Designation> Designations { get; set; }
-        public virtual DbSet<Product> Products { get; set; }
+        internal virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<Inventory> Inventories { get; set; }
         public virtual DbSet<Location> Locations { get; set; }
         public virtual DbSet<PanelShellGradeProtection> PanelShellGradeProtections { get; set; }

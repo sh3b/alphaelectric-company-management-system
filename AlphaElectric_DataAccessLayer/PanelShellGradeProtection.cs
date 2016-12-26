@@ -20,7 +20,8 @@ namespace AlphaElectric_DataAccessLayer
             this.Panels = new HashSet<Panel>();
         }
     
-        public int IPNumber { get; set; }
+        public int ID { get; set; }
+        public string IPNum { get; set; }
         public string DescriptionSolids { get; set; }
         public string DescriptionLiquids { get; set; }
     
