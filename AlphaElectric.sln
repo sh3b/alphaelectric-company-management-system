@@ -9,14 +9,19 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlphaElectric_DataAccessLay
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		AppVeyor|Any CPU = AppVeyor|Any CPU
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D26CE9A1-91F8-4C27-9A05-413928854583}.AppVeyor|Any CPU.ActiveCfg = Release|Any CPU
+		{D26CE9A1-91F8-4C27-9A05-413928854583}.AppVeyor|Any CPU.Build.0 = Release|Any CPU
 		{D26CE9A1-91F8-4C27-9A05-413928854583}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D26CE9A1-91F8-4C27-9A05-413928854583}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D26CE9A1-91F8-4C27-9A05-413928854583}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D26CE9A1-91F8-4C27-9A05-413928854583}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B58C37D6-206F-44CE-BE7A-F3112427FB89}.AppVeyor|Any CPU.ActiveCfg = Release|Any CPU
+		{B58C37D6-206F-44CE-BE7A-F3112427FB89}.AppVeyor|Any CPU.Build.0 = Release|Any CPU
 		{B58C37D6-206F-44CE-BE7A-F3112427FB89}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B58C37D6-206F-44CE-BE7A-F3112427FB89}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B58C37D6-206F-44CE-BE7A-F3112427FB89}.Release|Any CPU.ActiveCfg = Release|Any CPU
