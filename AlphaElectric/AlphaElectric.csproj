@@ -110,6 +110,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Logic\HomeViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -141,6 +142,13 @@
       <Project>{B58C37D6-206F-44CE-BE7A-F3112427FB89}</Project>
       <Name>AlphaElectric_DataAccessLayer</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Forms\Resources\Chartridge046_small.jpg" />
+    <Resource Include="Forms\Resources\Contact.png" />
+    <Resource Include="Forms\Resources\favicon.ico" />
+    <Resource Include="Forms\Resources\ms-icon-310x310.png" />
+    <Resource Include="Forms\Resources\ProfilePic.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
