@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,18 +11,35 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using AlphaElectric.Logic;
+// To access MetroWindow
+using MahApps.Metro.Controls;
+using System.ComponentModel;
+
+
+// Added DA & Factories
+using AlphaElectric_DataAccessLayer;
+using AlphaElectric_DataAccessLayer.Factories;
+using System.Diagnostics;
 
 namespace AlphaElectric.Forms
 {
     /// <summary>
     /// Interaction logic for Home.xaml
     /// </summary>
-    public partial class Home : Window
+    public partial class Home : MetroWindow
     {
         public Home()
         {
             InitializeComponent();
+        }
+
+
+        //Executing after loading window
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            //worker = new BackgroundWorker();
+            //worker.DoWork += Worker_DoWork;
+            //worker.RunWorkerAsync();
         }
 
         private void GitHubButton_OnClick(object sender, RoutedEventArgs e)
@@ -51,14 +67,6 @@ namespace AlphaElectric.Forms
             Process.Start("https://pledgie.com/campaigns/31029");
         }
 
-        private void UIElement_OnPreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
-        {
-        }
-
-        private void btnInsert_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
 
         private void TextBox_MouseDown(object sender, MouseButtonEventArgs e)
         {

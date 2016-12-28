@@ -1,4 +1,4 @@
-﻿<Controls:MetroWindow x:Class="AlphaElectric.Forms.AddProduct"
+﻿<src:MetroWindow x:Class="AlphaElectric.Forms.AddProduct"
                       Title="AlphaElectric | Add Product"
                       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -6,17 +6,21 @@
                       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                       xmlns:local="clr-namespace:AlphaElectric.Forms"
                       xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
-                                
-                      FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
-                      TextElement.FontSize="12"
+                      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+                      xmlns:src="http://metro.mahapps.com/winfx/xaml/controls"
                       
-                      TextElement.Foreground="{DynamicResource MaterialDesignBody}"
                       Background="{DynamicResource MaterialDesignPaper}"
+                      FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
+                      TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+                      TextElement.FontWeight="Regular"
+                      TextElement.FontSize="12"
+                      TextOptions.TextFormattingMode="Ideal" 
+                      TextOptions.TextRenderingMode="Auto" 
+                      GlowBrush="{DynamicResource AccentColorBrush}"
                       
                       Height="520"
                       Width="820"     
                       Loaded="Window_Loaded"
-                      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
                       >
 
     <!--mc:Ignorable="d"-->
@@ -344,5 +348,5 @@
 
         </Grid>
     </UserControl>
-</Controls:MetroWindow>
-    
+</src:MetroWindow>
+  
