@@ -1,0 +1,272 @@
+﻿<src:MetroWindow x:Class="AlphaElectric.Forms.TWOHome"
+                      Title="AlphaElectric | Home"
+                      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                      xmlns:local="clr-namespace:AlphaElectric.Forms"
+                      xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"         
+                      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+                      xmlns:src="http://metro.mahapps.com/winfx/xaml/controls"
+                 
+                      Background="{DynamicResource MaterialDesignPaper}"
+                      FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
+                      TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+                      TextElement.FontWeight="Regular"
+                      TextElement.FontSize="12"
+                      TextOptions.TextFormattingMode="Ideal" 
+                      TextOptions.TextRenderingMode="Auto" 
+                      GlowBrush="{DynamicResource AccentColorBrush}"
+     
+                      Height="650"
+                      Width="900"     
+                      Loaded="Window_Loaded">
+    <UserControl>
+        <UserControl.Resources>
+            <ResourceDictionary>
+                <ResourceDictionary.MergedDictionaries>
+                    <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Button.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Shadows.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.ToggleButton.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.PopupBox.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.TextBlock.xaml" />
+                    <!-- throw in some extra colour for our floating action button -->
+                    <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/MaterialDesignColor.Green.Named.Primary.xaml" />
+                </ResourceDictionary.MergedDictionaries>
+            </ResourceDictionary>
+        </UserControl.Resources>
+
+
+        <materialDesign:DialogHost Identifier="RootDialog" SnackbarMessageQueue="{Binding MessageQueue, ElementName=MainSnackbar}">
+            <materialDesign:DrawerHost IsLeftDrawerOpen="{Binding IsChecked, ElementName=MenuToggleButton}">
+                <materialDesign:DrawerHost.LeftDrawerContent>
+                    <DockPanel MinWidth="212">
+                        <ToggleButton Style="{StaticResource MaterialDesignHamburgerToggleButton}" 
+                                    DockPanel.Dock="Top"
+                                    HorizontalAlignment="Right" Margin="16"
+                                    IsChecked="{Binding IsChecked, ElementName=MenuToggleButton, Mode=TwoWay}" />
+                        <ListBox x:Name="AllFunctionList" Margin="0 16 0 16" SelectedIndex="0" ItemsSource="{Binding DemoItems}">
+                            <ListBox.Items>
+                                <TextBlock Name="t" PreviewMouseDown="TextBox_MouseDown"  Margin="32 0 32 0">Add Product</TextBlock>
+                                <TextBlock Name="t1" PreviewMouseDown="TextBox_MouseDown"  Margin="32 0 32 0">Add Product</TextBlock>
+                                <TextBlock Name="t2" PreviewMouseDown="TextBox_MouseDown"  Margin="32 0 32 0">Add Product</TextBlock>
+                                <TextBlock Name="t3" PreviewMouseDown="TextBox_MouseDown"  Margin="32 0 32 0">Add Product</TextBlock>
+                                <TextBlock Name="t4" PreviewMouseDown="TextBox_MouseDown"  Margin="32 0 32 0">Add Product</TextBlock>
+                                <TextBlock Name="t5" PreviewMouseDown="TextBox_MouseDown"  Margin="32 0 32 0">Add Product</TextBlock>
+                                <TextBlock Name="t6" PreviewMouseDown="TextBox_MouseDown"  Margin="32 0 32 0">Add Product</TextBlock>
+                                <TextBlock Name="t7" PreviewMouseDown="TextBox_MouseDown"  Margin="32 0 32 0">Add Product</TextBlock>
+                                <TextBlock Name="t8" PreviewMouseDown="TextBox_MouseDown"  Margin="32 0 32 0">Add Product</TextBlock>
+                                <TextBlock Name="t9" PreviewMouseDown="TextBox_MouseDown"  Margin="32 0 32 0">Add Product</TextBlock>
+                                <TextBlock Name="t0" PreviewMouseDown="TextBox_MouseDown"  Margin="32 0 32 0">Add Product</TextBlock>
+                                <TextBlock Name="t11" PreviewMouseDown="TextBox_MouseDown"  Margin="32 0 32 0">Add Product</TextBlock>
+                                <TextBlock Name="t22" PreviewMouseDown="TextBox_MouseDown"  Margin="32 0 32 0">Add Product</TextBlock>
+                                <TextBlock Name="t33" PreviewMouseDown="TextBox_MouseDown"  Margin="32 0 32 0">Add Product</TextBlock>
+                                <TextBlock Name="t44" PreviewMouseDown="TextBox_MouseDown"  Margin="32 0 32 0">Add Product</TextBlock>
+                                <TextBlock Name="t66" PreviewMouseDown="TextBox_MouseDown"  Margin="32 0 32 0">Add Product</TextBlock>
+                                <TextBlock Name="t55" PreviewMouseDown="TextBox_MouseDown"  Margin="32 0 32 0">Add Product</TextBlock>
+                                <TextBlock Name="t77" PreviewMouseDown="TextBox_MouseDown"  Margin="32 0 32 0">Add Product</TextBlock>
+                                <TextBlock Name="t88" PreviewMouseDown="TextBox_MouseDown"  Margin="32 0 32 0">Add Product</TextBlock>
+                                <TextBlock Name="t99" PreviewMouseDown="TextBox_MouseDown"  Margin="32 0 32 0">Add Product</TextBlock>
+                                <TextBlock Name="t21" PreviewMouseDown="TextBox_MouseDown"  Margin="32 0 32 0">Add Product</TextBlock>
+                                <TextBlock Name="t23" PreviewMouseDown="TextBox_MouseDown"  Margin="32 0 32 0">Add Product</TextBlock>
+                                <TextBlock Name="t24" PreviewMouseDown="TextBox_MouseDown"  Margin="32 0 32 0">Add Product</TextBlock>
+                                <TextBlock Name="t25" PreviewMouseDown="TextBox_MouseDown"  Margin="32 0 32 0">Add Product</TextBlock>
+                                <TextBlock Name="t26" PreviewMouseDown="TextBox_MouseDown"  Margin="32 0 32 0">Add Product</TextBlock>
+                                <TextBlock Name="t27" PreviewMouseDown="TextBox_MouseDown"  Margin="32 0 32 0">Add Product</TextBlock>
+                                <TextBlock Name="t28" PreviewMouseDown="TextBox_MouseDown"  Margin="32 0 32 0">Add Product</TextBlock>
+                                <TextBlock Name="t29" PreviewMouseDown="TextBox_MouseDown"  Margin="32 0 32 0">Add Product</TextBlock>
+                                <TextBlock Name="t30" PreviewMouseDown="TextBox_MouseDown"  Margin="32 0 32 0">Add Product</TextBlock>
+                                <TextBlock Name="t31" PreviewMouseDown="TextBox_MouseDown"  Margin="32 0 32 0">Add Product</TextBlock>
+                                <TextBlock Name="t32" PreviewMouseDown="TextBox_MouseDown"  Margin="32 0 32 0">Add Product</TextBlock>
+                                <TextBlock Name="t3355" PreviewMouseDown="TextBox_MouseDown"  Margin="32 0 32 0">Add Product</TextBlock>
+                            </ListBox.Items>
+                        </ListBox>
+                    </DockPanel>
+                </materialDesign:DrawerHost.LeftDrawerContent>
+                <DockPanel>
+                    <materialDesign:ColorZone Padding="16" materialDesign:ShadowAssist.ShadowDepth="Depth2" Mode="PrimaryMid" DockPanel.Dock="Top">
+                        <DockPanel>
+                            <ToggleButton Style="{StaticResource MaterialDesignHamburgerToggleButton}" IsChecked="False" x:Name="MenuToggleButton"/>
+                            <materialDesign:PopupBox DockPanel.Dock="Right" PlacementMode="BottomAndAlignRightEdges" StaysOpen="False">
+                                <StackPanel>
+                                    <Button Content="Log Out"/>
+                                    <Button Content="Can't Touch This" IsEnabled="False" />
+                                    <Separator/>
+                                </StackPanel>
+                            </materialDesign:PopupBox>
+                            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22"><Run Text="Alpha Electric Switchgear Dist. LLC"/></TextBlock>
+                        </DockPanel>
+                    </materialDesign:ColorZone>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="140" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+
+                        <StackPanel Margin="16" Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="Information" VerticalAlignment="Center" />
+                            <TextBlock Margin="8 0 10 0" VerticalAlignment="Center">Information Links:</TextBlock>
+
+                            <StackPanel Orientation="Horizontal">
+                                <Button Style="{StaticResource MaterialDesignFlatButton}" x:Name="btn_ControlRun">
+                                    <StackPanel Orientation="Horizontal">
+                                        <materialDesign:PackIcon Kind="Web" VerticalAlignment="Center" />
+                                        <!--<Label Content="Website Panel" TextBlock.FontWeight="Regular" TextBlock.FontSize="13" />-->
+                                        <TextBlock><Run TextBlock.FontWeight="Regular" TextBlock.FontSize="14" Text="  Website Panel"/></TextBlock>
+                                    </StackPanel>
+                                </Button>
+
+                                <Button Margin="30 0 10 0" Style="{StaticResource MaterialDesignFlatButton}" x:Name="btn_ControlRun2">
+                                    <StackPanel Orientation="Horizontal">
+                                        <materialDesign:PackIcon Kind="Web" VerticalAlignment="Center" />
+                                        <!--<Label Content="Website Panel" TextBlock.FontWeight="Regular" TextBlock.FontSize="13" />-->
+                                        <TextBlock><Run TextBlock.FontWeight="Regular" TextBlock.FontSize="14" Text="  Website Panel"/></TextBlock>
+                                    </StackPanel>
+                                </Button>
+
+                                <Button Margin="30 0 10 0" Style="{StaticResource MaterialDesignFlatButton}" x:Name="btn_ControlRun3">
+                                    <StackPanel Orientation="Horizontal">
+                                        <materialDesign:PackIcon Kind="Web" VerticalAlignment="Center" />
+                                        <!--<Label Content="Website Panel" TextBlock.FontWeight="Regular" TextBlock.FontSize="13" />-->
+                                        <TextBlock><Run TextBlock.FontWeight="Regular" TextBlock.FontSize="14" Text="  Website Panel"/></TextBlock>
+                                    </StackPanel>
+                                </Button>
+                                
+                            </StackPanel>
+                        </StackPanel>
+                        <Border BorderBrush="{DynamicResource MaterialDesignDivider}" BorderThickness="0 0 0 1" />
+
+                        <!-- start top bar -->
+                        <Grid Grid.Row="1"  HorizontalAlignment="Center" VerticalAlignment="Top" Margin="16">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Image Source="Resources/ms-icon-310x310.png" Stretch="Uniform" Width="80" Height="80" />
+                            <StackPanel Grid.Column="1" Margin="24 0 0 0" VerticalAlignment="Center">
+                                <TextBlock Style="{StaticResource MaterialDesignDisplay1TextBlock}" TextWrapping="Wrap"><Run Text="Welcome User_Name!"/></TextBlock>
+                                <Button Style="{StaticResource MaterialDesignFlatButton}" Command="{x:Static materialDesign:DrawerHost.OpenDrawerCommand}">
+                                    <StackPanel Orientation="Horizontal">
+                                        <materialDesign:PackIcon Kind="Backburger" />
+                                        <TextBlock Margin="8 0 0 0"><Run Text="Open Quick Tasks"/></TextBlock>
+                                    </StackPanel>
+                                </Button>
+                            </StackPanel>
+                        </Grid>
+                        <!-- end top bar -->
+                        <ScrollViewer Grid.Row="2" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled"
+                      HorizontalAlignment="Center"
+                      VerticalAlignment="Top"
+                      Margin="0 0 0 0">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+                                <StackPanel Grid.Row="1" Orientation="Horizontal">
+
+                                    <!-- start Git material card -->
+                                    <materialDesign:Card Width="420" Margin="8 2 4 16" Height="270">
+                                        <Grid VerticalAlignment="Stretch">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto" />
+                                                <RowDefinition Height="Auto" />
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="200" />
+                                                <ColumnDefinition Width="*" />
+                                            </Grid.ColumnDefinitions>
+                                            <materialDesign:PackIcon Kind="GithubCircle" Width="160" Height="160" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                            <StackPanel Grid.Column="1">
+                                                <TextBlock Style="{StaticResource MaterialDesignHeadlineTextBlock}" Margin="16 16 16 8"><Run Text="Open Source"/></TextBlock>
+                                                <TextBlock TextWrapping="Wrap" Margin="16 0 16 8" Foreground="{DynamicResource MaterialDesignBodyLight}"
+                                           VerticalAlignment="Top"><Run Text="This project is completely open source. If you like it and want to say thanks you could hit the GitHub Star button, tweet or post about it, or tell your mum about it!"/></TextBlock>
+                                            </StackPanel>
+                                            <Border Grid.Row="1" Grid.ColumnSpan="2" BorderThickness="0 1 0 0" BorderBrush="{DynamicResource MaterialDesignDivider}" Padding="8">
+                                                <DockPanel>
+                                                    <Button Style="{DynamicResource MaterialDesignFlatButton}" 
+                                            DockPanel.Dock="Right"
+                                            x:Name="DonateButton" Click="DonateButton_OnClick">
+                                                        <StackPanel Orientation="Horizontal">
+                                                            <materialDesign:PackIcon Kind="Gift" />
+                                                            <TextBlock Margin="8 0 0 0" VerticalAlignment="Center"><Run Text="Donate"/></TextBlock>
+                                                        </StackPanel>
+                                                    </Button>
+                                                    <TextBlock Foreground="{DynamicResource MaterialDesignBodyLight}" TextWrapping="Wrap" Margin="16" VerticalAlignment="Center"><Run Text="Feel like you want to make a donation? It would be gratefully received. Click the button to donate via Pledgie."/></TextBlock>
+                                                </DockPanel>
+                                            </Border>
+                                        </Grid>
+                                    </materialDesign:Card>
+                                    <!-- end Git material card -->
+
+                                    <!-- start getintouch material card -->
+                                    <materialDesign:Card Width="170" Margin="8 8 8 8" Height="80">
+                                        <Grid >
+                                            <TextBlock Grid.Column="1" Style="{StaticResource MaterialDesignHeadlineTextBlock}" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" ><Run Text="Employees"/></TextBlock>
+                                        </Grid>
+                                    </materialDesign:Card>
+                                    <materialDesign:Card Width="170" Margin="8 8 8 8" Height="80">
+                                        <Grid >
+                                            <TextBlock Grid.Column="1" Style="{StaticResource MaterialDesignHeadlineTextBlock}" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center"><Run Text="Products"/></TextBlock>
+                                        </Grid>
+                                    </materialDesign:Card>
+                                    <!-- end getintouch material card -->
+                                </StackPanel>
+                                <StackPanel Grid.Row="0" Orientation="Horizontal">
+                                    <!-- start getintouch material card -->
+
+                                    <materialDesign:Card Width="170" Margin="8 8 8 8" Height="80">
+                                        <Grid >
+                                            <TextBlock Grid.Column="1" Style="{StaticResource MaterialDesignHeadlineTextBlock}" FontSize="20" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center"><Run Text="Purchase/Selling"/></TextBlock>
+                                        </Grid>
+                                    </materialDesign:Card>
+                                    <materialDesign:Card Width="170" Margin="8 8 8 8" Height="80">
+                                        <Grid >
+                                            <TextBlock Grid.Column="1" Style="{StaticResource MaterialDesignHeadlineTextBlock}" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center"><Run Text="Projects"/></TextBlock>
+                                        </Grid>
+                                    </materialDesign:Card>
+                                    <!-- end getintouch material card -->
+                                </StackPanel>
+                            </Grid>
+                        </ScrollViewer>
+                        <!-- start + popupbox -->
+                        <materialDesign:PopupBox Grid.Row="3" Style="{StaticResource MaterialDesignMultiFloatingActionPopupBox}" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="32">
+                            <StackPanel>
+                                <Button ToolTip="GitHub" Click="GitHubButton_OnClick">
+                                    <materialDesign:PackIcon Kind="GithubCircle" Height="20" Width="20" />
+                                </Button>
+                                <Button ToolTip="Twitter" Click="TwitterButton_OnClick" Background="{DynamicResource PrimaryHueMidBrush}" Foreground="{DynamicResource PrimaryHueMidForegroundBrush}">
+                                    <materialDesign:PackIcon Kind="Twitter" />
+                                </Button>
+                                <Button ToolTip="Chat" Click="ChatButton_OnClick">
+                                    <!-- mix up the colours by brinking in a named palette (see merged dictionaries at top) -->
+                                    <Button.Background>
+                                        <SolidColorBrush Color="{StaticResource GreenPrimary500}" />
+                                    </Button.Background>
+                                    <Button.Foreground>
+                                        <SolidColorBrush Color="{StaticResource GreenPrimary500Foreground}" />
+                                    </Button.Foreground>
+                                    <materialDesign:PackIcon Kind="Message" />
+                                </Button>
+                                <Button ToolTip="Email" Click="EmailButton_OnClick" Background="{DynamicResource SecondaryAccentBrush}" Foreground="{DynamicResource SecondaryAccentForegroundBrush}">
+                                    <materialDesign:PackIcon Kind="Email" />
+                                </Button>
+                                <Button ToolTip="Feel like you want to make a donation?  It would be gratefully received.  Click the button to donate via Pledgie." Click="DonateButton_OnClick">
+                                    <Button.Background>
+                                        <SolidColorBrush Color="{StaticResource GreenPrimary200}" />
+                                    </Button.Background>
+                                    <Button.Foreground>
+                                        <SolidColorBrush Color="{StaticResource GreenPrimary200Foreground}" />
+                                    </Button.Foreground>
+                                    <materialDesign:PackIcon Kind="Gift" />
+                                </Button>
+                            </StackPanel>
+                        </materialDesign:PopupBox>
+                        <!-- End + popupbox -->
+                    </Grid>
+                </DockPanel>
+            </materialDesign:DrawerHost>
+        </materialDesign:DialogHost>
+    </UserControl>
+</src:MetroWindow>
