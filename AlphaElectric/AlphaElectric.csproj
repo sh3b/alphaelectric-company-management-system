@@ -87,11 +87,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Forms\2ndHome.xaml">
+    <Page Include="Forms\Home.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Forms\Home.xaml">
+    <Page Include="Forms\oldHome.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -106,11 +106,11 @@
     <Compile Include="Forms\AddProduct.xaml.cs">
       <DependentUpon>AddProduct.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Forms\2ndHome.xaml.cs">
-      <DependentUpon>2ndHome.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Forms\Home.xaml.cs">
       <DependentUpon>Home.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\oldHome.xaml.cs">
+      <DependentUpon>oldHome.xaml</DependentUpon>
     </Compile>
     <Compile Include="Forms\Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
