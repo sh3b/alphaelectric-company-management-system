@@ -1,4 +1,4 @@
-﻿<src:MetroWindow x:Class="AlphaElectric.Forms.AddProduct"
+﻿<src:MetroWindow x:Class="AlphaElectric.Forms.ProductAddNew"
                       Title="AlphaElectric | Add Product"
                       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -123,20 +123,6 @@
 
             <!-- start: make -->
             <TextBlock Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" Margin="16 0 8 0">Make</TextBlock>
-            <!--<TextBox Grid.Row="3" Grid.Column="1" 
-				    x:Name="MakeTextBox"
-				    materialDesign:HintAssist.Hint="Name"
-                    >
-                <TextBox.Text>
-                    <Binding Path="Name" UpdateSourceTrigger="PropertyChanged">
-                        -->
-            <!--<Binding.ValidationRules>
-                            <domain1:NotEmptyValidationRule ValidatesOnTargetUpdated="True" />
-                        </Binding.ValidationRules>-->
-            <!--
-                    </Binding>
-                </TextBox.Text>
-            </TextBox>-->
 
             <ComboBox Name="MakeComboBox"
                           Grid.Row="3" Grid.Column="1" 
@@ -144,26 +130,7 @@
                           MinWidth="72"
                           Margin="0 0 0 0"
                           VerticalAlignment="Bottom">
-
-                <!--IsEditable="True"-->
-                <!--ItemsSource="{Binding LongListToTestComboVirtualization}">-->
-                <!--<ComboBox.Text>
-                    <Binding Path="SelectedTextTwo" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
-                        <Binding.ValidationRules>
-                            -->
-                <!--<domain1:NotEmptyValidationRule ValidatesOnTargetUpdated="True"/>-->
-                <!--
-                        </Binding.ValidationRules>
-                    </Binding>
-                </ComboBox.Text>-->
-                <!--<ComboBox.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <VirtualizingStackPanel />
-                    </ItemsPanelTemplate>
-                </ComboBox.ItemsPanel>-->
             </ComboBox>
-
-
             <!-- end: make -->
 
             <TextBlock Grid.Row="4" Grid.Column="0" VerticalAlignment="Center" Margin="16 0 8 0">Product Type</TextBlock>
@@ -171,24 +138,6 @@
                 <RadioButton Name="P_Panel" Content="Panel" GroupName="txtBoxGroup" Checked="P_Panel_Checked"/>
                 <RadioButton Name="P_Part" Content="Product" GroupName="txtBoxGroup" Checked="P_Product_Checked"></RadioButton>
             </StackPanel>
-            <!--<StackPanel  Grid.Row="5" Grid.Column="1" Orientation="Vertical">
-                <RadioButton Name="radioButton1" GroupName="group1">Control1</RadioButton>
-                <RadioButton Name="radioButton2" GroupName="group1">Control2</RadioButton>
-                <RadioButton Name="radioButton3" GroupName="group1">Control3</RadioButton>
-                <Grid>
-                    <Button Visibility="{Binding IsChecked, ElementName=radioButton1, Converter={StaticResource convVisibility}}">1. Button</Button>
-                    <TextBlock Visibility="{Binding IsChecked, ElementName=radioButton2, Converter={StaticResource convVisibility}}">2. TextBlock</TextBlock>
-                    <TextBox Visibility="{Binding IsChecked, ElementName=radioButton3, Converter={StaticResource convVisibility}}">3. TextBox</TextBox>
-                </Grid>
-            </StackPanel>-->
-
-
-
-            <!--<StackPanel  Grid.Row="6" Grid.ColumnSpan="1" Name="TxtBxStackPanel" Height="auto"  Orientation="Vertical" Visibility="Visible">
-                <Label Content="IP Number" VerticalAlignment="Center" HorizontalAlignment="Left"></Label>
-                <TextBlock Grid.Row="4" Grid.Column="0" VerticalAlignment="Center" Margin="16 0 8 0">IP Number</TextBlock>
-                <TextBox Name="txtValue" Height="20" Width="200" HorizontalAlignment="Left"></TextBox>
-            </StackPanel>-->
 
             <StackPanel  Grid.Row="5" Grid.ColumnSpan="2"  Orientation="Horizontal"
                          HorizontalAlignment="Stretch" Height="auto" Name="TxtBxStackPanel4"  Visibility="Collapsed">
@@ -199,23 +148,6 @@
                           MinWidth="72"
                           Margin="9,8,0,8" Width="153"
                           VerticalAlignment="Bottom">
-
-                    <!--IsEditable="True"-->
-                    <!--ItemsSource="{Binding LongListToTestComboVirtualization}">-->
-                    <!--<ComboBox.Text>
-                    <Binding Path="SelectedTextTwo" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
-                        <Binding.ValidationRules>
-                            -->
-                    <!--<domain1:NotEmptyValidationRule ValidatesOnTargetUpdated="True"/>-->
-                    <!--
-                        </Binding.ValidationRules>
-                    </Binding>
-                </ComboBox.Text>-->
-                    <!--<ComboBox.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <VirtualizingStackPanel />
-                    </ItemsPanelTemplate>
-                </ComboBox.ItemsPanel>-->
                 </ComboBox>
             </StackPanel>
 
@@ -228,23 +160,6 @@
                           MinWidth="72"
                           Margin="9,8,0,8" Width="153"
                           VerticalAlignment="Bottom">
-
-                    <!--IsEditable="True"-->
-                    <!--ItemsSource="{Binding LongListToTestComboVirtualization}">-->
-                    <!--<ComboBox.Text>
-                    <Binding Path="SelectedTextTwo" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
-                        <Binding.ValidationRules>
-                            -->
-                    <!--<domain1:NotEmptyValidationRule ValidatesOnTargetUpdated="True"/>-->
-                    <!--
-                        </Binding.ValidationRules>
-                    </Binding>
-                </ComboBox.Text>-->
-                    <!--<ComboBox.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <VirtualizingStackPanel />
-                    </ItemsPanelTemplate>
-                </ComboBox.ItemsPanel>-->
                 </ComboBox>
             </StackPanel>
 
@@ -257,23 +172,6 @@
                           MinWidth="72"
                           Margin="9,8,0,8" Width="153"
                           VerticalAlignment="Bottom">
-
-                    <!--IsEditable="True"-->
-                    <!--ItemsSource="{Binding LongListToTestComboVirtualization}">-->
-                    <!--<ComboBox.Text>
-                    <Binding Path="SelectedTextTwo" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
-                        <Binding.ValidationRules>
-                            -->
-                    <!--<domain1:NotEmptyValidationRule ValidatesOnTargetUpdated="True"/>-->
-                    <!--
-                        </Binding.ValidationRules>
-                    </Binding>
-                </ComboBox.Text>-->
-                    <!--<ComboBox.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <VirtualizingStackPanel />
-                    </ItemsPanelTemplate>
-                </ComboBox.ItemsPanel>-->
                 </ComboBox>
             </StackPanel>
 
@@ -286,23 +184,6 @@
                           MinWidth="72"
                           Margin="9,8,0,8" Width="153"
                           VerticalAlignment="Bottom">
-
-                    <!--IsEditable="True"-->
-                    <!--ItemsSource="{Binding LongListToTestComboVirtualization}">-->
-                    <!--<ComboBox.Text>
-                    <Binding Path="SelectedTextTwo" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
-                        <Binding.ValidationRules>
-                            -->
-                    <!--<domain1:NotEmptyValidationRule ValidatesOnTargetUpdated="True"/>-->
-                    <!--
-                        </Binding.ValidationRules>
-                    </Binding>
-                </ComboBox.Text>-->
-                    <!--<ComboBox.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <VirtualizingStackPanel />
-                    </ItemsPanelTemplate>
-                </ComboBox.ItemsPanel>-->
                 </ComboBox>
             </StackPanel>
 
@@ -315,23 +196,6 @@
                           MinWidth="72"
                           Margin="4,8,0,8" Width="153"
                           VerticalAlignment="Bottom">
-
-                    <!--IsEditable="True"-->
-                    <!--ItemsSource="{Binding LongListToTestComboVirtualization}">-->
-                    <!--<ComboBox.Text>
-                    <Binding Path="SelectedTextTwo" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
-                        <Binding.ValidationRules>
-                            -->
-                    <!--<domain1:NotEmptyValidationRule ValidatesOnTargetUpdated="True"/>-->
-                    <!--
-                        </Binding.ValidationRules>
-                    </Binding>
-                </ComboBox.Text>-->
-                    <!--<ComboBox.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <VirtualizingStackPanel />
-                    </ItemsPanelTemplate>
-                </ComboBox.ItemsPanel>-->
                 </ComboBox>
             </StackPanel>
 
@@ -349,4 +213,3 @@
         </Grid>
     </UserControl>
 </src:MetroWindow>
-  

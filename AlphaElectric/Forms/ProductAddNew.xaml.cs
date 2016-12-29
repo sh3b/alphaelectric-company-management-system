@@ -25,12 +25,12 @@ namespace AlphaElectric.Forms
     /// <summary>
     /// Interaction logic for AddProduct.xaml
     /// </summary>
-    public partial class AddProduct : MetroWindow
+    public partial class ProductAddNew : MetroWindow
     {
         //Adding backgroud worker.
         BackgroundWorker worker;
 
-        public AddProduct()
+        public ProductAddNew()
         {
             InitializeComponent();
         }
