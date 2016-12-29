@@ -8,6 +8,7 @@
                       xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"         
                       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
                       xmlns:src="http://metro.mahapps.com/winfx/xaml/controls"
+                      xmlns:domain="clr-namespace:AlphaElectric_DataAccessLayer;assembly=AlphaElectric_DataAccessLayer"
                  
                       Background="{DynamicResource MaterialDesignPaper}"
                       FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
@@ -45,7 +46,7 @@
                                     DockPanel.Dock="Top"
                                     HorizontalAlignment="Right" Margin="16"
                                     IsChecked="{Binding IsChecked, ElementName=MenuToggleButton, Mode=TwoWay}" />
-                        <ListBox x:Name="AllFunctionList" Margin="0 16 0 16" SelectedIndex="0" ItemsSource="{Binding DemoItems}">
+                        <!--<ListBox x:Name="AllFunctionList" Margin="0 16 0 16" SelectedIndex="0" ItemsSource="{Binding DemoItems}">
                             <ListBox.Items>
                                 <TextBlock Name="t" PreviewMouseDown="TextBox_MouseDown"  Margin="32 0 32 0">Add Product</TextBlock>
                                 <TextBlock Name="t1" PreviewMouseDown="TextBox_MouseDown"  Margin="32 0 32 0">Add Product</TextBlock>
@@ -80,7 +81,144 @@
                                 <TextBlock Name="t32" PreviewMouseDown="TextBox_MouseDown"  Margin="32 0 32 0">Add Product</TextBlock>
                                 <TextBlock Name="t3355" PreviewMouseDown="TextBox_MouseDown"  Margin="32 0 32 0">Add Product</TextBlock>
                             </ListBox.Items>
-                        </ListBox>
+                        </ListBox>-->
+                        <TreeView MinWidth="220">
+                            <TreeViewItem Header="Home"/>
+                            <TreeViewItem  IsExpanded="True">
+                                <TreeViewItem.Header >
+                                    <StackPanel Orientation="Horizontal">
+                                        <Viewbox Width="16" Height="16">
+                                            <Canvas Width="15" Height="15">
+                                                <materialDesign:PackIcon Kind="Archive" VerticalAlignment="Center" />
+                                            </Canvas>
+                                        </Viewbox>
+                                        <TextBlock Margin="8 0 0 0">Product</TextBlock>
+                                    </StackPanel>
+                                </TreeViewItem.Header>
+                                <TreeViewItem>
+                                    <TreeViewItem.Header>
+                                        <StackPanel Orientation="Horizontal">
+                                            <Viewbox Width="16" Height="16">
+                                                <Canvas Width="15" Height="15">
+                                                    <materialDesign:PackIcon Kind="Raspberrypi" VerticalAlignment="Center" />
+                                                </Canvas>
+                                            </Viewbox>
+                                            <TextBlock Margin="8 0 0 0">Part</TextBlock>
+                                        </StackPanel>
+                                    </TreeViewItem.Header>
+                                    <TreeViewItem Header="Add new"/>
+                                    <TreeViewItem Header="List"/>
+                                </TreeViewItem>
+                                <TreeViewItem>
+                                    <TreeViewItem.Header>
+                                        <StackPanel Orientation="Horizontal">
+                                            <Viewbox Width="16" Height="16">
+                                                <Canvas Width="15" Height="15">
+                                                    <materialDesign:PackIcon Kind="MinusNetwork" VerticalAlignment="Center" />
+                                                </Canvas>
+                                            </Viewbox>
+                                            <TextBlock Margin="8 0 0 0">Panel</TextBlock>
+                                        </StackPanel>
+                                    </TreeViewItem.Header>
+                                    <TreeViewItem Header="Add new"/>
+                                    <TreeViewItem Header="List"/>
+                                </TreeViewItem>
+                            </TreeViewItem>
+                            <TreeViewItem>
+                                <TreeViewItem.Header>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Viewbox Width="16" Height="16">
+                                            <Canvas Width="15" Height="15">
+                                                <materialDesign:PackIcon Kind="Account" VerticalAlignment="Center" />
+                                            </Canvas>
+                                        </Viewbox>
+                                        <TextBlock Margin="8 0 0 0">Employees</TextBlock>
+                                    </StackPanel>
+                                </TreeViewItem.Header>
+                                <TreeViewItem Header="Add new"/>
+                                <TreeViewItem Header="List"/>
+                            </TreeViewItem>
+                            <TreeViewItem>
+                                <TreeViewItem.Header>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Viewbox Width="16" Height="16">
+                                            <Canvas Width="15" Height="15">
+                                                <materialDesign:PackIcon Kind="Buffer" VerticalAlignment="Center" />
+                                            </Canvas>
+                                        </Viewbox>
+                                        <TextBlock Margin="8 0 0 0">Projects</TextBlock>
+                                    </StackPanel>
+                                </TreeViewItem.Header>
+                                <TreeViewItem Header="Add new"/>
+                                <TreeViewItem Header="List"/>
+                            </TreeViewItem>
+                            <TreeViewItem>
+                                <TreeViewItem.Header>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Viewbox Width="16" Height="16">
+                                            <Canvas Width="15" Height="15">
+                                                <materialDesign:PackIcon Kind="Briefcase" VerticalAlignment="Center" />
+                                            </Canvas>
+                                        </Viewbox>
+                                        <TextBlock Margin="8 0 0 0">Companies</TextBlock>
+                                    </StackPanel>
+                                </TreeViewItem.Header>
+                                <TreeViewItem Header="Add new"/>
+                                <TreeViewItem Header="List"/>
+                            </TreeViewItem>
+                            <TreeViewItem>
+                                <TreeViewItem.Header>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Viewbox Width="16" Height="16">
+                                            <Canvas Width="15" Height="15">
+                                                <materialDesign:PackIcon Kind="Basket" VerticalAlignment="Center" />
+                                            </Canvas>
+                                        </Viewbox>
+                                        <TextBlock Margin="8 0 0 0">Purchasing</TextBlock>
+                                    </StackPanel>
+                                </TreeViewItem.Header>
+                                <TreeViewItem Header="Place Purchase Order"/>
+                                <TreeViewItem Header="Previous Orders"/>
+                                <TreeViewItem Header="Suppliers List"/>
+                                <TreeViewItem Header="Add new Supplier"/>
+                            </TreeViewItem>
+                            <TreeViewItem>
+                                <TreeViewItem.Header>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Viewbox Width="16" Height="16">
+                                            <Canvas Width="15" Height="15">
+                                                <materialDesign:PackIcon Kind="BasketUnfill" VerticalAlignment="Center" />
+                                            </Canvas>
+                                        </Viewbox>
+                                        <TextBlock Margin="8 0 0 0">Selling</TextBlock>
+                                    </StackPanel>
+                                </TreeViewItem.Header>
+                                <TreeViewItem Header="Create Receipt"/>
+                                <TreeViewItem Header="Previous Customer Orders"/>
+                                <TreeViewItem Header="Customer List"/>
+                                <TreeViewItem Header="Add new Customer"/>
+                            </TreeViewItem>
+                        </TreeView>
+                        
+                        <!-- Dynamic Tree View -->
+                        <!--<TreeView Grid.Row="0"
+                      ItemsSource="{Binding MovieCategories}"
+                      MinWidth="220"
+                      SelectedItemChanged="TreeView_SelectedItemChanged">
+                            <TreeView.Resources>
+                                <HierarchicalDataTemplate DataType="{x:Type domain:Certification}"
+                                              ItemsSource="{Binding Movies}">
+                                    <TextBlock Text="{Binding Name}" Margin="3 2"/>
+                                </HierarchicalDataTemplate>
+                                <DataTemplate DataType="{x:Type domain:Movie}">
+                                    <TextBlock Text="{Binding Name}" Margin="3 2"
+                                   ToolTip="{Binding Director}"/>
+                                </DataTemplate>
+                            </TreeView.Resources>
+                        </TreeView>-->
+                        <!-- End dynamic Tree View -->
+
+
                     </DockPanel>
                 </materialDesign:DrawerHost.LeftDrawerContent>
                 <DockPanel>
@@ -90,8 +228,9 @@
                             <materialDesign:PopupBox DockPanel.Dock="Right" PlacementMode="BottomAndAlignRightEdges" StaysOpen="False">
                                 <StackPanel>
                                     <Button Content="Log Out"/>
-                                    <Button Content="Can't Touch This" IsEnabled="False" />
                                     <Separator/>
+                                    <!--<Button Content="Can't Touch This" IsEnabled="False" />-->
+                                    <Button Content="About" Click="MenuPopupAboutButton_OnClick"/>
                                 </StackPanel>
                             </materialDesign:PopupBox>
                             <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22"><Run Text="Alpha Electric Switchgear Dist. LLC"/></TextBlock>
@@ -104,24 +243,24 @@
                             <RowDefinition Height="*" />
                         </Grid.RowDefinitions>
 
+                        <!-- start information links -->
                         <StackPanel Margin="16" Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="Information" VerticalAlignment="Center" />
                             <TextBlock Margin="8 0 10 0" VerticalAlignment="Center">Information Links:</TextBlock>
-
                             <StackPanel Orientation="Horizontal">
                                 <Button Style="{StaticResource MaterialDesignFlatButton}" x:Name="btn_ControlRun">
                                     <StackPanel Orientation="Horizontal">
-                                        <materialDesign:PackIcon Kind="Web" VerticalAlignment="Center" />
+                                        <materialDesign:PackIcon Kind="Deskphone" VerticalAlignment="Center" />
                                         <!--<Label Content="Website Panel" TextBlock.FontWeight="Regular" TextBlock.FontSize="13" />-->
-                                        <TextBlock><Run TextBlock.FontWeight="Regular" TextBlock.FontSize="14" Text="  Website Panel"/></TextBlock>
+                                        <TextBlock><Run TextBlock.FontWeight="Regular" TextBlock.FontSize="14" Text="  Phone Numbers"/></TextBlock>
                                     </StackPanel>
                                 </Button>
 
                                 <Button Margin="30 0 10 0" Style="{StaticResource MaterialDesignFlatButton}" x:Name="btn_ControlRun2">
                                     <StackPanel Orientation="Horizontal">
-                                        <materialDesign:PackIcon Kind="Web" VerticalAlignment="Center" />
+                                        <materialDesign:PackIcon Kind="Fax" VerticalAlignment="Center" />
                                         <!--<Label Content="Website Panel" TextBlock.FontWeight="Regular" TextBlock.FontSize="13" />-->
-                                        <TextBlock><Run TextBlock.FontWeight="Regular" TextBlock.FontSize="14" Text="  Website Panel"/></TextBlock>
+                                        <TextBlock><Run TextBlock.FontWeight="Regular" TextBlock.FontSize="14" Text="  Fax Orders"/></TextBlock>
                                     </StackPanel>
                                 </Button>
 
@@ -129,15 +268,16 @@
                                     <StackPanel Orientation="Horizontal">
                                         <materialDesign:PackIcon Kind="Web" VerticalAlignment="Center" />
                                         <!--<Label Content="Website Panel" TextBlock.FontWeight="Regular" TextBlock.FontSize="13" />-->
-                                        <TextBlock><Run TextBlock.FontWeight="Regular" TextBlock.FontSize="14" Text="  Website Panel"/></TextBlock>
+                                        <TextBlock><Run TextBlock.FontWeight="Regular" TextBlock.FontSize="14" Text="  Web Orders"/></TextBlock>
                                     </StackPanel>
                                 </Button>
                                 
                             </StackPanel>
                         </StackPanel>
                         <Border BorderBrush="{DynamicResource MaterialDesignDivider}" BorderThickness="0 0 0 1" />
-
-                        <!-- start top bar -->
+                        <!-- end information links -->
+                        
+                        <!-- start top header -->
                         <Grid Grid.Row="1"  HorizontalAlignment="Center" VerticalAlignment="Top" Margin="16">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="Auto" />
@@ -165,11 +305,13 @@
                                     <RowDefinition Height="*" />
                                 </Grid.RowDefinitions>
                                 <StackPanel Grid.Row="1" Orientation="Horizontal">
-
-                                    <!-- start Git material card -->
-                                    <materialDesign:Card Width="420" Margin="8 2 4 16" Height="270">
-                                        <Grid VerticalAlignment="Stretch">
+                                    <!-- start getintouch material card -->
+                                    <materialDesign:Card Width="520" Margin="4 2 8 16" Height="260">
+                                        <Grid VerticalAlignment="Stretch" >
                                             <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto" />
+                                                <RowDefinition Height="*" />
+                                                <RowDefinition Height="Auto" />
                                                 <RowDefinition Height="Auto" />
                                                 <RowDefinition Height="Auto" />
                                             </Grid.RowDefinitions>
@@ -177,45 +319,70 @@
                                                 <ColumnDefinition Width="200" />
                                                 <ColumnDefinition Width="*" />
                                             </Grid.ColumnDefinitions>
-                                            <materialDesign:PackIcon Kind="GithubCircle" Width="160" Height="160" HorizontalAlignment="Center" VerticalAlignment="Center" />
-                                            <StackPanel Grid.Column="1">
-                                                <TextBlock Style="{StaticResource MaterialDesignHeadlineTextBlock}" Margin="16 16 16 8"><Run Text="Open Source"/></TextBlock>
-                                                <TextBlock TextWrapping="Wrap" Margin="16 0 16 8" Foreground="{DynamicResource MaterialDesignBodyLight}"
-                                           VerticalAlignment="Top"><Run Text="This project is completely open source. If you like it and want to say thanks you could hit the GitHub Star button, tweet or post about it, or tell your mum about it!"/></TextBlock>
-                                            </StackPanel>
-                                            <Border Grid.Row="1" Grid.ColumnSpan="2" BorderThickness="0 1 0 0" BorderBrush="{DynamicResource MaterialDesignDivider}" Padding="8">
-                                                <DockPanel>
-                                                    <Button Style="{DynamicResource MaterialDesignFlatButton}" 
-                                            DockPanel.Dock="Right"
-                                            x:Name="DonateButton" Click="DonateButton_OnClick">
+                                            <Image Source="Resources/Contact.png" Grid.RowSpan="5" StretchDirection="Both" VerticalAlignment="Stretch" Stretch="UniformToFill" />
+                                            <TextBlock Grid.Column="1" Style="{StaticResource MaterialDesignHeadlineTextBlock}" Margin="16 16 16 2"><Run Text="Home"/></TextBlock>
+                                            <TextBlock Grid.Column="1" Grid.Row="1" TextWrapping="Wrap" Margin="16 0 16 8" Foreground="{DynamicResource MaterialDesignBodyLight}"
+                                                       VerticalAlignment="Center"><Run Text="Welcome! Use either quick drawbar or below buttons to do all tasks. "/></TextBlock>
+                                            <Border Grid.Column="1" Grid.Row="2" BorderThickness="0 1 0 0" BorderBrush="{DynamicResource MaterialDesignDivider}" Margin="0 8 0 0">
+                                                <Grid Margin="8">
+                                                    <Button FontSize="15" Style="{DynamicResource MaterialDesignFlatButton}" HorizontalAlignment="Left" x:Name="EmployeesButton" Click="Employees_OnClick">
                                                         <StackPanel Orientation="Horizontal">
-                                                            <materialDesign:PackIcon Kind="Gift" />
-                                                            <TextBlock Margin="8 0 0 0" VerticalAlignment="Center"><Run Text="Donate"/></TextBlock>
+                                                            <materialDesign:PackIcon Kind="Account" />
+                                                            <TextBlock Margin="8 0 0 0" VerticalAlignment="Center"><Run Text="Employees"/></TextBlock>
                                                         </StackPanel>
                                                     </Button>
-                                                    <TextBlock Foreground="{DynamicResource MaterialDesignBodyLight}" TextWrapping="Wrap" Margin="16" VerticalAlignment="Center"><Run Text="Feel like you want to make a donation? It would be gratefully received. Click the button to donate via Pledgie."/></TextBlock>
-                                                </DockPanel>
+                                                    <Button FontSize="15" Style="{DynamicResource MaterialDesignFlatButton}" HorizontalAlignment="Right" x:Name="ProductsButton" Click="ProductsButton_OnClick">
+                                                        <StackPanel Orientation="Horizontal">
+                                                            <materialDesign:PackIcon Kind="Archive" />
+                                                            <TextBlock Margin="8 0 0 0" VerticalAlignment="Center"><Run Text="Products"/></TextBlock>
+                                                        </StackPanel>
+                                                    </Button>
+                                                </Grid>
+                                            </Border>
+                                            <Border Grid.Column="1" Grid.Row="3" BorderThickness="0 1 0 0" BorderBrush="{DynamicResource MaterialDesignDivider}">
+                                                <Grid Margin="8">
+                                                    <Button FontSize="15" Style="{DynamicResource MaterialDesignFlatButton}" HorizontalAlignment="Left" x:Name="ChatButton" Click="PurchaseSellingButton_OnClick">
+                                                        <StackPanel Orientation="Horizontal">
+                                                            <materialDesign:PackIcon Kind="Briefcase" />
+                                                            <TextBlock Margin="8 0 0 0" VerticalAlignment="Center"><Run Text="Companies"/></TextBlock>
+                                                        </StackPanel>
+                                                    </Button>
+                                                    <Button FontSize="15" Style="{DynamicResource MaterialDesignFlatButton}" HorizontalAlignment="Right" x:Name="EmailButton" Click="ProjectsButton_OnClick">
+                                                        <StackPanel Orientation="Horizontal">
+                                                            <materialDesign:PackIcon Kind="Buffer" />
+                                                            <TextBlock Margin="8 0 5 0" VerticalAlignment="Center"><Run Text="Projects"/></TextBlock>
+                                                        </StackPanel>
+                                                    </Button>
+                                                </Grid>
+                                            </Border>
+                                            <Border Grid.Column="1" Grid.Row="4" BorderThickness="0 1 0 0" BorderBrush="{DynamicResource MaterialDesignDivider}">
+                                                <Grid Margin="8">
+                                                    <Button FontSize="15" Style="{DynamicResource MaterialDesignFlatButton}" HorizontalAlignment="Left" x:Name="ChatButtonX" Click="PurchaseSellingButton_OnClick">
+                                                        <StackPanel Orientation="Horizontal">
+                                                            <materialDesign:PackIcon Kind="Basket" />
+                                                            <TextBlock Margin="8 0 0 0" VerticalAlignment="Center"><Run Text="Purchase &amp; Selling"/></TextBlock>
+                                                        </StackPanel>
+                                                    </Button>
+                                                </Grid>
                                             </Border>
                                         </Grid>
                                     </materialDesign:Card>
-                                    <!-- end Git material card -->
+                                    <!-- end getintouch material card -->
+                                    
 
-                                    <!-- start getintouch material card -->
-                                    <materialDesign:Card Width="170" Margin="8 8 8 8" Height="80">
+                                    <!--<materialDesign:Card Width="170" Margin="8 8 8 8" Height="80">
                                         <Grid >
                                             <TextBlock Grid.Column="1" Style="{StaticResource MaterialDesignHeadlineTextBlock}" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" ><Run Text="Employees"/></TextBlock>
                                         </Grid>
-                                    </materialDesign:Card>
-                                    <materialDesign:Card Width="170" Margin="8 8 8 8" Height="80">
+                                    </materialDesign:Card>-->
+                                    <!--<materialDesign:Card Width="170" Margin="8 8 8 8" Height="80">
                                         <Grid >
                                             <TextBlock Grid.Column="1" Style="{StaticResource MaterialDesignHeadlineTextBlock}" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center"><Run Text="Products"/></TextBlock>
                                         </Grid>
-                                    </materialDesign:Card>
+                                    </materialDesign:Card>-->
                                     <!-- end getintouch material card -->
                                 </StackPanel>
-                                <StackPanel Grid.Row="0" Orientation="Horizontal">
-                                    <!-- start getintouch material card -->
-
+                                <!--<StackPanel Grid.Row="0" Orientation="Horizontal">
                                     <materialDesign:Card Width="170" Margin="8 8 8 8" Height="80">
                                         <Grid >
                                             <TextBlock Grid.Column="1" Style="{StaticResource MaterialDesignHeadlineTextBlock}" FontSize="20" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center"><Run Text="Purchase/Selling"/></TextBlock>
@@ -226,16 +393,12 @@
                                             <TextBlock Grid.Column="1" Style="{StaticResource MaterialDesignHeadlineTextBlock}" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center"><Run Text="Projects"/></TextBlock>
                                         </Grid>
                                     </materialDesign:Card>
-                                    <!-- end getintouch material card -->
-                                </StackPanel>
+                                </StackPanel>-->
                             </Grid>
                         </ScrollViewer>
                         <!-- start + popupbox -->
                         <materialDesign:PopupBox Grid.Row="3" Style="{StaticResource MaterialDesignMultiFloatingActionPopupBox}" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="32">
                             <StackPanel>
-                                <Button ToolTip="GitHub" Click="GitHubButton_OnClick">
-                                    <materialDesign:PackIcon Kind="GithubCircle" Height="20" Width="20" />
-                                </Button>
                                 <Button ToolTip="Twitter" Click="TwitterButton_OnClick" Background="{DynamicResource PrimaryHueMidBrush}" Foreground="{DynamicResource PrimaryHueMidForegroundBrush}">
                                     <materialDesign:PackIcon Kind="Twitter" />
                                 </Button>
@@ -251,15 +414,6 @@
                                 </Button>
                                 <Button ToolTip="Email" Click="EmailButton_OnClick" Background="{DynamicResource SecondaryAccentBrush}" Foreground="{DynamicResource SecondaryAccentForegroundBrush}">
                                     <materialDesign:PackIcon Kind="Email" />
-                                </Button>
-                                <Button ToolTip="Feel like you want to make a donation?  It would be gratefully received.  Click the button to donate via Pledgie." Click="DonateButton_OnClick">
-                                    <Button.Background>
-                                        <SolidColorBrush Color="{StaticResource GreenPrimary200}" />
-                                    </Button.Background>
-                                    <Button.Foreground>
-                                        <SolidColorBrush Color="{StaticResource GreenPrimary200Foreground}" />
-                                    </Button.Foreground>
-                                    <materialDesign:PackIcon Kind="Gift" />
                                 </Button>
                             </StackPanel>
                         </materialDesign:PopupBox>
