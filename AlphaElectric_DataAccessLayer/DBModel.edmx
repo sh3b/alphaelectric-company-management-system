@@ -582,7 +582,7 @@
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="FirstName" Type="String" Nullable="false" MaxLength="200" Unicode="true" FixedLength="false" />
           <Property Name="LastName" Type="String" Nullable="false" MaxLength="200" Unicode="true" FixedLength="false" />
-          <Property Name="Phone" Type="Int32" Nullable="false" />
+          <Property Name="Phone" Type="String" Nullable="false" MaxLength="200" />
           <Property Name="Passport" Type="String" Nullable="false" MaxLength="200" Unicode="true" FixedLength="false" />
           <Property Name="JoinDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Address" Type="String" Nullable="false" MaxLength="200" Unicode="true" FixedLength="false" />
@@ -854,7 +854,7 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="CompanyName" Type="String" Nullable="false" MaxLength="200" Unicode="true" FixedLength="false" />
-          <Property Name="Phone" Type="Int32" Nullable="false" />
+          <Property Name="Phone" Type="String" Nullable="false" MaxLength="200" />
           <Property Name="Email" Type="String" Nullable="false" MaxLength="200" Unicode="true" FixedLength="false" />
           <Property Name="Address" Type="String" Nullable="false" MaxLength="200" Unicode="true" FixedLength="false" />
           <NavigationProperty Name="CustomerOrders" Relationship="AlphaElectricEntities.CustomerOrderContact" FromRole="Contact" ToRole="CustomerOrder" />

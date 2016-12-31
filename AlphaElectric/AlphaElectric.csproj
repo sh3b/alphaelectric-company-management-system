@@ -83,6 +83,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Forms\CompanyAddNew.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Forms\ProductAddNew.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -98,6 +102,9 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Forms\CompanyAddNew.xaml.cs">
+      <DependentUpon>CompanyAddNew.xaml</DependentUpon>
     </Compile>
     <Compile Include="Forms\ProductAddNew.xaml.cs">
       <DependentUpon>ProductAddNew.xaml</DependentUpon>
@@ -142,7 +149,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AlphaElectric_DataAccessLayer\AlphaElectric_DataAccessLayer.csproj">
