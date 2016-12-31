@@ -31,15 +31,15 @@ namespace AlphaElectric_DataAccessLayer.DA
         //CHECK IT
         public bool Delete(int id)
         {
-            var mk = db.Contacts.Where(x => x.ID == id).FirstOrDefault();
-            if (mk != null)
+            var con = db.Contacts.Where(x => x.ID == id).FirstOrDefault();
+            if (con != null)
             {
-                db.Contacts.Remove(mk);
+                db.Contacts.Remove(con);
             }
             return db.SaveChanges() > 0 ? true : false;
         }
 
-        public bool Update(int id, string name, int phone, string email, string address)
+        public bool Update(int id, string name, string phone, string email, string address)
         {
             var con = db.Contacts.Where(x => x.ID == id).FirstOrDefault();
             if (con != null)

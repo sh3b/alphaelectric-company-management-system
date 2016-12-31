@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="368f6c008cba43f28917b883d8c032de" Name="Diagram1" ZoomLevel="81" >
+      <Diagram DiagramId="368f6c008cba43f28917b883d8c032de" Name="Diagram1" ZoomLevel="70" >
         <EntityTypeShape EntityType="AlphaElectricEntities.Employee" Width="1.5" PointX="12.75" PointY="8" FillColor="Navy" />
         <EntityTypeShape EntityType="AlphaElectricEntities.Designation" Width="1.5" PointX="10.75" PointY="8.5" />
         <AssociationConnector Association="AlphaElectricEntities.EmployeeDesignation" />
@@ -39,8 +39,8 @@
         <EntityTypeShape EntityType="AlphaElectricEntities.PurchaseOrder" Width="1.5" PointX="12.625" PointY="5.625" FillColor="Navy" />
         <EntityTypeShape EntityType="AlphaElectricEntities.Product_PurchaseOrderBT" Width="2.25" PointX="9" PointY="5.625" FillColor="192, 192, 255" />
         <AssociationConnector Association="AlphaElectricEntities.ProductProduct_PurchaseOrderBT" ManuallyRouted="true" >
-          <ConnectorPoint PointX="7.875" PointY="4.6821907552083326" />
-          <ConnectorPoint PointX="9" PointY="6.4968321982856265" />
+          <ConnectorPoint PointX="7.875" PointY="3.4211947816513089" />
+          <ConnectorPoint PointX="9" PointY="6.6941676184830321" />
         </AssociationConnector>
         <AssociationConnector Association="AlphaElectricEntities.PurchaseOrderProduct_PurchaseOrderBT" />
         <EntityTypeShape EntityType="AlphaElectricEntities.Project" Width="1.75" PointX="9.375" PointY="0.5" FillColor="Navy" />
