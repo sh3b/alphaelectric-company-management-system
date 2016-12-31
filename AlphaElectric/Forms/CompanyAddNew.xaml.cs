@@ -19,22 +19,69 @@ using MahApps.Metro.Controls;
 // Added DA & Factories
 using AlphaElectric_DataAccessLayer;
 using AlphaElectric_DataAccessLayer.Factories;
-
+using System.Windows.Threading;
+using AlphaElectric.ViewModels;
 
 namespace AlphaElectric.Forms
 {
     /// <summary>
-    /// Interaction logic for CompanyAddNew.xaml
+    /// Interaction logic for AddProduct.xaml
     /// </summary>
-    public partial class CompanyAddNew : MetroWindow
+    public partial class CompanyAddNew : UserControl
     {
+        ContactViewModel _vm;
+        //Adding backgroud worker
+        BackgroundWorker worker;
+
         public CompanyAddNew()
         {
             InitializeComponent();
+
+            _vm = new ContactViewModel();
+            this.DataContext = _vm;
+        }
+
+        //Executing after loading window, refer to XAML
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            worker = new BackgroundWorker();
+            worker.DoWork += Worker_DoWork;
+            worker.RunWorkerAsync();
+        }
+
+        void Worker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            this.Dispatcher.Invoke(() =>
+            {
+
+            });
+        }
+
+        private void ForceValidation()
+        {
+            this.NameTextBox.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+            this.AddressTextBox.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+            this.EmailTextBox.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+            this.PhoneNoTextBox.GetBindingExpression(TextBox.TextProperty).UpdateSource();
         }
 
         private void InsertButton_Click(object sender, RoutedEventArgs e)
         {
+            #region validation 
+            ForceValidation();
+            if (Validation.GetHasError(NameTextBox) || Validation.GetHasError(AddressTextBox) || Validation.GetHasError(EmailTextBox) || Validation.GetHasError(PhoneNoTextBox))
+            {
+                var sMessageDialog = new MessageDialog
+                {
+                    Message = { Text =
+                    "ERROR: Fill missing fields!" }
+                };
+
+                DialogHost.Show(sMessageDialog, "RootDialog");
+                return;
+            }
+            #endregion
+
             Contact comp = new Contact();
 
             comp.CompanyName = NameTextBox.Text;
@@ -49,74 +96,12 @@ namespace AlphaElectric.Forms
                 MessageBox.Show("not inserted");
         }
 
-        private void ExitButton_Click(object sender, RoutedEventArgs e)
+        private void ClearButton_Click(object sender, RoutedEventArgs e)
         {
-
+            this.NameTextBox.Clear();
+            this.AddressTextBox.Clear();
+            this.EmailTextBox.Clear();
+            this.PhoneNoTextBox.Clear();
         }
-
-        #region diaglog-socialbuttons-informationlinks
-
-        // About message dialog
-        private async void MenuPopupAboutButton_OnClick(object sender, RoutedEventArgs e)
-        {
-            var sMessageDialog = new MessageDialog
-            {
-                //Message = { Text = ((ButtonBase)sender).Content.ToString() }
-                Message = { Text =
-                    "Developed by\n" +
-                    "\n1. Muhammad Shoaib" +
-                    "\n  3022/FBAS/BSCS/F14B" +
-                    "\n2. Muhammad Amir" +
-                    "\n  ____/FBAS/BSCS/F14B" }
-            };
-
-            await DialogHost.Show(sMessageDialog, "RootDialog");
-        }
-
-        // Social Buttons
-        private void TwitterButton_OnClick(object sender, RoutedEventArgs e)
-        {
-            Process.Start("http://twitter.com/shuayb_ashraf");
-        }
-
-        private void ChatButton_OnClick(object sender, RoutedEventArgs e)
-        {
-            Process.Start("https://gitter.im/shuayb_ashraf");
-        }
-
-        private void EmailButton_OnClick(object sender, RoutedEventArgs e)
-        {
-            Process.Start("mailto://shuayb@gmx.com");
-        }
-
-        // Information Links
-        private void TextBlock_WebOrdersMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            Process.Start("http://alphaelectric.shuayb.me/");
-        }
-
-        private async void TextBlock_FaxOrdersMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            var sMessageDialog = new MessageDialog
-            {
-                Message = { Text = "Fax Orders Server is currently\n offline." }
-            };
-
-            await DialogHost.Show(sMessageDialog, "RootDialog");
-        }
-
-        private async void TextBlock_PhoneNumbersMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            var sMessageDialog = new MessageDialog
-            {
-                Message = { Text =
-                    "Important Phone Numbers\n" +
-                    "\n1. Police: 15" +
-                    "\n2. IIUI:   +92 51 901 9100" }
-            };
-
-            await DialogHost.Show(sMessageDialog, "RootDialog");
-        }
-        #endregion
     }
 }

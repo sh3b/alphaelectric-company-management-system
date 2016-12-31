@@ -141,21 +141,24 @@ namespace AlphaElectric.Forms
 
         private void TreeItem_ProductAdd_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            ProductAddNew prodNew = new ProductAddNew();
+            ProductAddNew x = new ProductAddNew();
             UserPages.Children.Clear();
-            UserPages.Children.Add(prodNew);
+            UserPages.Children.Add(x);
         }
 
-        private void TreeViewItem_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        private void TreeItem_CompaniesAdd_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-
+            CompanyAddNew x = new CompanyAddNew();
+            UserPages.Children.Clear();
+            UserPages.Children.Add(x);
         }
-
         private void TreeItem_CompaniesList_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            CompanyList complist = new CompanyList();
+            CompanyList x = new CompanyList();
             UserPages.Children.Clear();
-            UserPages.Children.Add(complist);
+            UserPages.Children.Add(x);
         }
+
+
     }
 }

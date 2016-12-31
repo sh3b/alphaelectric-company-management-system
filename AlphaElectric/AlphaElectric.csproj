@@ -83,14 +83,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Forms\CompanyAddNewFinal.xaml.cs">
-      <DependentUpon>CompanyAddNewFinal.xaml</DependentUpon>
+    <Compile Include="Forms\CompanyAddNew.xaml.cs">
+      <DependentUpon>CompanyAddNew.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\ContactViewModel.cs" />
     <Compile Include="ViewModels\ProductViewModel.cs" />
-    <Page Include="Forms\CompanyAddNew.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="Forms\CompanyList.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -99,7 +96,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Forms\CompanyAddNewFinal.xaml">
+    <Page Include="Forms\CompanyAddNew.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -118,9 +115,6 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Forms\CompanyAddNew.xaml.cs">
-      <DependentUpon>CompanyAddNew.xaml</DependentUpon>
     </Compile>
     <Compile Include="Forms\CompanyList.xaml.cs">
       <DependentUpon>CompanyList.xaml</DependentUpon>

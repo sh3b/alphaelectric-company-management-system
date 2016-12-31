@@ -81,7 +81,7 @@ namespace AlphaElectric.Forms
         #region diaglog-socialbuttons-informationlinks
 
         // About message dialog
-        private async void MenuPopupAboutButton_OnClick(object sender, RoutedEventArgs e)
+        private void MenuPopupAboutButton_OnClick(object sender, RoutedEventArgs e)
         {
             var sMessageDialog = new MessageDialog
             {
@@ -94,7 +94,7 @@ namespace AlphaElectric.Forms
                     "\n  ____/FBAS/BSCS/F14B" }
             };
 
-            await DialogHost.Show(sMessageDialog, "RootDialog");
+            DialogHost.Show(sMessageDialog, "RootDialog");
         }
 
         // Social Buttons
@@ -119,17 +119,17 @@ namespace AlphaElectric.Forms
             Process.Start("http://alphaelectric.shuayb.me/");
         }
 
-        private async void TextBlock_FaxOrdersMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        private void TextBlock_FaxOrdersMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             var sMessageDialog = new MessageDialog
             {
                 Message = { Text = "Fax Orders Server is currently\n offline." }
             };
 
-            await DialogHost.Show(sMessageDialog, "RootDialog");
+            DialogHost.Show(sMessageDialog, "RootDialog");
         }
 
-        private async void TextBlock_PhoneNumbersMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        private void TextBlock_PhoneNumbersMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             var sMessageDialog = new MessageDialog
             {
@@ -139,7 +139,7 @@ namespace AlphaElectric.Forms
                     "\n2. IIUI:   +92 51 901 9100" }
             };
 
-            await DialogHost.Show(sMessageDialog, "RootDialog");
+            DialogHost.Show(sMessageDialog, "RootDialog");
         }
         #endregion
     }

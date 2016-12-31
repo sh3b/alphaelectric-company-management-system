@@ -123,7 +123,7 @@
                                         <TextBlock Margin="8 0 0 0">Companies</TextBlock>
                                     </StackPanel>
                                 </TreeViewItem.Header>
-                                <TreeViewItem Header="Add new"/>
+                                <TreeViewItem PreviewMouseLeftButtonDown="TreeItem_CompaniesAdd_PreviewMouseLeftButtonDown" Header="Add new"/>
                                 <TreeViewItem PreviewMouseLeftButtonDown="TreeItem_CompaniesList_PreviewMouseLeftButtonDown" Header="List"/>
                             </TreeViewItem>
                             <TreeViewItem>
