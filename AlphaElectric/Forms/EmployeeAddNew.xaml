@@ -1,4 +1,4 @@
-﻿<UserControl     x:Class="AlphaElectric.Forms.ProductAddNew"
+﻿<UserControl     x:Class="AlphaElectric.Forms.EmployeeAddNew"
                  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -60,7 +60,7 @@
             </Style>
         </ResourceDictionary>
     </UserControl.Resources>
-    
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
@@ -68,7 +68,7 @@
         </Grid.RowDefinitions>
 
         <ScrollViewer Grid.Row="0" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0 20 0 0">
-            <Grid>
+            <Grid Margin="0,0,0,10">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="100" />
                     <ColumnDefinition Width="150" />
@@ -89,12 +89,12 @@
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
 
-                <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" FontWeight="DemiBold" Style="{StaticResource MaterialDesignHeadlineTextBlock}">Add Products</TextBlock>
+                <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" FontWeight="DemiBold" Style="{StaticResource MaterialDesignHeadlineTextBlock}">Add Employee Details</TextBlock>
 
-                <TextBlock Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" Margin="16 0 8 0">Name</TextBlock>
-                <TextBox Grid.Row="1" Grid.Column="1" Name="NameTextBox" materialDesign:HintAssist.Hint="Name">
+                <TextBlock Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" Margin="16 0 8 0">First Name</TextBlock>
+                <TextBox Grid.Row="1" Grid.Column="1" x:Name="FirstNameTextBox" materialDesign:HintAssist.Hint="Insert First Name">
                     <TextBox.Text>
-                        <Binding Path="Name" ValidatesOnDataErrors="True" UpdateSourceTrigger="LostFocus" NotifyOnValidationError="True">
+                        <Binding Path="FirstName" ValidatesOnDataErrors="True" UpdateSourceTrigger="LostFocus" NotifyOnValidationError="True">
                             <Binding.ValidationRules>
                                 <domain:NotEmptyValidationRule ValidatesOnTargetUpdated="True" />
                                 <!-- Checks for exceptions during the setting of the source property.Alternatively, set ValidatesOnExceptions to True on the Binding.-->
@@ -104,10 +104,10 @@
                     </TextBox.Text>
                 </TextBox>
 
-                <TextBlock Grid.Row="2" Grid.Column="0"  VerticalAlignment="Center" Margin="16 0 8 0">Serial No</TextBlock>
-                <TextBox Grid.Row="2" Grid.Column="1" Name="SerialNoTextBox" materialDesign:HintAssist.Hint="Code">
+                <TextBlock Grid.Row="2" Grid.Column="0"  VerticalAlignment="Center" Margin="16 0 8 0">Last Name</TextBlock>
+                <TextBox Grid.Row="2" Grid.Column="1" x:Name="LastNameTextBox" materialDesign:HintAssist.Hint="Insert Last Name">
                     <TextBox.Text>
-                        <Binding Path="SerialNo" ValidatesOnDataErrors="True" UpdateSourceTrigger="LostFocus" NotifyOnValidationError="True">
+                        <Binding Path="LastName" ValidatesOnDataErrors="True" UpdateSourceTrigger="LostFocus" NotifyOnValidationError="True">
                             <Binding.ValidationRules>
                                 <domain:NotEmptyValidationRule ValidatesOnTargetUpdated="True" />
                                 <!-- Checks for exceptions during the setting of the source property.Alternatively, set ValidatesOnExceptions to True on the Binding.-->
@@ -117,41 +117,60 @@
                     </TextBox.Text>
                 </TextBox>
 
-                <TextBlock Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" Margin="16 0 8 0">Make</TextBlock>
-                <ComboBox  Grid.Row="3" Grid.Column="1" Name="MakeComboBox" materialDesign:HintAssist.Hint="Select Company" MinWidth="72" Margin="0 0 0 0" VerticalAlignment="Bottom">
+                <TextBlock Grid.Row="3" Grid.Column="0"  VerticalAlignment="Center" Margin="16 0 8 0">Phone</TextBlock>
+                <TextBox Grid.Row="3" Grid.Column="1" x:Name="PhoneTextBox" materialDesign:HintAssist.Hint="Input Phone No.">
+                    <TextBox.Text>
+                        <Binding Path="Phone" ValidatesOnDataErrors="True" UpdateSourceTrigger="LostFocus" NotifyOnValidationError="True">
+                            <Binding.ValidationRules>
+                                <domain:NotEmptyValidationRule ValidatesOnTargetUpdated="True" />
+                                <!-- Checks for exceptions during the setting of the source property.Alternatively, set ValidatesOnExceptions to True on the Binding.-->
+                                <ExceptionValidationRule/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+
+                <TextBlock Grid.Row="4" Grid.Column="0"  VerticalAlignment="Center" Margin="16 0 8 0">Passport</TextBlock>
+                <TextBox Grid.Row="4" Grid.Column="1" x:Name="PassportTextBox" materialDesign:HintAssist.Hint="Input Passport No.">
+                    <TextBox.Text>
+                        <Binding Path="Passport" ValidatesOnDataErrors="True" UpdateSourceTrigger="LostFocus" NotifyOnValidationError="True">
+                            <Binding.ValidationRules>
+                                <domain:NotEmptyValidationRule ValidatesOnTargetUpdated="True" />
+                                <!-- Checks for exceptions during the setting of the source property.Alternatively, set ValidatesOnExceptions to True on the Binding.-->
+                                <ExceptionValidationRule/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+
+                <TextBlock Grid.Row="5" Grid.Column="0"  VerticalAlignment="Center" Margin="16 0 8 0">Join Date</TextBlock>
+                <DatePicker Grid.Row="5" Grid.Column="1" Height="25" Margin="0 5 0 0" x:Name="JoinDateDatePicker" Width="150" HorizontalAlignment="Left"  
+                        materialDesign:HintAssist.Hint="Select Join Date">
+                    <DatePicker.SelectedDate>
+                        <Binding Path="JoinDate" UpdateSourceTrigger="PropertyChanged">
+                            <Binding.ValidationRules>
+                                <domain:PastDateValidationRule ValidatesOnTargetUpdated="True" />
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </DatePicker.SelectedDate>
+                </DatePicker>
+                
+                <TextBlock Grid.Row="6" Grid.Column="0" VerticalAlignment="Center" Margin="16 0 8 0">Address</TextBlock>
+                <TextBox Grid.Row="6" Grid.Column="1" x:Name="AddressTextBox" materialDesign:HintAssist.Hint="Input Address">
+                    <TextBox.Text>
+                        <Binding Path="Address" ValidatesOnDataErrors="True" UpdateSourceTrigger="LostFocus" NotifyOnValidationError="True">
+                            <Binding.ValidationRules>
+                                <domain:NotEmptyValidationRule ValidatesOnTargetUpdated="True" />
+                                <!-- Checks for exceptions during the setting of the source property.Alternatively, set ValidatesOnExceptions to True on the Binding.-->
+                                <ExceptionValidationRule/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+
+                <TextBlock Grid.Row="7" Grid.Column="0"  VerticalAlignment="Center" Margin="16 0 8 0">Designation</TextBlock>
+                <ComboBox  Grid.Row="7" Grid.Column="1" Name="DesignationComboBox" materialDesign:HintAssist.Hint="Select Designation" MinWidth="72" Margin="0 0 0 0" VerticalAlignment="Bottom">
                 </ComboBox>
-
-                <TextBlock Grid.Row="4" Grid.Column="0" VerticalAlignment="Center" Margin="16 0 8 0">Product Type</TextBlock>
-                <StackPanel  Grid.Row="4" Grid.Column="1" Margin="13,20,0,0" Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Left">
-                    <RadioButton Name="P_Panel" Content="Panel" GroupName="txtBoxGroup" Checked="P_Panel_Checked"/>
-                    <RadioButton Name="P_Part" Content="Product" GroupName="txtBoxGroup" Checked="P_Product_Checked"></RadioButton>
-                </StackPanel>
-
-                <StackPanel  Grid.Row="5" Grid.ColumnSpan="2"  Orientation="Horizontal" HorizontalAlignment="Stretch" Height="auto" Name="TxtBxStackPanel4"  Visibility="Collapsed">
-                    <TextBlock Width="75" VerticalAlignment="Center" Margin="16 0 8 0">Type</TextBlock>
-                    <ComboBox Name="PartTypeComboBox" materialDesign:HintAssist.Hint="Select Part Type" MinWidth="100" Margin="0,0,0,0" Width="150" VerticalAlignment="Bottom"></ComboBox>
-                </StackPanel>
-
-                <StackPanel  Grid.Row="5" Grid.ColumnSpan="2"  Orientation="Horizontal" HorizontalAlignment="Stretch" Height="auto" Name="TxtBxStackPanel3"  Visibility="Collapsed">
-                    <TextBlock Width="75" VerticalAlignment="Center" Margin="16 0 8 0">Type</TextBlock>
-                    <ComboBox Name="PanelTypeComboBox" materialDesign:HintAssist.Hint="Select Model Type" Width="150" VerticalAlignment="Bottom"></ComboBox>
-                </StackPanel>
-
-                <StackPanel  Grid.Row="6" Grid.ColumnSpan="2"  Orientation="Horizontal"  HorizontalAlignment="Stretch" Height="auto" Name="TxtBxStackPanel2"  Visibility="Collapsed">
-                    <TextBlock Width="75" VerticalAlignment="Center" Margin="16 0 8 0">Size</TextBlock>
-                    <ComboBox Name="SizeComboBox" materialDesign:HintAssist.Hint="Select Dimensions" Width="150" VerticalAlignment="Bottom"></ComboBox>
-                </StackPanel>
-
-                <StackPanel  Grid.Row="7" Grid.ColumnSpan="2"  Orientation="Horizontal" HorizontalAlignment="Stretch" Height="auto" Name="TxtBxStackPanel1"  Visibility="Collapsed">
-                    <TextBlock Width="75" VerticalAlignment="Center" Margin="16 0 8 0">Protection</TextBlock>
-                    <ComboBox Name="PanelIPNumberComboBox" materialDesign:HintAssist.Hint="Select IP Number" Width="150" VerticalAlignment="Bottom"></ComboBox>
-                </StackPanel>
-
-                <StackPanel  Grid.Row="8" Grid.ColumnSpan="2"  Orientation="Horizontal" HorizontalAlignment="Stretch" Height="auto" Name="TxtBxStackPanel0"  Visibility="Collapsed">
-                    <TextBlock Width="75" VerticalAlignment="Center" Margin="16 0 8 0">Certification</TextBlock>
-                    <ComboBox Name="CertComboBox" materialDesign:HintAssist.Hint="Select ISO Standard" Width="150" VerticalAlignment="Bottom">
-                    </ComboBox>
-                </StackPanel>
             </Grid>
         </ScrollViewer>
         <!-- start + popupbox -->

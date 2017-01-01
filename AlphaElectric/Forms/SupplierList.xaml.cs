@@ -21,9 +21,9 @@ namespace AlphaElectric.Forms
     /// <summary>
     /// Interaction logic for CompanyList.xaml
     /// </summary>
-    public partial class CompanyList : UserControl
+    public partial class SupplierList : UserControl
     {
-        public CompanyList()
+        public SupplierList()
         {
             InitializeComponent();
             LoadData();
@@ -67,7 +67,7 @@ namespace AlphaElectric.Forms
             DataGrid.Visibility = Visibility.Collapsed;
             PopupBox.Visibility = Visibility.Collapsed;
 
-            CustomerAddNew x = new CustomerAddNew();
+            SupplierAddNew x = new SupplierAddNew();
             UserPages.Children.Clear();
             UserPages.Children.Add(x);
             PopupBoxWithClose.Visibility = Visibility.Visible;

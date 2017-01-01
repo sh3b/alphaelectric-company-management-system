@@ -46,7 +46,7 @@
                                     HorizontalAlignment="Right" Margin="16"
                                     IsChecked="{Binding IsChecked, ElementName=MenuToggleButton, Mode=TwoWay}" />
                         <TreeView MinWidth="220">
-                            <TreeViewItem Header="Home"/>
+                            <TreeViewItem PreviewMouseLeftButtonDown="TreeItem_Home_PreviewMouseLeftButtonDown" Header="Home"/>
                             <TreeViewItem  IsExpanded="True">
                                 <TreeViewItem.Header >
                                     <StackPanel Orientation="Horizontal">
@@ -95,8 +95,8 @@
                                         <TextBlock Margin="8 0 0 0">Employees</TextBlock>
                                     </StackPanel>
                                 </TreeViewItem.Header>
-                                <TreeViewItem Header="Add new"/>
-                                <TreeViewItem Header="List"/>
+                                <TreeViewItem PreviewMouseLeftButtonDown="TreeItem_EmployeeAdd_PreviewMouseLeftButtonDown" Header="Add new"/>
+                                <TreeViewItem PreviewMouseLeftButtonDown="TreeItem_EmployeeList_PreviewMouseLeftButtonDown"  Header="List"/>
                             </TreeViewItem>
                             <TreeViewItem>
                                 <TreeViewItem.Header>
@@ -139,8 +139,8 @@
                                 </TreeViewItem.Header>
                                 <TreeViewItem Header="Place Purchase Order"/>
                                 <TreeViewItem Header="Previous Orders"/>
-                                <TreeViewItem Header="Suppliers List"/>
-                                <TreeViewItem Header="Add new Supplier"/>
+                                <TreeViewItem PreviewMouseLeftButtonDown="TreeItem_SupplierList_PreviewMouseLeftButtonDown" Header="Suppliers List"/>
+                                <TreeViewItem PreviewMouseLeftButtonDown="TreeItem_SupplierAdd_PreviewMouseLeftButtonDown" Header="Add new Supplier"/>
                             </TreeViewItem>
                             <TreeViewItem>
                                 <TreeViewItem.Header>
@@ -155,8 +155,8 @@
                                 </TreeViewItem.Header>
                                 <TreeViewItem Header="Create Receipt"/>
                                 <TreeViewItem Header="Previous Customer Orders"/>
-                                <TreeViewItem Header="Customer List"/>
-                                <TreeViewItem Header="Add new Customer"/>
+                                <TreeViewItem PreviewMouseLeftButtonDown="TreeItem_CustomerList_PreviewMouseLeftButtonDown" Header="Customer List"/>
+                                <TreeViewItem PreviewMouseLeftButtonDown="TreeItem_CustomerAdd_PreviewMouseLeftButtonDown" Header="Add new Customer"/>
                             </TreeViewItem>
                         </TreeView>
                     </DockPanel>

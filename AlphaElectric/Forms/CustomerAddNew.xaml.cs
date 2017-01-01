@@ -27,13 +27,13 @@ namespace AlphaElectric.Forms
     /// <summary>
     /// Interaction logic for AddProduct.xaml
     /// </summary>
-    public partial class CompanyAddNew : UserControl
+    public partial class CustomerAddNew : UserControl
     {
         ContactViewModel _vm;
         //Adding backgroud worker
         BackgroundWorker worker;
 
-        public CompanyAddNew()
+        public CustomerAddNew()
         {
             InitializeComponent();
 

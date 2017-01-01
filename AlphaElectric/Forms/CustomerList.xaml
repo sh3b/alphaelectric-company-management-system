@@ -1,4 +1,4 @@
-﻿<UserControl     x:Class="AlphaElectric.Forms.CompanyList"
+﻿<UserControl     x:Class="AlphaElectric.Forms.CustomerList"
                  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -69,7 +69,7 @@
             <RowDefinition Height="100" />
         </Grid.RowDefinitions>
         <Grid Grid.Row="1" Name="UserPages" Margin="20,0,20,0"></Grid>
-        <TextBlock Name="TextBlock_TitleName" Grid.Row="0" Margin="10 20 10 10" FontWeight="DemiBold" Style="{StaticResource MaterialDesignHeadlineTextBlock}">Company List</TextBlock>
+        <TextBlock Name="TextBlock_TitleName" Grid.Row="0" Margin="10 20 10 10" FontWeight="DemiBold" Style="{StaticResource MaterialDesignHeadlineTextBlock}">Customers List</TextBlock>
 
         <DataGrid Grid.Row="1" Grid.Column="0"    ScrollViewer.CanContentScroll="True" 
       ScrollViewer.VerticalScrollBarVisibility="Auto"

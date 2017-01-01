@@ -83,12 +83,55 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Forms\CompanyList.xaml.cs">
+      <DependentUpon>CompanyList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CustomerAddNew.xaml.cs">
+      <DependentUpon>CustomerAddNew.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SupplierAddNew.xaml.cs">
+      <DependentUpon>SupplierAddNew.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\EmployeeList.xaml.cs">
+      <DependentUpon>EmployeeList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\EmployeeAddNew.xaml.cs">
+      <DependentUpon>EmployeeAddNew.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Forms\CompanyAddNew.xaml.cs">
       <DependentUpon>CompanyAddNew.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Forms\CustomerList.xaml.cs">
+      <DependentUpon>CustomerList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\EmployeeViewModel.cs" />
     <Compile Include="ViewModels\ContactViewModel.cs" />
     <Compile Include="ViewModels\ProductViewModel.cs" />
     <Page Include="Forms\CompanyList.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Forms\CustomerAddNew.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Forms\SupplierAddNew.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Forms\EmployeeList.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Forms\EmployeeAddNew.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Forms\CustomerList.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Forms\SupplierList.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -116,8 +159,8 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Forms\CompanyList.xaml.cs">
-      <DependentUpon>CompanyList.xaml</DependentUpon>
+    <Compile Include="Forms\SupplierList.xaml.cs">
+      <DependentUpon>SupplierList.xaml</DependentUpon>
     </Compile>
     <Compile Include="Forms\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -140,7 +183,7 @@
     <Compile Include="Forms\MessageDialog.xaml.cs">
       <DependentUpon>MessageDialog.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Logic\HomeViewModel.cs" />
+    <Compile Include="Logic\ValidationRules.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

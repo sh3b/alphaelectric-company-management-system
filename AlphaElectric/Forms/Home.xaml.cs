@@ -25,7 +25,7 @@ namespace AlphaElectric.Forms
     /// <summary>
     /// Interaction logic for Home.xaml
     /// </summary>
-    public partial class Home : MetroWindow
+    public partial class Home : UserControl
     {
         public Home()
         {
@@ -75,27 +75,9 @@ namespace AlphaElectric.Forms
         {
 
         }
-
         #endregion
 
-        #region diaglog-socialbuttons-informationlinks
-
-        // About message dialog
-        private void MenuPopupAboutButton_OnClick(object sender, RoutedEventArgs e)
-        {
-            var sMessageDialog = new MessageDialog
-            {
-                //Message = { Text = ((ButtonBase)sender).Content.ToString() }
-                Message = { Text = 
-                    "Developed by\n" +
-                    "\n1. Muhammad Shoaib" +
-                    "\n  3022/FBAS/BSCS/F14B" +
-                    "\n2. Muhammad Amir" +
-                    "\n  ____/FBAS/BSCS/F14B" }
-            };
-
-            DialogHost.Show(sMessageDialog, "RootDialog");
-        }
+        #region socialbuttons
 
         // Social Buttons
         private void TwitterButton_OnClick(object sender, RoutedEventArgs e)
@@ -112,34 +94,11 @@ namespace AlphaElectric.Forms
         {
             Process.Start("mailto://shuayb@gmx.com");
         }
-       
+
         // Information Links
         private void TextBlock_WebOrdersMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             Process.Start("http://alphaelectric.shuayb.me/");
-        }
-
-        private void TextBlock_FaxOrdersMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            var sMessageDialog = new MessageDialog
-            {
-                Message = { Text = "Fax Orders Server is currently\n offline." }
-            };
-
-            DialogHost.Show(sMessageDialog, "RootDialog");
-        }
-
-        private void TextBlock_PhoneNumbersMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            var sMessageDialog = new MessageDialog
-            {
-                Message = { Text =
-                    "Important Phone Numbers\n" +
-                    "\n1. Police: 15" +
-                    "\n2. IIUI:   +92 51 901 9100" }
-            };
-
-            DialogHost.Show(sMessageDialog, "RootDialog");
         }
         #endregion
     }

@@ -35,6 +35,9 @@ namespace AlphaElectric.Forms
         //Executing after loading window
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            //Home x = new Home();
+            //UserPages.Children.Clear();
+            //UserPages.Children.Add(x);
         }
 
         //private void TextBox_MouseDown(object sender, MouseButtonEventArgs e)
@@ -159,6 +162,53 @@ namespace AlphaElectric.Forms
             UserPages.Children.Add(x);
         }
 
+        private void TreeItem_Home_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            Home x = new Home();
+            UserPages.Children.Clear();
+            UserPages.Children.Add(x);
+        }
 
+        private void TreeItem_EmployeeAdd_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            EmployeeAddNew x = new EmployeeAddNew();
+            UserPages.Children.Clear();
+            UserPages.Children.Add(x);
+        }
+
+        private void TreeItem_EmployeeList_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            EmployeeList x = new EmployeeList();
+            UserPages.Children.Clear();
+            UserPages.Children.Add(x);
+        }
+
+        private void TreeItem_SupplierAdd_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            SupplierAddNew x = new SupplierAddNew();
+            UserPages.Children.Clear();
+            UserPages.Children.Add(x);
+        }
+
+        private void TreeItem_SupplierList_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            SupplierList x = new SupplierList();
+            UserPages.Children.Clear();
+            UserPages.Children.Add(x);
+        }
+
+        private void TreeItem_CustomerAdd_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            CustomerAddNew x = new CustomerAddNew();
+            UserPages.Children.Clear();
+            UserPages.Children.Add(x);
+        }
+
+        private void TreeItem_CustomerList_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            CustomerList x = new CustomerList();
+            UserPages.Children.Clear();
+            UserPages.Children.Add(x);
+        }
     }
 }
