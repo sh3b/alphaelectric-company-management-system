@@ -35,9 +35,9 @@ namespace AlphaElectric.Forms
         //Executing after loading window
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            //Home x = new Home();
-            //UserPages.Children.Clear();
-            //UserPages.Children.Add(x);
+            Home x = new Home();
+            UserPages.Children.Clear();
+            UserPages.Children.Add(x);
         }
 
         //private void TextBox_MouseDown(object sender, MouseButtonEventArgs e)
