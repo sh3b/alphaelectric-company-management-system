@@ -83,6 +83,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Forms\PurchaseOrderList.xaml.cs">
+      <DependentUpon>PurchaseOrderList.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Forms\PurchaseOrderAdd.xaml.cs">
       <DependentUpon>PurchaseOrderAdd.xaml</DependentUpon>
     </Compile>
@@ -113,6 +116,10 @@
     <Compile Include="Forms\CustomerList.xaml.cs">
       <DependentUpon>CustomerList.xaml</DependentUpon>
     </Compile>
+    <Page Include="Forms\PurchaseOrderList.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Forms\PurchaseOrderAdd.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

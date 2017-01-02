@@ -149,6 +149,20 @@ namespace AlphaElectric.Forms
             UserPages.Children.Add(x);
         }
 
+        private void TreeItem_ProductPartList_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            PartList x = new PartList();
+            UserPages.Children.Clear();
+            UserPages.Children.Add(x);
+        }
+
+        private void TreeItem_ProductPanelList_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            PanelList x = new PanelList();
+            UserPages.Children.Clear();
+            UserPages.Children.Add(x);
+        }
+
         private void TreeItem_CompaniesAdd_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             CompanyAddNew x = new CompanyAddNew();
@@ -211,23 +225,16 @@ namespace AlphaElectric.Forms
             UserPages.Children.Add(x);
         }
 
-        private void TreeItem_ProductPartList_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            PartList x = new PartList();
-            UserPages.Children.Clear();
-            UserPages.Children.Add(x);
-        }
-
-        private void TreeItem_ProductPanelList_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            PanelList x = new PanelList();
-            UserPages.Children.Clear();
-            UserPages.Children.Add(x);
-        }
-
         private void TreeItem_PurchaseOrderAdd_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             PurchaseOrderAdd x = new PurchaseOrderAdd();
+            UserPages.Children.Clear();
+            UserPages.Children.Add(x);
+        }
+
+        private void TreeItem_PurchaseOrderList_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            PurchaseOrderList x = new PurchaseOrderList();
             UserPages.Children.Clear();
             UserPages.Children.Add(x);
         }

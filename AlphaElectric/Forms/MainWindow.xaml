@@ -138,7 +138,7 @@
                                     </StackPanel>
                                 </TreeViewItem.Header>
                                 <TreeViewItem PreviewMouseLeftButtonDown="TreeItem_PurchaseOrderAdd_PreviewMouseLeftButtonDown" Header="Place Purchase Order"/>
-                                <TreeViewItem Header="Previous Orders"/>
+                                <TreeViewItem PreviewMouseLeftButtonDown="TreeItem_PurchaseOrderList_PreviewMouseLeftButtonDown" Header="Previous Orders"/>
                                 <TreeViewItem PreviewMouseLeftButtonDown="TreeItem_SupplierList_PreviewMouseLeftButtonDown" Header="Suppliers List"/>
                                 <TreeViewItem PreviewMouseLeftButtonDown="TreeItem_SupplierAdd_PreviewMouseLeftButtonDown" Header="Add new Supplier"/>
                             </TreeViewItem>

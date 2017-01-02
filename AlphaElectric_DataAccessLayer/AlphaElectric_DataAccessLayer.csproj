@@ -60,6 +60,7 @@
     <Compile Include="CustomerOrder.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="DA\Product_PurchaseOrderBTDA.cs" />
     <Compile Include="DA\PurchaseOrderDA.cs" />
     <Compile Include="DA\DesignationDA.cs" />
     <Compile Include="DA\EmployeeDA.cs" />
@@ -94,6 +95,7 @@
     <Compile Include="Employee.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Factories\Product_PurchaseOrderBTFactory.cs" />
     <Compile Include="Factories\PurchaseOrderFactory.cs" />
     <Compile Include="Factories\EmployeeFactory.cs" />
     <Compile Include="Factories\DesignationFactory.cs" />
