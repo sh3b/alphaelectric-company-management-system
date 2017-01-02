@@ -29,5 +29,10 @@ namespace AlphaElectric_DataAccessLayer.Factories
         {
             return empDa.InsertEmployee(emp);
         }
+
+        public bool Update(int id, string firstname, string lastname, string phone, string passport, DateTime joindate, string address, int desigid)
+        {
+            return empDa.Update(id, firstname, lastname, phone, passport, joindate, address, desigid);
+        }
     }
 }

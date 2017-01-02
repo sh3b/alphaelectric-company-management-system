@@ -1,4 +1,5 @@
 ﻿using AlphaElectric_DataAccessLayer;
+using AlphaElectric_DataAccessLayer.Factories;
 using MahApps.Metro.Controls;
 using MaterialDesignThemes.Wpf;
 using System;
@@ -21,9 +22,9 @@ namespace AlphaElectric.Forms
     /// <summary>
     /// Interaction logic for CompanyList.xaml
     /// </summary>
-    public partial class CustomerList : UserControl
+    public partial class CustomerOrderList : UserControl
     {
-        public CustomerList()
+        public CustomerOrderList()
         {
             InitializeComponent();
             LoadData();
@@ -37,7 +38,9 @@ namespace AlphaElectric.Forms
 
         void LoadData()
         {
-            DataGrid.ItemsSource = new AlphaElectricEntitiesDB().Contacts.ToList();
+            List<Product_CustomerOrderBT> custPurchaseBTList = new Product_CustomerOrderBTFactory().SelectAll();
+            DataGrid.ItemsSource = custPurchaseBTList;
+            //proPurchaseBTList.FirstOrDefault().PurchaseOrder.Contact.Phone
         }
 
         private void PopUp_AddNewCompany(object sender, RoutedEventArgs e)
@@ -67,7 +70,7 @@ namespace AlphaElectric.Forms
             DataGrid.Visibility = Visibility.Collapsed;
             PopupBox.Visibility = Visibility.Collapsed;
 
-            CustomerAddNew x = new CustomerAddNew();
+            CustomerOrderAdd x = new CustomerOrderAdd();
             UserPages.Children.Clear();
             UserPages.Children.Add(x);
             PopupBoxWithClose.Visibility = Visibility.Visible;

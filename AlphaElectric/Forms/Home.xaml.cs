@@ -18,7 +18,7 @@ using MaterialDesignThemes.Wpf;
 using System.Windows.Controls.Primitives;
 using AlphaElectric_DataAccessLayer;
 using AlphaElectric_DataAccessLayer.Factories;
-
+using AlphaElectric.Logic;
 
 namespace AlphaElectric.Forms
 {
@@ -30,8 +30,8 @@ namespace AlphaElectric.Forms
         public Home()
         {
             InitializeComponent();
+            WelcomeMessage.Text = "Welcome " + LoggedInUser.Instance.Info.Name + "!";
         }
-
 
         //Executing after loading window
         private void Window_Loaded(object sender, RoutedEventArgs e)

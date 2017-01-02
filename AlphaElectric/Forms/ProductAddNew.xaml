@@ -94,7 +94,7 @@
                 <TextBlock Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" Margin="16 0 8 0">Name</TextBlock>
                 <TextBox Grid.Row="1" Grid.Column="1" Name="NameTextBox" materialDesign:HintAssist.Hint="Name">
                     <TextBox.Text>
-                        <Binding Path="Name" ValidatesOnDataErrors="True" UpdateSourceTrigger="LostFocus" NotifyOnValidationError="True">
+                        <Binding Path="Name" ValidatesOnDataErrors="True" UpdateSourceTrigger="PropertyChanged" NotifyOnValidationError="True">
                             <Binding.ValidationRules>
                                 <domain:NotEmptyValidationRule ValidatesOnTargetUpdated="True" />
                                 <!-- Checks for exceptions during the setting of the source property.Alternatively, set ValidatesOnExceptions to True on the Binding.-->
@@ -107,7 +107,7 @@
                 <TextBlock Grid.Row="2" Grid.Column="0"  VerticalAlignment="Center" Margin="16 0 8 0">Serial No</TextBlock>
                 <TextBox Grid.Row="2" Grid.Column="1" Name="SerialNoTextBox" materialDesign:HintAssist.Hint="Code">
                     <TextBox.Text>
-                        <Binding Path="SerialNo" ValidatesOnDataErrors="True" UpdateSourceTrigger="LostFocus" NotifyOnValidationError="True">
+                        <Binding Path="SerialNo" ValidatesOnDataErrors="True" UpdateSourceTrigger="PropertyChanged" NotifyOnValidationError="True">
                             <Binding.ValidationRules>
                                 <domain:NotEmptyValidationRule ValidatesOnTargetUpdated="True" />
                                 <!-- Checks for exceptions during the setting of the source property.Alternatively, set ValidatesOnExceptions to True on the Binding.-->

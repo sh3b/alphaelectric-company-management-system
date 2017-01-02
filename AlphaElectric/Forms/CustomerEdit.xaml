@@ -1,4 +1,4 @@
-﻿<UserControl     x:Class="AlphaElectric.Forms.CompanyAddNew"
+﻿<UserControl     x:Class="AlphaElectric.Forms.CustomerEdit"
                  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -89,10 +89,13 @@
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
 
-                <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" FontWeight="DemiBold" Style="{StaticResource MaterialDesignHeadlineTextBlock}">Add Company Details</TextBlock>
-                
-                <TextBlock Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" Margin="16 0 8 0">Name</TextBlock>
-                <TextBox Grid.Row="1" Grid.Column="1" x:Name="NameTextBox" materialDesign:HintAssist.Hint="Insert Company Full Name">
+                <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" FontWeight="DemiBold" Style="{StaticResource MaterialDesignHeadlineTextBlock}">Edit Customer Details</TextBlock>
+
+                <TextBlock FontWeight="DemiBold" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" Margin="0 13 8 5">Select Customer</TextBlock>
+                <ComboBox SelectionChanged="SelectCustomereComboBox_SelectionChanged"  Grid.Row="1" Grid.Column="1" Name="SelectCustomerComboBox" materialDesign:HintAssist.Hint="Select Customer" MinWidth="72" Margin="0 0 0 0" VerticalAlignment="Bottom"></ComboBox>
+
+                <TextBlock Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" Margin="16 0 8 0">Name</TextBlock>
+                <TextBox Grid.Row="2" Grid.Column="1" x:Name="NameTextBox" materialDesign:HintAssist.Hint="Insert Company Full Name">
                     <TextBox.Text>
                         <Binding Path="CompanyName" ValidatesOnDataErrors="True" UpdateSourceTrigger="PropertyChanged" NotifyOnValidationError="True">
                             <Binding.ValidationRules>
@@ -104,8 +107,8 @@
                     </TextBox.Text>
                 </TextBox>
 
-                <TextBlock Grid.Row="2" Grid.Column="0"  VerticalAlignment="Center" Margin="16 0 8 0">Phone No</TextBlock>
-                <TextBox Grid.Row="2" Grid.Column="1" x:Name="PhoneNoTextBox" materialDesign:HintAssist.Hint="+00-00-0000000">
+                <TextBlock Grid.Row="3" Grid.Column="0"  VerticalAlignment="Center" Margin="16 0 8 0">Phone No.</TextBlock>
+                <TextBox Grid.Row="3" Grid.Column="1" x:Name="PhoneTextBox" materialDesign:HintAssist.Hint="+00-00-0000000">
                     <TextBox.Text>
                         <Binding Path="Phone" ValidatesOnDataErrors="True" UpdateSourceTrigger="PropertyChanged" NotifyOnValidationError="True">
                             <Binding.ValidationRules>
@@ -117,8 +120,8 @@
                     </TextBox.Text>
                 </TextBox>
 
-                <TextBlock Grid.Row="3" Grid.Column="0"  VerticalAlignment="Center" Margin="16 0 8 0">E-Mail</TextBlock>
-                <TextBox Grid.Row="3" Grid.Column="1" x:Name="EmailTextBox" materialDesign:HintAssist.Hint="Input Email">
+                <TextBlock Grid.Row="4" Grid.Column="0"  VerticalAlignment="Center" Margin="16 0 8 0">E-Mail</TextBlock>
+                <TextBox Grid.Row="4" Grid.Column="1" x:Name="EmailTextBox" materialDesign:HintAssist.Hint="Input Email">
                     <TextBox.Text>
                         <Binding Path="Email" ValidatesOnDataErrors="True" UpdateSourceTrigger="PropertyChanged" NotifyOnValidationError="True">
                             <Binding.ValidationRules>
@@ -130,8 +133,8 @@
                     </TextBox.Text>
                 </TextBox>
 
-                <TextBlock Grid.Row="4" Grid.Column="0"  VerticalAlignment="Center" Margin="16 0 8 0">Address</TextBlock>
-                <TextBox Grid.Row="4" Grid.Column="1" x:Name="AddressTextBox" materialDesign:HintAssist.Hint="Input Address">
+                <TextBlock Grid.Row="5" Grid.Column="0"  VerticalAlignment="Center" Margin="16 0 8 0">Address</TextBlock>
+                <TextBox Grid.Row="5" Grid.Column="1" x:Name="AddressTextBox" materialDesign:HintAssist.Hint="Input Address">
                     <TextBox.Text>
                         <Binding Path="Address" ValidatesOnDataErrors="True" UpdateSourceTrigger="PropertyChanged" NotifyOnValidationError="True">
                             <Binding.ValidationRules>
@@ -146,7 +149,7 @@
         </ScrollViewer>
         <!-- start + popupbox -->
         <TextBlock Grid.Row="1"  VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="Auto" RenderTransformOrigin="0.5,0.5" Height="36" Margin="0,0,0,50" >                    
-                            <Button Click="InsertButton_Click" Style="{StaticResource MaterialDesignRaisedDarkButton}" Margin="10 0 40 0" Width="100" ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" Content="Add"/>   
+                            <Button Click="InsertButton_Click" Style="{StaticResource MaterialDesignRaisedDarkButton}" Margin="10 0 40 0" Width="100" ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" Content="Update"/>   
                             <Button Click="ClearButton_Click"   Style="{StaticResource MaterialDesignRaisedDarkButton}" Margin="0 0 40 0" Width="100"  ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" Content="Clear"/>
         </TextBlock>
         <!-- End + popupbox -->

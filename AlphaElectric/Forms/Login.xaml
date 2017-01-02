@@ -1,4 +1,4 @@
-﻿<Controls:MetroWindow x:Class="AlphaElectric.Forms.Login"
+﻿<src:MetroWindow x:Class="AlphaElectric.Forms.Login"
                       Title="AlphaElectric | Login"
                       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -6,7 +6,8 @@
                       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                       xmlns:local="clr-namespace:AlphaElectric.Forms"
                       xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
-                      
+                      xmlns:src="http://metro.mahapps.com/winfx/xaml/controls"     
+                      xmlns:domain="clr-namespace:AlphaElectric.Logic"
                    
                       FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
                       TextElement.FontSize="12"
@@ -30,6 +31,13 @@
                     <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.ComboBox.xaml" />
                     <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Slider.xaml" />
                     <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.TextBox.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Button.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Shadows.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.ToggleButton.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.PopupBox.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.TextBlock.xaml" />
+                    <!-- throw in some extra colour for our floating action button -->
+                    <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/MaterialDesignColor.Green.Named.Primary.xaml" />
                 </ResourceDictionary.MergedDictionaries>
                 <Style TargetType="{x:Type TextBox}" BasedOn="{StaticResource MaterialDesignTextBox}">
                     <Setter Property="Margin" Value="0 8 0 8" />
@@ -57,57 +65,64 @@
             </ResourceDictionary>
         </UserControl.Resources>
 
+        <materialDesign:DialogHost Identifier="RootDialog" SnackbarMessageQueue="{Binding MessageQueue, ElementName=MainSnackbar}">
+            <Grid Margin="20,80,20,0" VerticalAlignment="Top">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100" />
+                    <ColumnDefinition Width="auto" MinWidth="25" />
+                    <ColumnDefinition Width="149" />
+                    <ColumnDefinition Width="100" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
 
-        <Grid Margin="20,80,20,0" VerticalAlignment="Top">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="100" />
-                <ColumnDefinition Width="auto" MinWidth="25" />
-                <ColumnDefinition Width="149" />
-                <ColumnDefinition Width="100" />
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-            </Grid.RowDefinitions>
 
 
+                <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource MaterialDesignHeadlineTextBlock}">Login</TextBlock>
 
-            <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource MaterialDesignHeadlineTextBlock}">Login</TextBlock>
-
-            <!-- Start Name -->
-            <materialDesign:PackIcon Grid.Row="1" Kind="Account" Foreground="{Binding ElementName=NameTextBox, Path=BorderBrush}" Margin="0,18,0,5" Grid.Column="1" />
-            <TextBox Grid.Row="1" 
+                <!-- Start Name -->
+                <materialDesign:PackIcon Grid.Row="1" Kind="Account" Foreground="{Binding ElementName=NameTextBox, Path=BorderBrush}" Margin="0,18,0,5" Grid.Column="1" />
+                <TextBox Grid.Row="1" 
                      Grid.Column="2" 
                      x:Name="NameTextBox"
                      materialDesign:HintAssist.Hint="Username"
                      Style="{StaticResource MaterialDesignFloatingHintTextBox}">
-                <TextBox.Text>
-                    <Binding Path="Name" UpdateSourceTrigger="PropertyChanged">
-                        <!--<Binding.ValidationRules>
-                            <domain1:NotEmptyValidationRule ValidatesOnTargetUpdated="True" />
-                        </Binding.ValidationRules>-->
+                    <!--<TextBox.Text>
+                    <Binding Path="Username" UpdateSourceTrigger="PropertyChanged">
+                        <Binding.ValidationRules>
+                            <domain:NotEmptyValidationRule ValidatesOnTargetUpdated="True" />
+                        </Binding.ValidationRules>
                     </Binding>
-                </TextBox.Text>
-            </TextBox>
-            <!-- End Name -->
+                </TextBox.Text>-->
+                </TextBox>
+                <!-- End Name -->
 
-            <!-- Start Password -->
-            <materialDesign:PackIcon Grid.Row="2" Grid.Column="1" Kind="Key"
+                <!-- Start Password -->
+                <materialDesign:PackIcon Grid.Row="2" Grid.Column="1" Kind="Key"
                                  Margin="0,26,0,4"
                                  Foreground="{Binding ElementName=PasswordBox, Path=BorderBrush}" />
-            <PasswordBox Grid.Row="2" Grid.Column="2" 		
+                <PasswordBox 
+                Grid.Row="2" Grid.Column="2" 		
                      x:Name="PasswordBox"
                      KeyDown="PasswordBox_KeyDown"
                      Margin="0 12 0 0"
                      materialDesign:HintAssist.Hint="Password"
-                     Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" />
-            <!-- End Password -->
+                     Style="{StaticResource MaterialDesignFloatingHintPasswordBox}">
+                    <!--<PasswordBox.Text>
+                    <Binding Path="Password" UpdateSourceTrigger="PropertyChanged">
+                        <Binding.ValidationRules>
+                            <domain:NotEmptyValidationRule ValidatesOnTargetUpdated="True" />
+                        </Binding.ValidationRules>
+                    </Binding>
+                </PasswordBox.Text>-->
+                </PasswordBox>
+                <!-- End Password -->
 
-
-
-            <TextBlock Grid.ColumnSpan="4"  Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="94,17,20,9" Width="260" RenderTransformOrigin="0.5,0.5" Height="36" >
+                <TextBlock Grid.ColumnSpan="4"  Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="94,17,20,9" Width="260" RenderTransformOrigin="0.5,0.5" Height="36" >
                          
                     <Button Click="LoginButton_Click"
                         Style="{StaticResource MaterialDesignRaisedDarkButton}" Margin="10 0 40 0" Width="100"
@@ -116,7 +131,8 @@
                     <Button Click="ExitButton_Click"
                         Style="{StaticResource MaterialDesignRaisedDarkButton}" Margin="0 0 40 0" Width="100"
                         ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" Content="EXIT"/>
-            </TextBlock>
-        </Grid>
+                </TextBlock>
+            </Grid>
+        </materialDesign:DialogHost>
     </UserControl>
-</Controls:MetroWindow>
+</src:MetroWindow>

@@ -13,6 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 // To access MetroWindow
 using MahApps.Metro.Controls;
+using MaterialDesignThemes.Wpf;
+
+// Add DA
+using AlphaElectric_DataAccessLayer;
+using AlphaElectric.Logic;
+
+// Add BCrypt
+using BCrypt.Net;
 
 namespace AlphaElectric.Forms
 {
@@ -21,29 +29,82 @@ namespace AlphaElectric.Forms
     /// </summary>
     public partial class Login : MetroWindow
     {
+        ViewModels.LoginViewModel _vm;
+
         public Login()
         {
             InitializeComponent();
+
+            _vm = new ViewModels.LoginViewModel();
+            this.DataContext = _vm;
+
             NameTextBox.Focus();
         }
 
+        //private void ForceValidation()
+        //{
+        //    this.NameTextBox.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+        //    this.PasswordBox.GetBindingExpression(TextBlock.TextProperty).UpdateSource();
+        //}
+
         private void LoginButton_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Hello"); 
-            //F13BSSEBEntities db = new F13BSSEBEntities();
-            //var obj = db.Logins.Where(x => x.Username == txtUsername.Text).FirstOrDefault();
-            //if (obj == null)
-            //    lblError.Content = "Incorrect Username!";
-            //else if (obj.Password != txtPassword.Password)
-            //    lblError.Content = "Incorrect Password!";
-            //else
-            //{
-            //    this.Hide();
-            //    LoggedInUser.Instance.Info = db.Students.Where(x => x.Id == obj.UserId).FirstOrDefault();
-            //    Home home = new Home();
-            //    home.Show();
-            //    this.Close();
-            //}
+            #region validation 
+            if ((String.IsNullOrEmpty(NameTextBox.Text)) || (String.IsNullOrEmpty(PasswordBox.Password)))
+            {
+                var sMessageDialog = new MessageDialog
+                {
+                    Message = { Text =
+                    "ERROR: Fill missing fields!" }
+                };
+
+                DialogHost.Show(sMessageDialog, "RootDialog");
+                return;
+            }
+            #endregion
+
+            using (var db = new AlphaElectricEntitiesDB())
+            {
+                var obj = db.Logins.Where(m => m.Username == NameTextBox.Text).FirstOrDefault();
+                if (obj == null)
+                {
+                    var sMessageDialog = new MessageDialog
+                    {
+                        Message = { Text = "Incorrect Username!" }
+                    };
+
+                    DialogHost.Show(sMessageDialog, "RootDialog");
+                    Clear();
+                    NameTextBox.Focus();
+                    return;
+                }
+                else if (!Hashing.ValidatePassword(PasswordBox.Password, obj.Password))
+                {
+                    var sMessageDialog = new MessageDialog
+                    {
+                        Message = { Text = "Incorrect Password!" }
+                    };
+
+                    DialogHost.Show(sMessageDialog, "RootDialog");
+                    Clear();
+                    NameTextBox.Focus();
+                    return;
+                }
+
+                // Adding New User
+                //AlphaElectric_DataAccessLayer.Login newUser = new AlphaElectric_DataAccessLayer.Login();
+                //newUser.Username = "shoaib";
+                //newUser.name = "Shoaib Ashraf";
+                //newUser.Password = Hashing.HashPassword("12345");
+                //db.Logins.Add(newUser);
+                //db.SaveChanges();
+
+                this.Hide();
+                LoggedInUser.Instance.Info = db.Logins.Where(u => u.ID == obj.ID).FirstOrDefault();
+                MainwWindow x = new MainwWindow();
+                x.Show();
+                this.Close();
+            }
         }
 
         private void ExitButton_Click(object sender, RoutedEventArgs e)
@@ -55,6 +116,12 @@ namespace AlphaElectric.Forms
         {
             if (e.Key == Key.Enter)
                 LoginButton_Click(null, null);
+        }
+
+        private void Clear()
+        {
+            this.NameTextBox.Clear();
+            this.PasswordBox.Clear();
         }
     }
 }

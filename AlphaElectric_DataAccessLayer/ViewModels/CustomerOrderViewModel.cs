@@ -7,18 +7,13 @@ using System.Threading.Tasks;
 
 namespace ViewModels
 {
-    public class EmployeeViewModel : IDataErrorInfo
+    public class CustomerOrderViewModel : IDataErrorInfo
     {
         public int ID { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string Phone { get; set; }
-        public string Passport { get; set; }
-        public System.DateTime JoinDate { get; set; }
-        public string Address { get; set; }
-        public int DesignationID { get; set; }
-
-
+        public System.DateTime OrderDate { get; set; }
+        public System.DateTime DeliveryDate { get; set; }
+        public int ContactID { get; set; }
+        public int Quantity { get; set; }
 
         public string Error
         {

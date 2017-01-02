@@ -94,7 +94,7 @@
                 <TextBlock Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" Margin="16 0 8 0">First Name</TextBlock>
                 <TextBox Grid.Row="1" Grid.Column="1" x:Name="FirstNameTextBox" materialDesign:HintAssist.Hint="Insert First Name">
                     <TextBox.Text>
-                        <Binding Path="FirstName" ValidatesOnDataErrors="True" UpdateSourceTrigger="LostFocus" NotifyOnValidationError="True">
+                        <Binding Path="FirstName" ValidatesOnDataErrors="True" UpdateSourceTrigger="PropertyChanged" NotifyOnValidationError="True">
                             <Binding.ValidationRules>
                                 <domain:NotEmptyValidationRule ValidatesOnTargetUpdated="True" />
                                 <!-- Checks for exceptions during the setting of the source property.Alternatively, set ValidatesOnExceptions to True on the Binding.-->
@@ -107,7 +107,7 @@
                 <TextBlock Grid.Row="2" Grid.Column="0"  VerticalAlignment="Center" Margin="16 0 8 0">Last Name</TextBlock>
                 <TextBox Grid.Row="2" Grid.Column="1" x:Name="LastNameTextBox" materialDesign:HintAssist.Hint="Insert Last Name">
                     <TextBox.Text>
-                        <Binding Path="LastName" ValidatesOnDataErrors="True" UpdateSourceTrigger="LostFocus" NotifyOnValidationError="True">
+                        <Binding Path="LastName" ValidatesOnDataErrors="True" UpdateSourceTrigger="PropertyChanged" NotifyOnValidationError="True">
                             <Binding.ValidationRules>
                                 <domain:NotEmptyValidationRule ValidatesOnTargetUpdated="True" />
                                 <!-- Checks for exceptions during the setting of the source property.Alternatively, set ValidatesOnExceptions to True on the Binding.-->
@@ -120,7 +120,7 @@
                 <TextBlock Grid.Row="3" Grid.Column="0"  VerticalAlignment="Center" Margin="16 0 8 0">Phone</TextBlock>
                 <TextBox Grid.Row="3" Grid.Column="1" x:Name="PhoneTextBox" materialDesign:HintAssist.Hint="Input Phone No.">
                     <TextBox.Text>
-                        <Binding Path="Phone" ValidatesOnDataErrors="True" UpdateSourceTrigger="LostFocus" NotifyOnValidationError="True">
+                        <Binding Path="Phone" ValidatesOnDataErrors="True" UpdateSourceTrigger="PropertyChanged" NotifyOnValidationError="True">
                             <Binding.ValidationRules>
                                 <domain:NotEmptyValidationRule ValidatesOnTargetUpdated="True" />
                                 <!-- Checks for exceptions during the setting of the source property.Alternatively, set ValidatesOnExceptions to True on the Binding.-->
@@ -133,7 +133,7 @@
                 <TextBlock Grid.Row="4" Grid.Column="0"  VerticalAlignment="Center" Margin="16 0 8 0">Passport</TextBlock>
                 <TextBox Grid.Row="4" Grid.Column="1" x:Name="PassportTextBox" materialDesign:HintAssist.Hint="Input Passport No.">
                     <TextBox.Text>
-                        <Binding Path="Passport" ValidatesOnDataErrors="True" UpdateSourceTrigger="LostFocus" NotifyOnValidationError="True">
+                        <Binding Path="Passport" ValidatesOnDataErrors="True" UpdateSourceTrigger="PropertyChanged" NotifyOnValidationError="True">
                             <Binding.ValidationRules>
                                 <domain:NotEmptyValidationRule ValidatesOnTargetUpdated="True" />
                                 <!-- Checks for exceptions during the setting of the source property.Alternatively, set ValidatesOnExceptions to True on the Binding.-->
@@ -158,7 +158,7 @@
                 <TextBlock Grid.Row="6" Grid.Column="0" VerticalAlignment="Center" Margin="16 0 8 0">Address</TextBlock>
                 <TextBox Grid.Row="6" Grid.Column="1" x:Name="AddressTextBox" materialDesign:HintAssist.Hint="Input Address">
                     <TextBox.Text>
-                        <Binding Path="Address" ValidatesOnDataErrors="True" UpdateSourceTrigger="LostFocus" NotifyOnValidationError="True">
+                        <Binding Path="Address" ValidatesOnDataErrors="True" UpdateSourceTrigger="PropertyChanged" NotifyOnValidationError="True">
                             <Binding.ValidationRules>
                                 <domain:NotEmptyValidationRule ValidatesOnTargetUpdated="True" />
                                 <!-- Checks for exceptions during the setting of the source property.Alternatively, set ValidatesOnExceptions to True on the Binding.-->

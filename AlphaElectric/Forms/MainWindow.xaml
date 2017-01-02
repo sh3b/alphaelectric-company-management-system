@@ -21,7 +21,8 @@
                  
                  Height="650"
                  Width="900"     
-                 Loaded="Window_Loaded">
+                 Loaded="Window_Loaded"
+                 WindowStartupLocation="CenterScreen">
     <UserControl>
         <UserControl.Resources>
             <ResourceDictionary>
@@ -96,6 +97,7 @@
                                     </StackPanel>
                                 </TreeViewItem.Header>
                                 <TreeViewItem PreviewMouseLeftButtonDown="TreeItem_EmployeeAdd_PreviewMouseLeftButtonDown" Header="Add new"/>
+                                <TreeViewItem PreviewMouseLeftButtonDown="TreeItem_EmployeeEdit_PreviewMouseLeftButtonDown" Header="Modify"/>
                                 <TreeViewItem PreviewMouseLeftButtonDown="TreeItem_EmployeeList_PreviewMouseLeftButtonDown"  Header="List"/>
                             </TreeViewItem>
                             <TreeViewItem>
@@ -124,6 +126,7 @@
                                     </StackPanel>
                                 </TreeViewItem.Header>
                                 <TreeViewItem PreviewMouseLeftButtonDown="TreeItem_CompaniesAdd_PreviewMouseLeftButtonDown" Header="Add new"/>
+                                <TreeViewItem PreviewMouseLeftButtonDown="TreeItem_CompaniesEdit_PreviewMouseLeftButtonDown" Header="Edit"/>
                                 <TreeViewItem PreviewMouseLeftButtonDown="TreeItem_CompaniesList_PreviewMouseLeftButtonDown" Header="List"/>
                             </TreeViewItem>
                             <TreeViewItem>
@@ -138,8 +141,9 @@
                                     </StackPanel>
                                 </TreeViewItem.Header>
                                 <TreeViewItem PreviewMouseLeftButtonDown="TreeItem_PurchaseOrderAdd_PreviewMouseLeftButtonDown" Header="Place Purchase Order"/>
-                                <TreeViewItem PreviewMouseLeftButtonDown="TreeItem_PurchaseOrderList_PreviewMouseLeftButtonDown" Header="Previous Orders"/>
+                                <TreeViewItem PreviewMouseLeftButtonDown="TreeItem_PurchaseOrderList_PreviewMouseLeftButtonDown" Header="Previous Purchase Orders"/>
                                 <TreeViewItem PreviewMouseLeftButtonDown="TreeItem_SupplierList_PreviewMouseLeftButtonDown" Header="Suppliers List"/>
+                                <TreeViewItem PreviewMouseLeftButtonDown="TreeItem_SupplierEdit_PreviewMouseLeftButtonDown" Header="Edit Suppliers"/>
                                 <TreeViewItem PreviewMouseLeftButtonDown="TreeItem_SupplierAdd_PreviewMouseLeftButtonDown" Header="Add new Supplier"/>
                             </TreeViewItem>
                             <TreeViewItem>
@@ -153,9 +157,10 @@
                                         <TextBlock Margin="8 0 0 0">Selling</TextBlock>
                                     </StackPanel>
                                 </TreeViewItem.Header>
-                                <TreeViewItem Header="Create Customer Order"/>
-                                <TreeViewItem Header="Previous Customer Orders"/>
+                                <TreeViewItem PreviewMouseLeftButtonDown="TreeItem_CustomerOrderAdd_PreviewMouseLeftButtonDown" Header="Create Customer Order"/>
+                                <TreeViewItem PreviewMouseLeftButtonDown="TreeItem_CustomerOrderList_PreviewMouseLeftButtonDown" Header="Previous Customer Orders"/>
                                 <TreeViewItem PreviewMouseLeftButtonDown="TreeItem_CustomerList_PreviewMouseLeftButtonDown" Header="Customer List"/>
+                                <TreeViewItem PreviewMouseLeftButtonDown="TreeItem_CustomerEdit_PreviewMouseLeftButtonDown" Header="Edit Customer"/>
                                 <TreeViewItem PreviewMouseLeftButtonDown="TreeItem_CustomerAdd_PreviewMouseLeftButtonDown" Header="Add new Customer"/>
                             </TreeViewItem>
                         </TreeView>
@@ -167,7 +172,7 @@
                             <ToggleButton Style="{StaticResource MaterialDesignHamburgerToggleButton}" IsChecked="False" x:Name="MenuToggleButton"/>
                             <materialDesign:PopupBox DockPanel.Dock="Right" PlacementMode="BottomAndAlignRightEdges" StaysOpen="False">
                                 <StackPanel>
-                                    <Button Content="Log Out"/>
+                                    <Button Content="Log Out" Click="MenuPopupLogoutButton_OnClick"/>
                                     <Separator/>
                                     <!--<Button Content="Can't Touch This" IsEnabled="False" />-->
                                     <Button Content="About" Click="MenuPopupAboutButton_OnClick"/>

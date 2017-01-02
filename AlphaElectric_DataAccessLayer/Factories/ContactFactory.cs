@@ -29,5 +29,10 @@ namespace AlphaElectric_DataAccessLayer.Factories
         {
             return conDa.InsertContact(con);
         }
+
+        public bool Update(int id, string name, string phone, string email, string address)
+        {
+            return conDa.Update(id, name, phone, email, address);
+        }
     }
 }

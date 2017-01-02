@@ -1,4 +1,4 @@
-﻿<UserControl     x:Class="AlphaElectric.Forms.CompanyAddNew"
+﻿<UserControl     x:Class="AlphaElectric.Forms.CustomerOrderAdd"
                  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -89,51 +89,47 @@
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
 
-                <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" FontWeight="DemiBold" Style="{StaticResource MaterialDesignHeadlineTextBlock}">Add Company Details</TextBlock>
-                
-                <TextBlock Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" Margin="16 0 8 0">Name</TextBlock>
-                <TextBox Grid.Row="1" Grid.Column="1" x:Name="NameTextBox" materialDesign:HintAssist.Hint="Insert Company Full Name">
-                    <TextBox.Text>
-                        <Binding Path="CompanyName" ValidatesOnDataErrors="True" UpdateSourceTrigger="PropertyChanged" NotifyOnValidationError="True">
-                            <Binding.ValidationRules>
-                                <domain:NotEmptyValidationRule ValidatesOnTargetUpdated="True" />
-                                <!-- Checks for exceptions during the setting of the source property.Alternatively, set ValidatesOnExceptions to True on the Binding.-->
-                                <ExceptionValidationRule/>
-                            </Binding.ValidationRules>
-                        </Binding>
-                    </TextBox.Text>
-                </TextBox>
+                <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Margin="0 10 0 10" FontWeight="DemiBold" Style="{StaticResource MaterialDesignHeadlineTextBlock}">Add Customer Order</TextBlock>
 
-                <TextBlock Grid.Row="2" Grid.Column="0"  VerticalAlignment="Center" Margin="16 0 8 0">Phone No</TextBlock>
-                <TextBox Grid.Row="2" Grid.Column="1" x:Name="PhoneNoTextBox" materialDesign:HintAssist.Hint="+00-00-0000000">
-                    <TextBox.Text>
-                        <Binding Path="Phone" ValidatesOnDataErrors="True" UpdateSourceTrigger="PropertyChanged" NotifyOnValidationError="True">
+                <TextBlock Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" Margin="16 0 8 0">Order Date</TextBlock>
+                <DatePicker Grid.Row="1" Grid.Column="1" Height="25" Margin="0 5 0 0" x:Name="OrderDateDatePicker" Width="150" HorizontalAlignment="Left"  
+                        materialDesign:HintAssist.Hint="Set Order Date">
+                    <DatePicker.SelectedDate>
+                        <Binding Path="OrderDate" UpdateSourceTrigger="PropertyChanged">
                             <Binding.ValidationRules>
-                                <domain:NotEmptyValidationRule ValidatesOnTargetUpdated="True" />
-                                <!-- Checks for exceptions during the setting of the source property.Alternatively, set ValidatesOnExceptions to True on the Binding.-->
-                                <ExceptionValidationRule/>
+                                <domain:PresentFutureDateValidationRule ValidatesOnTargetUpdated="True" />
                             </Binding.ValidationRules>
                         </Binding>
-                    </TextBox.Text>
-                </TextBox>
+                    </DatePicker.SelectedDate>
+                </DatePicker>
 
-                <TextBlock Grid.Row="3" Grid.Column="0"  VerticalAlignment="Center" Margin="16 0 8 0">E-Mail</TextBlock>
-                <TextBox Grid.Row="3" Grid.Column="1" x:Name="EmailTextBox" materialDesign:HintAssist.Hint="Input Email">
-                    <TextBox.Text>
-                        <Binding Path="Email" ValidatesOnDataErrors="True" UpdateSourceTrigger="PropertyChanged" NotifyOnValidationError="True">
+                <TextBlock Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" Margin="16 14 8 14">Delivery Date</TextBlock>
+                <DatePicker Grid.Row="2" Grid.Column="1" Height="25" Margin="0 5 0 0" x:Name="DeliveryDateDatePicker" Width="150" HorizontalAlignment="Left"  
+                        materialDesign:HintAssist.Hint="Set Delivery Date">
+                    <DatePicker.SelectedDate>
+                        <Binding Path="DeliveryDate" UpdateSourceTrigger="PropertyChanged">
                             <Binding.ValidationRules>
-                                <domain:NotEmptyValidationRule ValidatesOnTargetUpdated="True" />
-                                <!-- Checks for exceptions during the setting of the source property.Alternatively, set ValidatesOnExceptions to True on the Binding.-->
-                                <ExceptionValidationRule/>
+                                <domain:PresentFutureDateValidationRule ValidatesOnTargetUpdated="True" />
                             </Binding.ValidationRules>
                         </Binding>
-                    </TextBox.Text>
-                </TextBox>
+                    </DatePicker.SelectedDate>
+                </DatePicker>
 
-                <TextBlock Grid.Row="4" Grid.Column="0"  VerticalAlignment="Center" Margin="16 0 8 0">Address</TextBlock>
-                <TextBox Grid.Row="4" Grid.Column="1" x:Name="AddressTextBox" materialDesign:HintAssist.Hint="Input Address">
+
+                <TextBlock Grid.Row="3" Grid.Column="0"  VerticalAlignment="Center" Margin="16 10 8 0">Customer </TextBlock>
+                <ComboBox  Grid.Row="3" Grid.Column="1" Name="CustomerComboBox" materialDesign:HintAssist.Hint="Select Customer" MinWidth="72" Margin="0 10 0 0" VerticalAlignment="Bottom">
+                </ComboBox>
+
+                <TextBlock Grid.Row="4" Grid.ColumnSpan="2" FontSize="13" FontWeight="DemiBold" VerticalAlignment="Center" Margin="16 10 8 5">Add Products</TextBlock>
+
+                <TextBlock Grid.Row="5" Grid.Column="0"  VerticalAlignment="Center" Margin="16 0 8 0">Product</TextBlock>
+                <ComboBox  Grid.Row="5" Grid.Column="1" Name="ProductComboBox" materialDesign:HintAssist.Hint="Add Product" MinWidth="72" Margin="0 0 0 0" VerticalAlignment="Bottom">
+                </ComboBox>
+
+                <TextBlock Grid.Row="6" Grid.Column="0" VerticalAlignment="Center" Margin="16 0 8 0">Quanity</TextBlock>
+                <TextBox Grid.Row="6" Grid.Column="1" x:Name="QuantityTextBox" materialDesign:HintAssist.Hint="Input Qty">
                     <TextBox.Text>
-                        <Binding Path="Address" ValidatesOnDataErrors="True" UpdateSourceTrigger="PropertyChanged" NotifyOnValidationError="True">
+                        <Binding Path="Quantity" ValidatesOnDataErrors="True" UpdateSourceTrigger="PropertyChanged" NotifyOnValidationError="True">
                             <Binding.ValidationRules>
                                 <domain:NotEmptyValidationRule ValidatesOnTargetUpdated="True" />
                                 <!-- Checks for exceptions during the setting of the source property.Alternatively, set ValidatesOnExceptions to True on the Binding.-->
@@ -142,11 +138,13 @@
                         </Binding>
                     </TextBox.Text>
                 </TextBox>
+                <Button Grid.Row="7" Click="InsertItem_Click"  Style="{StaticResource MaterialDesignRaisedDarkButton}" ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" FontSize="11" Content="Add Item" Grid.Column="1" Height="Auto"  Margin="65,15,5,10" />
+
             </Grid>
         </ScrollViewer>
         <!-- start + popupbox -->
         <TextBlock Grid.Row="1"  VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="Auto" RenderTransformOrigin="0.5,0.5" Height="36" Margin="0,0,0,50" >                    
-                            <Button Click="InsertButton_Click" Style="{StaticResource MaterialDesignRaisedDarkButton}" Margin="10 0 40 0" Width="100" ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" Content="Add"/>   
+                            <Button Click="CreateButton_Click" Style="{StaticResource MaterialDesignRaisedDarkButton}" Margin="10 0 40 0" Width="100" ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" Content="Add"/>   
                             <Button Click="ClearButton_Click"   Style="{StaticResource MaterialDesignRaisedDarkButton}" Margin="0 0 40 0" Width="100"  ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" Content="Clear"/>
         </TextBlock>
         <!-- End + popupbox -->

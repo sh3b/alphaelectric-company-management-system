@@ -25,7 +25,7 @@ namespace AlphaElectric_DataAccessLayer.Factories
             return productPurchaseBTDa.SelectAll();
         }
 
-        public bool InsertCertification(Product_PurchaseOrderBT productPurchaseBT)
+        public bool InsertProduct_PurchaseOrderBT(Product_PurchaseOrderBT productPurchaseBT)
         {
             return productPurchaseBTDa.InsertProduct_PurchaseOrderBT(productPurchaseBT);
         }

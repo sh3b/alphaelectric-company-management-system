@@ -34,6 +34,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BCrypt.Net, Version=0.1.5073.29922, Culture=neutral, PublicKeyToken=6bcd409ee6bc9292, processorArchitecture=MSIL">
+      <HintPath>..\packages\BCrypt-Official.0.1.109\lib\BCrypt.Net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Dragablz, Version=0.0.3.181, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Dragablz.0.0.3.181\lib\net45\Dragablz.dll</HintPath>
       <Private>True</Private>
@@ -83,6 +87,24 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Forms\SupplierEdit.xaml.cs">
+      <DependentUpon>SupplierEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CompanyEdit.xaml.cs">
+      <DependentUpon>CompanyEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CustomerOrderAdd.xaml.cs">
+      <DependentUpon>CustomerOrderAdd.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CustomerOrderList.xaml.cs">
+      <DependentUpon>CustomerOrderList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CustomerEdit.xaml.cs">
+      <DependentUpon>CustomerEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\EmployeeEdit.xaml.cs">
+      <DependentUpon>EmployeeEdit.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Forms\PurchaseOrderList.xaml.cs">
       <DependentUpon>PurchaseOrderList.xaml</DependentUpon>
     </Compile>
@@ -116,6 +138,30 @@
     <Compile Include="Forms\CustomerList.xaml.cs">
       <DependentUpon>CustomerList.xaml</DependentUpon>
     </Compile>
+    <Page Include="Forms\SupplierEdit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Forms\CompanyEdit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Forms\CustomerOrderAdd.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Forms\CustomerOrderList.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Forms\CustomerEdit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Forms\EmployeeEdit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Forms\PurchaseOrderList.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -208,6 +254,8 @@
     <Compile Include="Forms\MessageDialog.xaml.cs">
       <DependentUpon>MessageDialog.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Logic\HashPasswordBCrypt.cs" />
+    <Compile Include="Logic\LoggedInUser.cs" />
     <Compile Include="Logic\ValidationRules.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -249,6 +297,9 @@
     <Resource Include="Forms\Resources\favicon.ico" />
     <Resource Include="Forms\Resources\ms-icon-310x310.png" />
     <Resource Include="Forms\Resources\ProfilePic.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="LICENSE.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

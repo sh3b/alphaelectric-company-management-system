@@ -4,7 +4,7 @@
              xmlns:local="clr-namespace:AlphaElectric"
              xmlns:dragablz="clr-namespace:Dragablz;assembly=Dragablz"
              xmlns:options="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options"
-             StartupUri="Forms/MainWindow.xaml">
+             StartupUri="Forms/Login.xaml">
     
     <Application.Resources>
         <ResourceDictionary>

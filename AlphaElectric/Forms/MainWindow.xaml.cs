@@ -18,7 +18,7 @@ using MaterialDesignThemes.Wpf;
 using System.Windows.Controls.Primitives;
 using AlphaElectric_DataAccessLayer;
 using AlphaElectric_DataAccessLayer.Factories;
-
+using AlphaElectric.Logic;
 
 namespace AlphaElectric.Forms
 {
@@ -237,6 +237,57 @@ namespace AlphaElectric.Forms
             PurchaseOrderList x = new PurchaseOrderList();
             UserPages.Children.Clear();
             UserPages.Children.Add(x);
+        }
+
+        private void TreeItem_CustomerOrderAdd_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            CustomerOrderAdd x = new CustomerOrderAdd();
+            UserPages.Children.Clear();
+            UserPages.Children.Add(x);
+        }
+
+        private void TreeItem_CustomerOrderList_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            CustomerOrderList x = new CustomerOrderList();
+            UserPages.Children.Clear();
+            UserPages.Children.Add(x);
+        }
+
+        private void TreeItem_EmployeeEdit_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            EmployeeEdit x = new EmployeeEdit();
+            UserPages.Children.Clear();
+            UserPages.Children.Add(x);
+        }
+
+        private void TreeItem_CustomerEdit_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            CustomerEdit x = new CustomerEdit();
+            UserPages.Children.Clear();
+            UserPages.Children.Add(x);
+        }
+
+        private void TreeItem_SupplierEdit_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            SupplierEdit x = new SupplierEdit();
+            UserPages.Children.Clear();
+            UserPages.Children.Add(x);
+        }
+
+        private void TreeItem_CompaniesEdit_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            CompanyEdit x = new CompanyEdit();
+            UserPages.Children.Clear();
+            UserPages.Children.Add(x);
+        }
+
+        private void MenuPopupLogoutButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            this.Hide();
+            LoggedInUser.Instance.RemoveData();
+            Login x = new Login();
+            x.Show();
+            this.Close();
         }
     }
 }

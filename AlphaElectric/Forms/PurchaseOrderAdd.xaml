@@ -117,7 +117,7 @@
                 <TextBlock Grid.Row="5" Grid.Column="0" VerticalAlignment="Center" Margin="16 0 8 0">Quanity</TextBlock>
                 <TextBox Grid.Row="5" Grid.Column="1" x:Name="QuantityTextBox" materialDesign:HintAssist.Hint="Input Qty">
                     <TextBox.Text>
-                        <Binding Path="Quantity" ValidatesOnDataErrors="True" UpdateSourceTrigger="LostFocus" NotifyOnValidationError="True">
+                        <Binding Path="Quantity" ValidatesOnDataErrors="True" UpdateSourceTrigger="PropertyChanged" NotifyOnValidationError="True">
                             <Binding.ValidationRules>
                                 <domain:NotEmptyValidationRule ValidatesOnTargetUpdated="True" />
                                 <!-- Checks for exceptions during the setting of the source property.Alternatively, set ValidatesOnExceptions to True on the Binding.-->

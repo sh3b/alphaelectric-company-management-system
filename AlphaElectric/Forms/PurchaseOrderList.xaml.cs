@@ -70,7 +70,7 @@ namespace AlphaElectric.Forms
             DataGrid.Visibility = Visibility.Collapsed;
             PopupBox.Visibility = Visibility.Collapsed;
 
-            EmployeeAddNew x = new EmployeeAddNew();
+            PurchaseOrderAdd x = new PurchaseOrderAdd();
             UserPages.Children.Clear();
             UserPages.Children.Add(x);
             PopupBoxWithClose.Visibility = Visibility.Visible;
