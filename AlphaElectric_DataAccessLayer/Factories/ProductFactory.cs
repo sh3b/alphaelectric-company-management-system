@@ -25,9 +25,22 @@ namespace AlphaElectric_DataAccessLayer.Factories
             return prodDa.SelectAll();
         }
 
+        public List<Part> SelectAllPart()
+        {
+            return prodDa.SelectAllPart();
+        }
+
+        public List<Panel> SelectAllPanel()
+        {
+            return prodDa.SelectAllPanel();
+        }
+
+
         public bool InsertProduct(Product prod)
         {
             return prodDa.InsertProduct(prod);
         }
+
+
     }
 }

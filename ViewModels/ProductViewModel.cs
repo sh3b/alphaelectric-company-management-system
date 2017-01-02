@@ -5,15 +5,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AlphaElectric.ViewModels
+namespace ViewModels
 {
-    public class ContactViewModel : IDataErrorInfo
+    public class ProductViewModel : IDataErrorInfo
     {
         public int ID { get; set; }
-        public string CompanyName { get; set; }
-        public string Phone { get; set; }
-        public string Email { get; set; }
-        public string Address { get; set; }
+        public string SerialNo { get; set; }
+        public string Name { get; set; }
+        public int MakeID { get; set; }
 
         public string Error
         {
@@ -40,5 +39,17 @@ namespace AlphaElectric.ViewModels
             }
         }
        
+    }
+
+    public class PanelViewModel
+    {
+        public int ID { get; set; }
+        public string SerialNo { get; set; }
+        public string Name { get; set; }
+        public int MakeID { get; set; }
+        public int PanelShellGradeProtectionIPNumber { get; set; }
+        public int SizeTypeID { get; set; }
+        public int CertificationID { get; set; }
+        public int TypeID { get; set; }
     }
 }

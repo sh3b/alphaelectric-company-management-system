@@ -20,7 +20,7 @@ using MahApps.Metro.Controls;
 using AlphaElectric_DataAccessLayer;
 using AlphaElectric_DataAccessLayer.Factories;
 using System.Windows.Threading;
-using AlphaElectric.ViewModels;
+using ViewModels;
 
 namespace AlphaElectric.Forms
 {

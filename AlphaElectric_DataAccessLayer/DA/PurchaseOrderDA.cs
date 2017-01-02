@@ -3,62 +3,53 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ViewModels;
+
 //Add view models
 
 namespace AlphaElectric_DataAccessLayer.DA
 {
-    class ProductDA
+    class PurchaseOrderDA
     {
         AlphaElectricEntitiesDB db;
 
-        public ProductDA()
+        public PurchaseOrderDA()
         {
             db = new AlphaElectricEntitiesDB();
         }
 
-        public List<Product> SelectAll()
+        public List<PurchaseOrder> SelectAll()
         {
-            return db.Products.ToList();
+            return db.PurchaseOrders.ToList();
         }
 
-        public bool InsertProduct(Product prod)
+        public bool InsertPurchaseOrder(PurchaseOrder po)
         {
-            db.Products.Add(prod);
+            db.PurchaseOrders.Add(po);
             return db.SaveChanges() > 0 ? true : false;
         }
 
         //CHECK IT
         public bool Delete(int id)
         {
-            var prod = db.Products.Where(x => x.ID == id).FirstOrDefault();
-            if (prod != null)
+            var po = db.PurchaseOrders.Where(x => x.ID == id).FirstOrDefault();
+            if (po != null)
             {
-                db.Products.Remove(prod);
+                db.PurchaseOrders.Remove(po);
             }
             return db.SaveChanges() > 0 ? true : false;
         }
 
-        public bool Update(int id, string name)
-        {
-            var prod = db.Products.Where(x => x.ID == id).FirstOrDefault();
-            if (prod != null)
-            {
-                prod.Name = name;
-            }
-            return db.SaveChanges() > 0 ? true : false;
-        }
-
-        public List<Part> SelectAllPart()
-        {
-            return db.Products.OfType<Part>().ToList();
-        }
-
-        public List<Panel> SelectAllPanel()
-        {
-            return db.Products.OfType<Panel>().ToList();
-        }
-
+        //public bool Update(int id, string name, string descrip)
+        //{
+        //    var po = db.PurchaseOrders.Where(x => x.ID == id).FirstOrDefault();
+        //    if (po != null)
+        //    {
+        //        po.Name = name;
+        //        po.Description = descrip;
+        //    }
+        //    return db.SaveChanges() > 0 ? true : false;
+        //}
+        
         //public List<StudentViewModel> SelectFew()
         //{
         //    return (from s in db.Students

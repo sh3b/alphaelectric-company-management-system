@@ -83,6 +83,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Forms\PurchaseOrderAdd.xaml.cs">
+      <DependentUpon>PurchaseOrderAdd.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PartList.xaml.cs">
+      <DependentUpon>PartList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PanelList.xaml.cs">
+      <DependentUpon>PanelList.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Forms\CompanyList.xaml.cs">
       <DependentUpon>CompanyList.xaml</DependentUpon>
     </Compile>
@@ -104,9 +113,18 @@
     <Compile Include="Forms\CustomerList.xaml.cs">
       <DependentUpon>CustomerList.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ViewModels\EmployeeViewModel.cs" />
-    <Compile Include="ViewModels\ContactViewModel.cs" />
-    <Compile Include="ViewModels\ProductViewModel.cs" />
+    <Page Include="Forms\PurchaseOrderAdd.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Forms\PartList.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Forms\PanelList.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Forms\CompanyList.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

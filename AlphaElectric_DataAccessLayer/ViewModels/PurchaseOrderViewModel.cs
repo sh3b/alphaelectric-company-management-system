@@ -5,18 +5,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AlphaElectric.ViewModels
+namespace ViewModels
 {
-    public class EmployeeViewModel : IDataErrorInfo
+    public class PurchaseOrderViewModel : IDataErrorInfo
     {
         public int ID { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string Phone { get; set; }
-        public string Passport { get; set; }
-        public System.DateTime JoinDate { get; set; }
-        public string Address { get; set; }
-        public int DesignationID { get; set; }
+        public System.DateTime PODate { get; set; }
+        public int ContactID { get; set; }
 
         public string Error
         {

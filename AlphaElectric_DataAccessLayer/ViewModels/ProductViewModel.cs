@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AlphaElectric.ViewModels
+namespace ViewModels
 {
     public class ProductViewModel : IDataErrorInfo
     {
@@ -40,4 +40,22 @@ namespace AlphaElectric.ViewModels
         }
        
     }
+
+    //public class PanelViewModel
+    //{
+    //    public int ID { get; set; }
+    //    public string SerialNo { get; set; }
+    //    public string Name { get; set; }
+    //    public int MakeID { get; set; }
+    //    public int PanelShellGradeProtectionIPNumber { get; set; }
+    //    public int SizeTypeID { get; set; }
+    //    public int CertificationID { get; set; }
+    //    public int TypeID { get; set; }
+
+    //    public int MakeName { get; set; }
+    //    public int PanelShellGradeProtectionIPNumberName { get; set; }
+    //    public int SizeTypeName { get; set; }
+    //    public int CertificationName { get; set; }
+    //    public int TypeName { get; set; }
+    //}
 }

@@ -67,7 +67,7 @@
                                                     <materialDesign:PackIcon Kind="Raspberrypi" VerticalAlignment="Center" />
                                                 </Canvas>
                                             </Viewbox>
-                                            <TextBlock Margin="8 0 0 0">Part List</TextBlock>
+                                            <TextBlock  PreviewMouseLeftButtonDown="TreeItem_ProductPartList_PreviewMouseLeftButtonDown" Margin="8 0 0 0">Part List</TextBlock>
                                         </StackPanel>
                                     </TreeViewItem.Header>
                                 </TreeViewItem>
@@ -79,7 +79,7 @@
                                                     <materialDesign:PackIcon Kind="MinusNetwork" VerticalAlignment="Center" />
                                                 </Canvas>
                                             </Viewbox>
-                                            <TextBlock Margin="8 0 0 0">Panel List</TextBlock>
+                                            <TextBlock PreviewMouseLeftButtonDown="TreeItem_ProductPanelList_PreviewMouseLeftButtonDown" Margin="8 0 0 0">Panel List</TextBlock>
                                         </StackPanel>
                                     </TreeViewItem.Header>
                                 </TreeViewItem>
@@ -137,7 +137,7 @@
                                         <TextBlock Margin="8 0 0 0">Purchasing</TextBlock>
                                     </StackPanel>
                                 </TreeViewItem.Header>
-                                <TreeViewItem Header="Place Purchase Order"/>
+                                <TreeViewItem PreviewMouseLeftButtonDown="TreeItem_PurchaseOrderAdd_PreviewMouseLeftButtonDown" Header="Place Purchase Order"/>
                                 <TreeViewItem Header="Previous Orders"/>
                                 <TreeViewItem PreviewMouseLeftButtonDown="TreeItem_SupplierList_PreviewMouseLeftButtonDown" Header="Suppliers List"/>
                                 <TreeViewItem PreviewMouseLeftButtonDown="TreeItem_SupplierAdd_PreviewMouseLeftButtonDown" Header="Add new Supplier"/>
