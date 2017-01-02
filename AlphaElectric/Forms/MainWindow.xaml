@@ -153,7 +153,7 @@
                                         <TextBlock Margin="8 0 0 0">Selling</TextBlock>
                                     </StackPanel>
                                 </TreeViewItem.Header>
-                                <TreeViewItem Header="Create Receipt"/>
+                                <TreeViewItem Header="Create Customer Order"/>
                                 <TreeViewItem Header="Previous Customer Orders"/>
                                 <TreeViewItem PreviewMouseLeftButtonDown="TreeItem_CustomerList_PreviewMouseLeftButtonDown" Header="Customer List"/>
                                 <TreeViewItem PreviewMouseLeftButtonDown="TreeItem_CustomerAdd_PreviewMouseLeftButtonDown" Header="Add new Customer"/>

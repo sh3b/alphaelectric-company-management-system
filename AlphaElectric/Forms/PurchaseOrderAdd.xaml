@@ -89,30 +89,33 @@
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
 
-                <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" FontWeight="DemiBold" Style="{StaticResource MaterialDesignHeadlineTextBlock}">Create Purchase Order (PO)</TextBlock>
+                <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Margin="0 10 0 10" FontWeight="DemiBold" Style="{StaticResource MaterialDesignHeadlineTextBlock}">Create Purchase Order (PO)</TextBlock>
+
                 <TextBlock Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" Margin="16 0 8 0">PO Date</TextBlock>
                 <DatePicker Grid.Row="1" Grid.Column="1" Height="25" Margin="0 5 0 0" x:Name="PODateDatePicker" Width="150" HorizontalAlignment="Left"  
                         materialDesign:HintAssist.Hint="Select PO Date">
                     <DatePicker.SelectedDate>
                         <Binding Path="PODate" UpdateSourceTrigger="PropertyChanged">
                             <Binding.ValidationRules>
-                                <domain:PastDateValidationRule ValidatesOnTargetUpdated="True" />
+                                <domain:PresentFutureDateValidationRule ValidatesOnTargetUpdated="True" />
                             </Binding.ValidationRules>
                         </Binding>
                     </DatePicker.SelectedDate>
                 </DatePicker>
 
-                <TextBlock Grid.Row="2" Grid.Column="0"  VerticalAlignment="Center" Margin="16 0 8 0">Supplier</TextBlock>
-                <ComboBox  Grid.Row="2" Grid.Column="1" Name="SupplierComboBox" materialDesign:HintAssist.Hint="Select Supplier" MinWidth="72" Margin="0 0 0 0" VerticalAlignment="Bottom">
+                <TextBlock Grid.Row="2" Grid.Column="0"  VerticalAlignment="Center" Margin="16 10 8 0">Supplier</TextBlock>
+                <ComboBox  Grid.Row="2" Grid.Column="1" Name="SupplierComboBox" materialDesign:HintAssist.Hint="Select Supplier" MinWidth="72" Margin="0 10 0 0" VerticalAlignment="Bottom">
                 </ComboBox>
 
+                <TextBlock Grid.Row="3" Grid.ColumnSpan="2" FontSize="13" FontWeight="DemiBold" VerticalAlignment="Center" Margin="16 10 8 5">Add Products</TextBlock>
 
-                <TextBlock Grid.Row="3" Grid.Column="0"  VerticalAlignment="Center" Margin="16 0 8 0">Product</TextBlock>
-                <ComboBox  Grid.Row="3" Grid.Column="1" Name="ProductComboBox" materialDesign:HintAssist.Hint="Add Product" MinWidth="72" Margin="0 0 0 0" VerticalAlignment="Bottom">
+
+                <TextBlock Grid.Row="4" Grid.Column="0"  VerticalAlignment="Center" Margin="16 0 8 0">Product</TextBlock>
+                <ComboBox  Grid.Row="4" Grid.Column="1" Name="ProductComboBox" materialDesign:HintAssist.Hint="Add Product" MinWidth="72" Margin="0 0 0 0" VerticalAlignment="Bottom">
                 </ComboBox>
 
-                <TextBlock Grid.Row="4" Grid.Column="0" VerticalAlignment="Center" Margin="16 0 8 0">Quanity</TextBlock>
-                <TextBox Grid.Row="4" Grid.Column="1" x:Name="QuantityTextBox" materialDesign:HintAssist.Hint="Input Qty">
+                <TextBlock Grid.Row="5" Grid.Column="0" VerticalAlignment="Center" Margin="16 0 8 0">Quanity</TextBlock>
+                <TextBox Grid.Row="5" Grid.Column="1" x:Name="QuantityTextBox" materialDesign:HintAssist.Hint="Input Qty">
                     <TextBox.Text>
                         <Binding Path="Quantity" ValidatesOnDataErrors="True" UpdateSourceTrigger="LostFocus" NotifyOnValidationError="True">
                             <Binding.ValidationRules>
@@ -123,12 +126,13 @@
                         </Binding>
                     </TextBox.Text>
                 </TextBox>
+                <Button Grid.Row="6" Click="InsertItem_Click"  Style="{StaticResource MaterialDesignRaisedDarkButton}" ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" FontSize="11" Content="Add Item" Grid.Column="1" Height="Auto"  Margin="65,15,5,10" />
 
             </Grid>
         </ScrollViewer>
         <!-- start + popupbox -->
         <TextBlock Grid.Row="1"  VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="Auto" RenderTransformOrigin="0.5,0.5" Height="36" Margin="0,0,0,50" >                    
-                            <Button Click="InsertButton_Click" Style="{StaticResource MaterialDesignRaisedDarkButton}" Margin="10 0 40 0" Width="100" ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" Content="Add"/>   
+                            <Button Click="CreateButton_Click" Style="{StaticResource MaterialDesignRaisedDarkButton}" Margin="10 0 40 0" Width="100" ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" Content="Create"/>   
                             <Button Click="ClearButton_Click"   Style="{StaticResource MaterialDesignRaisedDarkButton}" Margin="0 0 40 0" Width="100"  ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" Content="Clear"/>
         </TextBlock>
         <!-- End + popupbox -->

@@ -12,6 +12,7 @@ namespace ViewModels
         public int ID { get; set; }
         public System.DateTime PODate { get; set; }
         public int ContactID { get; set; }
+        public int Quantity { get; set; }
 
         public string Error
         {

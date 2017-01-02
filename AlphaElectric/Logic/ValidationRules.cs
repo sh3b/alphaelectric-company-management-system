@@ -30,6 +30,22 @@ namespace AlphaElectric.Logic
         }
     }
 
+    public class PresentFutureDateValidationRule : ValidationRule
+    {
+        public override ValidationResult Validate(object value, CultureInfo cultureInfo)
+        {
+            DateTime time;
+            if (!DateTime.TryParse((value ?? "").ToString(),
+                CultureInfo.CurrentCulture,
+                DateTimeStyles.AssumeLocal | DateTimeStyles.AllowWhiteSpaces,
+                out time)) return new ValidationResult(false, "Invalid date");
+
+            return time.Date <= DateTime.Now.Date.AddDays(-1)
+                ? new ValidationResult(false, "Present or Future date required")
+                : ValidationResult.ValidResult;
+        }
+    }
+
     public class PastDateValidationRule : ValidationRule
     {
         public override ValidationResult Validate(object value, CultureInfo cultureInfo)

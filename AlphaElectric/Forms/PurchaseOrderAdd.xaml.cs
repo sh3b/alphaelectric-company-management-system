@@ -24,6 +24,18 @@ using ViewModels;
 
 namespace AlphaElectric.Forms
 {
+    class ProductItem
+    {
+        public int Quantity { get; set; }
+        public int ProductID { get; set; }
+
+        public ProductItem()
+        {
+            this.Quantity = 0;
+            this.ProductID = 0;
+        }
+    }
+
     /// <summary>
     /// Interaction logic for AddProduct.xaml
     /// </summary>
@@ -32,6 +44,8 @@ namespace AlphaElectric.Forms
         PurchaseOrderViewModel _vm;
         //Adding backgroud worker
         BackgroundWorker worker;
+        PurchaseOrder po = new PurchaseOrder();
+        List<ProductItem> productItemsList = new List<ProductItem>();
 
         public PurchaseOrderAdd()
         {
@@ -71,88 +85,97 @@ namespace AlphaElectric.Forms
             this.PODateDatePicker.GetBindingExpression(DatePicker.SelectedDateProperty).UpdateSource();
         }
 
-        private void InsertButton_Click(object sender, RoutedEventArgs e)
+        private void CreateButton_Click(object sender, RoutedEventArgs e)
         {
-            //#region validation 
-            //ForceValidation();
-            //if (Validation.GetHasError(NameTextBox) || Validation.GetHasError(AddressTextBox) || Validation.GetHasError(EmailTextBox) || Validation.GetHasError(PhoneNoTextBox))
-            //{
-            //    var sMessageDialog = new MessageDialog
-            //    {
-            //        Message = { Text =
-            //        "ERROR: Fill missing fields!" }
-            //    };
-            //
-            //    DialogHost.Show(sMessageDialog, "RootDialog");
-            //    return;
-            //}
-            //#endregion
+            #region validation 
+            ForceValidation();
+            if (Validation.GetHasError(PODateDatePicker))
+            {
+                var sMessageDialog = new MessageDialog
+                {
+                    Message = { Text =
+                    "ERROR: Fill missing fields!" }
+                };
+
+                DialogHost.Show(sMessageDialog, "RootDialog");
+                return;
+            }
+            #endregion
 
             bool flag = false;
 
             // Creating PO 
-            PurchaseOrder po = new PurchaseOrder();
-            //po.PODate = PODateDatePicker.SelectedDate.Value;
-            //po.ContactID = int.Parse(SupplierComboBox.SelectedValue.ToString());
-
-            //PurchaseOrderFactory fac = new PurchaseOrderFactory();
-            //flag = fac.InsertPurchaseOrder(po);
-            //List<PurchaseOrder> polist = new PurchaseOrderFactory().SelectAll();
+            po.PODate = PODateDatePicker.SelectedDate.Value;
+            po.ContactID = int.Parse(SupplierComboBox.SelectedValue.ToString());
+            PurchaseOrderFactory fac = new PurchaseOrderFactory();
+            flag = fac.InsertPurchaseOrder(po);
 
             // Adding Products to PO
-            Product_PurchaseOrderBT po_prod = new Product_PurchaseOrderBT();
-            //po_prod.ProductID = int.Parse(ProductComboBox.SelectedValue.ToString());
-            po_prod.ProductID = 1010;
-            //po_prod.PurchaseOrderID = po.ID;
-            po_prod.PurchaseOrderID = 6;
-            po.ID = 6;
-            po_prod.Quantity = int.Parse(QuantityTextBox.Text);
 
-            AlphaElectricEntitiesDB db = new AlphaElectricEntitiesDB();
-
-
-            // LINQ query
-            var query = from prod in db.Product_PurchaseOrderBT     
-                        where prod.PurchaseOrderID == po.ID
-                        && prod.ProductID == po_prod.ProductID
-                        select prod;
-
-            if (query.ToList().Count == 0)
+            using (var db = new AlphaElectricEntitiesDB())
             {
-                db.Product_PurchaseOrderBT.Add(po_prod);
-                db.SaveChanges();
-            }
-            else if (query.ToList().Count == 1)
-            {
-                foreach (var xx in query)
+                // Multiple Products
+                foreach (var item in productItemsList)
                 {
-                    xx.Quantity += int.Parse(QuantityTextBox.Text);
+                    Product_PurchaseOrderBT po_prod = new Product_PurchaseOrderBT();
+                    po_prod.ProductID = item.ProductID;
+                    po_prod.PurchaseOrderID = po.ID;
+
+                    // LINQ query
+                    var query = from prod in db.Product_PurchaseOrderBT
+                                where prod.PurchaseOrderID == po.ID
+                                && prod.ProductID == po_prod.ProductID
+                                select prod;
+
+                    if (query.ToList().Count == 0)
+                    {
+                        po_prod.Quantity = item.Quantity;
+                        db.Product_PurchaseOrderBT.Add(po_prod);
+                        db.SaveChanges();
+                    }
+                    // Checks if existing ProductID and PurchaseOrderID exists
+                    // Used if item is added again
+                    else if (query.ToList().Count == 1)
+                    {
+                        foreach (var xx in query)
+                        {
+                            xx.Quantity += item.Quantity;
+                        }
+                        db.SaveChanges();
+                    }
                 }
-                db.SaveChanges();
+                productItemsList.Clear();
+                ClearItems();
+                Clear();
             }
         }
 
-        //ContactFactory fac = new ContactFactory();
-        //if (fac.InsertContact(comp))
-        //{
-        //    MessageBox.Show("inserted");
-        //    Clear();
-        //}
-
-        //else
-        //    MessageBox.Show("not inserted");
+        private void InsertItem_Click(object sender, RoutedEventArgs e)
+        {
+            ProductItem item = new ProductItem();
+            item.ProductID = int.Parse(ProductComboBox.SelectedValue.ToString());
+            item.Quantity = int.Parse(QuantityTextBox.Text);
+            productItemsList.Add(item);
+            ClearItems();
+        }
 
         private void ClearButton_Click(object sender, RoutedEventArgs e)
         {
             Clear();
+            ClearItems();
+            productItemsList.Clear();
         }
 
         private void Clear()
         {
-            //this.NameTextBox.Clear();
-            //this.AddressTextBox.Clear();
-            //this.EmailTextBox.Clear();
-            //this.PhoneNoTextBox.Clear();
+            SupplierComboBox.SelectedItem = null;
+            this.PODateDatePicker.SelectedDate = null;
+        }
+
+        private void ClearItems()
+        {
+            ProductComboBox.SelectedItem = null;
+            this.QuantityTextBox.Clear();
         }
     }
 }
