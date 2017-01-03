@@ -116,6 +116,18 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Forms\HomeProjects.xaml.cs">
+      <DependentUpon>HomeProjects.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ProjectAddNew.xaml.cs">
+      <DependentUpon>ProjectAddNew.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ProjectEdit.xaml.cs">
+      <DependentUpon>ProjectEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ProjectList.xaml.cs">
+      <DependentUpon>ProjectList.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Forms\HomePurchaseSelling.xaml.cs">
       <DependentUpon>HomePurchaseSelling.xaml</DependentUpon>
     </Compile>
@@ -179,6 +191,22 @@
     <Compile Include="Forms\CustomerList.xaml.cs">
       <DependentUpon>CustomerList.xaml</DependentUpon>
     </Compile>
+    <Page Include="Forms\HomeProjects.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Forms\ProjectAddNew.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Forms\ProjectEdit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Forms\ProjectList.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Forms\HomePurchaseSelling.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

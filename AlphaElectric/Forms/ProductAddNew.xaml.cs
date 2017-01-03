@@ -210,9 +210,24 @@ namespace AlphaElectric.Forms
 
                 ProductFactory fac = new ProductFactory();
                 if (fac.InsertProduct(x))
-                    MessageBox.Show("inserted");
+                {
+                    var sMessageDialog = new MessageDialog
+                    {
+                        Message = { Text = "Added succesfully!" }
+                    };
+                    DialogHost.Show(sMessageDialog, "RootDialog");
+                    ClearButton_Click(null,null);
+                    return;
+                }
                 else
-                    MessageBox.Show("not inserted");
+                {
+                    var sMessageDialog = new MessageDialog
+                    {
+                        Message = { Text = "Couldn't Insert!" }
+                    };
+                    DialogHost.Show(sMessageDialog, "RootDialog");
+                    return;
+                }
             }
 
             if ((bool)P_Part.IsChecked)
@@ -229,9 +244,27 @@ namespace AlphaElectric.Forms
 
                 ProductFactory fac = new ProductFactory();
                 if (fac.InsertProduct(x))
-                    MessageBox.Show("inserted");
+                {
+                    var sMessageDialog = new MessageDialog
+                    {
+                        Message = { Text = "Added succesfully!" }
+                    };
+
+                    DialogHost.Show(sMessageDialog, "RootDialog");
+                    ClearButton_Click(null, null);
+                    return;
+                }
                 else
-                    MessageBox.Show("not inserted");
+                {
+                    var sMessageDialog = new MessageDialog
+                    {
+                        Message = { Text = "Unable to add.." }
+                    };
+
+                    DialogHost.Show(sMessageDialog, "RootDialog");
+                    ClearButton_Click(null, null);
+                    return;
+                }
             }
         }
 

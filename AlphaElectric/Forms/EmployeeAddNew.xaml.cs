@@ -72,7 +72,7 @@ namespace AlphaElectric.Forms
             this.PassportTextBox.GetBindingExpression(TextBox.TextProperty).UpdateSource();
             this.JoinDateDatePicker.GetBindingExpression(DatePicker.SelectedDateProperty).UpdateSource();
             this.AddressTextBox.GetBindingExpression(TextBox.TextProperty).UpdateSource();
-            //this.DesignationComboBox.GetBindingExpression(ComboBox.SelectedValueProperty).UpdateSource();
+            this.DesignationComboBox.GetBindingExpression(ComboBox.SelectedValueProperty).UpdateSource();
         }
 
         private void InsertButton_Click(object sender, RoutedEventArgs e)
@@ -95,6 +95,7 @@ namespace AlphaElectric.Forms
                 DialogHost.Show(sMessageDialog, "RootDialog");
                 return;
             }
+
             if (DesignationComboBox.SelectedItem == null)
             {
                 var sMessageDialog = new MessageDialog
@@ -120,12 +121,28 @@ namespace AlphaElectric.Forms
             EmployeeFactory fac = new EmployeeFactory();
             if (fac.InsertEmployee(emp))
             {
-                MessageBox.Show("inserted");
-                Clear();
-            }
+                var sMessageDialog = new MessageDialog
+                {
+                    Message = { Text =
+                    "Added succesfully!" }
+                };
 
+                DialogHost.Show(sMessageDialog, "RootDialog");
+                Clear();
+                return;
+            }
             else
-                MessageBox.Show("not inserted");
+            {
+                var sMessageDialog = new MessageDialog
+                {
+                    Message = { Text =
+                    "Unable to add.." }
+                };
+
+                DialogHost.Show(sMessageDialog, "RootDialog");
+                Clear();
+                return;
+            }
         }
 
         private void ClearButton_Click(object sender, RoutedEventArgs e)

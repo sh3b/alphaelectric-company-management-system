@@ -91,12 +91,25 @@ namespace AlphaElectric.Forms
             ContactFactory fac = new ContactFactory();
             if (fac.InsertContact(comp))
             {
-                MessageBox.Show("inserted");
-                Clear();
-            }
+                var sMessageDialog = new MessageDialog
+                {
+                    Message = { Text = "Inserted Succesfully!" }
+                };
 
+                DialogHost.Show(sMessageDialog, "RootDialog");
+                Clear();
+                return;
+            }
             else
-                MessageBox.Show("not inserted");
+            {
+                var sMessageDialog = new MessageDialog
+                {
+                    Message = { Text = "Unable to insert!" }
+                };
+                DialogHost.Show(sMessageDialog, "RootDialog");
+                Clear();
+                return;
+            }
         }
 
         private void ClearButton_Click(object sender, RoutedEventArgs e)

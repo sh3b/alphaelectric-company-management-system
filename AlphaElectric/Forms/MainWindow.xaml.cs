@@ -313,9 +313,9 @@ namespace AlphaElectric.Forms
         private void TextBlock_MouseLeftButtonDown_4(object sender, MouseButtonEventArgs e)
         {
             //proj
-            //HomeProjects x = new HomeProjects();
-            //UserPages.Children.Clear();
-            //UserPages.Children.Add(x);
+            HomeProjects x = new HomeProjects();
+            UserPages.Children.Clear();
+            UserPages.Children.Add(x);
         }
 
         private void TextBlock_MouseLeftButtonDown_5(object sender, MouseButtonEventArgs e)
