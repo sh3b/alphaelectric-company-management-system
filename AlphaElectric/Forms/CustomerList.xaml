@@ -93,11 +93,15 @@
                                      HorizontalAlignment="Right" VerticalAlignment="Bottom">
             <StackPanel Orientation="Horizontal">
                 <Button ToolTip="Quick add an item"
-                        Click="PopUp_AddNewCompany">
+                        Click="PopUp_AddNewCustomer">
                     <Path Data="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z"
                               Stretch="Uniform"
                               Width="15" Height="15"
                               Fill="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=Foreground}"/>
+                </Button>
+                <Button ToolTip="Quick edit an item"
+                        Click="PopUp_EditCustomer">
+                    <materialDesign:PackIcon Kind="BorderColor" />
                 </Button>
                 <!--<Button ToolTip="Remove selected item"
                             Command="{Binding RemoveSelectedItemCommand}">

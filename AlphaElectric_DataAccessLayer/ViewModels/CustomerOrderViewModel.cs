@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AlphaElectric_DataAccessLayer;
 
 namespace ViewModels
 {
@@ -14,6 +15,8 @@ namespace ViewModels
         public System.DateTime DeliveryDate { get; set; }
         public int ContactID { get; set; }
         public int Quantity { get; set; }
+
+        public int prodID { get; set; }
 
         public string Error
         {

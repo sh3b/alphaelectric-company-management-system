@@ -19,7 +19,7 @@
                  TextOptions.TextRenderingMode="Auto" 
                  GlowBrush="{DynamicResource AccentColorBrush}"
                  
-                 Height="650"
+                 Height="700"
                  Width="900"     
                  Loaded="Window_Loaded"
                  WindowStartupLocation="CenterScreen">
@@ -170,13 +170,15 @@
                     <materialDesign:ColorZone Padding="16" materialDesign:ShadowAssist.ShadowDepth="Depth2" Mode="PrimaryMid" DockPanel.Dock="Top">
                         <DockPanel>
                             <ToggleButton Style="{StaticResource MaterialDesignHamburgerToggleButton}" IsChecked="False" x:Name="MenuToggleButton"/>
-                            <materialDesign:PopupBox DockPanel.Dock="Right" PlacementMode="BottomAndAlignRightEdges" StaysOpen="False">
+                            <materialDesign:PopupBox PopupMode="Click" DockPanel.Dock="Right" PlacementMode="BottomAndAlignRightEdges" StaysOpen="False">
                                 <StackPanel>
                                     <Button Content="Log Out" Click="MenuPopupLogoutButton_OnClick"/>
                                     <Separator/>
                                     <!--<Button Content="Can't Touch This" IsEnabled="False" />-->
                                     <Button Content="About" Click="MenuPopupAboutButton_OnClick"/>
+                                    
                                 </StackPanel>
+                                <!-- end navigation links -->
                             </materialDesign:PopupBox>
                             <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22"><Run Text="Alpha Electric Switchgear Dist. LLC"/></TextBlock>
                         </DockPanel>
@@ -187,28 +189,40 @@
                             <RowDefinition Height="*" />
                         </Grid.RowDefinitions>
                         <!-- start information links -->
-                        <StackPanel Grid.Row="0" Margin="16" Orientation="Horizontal">
-                            <materialDesign:PackIcon Kind="Information" VerticalAlignment="Center" />
-                            <TextBlock Margin="8 0 10 0" VerticalAlignment="Center">Information Links:</TextBlock>
+                        <StackPanel Grid.Row="0" Margin="16 5 16 5" Orientation="Horizontal">
                             <StackPanel Orientation="Horizontal">
-                                <Button Style="{StaticResource MaterialDesignFlatButton}" x:Name="btn_ControlRun">
+                                <Button Style="{StaticResource MaterialDesignFlatButton}" x:Name="btn_Employees">
                                     <StackPanel Orientation="Horizontal">
-                                        <materialDesign:PackIcon Kind="Deskphone" VerticalAlignment="Center" />
-                                        <TextBlock MouseLeftButtonDown="TextBlock_PhoneNumbersMouseLeftButtonDown"><Run TextBlock.FontWeight="Regular" TextBlock.FontSize="14" Text="  Phone Numbers"/></TextBlock>
+                                        <materialDesign:PackIcon Kind="Account" VerticalAlignment="Center" />
+                                        <TextBlock MouseLeftButtonDown="TextBlock_MouseLeftButtonDown_1"><Run TextBlock.FontWeight="Regular" TextBlock.FontSize="14" Text="  Employees"/></TextBlock>
                                     </StackPanel>
                                 </Button>
 
-                                <Button Margin="10 0 10 0" Style="{StaticResource MaterialDesignFlatButton}" x:Name="btn_ControlRun2">
+                                <Button Margin="10 0 10 0" Style="{StaticResource MaterialDesignFlatButton}" x:Name="btn_Products">
                                     <StackPanel Orientation="Horizontal">
-                                        <materialDesign:PackIcon Kind="Fax" VerticalAlignment="Center" />
-                                        <TextBlock MouseLeftButtonDown="TextBlock_FaxOrdersMouseLeftButtonDown"><Run TextBlock.FontWeight="Regular" TextBlock.FontSize="14" Text="  Fax Orders"/></TextBlock>
+                                        <materialDesign:PackIcon Kind="Archive" VerticalAlignment="Center" />
+                                        <TextBlock MouseLeftButtonDown="TextBlock_MouseLeftButtonDown_2"><Run TextBlock.FontWeight="Regular" TextBlock.FontSize="14" Text="  Products"/></TextBlock>
                                     </StackPanel>
                                 </Button>
 
-                                <Button Margin="10 0 10 0" Style="{StaticResource MaterialDesignFlatButton}" x:Name="btn_ControlRun3">
+                                <Button Margin="10 0 10 0" Style="{StaticResource MaterialDesignFlatButton}" x:Name="btn_Companies">
                                     <StackPanel Orientation="Horizontal">
-                                        <materialDesign:PackIcon Kind="Web" VerticalAlignment="Center" />
-                                        <TextBlock MouseLeftButtonDown="TextBlock_WebOrdersMouseLeftButtonDown"><Run TextBlock.FontWeight="Regular" TextBlock.FontSize="14" Text="  Web Orders"/></TextBlock>
+                                        <materialDesign:PackIcon Kind="Briefcase" VerticalAlignment="Center" />
+                                        <TextBlock MouseLeftButtonDown="TextBlock_MouseLeftButtonDown_3"><Run TextBlock.FontWeight="Regular" TextBlock.FontSize="14" Text="  Companies"/></TextBlock>
+                                    </StackPanel>
+                                </Button>
+
+                                <Button Margin="10 0 10 0" Style="{StaticResource MaterialDesignFlatButton}" x:Name="btn_Projects">
+                                    <StackPanel Orientation="Horizontal">
+                                        <materialDesign:PackIcon Kind="Buffer" VerticalAlignment="Center" />
+                                        <TextBlock MouseLeftButtonDown="TextBlock_MouseLeftButtonDown_4"><Run TextBlock.FontWeight="Regular" TextBlock.FontSize="14" Text="  Projects"/></TextBlock>
+                                    </StackPanel>
+                                </Button>
+
+                                <Button Margin="10 0 10 0" Style="{StaticResource MaterialDesignFlatButton}" x:Name="btn_PurchaseSelling">
+                                    <StackPanel Orientation="Horizontal">
+                                        <materialDesign:PackIcon Kind="BasketUnfill" VerticalAlignment="Center" />
+                                        <TextBlock MouseLeftButtonDown="TextBlock_MouseLeftButtonDown_5"><Run TextBlock.FontWeight="Regular" TextBlock.FontSize="14" Text="  Purchase &amp; Selling"/></TextBlock>
                                     </StackPanel>
                                 </Button>
                             </StackPanel>

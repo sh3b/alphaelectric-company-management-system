@@ -71,36 +71,45 @@
         <Grid Grid.Row="1" Name="UserPages" Margin="20,0,20,0"></Grid>
         <TextBlock Name="TextBlock_TitleName" Grid.Row="0" Margin="10 20 10 10" FontWeight="DemiBold" Style="{StaticResource MaterialDesignHeadlineTextBlock}">Employee List</TextBlock>
 
-        <DataGrid Grid.Row="1" Grid.Column="0"    ScrollViewer.CanContentScroll="True" 
-      ScrollViewer.VerticalScrollBarVisibility="Auto"
-      ScrollViewer.HorizontalScrollBarVisibility="Auto"
-                      AutoGenerateColumns="False" Height="Auto" HorizontalAlignment="Left" Name="DataGrid" Width="{Binding Path=ActualWidth, ElementName=grid}">
+        <DataGrid Grid.Row="1" Grid.Column="0"    
+                  ScrollViewer.CanContentScroll="True" 
+                  ScrollViewer.VerticalScrollBarVisibility="Auto"
+                  ScrollViewer.HorizontalScrollBarVisibility="Auto"
+                  AutoGenerateColumns="False" 
+                  Height="Auto" 
+                  HorizontalAlignment="Left"
+                  Name="DataGrid" Width="{Binding Path=ActualWidth, ElementName=grid}">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding FirstName}" Header="First Name" Width="Auto"  />
                 <DataGridTextColumn Binding="{Binding LastName}" Header="Last Name" Width="Auto" />
                 <DataGridTextColumn Binding="{Binding Phone}" Header="Phone" Width="Auto" />
                 <DataGridTextColumn Binding="{Binding Passport}" Header="Passport" Width="Auto" />
-                <DataGridTextColumn Binding="{Binding JoinDate}" Header="Join Date" Width="Auto"  />
+                <DataGridTextColumn Binding="{Binding JoinDate, StringFormat=d,ConverterCulture=en-NZ}" Header="Join Date" Width="Auto"  />
                 <DataGridTextColumn Binding="{Binding Address}" Header="Address" Width="Auto"  />
                 <DataGridTextColumn Binding="{Binding Designation.Name}" Header="Designation" Width="Auto"  />
             </DataGrid.Columns>
         </DataGrid>
-        <materialDesign:PopupBox Grid.Row="2"
-                                     Name="PopupBox" PopupMode="Click"
-                                     Visibility="Collapsed"
-                                     Style="{StaticResource MaterialDesignMultiFloatingActionPopupBox}"
-                                     PlacementMode="LeftAndAlignMiddles"
-                                     UnfurlOrientation="Horizontal"
-                                     ToolTip="Manage items"
-                                     Margin="10 10 30 20"
-                                     HorizontalAlignment="Right" VerticalAlignment="Bottom">
+        <materialDesign:PopupBox
+            Grid.Row="2"
+            Name="PopupBox" PopupMode="Click"
+            Visibility="Visible"
+            Style="{StaticResource MaterialDesignMultiFloatingActionPopupBox}"
+            PlacementMode="LeftAndAlignMiddles"
+            UnfurlOrientation="Horizontal"
+            ToolTip="Manage items"
+            Margin="10 10 30 20"
+            HorizontalAlignment="Right" VerticalAlignment="Bottom">
             <StackPanel Orientation="Horizontal">
                 <Button ToolTip="Quick add an item"
-                        Click="PopUp_AddNewCompany">
+                        Click="PopUp_AddNewEmployee">
                     <Path Data="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z"
-                              Stretch="Uniform"
-                              Width="15" Height="15"
-                              Fill="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=Foreground}"/>
+                          Stretch="Uniform"
+                          Width="15" Height="15"
+                          Fill="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=Foreground}"/>
+                </Button>
+                <Button ToolTip="Quick edit an item"
+                        Click="PopUp_EditEmployee">
+                    <materialDesign:PackIcon Kind="BorderColor" />
                 </Button>
                 <!--<Button ToolTip="Remove selected item"
                             Command="{Binding RemoveSelectedItemCommand}">
@@ -112,14 +121,14 @@
             </StackPanel>
         </materialDesign:PopupBox>
         <materialDesign:PopupBox Grid.Row="2"          
-                                    Name="PopupBoxWithClose" PopupMode="Click"
-                                    Visibility="Collapsed" 
-                                    Style="{StaticResource MaterialDesignMultiFloatingActionPopupBox}"
-                                    PlacementMode="LeftAndAlignMiddles"
-                                    UnfurlOrientation="Horizontal"
-                                    ToolTip="Manage items"
-                                    Margin="10 10 30 20"
-                                    HorizontalAlignment="Right" VerticalAlignment="Bottom">
+                                 Name="PopupBoxWithClose" PopupMode="Click"
+                                 Visibility="Collapsed" 
+                                 Style="{StaticResource MaterialDesignMultiFloatingActionPopupBox}"
+                                 PlacementMode="LeftAndAlignMiddles"
+                                 UnfurlOrientation="Horizontal"
+                                 ToolTip="Manage items"
+                                 Margin="10 10 30 20"
+                                 HorizontalAlignment="Right" VerticalAlignment="Bottom">
             <StackPanel Orientation="Horizontal">
                 <Button ToolTip="Close"
                         Click="PopUp_Close">

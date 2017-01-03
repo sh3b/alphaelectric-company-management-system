@@ -100,20 +100,42 @@ namespace AlphaElectric.Forms
                 DialogHost.Show(sMessageDialog, "RootDialog");
                 return;
             }
-            #endregion
 
-            bool flag = false;
+            if (SupplierComboBox.SelectedValue == null)
+            {
+                var sMessageDialog = new MessageDialog
+                {
+                    Message = { Text =
+                    "ERROR: Select all fields!" }
+                };
+
+                DialogHost.Show(sMessageDialog, "RootDialog");
+                return;
+            }
+
+            if (productItemsList.Count() == 0)
+            {
+                var sMessageDialog = new MessageDialog
+                {
+                    Message = { Text =
+                    "There are no items in the purchase order,\nadd items!" }
+                };
+
+                DialogHost.Show(sMessageDialog, "RootDialog");
+                return;
+            }
+            #endregion
 
             // Creating PO 
             po.PODate = PODateDatePicker.SelectedDate.Value;
             po.ContactID = int.Parse(SupplierComboBox.SelectedValue.ToString());
             PurchaseOrderFactory fac = new PurchaseOrderFactory();
-            flag = fac.InsertPurchaseOrder(po);
+            fac.InsertPurchaseOrder(po);
 
             // Adding Products to PO
-
             using (var db = new AlphaElectricEntitiesDB())
             {
+                bool flag = false;
                 // Multiple Products
                 foreach (var item in productItemsList)
                 {
@@ -132,6 +154,7 @@ namespace AlphaElectric.Forms
                         po_prod.Quantity = item.Quantity;
                         db.Product_PurchaseOrderBT.Add(po_prod);
                         db.SaveChanges();
+                        flag = true;
                     }
                     // Checks if existing ProductID and PurchaseOrderID exists
                     // Used if item is added again
@@ -142,21 +165,68 @@ namespace AlphaElectric.Forms
                             xx.Quantity += item.Quantity;
                         }
                         db.SaveChanges();
+                        flag = true;
                     }
                 }
                 productItemsList.Clear();
                 ClearItems();
                 Clear();
+
+                if (flag)
+                {
+                    var sMessageDialog = new MessageDialog
+                    {
+                        Message = { Text = "Purchase Order added!" }
+                    };
+                    DialogHost.Show(sMessageDialog, "RootDialog");
+                    return;
+                }
             }
         }
 
         private void InsertItem_Click(object sender, RoutedEventArgs e)
         {
+            int a;
+            if (string.IsNullOrEmpty(QuantityTextBox.Text) || !(int.TryParse(QuantityTextBox.Text, out a)))
+            {
+                var sMessageDialog = new MessageDialog
+                {
+                    Message = { Text =
+                    "ERROR: Enter valid Quantity!" }
+                };
+
+                DialogHost.Show(sMessageDialog, "RootDialog");
+                return;
+            }
+
+            if (ProductComboBox.SelectedValue == null || int.Parse(QuantityTextBox.Text) <= 0)
+            {
+                var sMessageDialog = new MessageDialog
+                {
+                    Message = { Text =
+                    "ERROR: Select Product and Add Quantity\n(positive number)!" }
+                };
+
+                DialogHost.Show(sMessageDialog, "RootDialog");
+                return;
+            }
+
             ProductItem item = new ProductItem();
             item.ProductID = int.Parse(ProductComboBox.SelectedValue.ToString());
             item.Quantity = int.Parse(QuantityTextBox.Text);
             productItemsList.Add(item);
             ClearItems();
+
+            if (true)
+            {
+                var sMessageDialog = new MessageDialog
+                {
+                    Message = { Text =
+                    "Item added!" }
+                };
+                DialogHost.Show(sMessageDialog, "RootDialog");
+                return;
+            }
         }
 
         private void ClearButton_Click(object sender, RoutedEventArgs e)

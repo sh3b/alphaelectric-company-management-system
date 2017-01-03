@@ -1,0 +1,386 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema targetNamespace="Scryber.Data, Scryber.Components, Version=0.9.0.0, Culture=neutral, PublicKeyToken=872cbeb81db952fe"
+    elementFormDefault="qualified"
+    xmlns="Scryber.Data, Scryber.Components, Version=0.9.0.0, Culture=neutral, PublicKeyToken=872cbeb81db952fe"
+    xmlns:mstns="Scryber.Data, Scryber.Components, Version=0.9.0.0, Culture=neutral, PublicKeyToken=872cbeb81db952fe"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:pdf="Scryber.Components, Scryber.Components, Version=0.9.0.0, Culture=neutral, PublicKeyToken=872cbeb81db952fe"
+>
+
+  <xs:import namespace="Scryber.Components, Scryber.Components, Version=0.9.0.0, Culture=neutral, PublicKeyToken=872cbeb81db952fe" 
+             schemaLocation="Scryber.Types.v09.xsd" />
+  <xs:import namespace="Scryber.Components, Scryber.Components, Version=0.9.0.0, Culture=neutral, PublicKeyToken=872cbeb81db952fe" schemaLocation="Scryber.Components.v09.xsd" />
+  
+  <!-- 
+    Attributes
+  -->
+
+  <xs:attributeGroup name="Data-ComponentAttributes" >
+    <xs:attribute name="style-identifier" type="xs:string" form="qualified" ></xs:attribute>
+  </xs:attributeGroup>
+  
+  <!-- 
+    For-Each
+  -->
+
+  <xs:complexType name="Binding-ForEachType">
+    <xs:complexContent >
+      <xs:extension base="pdf:ScryberDataSourceBaseType" >
+        <xs:sequence>
+          <xs:element name="Template" form="unqualified" minOccurs="0" maxOccurs="1" type="pdf:AnyDocumentContentType" ></xs:element>
+        </xs:sequence>
+        <xs:attribute name="select" type="pdf:BindableXPathType" use="required" />
+        <xs:attribute name="datasource-id" type="xs:string" use="optional" />
+        <xs:attribute name="template" type="pdf:BindableTemplateAttributeType" use="optional" />
+        <xs:attributeGroup ref="DataElementAttributes" />
+        <xs:attributeGroup ref="DataRangeAttributes" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  
+  <xs:element name="ForEach" type="Binding-ForEachType" substitutionGroup="pdf:ScryberDataSourceBase"  />
+  
+  <!-- 
+   If
+  -->
+
+  <xs:complexType name="Binding-IfType">
+    <xs:complexContent>
+      <xs:extension base="pdf:ScryberDataSourceBaseType" >
+        <xs:sequence>
+          <xs:element name="Template" form="unqualified" minOccurs="0" maxOccurs="1" type="pdf:AnyDocumentContentType" ></xs:element>
+        </xs:sequence>
+        <xs:attributeGroup ref="DataElementAttributes" />
+        <xs:attribute name="test" type="pdf:BindableXPathType" use="required" />
+        <xs:attribute name="template" type="pdf:BindableTemplateAttributeType" use="optional" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:element name="If" type="Binding-IfType" substitutionGroup="pdf:ScryberDataSourceBase" /> 
+  
+  <!-- 
+    Choose
+  -->
+  
+  <xs:complexType name="Binding-ChooseType">
+    <xs:complexContent>
+      <xs:extension base="pdf:ScryberDataSourceBaseType" >
+        <xs:sequence minOccurs="1">
+          <xs:sequence minOccurs="1" maxOccurs="unbounded" >
+            <xs:element name="When"  minOccurs="1" maxOccurs="unbounded" >
+              <xs:complexType >
+                <xs:sequence>
+                  <xs:element name="Template" form="unqualified" minOccurs="0" maxOccurs="1" type="pdf:AnyDocumentContentType" ></xs:element>
+                </xs:sequence>
+                <xs:attribute name="test" type="pdf:BindableXPathType" use="required" />
+                <xs:attribute name="template" type="pdf:BindableTemplateAttributeType" use="optional" />
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+          <xs:element name="Otherwise" minOccurs="0" maxOccurs="1" >
+            <xs:complexType >
+              <xs:sequence>
+                <xs:element name="Template" form="unqualified" minOccurs="0" maxOccurs="1" type="pdf:AnyDocumentContentType" ></xs:element>
+              </xs:sequence>
+              <xs:attribute name="template" type="pdf:BindableTemplateAttributeType" use="optional" />
+            </xs:complexType>
+          </xs:element>
+        </xs:sequence>
+        <xs:attributeGroup ref="DataElementAttributes" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:element name="Choose" type="Binding-ChooseType" substitutionGroup="pdf:ScryberDataSourceBase" />
+  
+  <!-- 
+    XMLDataSource
+  -->
+
+  <xs:complexType name="Binding-XMLDataSourceType" >
+    <xs:complexContent>
+      <xs:extension base="pdf:ScryberDataSourceBaseType" >
+        <xs:all minOccurs="0" maxOccurs="1" >
+          <xs:element name="Transform" minOccurs="0" maxOccurs="1" type="Binding-XSLTransform" form="unqualified" />
+          <xs:element name="Namespaces" minOccurs="0" maxOccurs="1" type="Binding-XMLNamespaces" form="unqualified" />
+          <xs:element name="Commands" minOccurs="0" maxOccurs="1" type="Binding-XMLCommandList" form="unqualified" />
+        </xs:all>
+        <xs:attributeGroup ref="DataElementAttributes" />
+        <xs:attribute name="source-path" type="pdf:BindableStringType" use="optional" />
+        <xs:attribute name="xpath-data" type="pdf:BindableAttributeType" use="optional" />
+        <xs:attribute name="xml-node-data" type="pdf:BindableAttributeType" use="optional" />
+        <xs:attribute name="cache-duration" type="pdf:BindableIntgerType" use="optional" />
+        <xs:attribute name="execute" type="pdf:BindableStringType" use="optional" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:element name="XMLDataSource" type="Binding-XMLDataSourceType" substitutionGroup="pdf:ScryberDataSourceBase" />
+
+  <!-- XML Data Source child elements -->
+
+  <xs:complexType name="Binding-XMLCommandList" >
+    <xs:sequence minOccurs="0" maxOccurs="1">
+      <xs:element ref="ScryberXmlCommnadBase" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="Binding-XSLTransform" >
+    <xs:sequence minOccurs="0" maxOccurs="unbounded" >
+      <xs:choice minOccurs="0" maxOccurs="unbounded" >
+        <xs:element name="XsltQSArgument" type="XsltQSArgumentType" form="qualified" />
+        <xs:element name="XsltArgument" type="XsltArgumentType" form="qualified" />
+        <xs:element name="XsltItemArgument" type="XsltItemArgumentType" form="qualified" />
+      </xs:choice>
+    </xs:sequence>
+    <xs:attribute name="path" type="pdf:BindableStringType" use="optional" />
+  </xs:complexType>
+
+  <!-- XML Datasource Command types -->
+
+  <xs:complexType name="ScryberXmlCommandBaseType" abstract="true" >
+    <xs:complexContent>
+      <xs:extension base="pdf:ScryberRootBaseType" >
+        <xs:attribute name="id" type="xs:string" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:element name="ScryberXmlCommnadBase" abstract="true" type="ScryberXmlCommandBaseType" />
+  
+  <!-- XSLT Argument types -->
+
+  <xs:complexType name="ScryberXsltArgumentBaseType" abstract="true" >
+    <xs:complexContent>
+      <xs:extension base="pdf:ScryberRootBaseType" />
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:element name="ScryberXsltArgumentBase" abstract="true" type="ScryberXsltArgumentBaseType" />
+  
+  
+  
+  <xs:complexType name="XsltArgumentType" >
+    <xs:attribute name="name" type="xs:string" use="required" />
+    <xs:attribute name="value" type="xs:string" use="optional" />
+    <xs:attribute name="namespace" type="xs:string" use="optional" />
+  </xs:complexType>
+
+  <xs:complexType name="XsltQSArgumentType" >
+    <xs:attribute name="name" type="xs:string" use="required" />
+    <xs:attribute name="default-value" type="xs:string" use="optional" />
+    <xs:attribute name="namespace" type="xs:string" use="optional" />
+    <xs:attribute name="param-name" type="xs:string" use="required" />
+  </xs:complexType>
+
+  <xs:complexType name="XsltItemArgumentType" >
+    <xs:attribute name="name" type="xs:string" use="required" />
+    <xs:attribute name="default-value" type="xs:string" use="optional" />
+    <xs:attribute name="namespace" type="xs:string" use="optional" />
+    <xs:attribute name="item-name" type="xs:string" use="required" />
+  </xs:complexType>
+
+  <xs:complexType name="Binding-XMLNamespaces" >
+    <xs:sequence maxOccurs="unbounded" minOccurs="0" >
+      <xs:element name="Xmlns" type="XMLPrefix2Namespace" form="qualified" />
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="XMLPrefix2Namespace" >
+    <xs:attribute name="prefix" type="xs:string" use="required" />
+    <xs:attribute name="namespace" type="xs:string" use="required" />
+  </xs:complexType>
+  
+  
+  <!--
+    Attribute groups
+  -->
+
+  <xs:attributeGroup name="DataElementAttributes" >
+    <xs:attribute name="id" use="optional" type="xs:ID" />
+    <xs:attributeGroup ref="pdf:ElementEventAttributes" />
+  </xs:attributeGroup>
+
+  <xs:attributeGroup name="DataRangeAttributes" >
+    <xs:attribute name="start-index" use="optional" type="pdf:BindableIntgerType" />
+    <xs:attribute name="count" use="optional" type="pdf:BindableIntgerType" />
+    <xs:attribute name="step" use="optional" type="pdf:BindableIntgerType" />
+  </xs:attributeGroup>
+
+
+  
+
+  <!-- 
+  -
+  - SQL Command types
+  -
+  -->
+
+  <xs:complexType name="SqlCommandType" >
+    <xs:complexContent>
+      <xs:extension base="ScryberXmlCommandBaseType" >
+        <xs:sequence minOccurs="1" maxOccurs="1" >
+          <xs:element name="Statement" form="unqualified" ></xs:element>
+          <xs:element name="Parameters" minOccurs="0" maxOccurs="1" form="unqualified" >
+            <xs:complexType >
+              <xs:sequence minOccurs="1" maxOccurs="unbounded" >
+                <xs:element name="SqlParameter" type="SqlParameterDefinitionType" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="Relations" minOccurs="0" maxOccurs="1" form="unqualified" >
+            <xs:complexType >
+              <xs:sequence minOccurs="0" maxOccurs="unbounded">
+                <xs:element name="SqlNested" type="SqlNestedInRelationType" ></xs:element>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:sequence>
+        <xs:attributeGroup ref="SqlCommandAttributes" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:element name="SqlCommand" type="SqlCommandType" substitutionGroup="ScryberXmlCommnadBase" />
+  
+  <xs:attributeGroup name="SqlCommandAttributes" >
+    <xs:attribute name="element-name" type="pdf:BindableStringType" />
+    <xs:attribute name="element-namespace" type="pdf:BindableStringType" />
+    <xs:attribute name="command-type" type="SqlCommandTypeEnum" />
+    <xs:attribute name="connection-name" type="pdf:BindableStringType" />
+    <xs:attribute name="connection-string" type="pdf:BindableStringType" />
+    <xs:attribute name="connection-provider" type="pdf:BindableStringType" />
+    <xs:attribute name="statement" type="pdf:BindableStringType" />
+    <xs:attribute name="attributes" type="pdf:BindableStringType" />
+  </xs:attributeGroup>
+
+
+  <!-- 
+  - SQL Relations
+  - Supports nesting one command output within another commands results.
+  -->
+
+  <xs:complexType name="SqlNestedInRelationType" >
+    <xs:sequence minOccurs="1" maxOccurs="unbounded" >
+      <xs:element name="Match" type="SqlMatchRelationType" />
+    </xs:sequence>
+    <xs:attribute name="command" type="pdf:IDType" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="SqlMatchRelationType" >
+    <xs:attribute name="child" type="xs:string" use="required" />
+    <xs:attribute name="parent" type="xs:string" use="required" />
+  </xs:complexType>
+
+
+  <xs:complexType name="SqlParameterDefinitionType" >
+    <xs:attribute name="name" type="pdf:BindableStringType" />
+    <xs:attribute name="type" type="SqlDataTypeEnum" />
+    <xs:attribute name="default-value" type="pdf:BindableStringType" />
+    <xs:attribute name="size" type="pdf:BindableIntgerType"/>
+    <xs:attribute name="value" type="pdf:BindableStringType" />
+  </xs:complexType>
+
+
+  <xs:simpleType name="SqlDataTypeEnum" >
+    <xs:restriction base="xs:string" >
+      <xs:enumeration value="AnsiString" />
+      <xs:enumeration value="AnsiStringFixedLength" />
+      <xs:enumeration value="Binary" />
+      <xs:enumeration value="Boolean" />
+      <xs:enumeration value="Byte" />
+      <xs:enumeration value="Currency"/>
+      <xs:enumeration value="Date" />
+      <xs:enumeration value="DateTime" />
+      <xs:enumeration value="DateTime2" />
+      <xs:enumeration value="DateTimeOffset" />
+      <xs:enumeration value="Decimal" />
+      <xs:enumeration value="Double"/>
+      <xs:enumeration value="Guid"/>
+      <xs:enumeration value="Int16"/>
+      <xs:enumeration value="Int32"/>
+      <xs:enumeration value="Int64"/>
+      <xs:enumeration value="Object"/>
+      <xs:enumeration value="SByte"/>
+      <xs:enumeration value="Single"/>
+      <xs:enumeration value="String"/>
+      <xs:enumeration value="StringFixedLength"/>
+      <xs:enumeration value="Time"/>
+      <xs:enumeration value="UInt16"/>
+      <xs:enumeration value="UInt32"/>
+      <xs:enumeration value="UInt64"/>
+      <xs:enumeration value="VarNumeric"/>
+      <xs:enumeration value="Xml"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="SqlCommandTypeEnum" >
+    <xs:restriction base="xs:string" >
+      <xs:enumeration value="Text" />
+      <xs:enumeration value="TableDirect" />
+      <xs:enumeration value="StoredProcedure" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- 
+    Object Command type
+  -->
+
+  <xs:complexType name="ObjectCommandType" >
+    <xs:complexContent >
+      <xs:extension base="ScryberXmlCommandBaseType">
+        <xs:sequence minOccurs="1" maxOccurs="1">
+          <xs:element name="Parameters" form="unqualified" minOccurs="0" maxOccurs="1" type="ObjectCommandParameterList" />
+        </xs:sequence>
+        <xs:attributeGroup ref="ObjectCommandAttrbutes" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:element name="ObjectCommand" type="ObjectCommandType" substitutionGroup="ScryberXmlCommnadBase" />
+
+  <xs:complexType name="ObjectCommandParameterList" >
+    <xs:sequence minOccurs="0" maxOccurs="unbounded">
+      <xs:element name="ObjectParameter" type="Binding-ObjectParameterType" ></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="Binding-ObjectParameterType" >
+    <xs:attribute name="name" type="pdf:BindableStringType" use="required" />
+    <xs:attribute name="value" type="pdf:BindableStringType" use="optional" />
+    <xs:attribute name="default-value" type="xs:string" use="optional" />
+    <xs:attribute name="type" type="TypeCodeEnum" use="optional" />
+  </xs:complexType>
+  
+  <xs:attributeGroup name="ObjectCommandAttrbutes" >
+    <xs:attribute name="method" type="pdf:BindableStringType" use="required" />
+    <xs:attribute name="type" type="pdf:BindableStringType" use="optional" />
+    <xs:attribute name="schema-method" type="pdf:BindableStringType" use="optional" />
+    <xs:attribute name="schema-type" type="pdf:BindableStringType" use="optional" />
+  </xs:attributeGroup>
+
+  <xs:simpleType name="TypeCodeEnum" >
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Empty" />
+      <xs:enumeration value="Object" />
+      <xs:enumeration value="DBNull" />
+      <xs:enumeration value="Boolean" />
+      <xs:enumeration value="Char" />
+      <xs:enumeration value="SByte" />
+      <xs:enumeration value="Byte" />
+      <xs:enumeration value="Int16" />
+      <xs:enumeration value="UInt16" />
+      <xs:enumeration value="Int32" />
+      <xs:enumeration value="UInt32" />
+      <xs:enumeration value="Int64" />
+      <xs:enumeration value="UInt64" />
+      <xs:enumeration value="Single"/>
+      <xs:enumeration value="Double" />
+      <xs:enumeration value="Decimal" />
+      <xs:enumeration value="DateTime" />
+      <xs:enumeration value="String"/>
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>
+

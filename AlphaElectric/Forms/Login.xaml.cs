@@ -107,11 +107,6 @@ namespace AlphaElectric.Forms
             }
         }
 
-        private void ExitButton_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-        }
-
         private void PasswordBox_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Enter)
@@ -123,5 +118,11 @@ namespace AlphaElectric.Forms
             this.NameTextBox.Clear();
             this.PasswordBox.Clear();
         }
+
+        private void ExitButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
     }
 }

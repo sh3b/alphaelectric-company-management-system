@@ -39,6 +39,8 @@ namespace AlphaElectric.Forms
 
             _vm = new ProductViewModel();
             this.DataContext = _vm;
+            ClearButton_Click(null, null);
+
         }
 
         //Executing after loading window, refer to XAML
@@ -47,6 +49,7 @@ namespace AlphaElectric.Forms
             worker = new BackgroundWorker();
             worker.DoWork += Worker_DoWork;
             worker.RunWorkerAsync();
+
         }
 
         void Worker_DoWork(object sender, DoWorkEventArgs e)
@@ -134,6 +137,57 @@ namespace AlphaElectric.Forms
                 DialogHost.Show(sMessageDialog, "RootDialog");
                 return;
             }
+
+            if (!(bool)P_Panel.IsChecked && !(bool)P_Part.IsChecked)
+            {
+                var sMessageDialog = new MessageDialog
+                {
+                    Message = { Text =
+                    "ERROR: Select either part or panel!" }
+                };
+
+                DialogHost.Show(sMessageDialog, "RootDialog");
+                return;
+            }
+
+
+            if ((bool)P_Panel.IsChecked)
+            {
+                if (MakeComboBox.SelectedValue == null ||
+                    PanelTypeComboBox.SelectedValue == null ||
+                    SizeComboBox.SelectedValue == null ||
+                    PanelIPNumberComboBox.SelectedValue == null ||
+                    CertComboBox.SelectedValue == null
+                    )
+                {
+                    var sMessageDialog = new MessageDialog
+                    {
+                        Message = { Text =
+                    "ERROR: Select all fields!" }
+                    };
+
+                    DialogHost.Show(sMessageDialog, "RootDialog");
+                    return;
+                }
+            }
+
+            if ((bool)P_Part.IsChecked)
+            {
+                if (MakeComboBox.SelectedValue == null ||
+                    PartTypeComboBox.SelectedValue == null
+                    )
+                {
+                    var sMessageDialog = new MessageDialog
+                    {
+                        Message = { Text =
+                    "ERROR: Select all fields!" }
+                    };
+
+                    DialogHost.Show(sMessageDialog, "RootDialog");
+                    return;
+                }
+            }
+
             #endregion
 
             AlphaElectric_DataAccessLayer.Panel panel = new AlphaElectric_DataAccessLayer.Panel();

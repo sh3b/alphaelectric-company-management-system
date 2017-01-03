@@ -25,9 +25,9 @@ namespace AlphaElectric.Forms
     /// <summary>
     /// Interaction logic for Home.xaml
     /// </summary>
-    public partial class Home : UserControl
+    public partial class HomeCompanies : UserControl
     {
-        public Home()
+        public HomeCompanies()
         {
             InitializeComponent();
             WelcomeMessage.Text = "Welcome " + LoggedInUser.Instance.Info.Name + "!";
@@ -53,58 +53,27 @@ namespace AlphaElectric.Forms
 
         private void ButtonEmployees_Click(object sender, RoutedEventArgs e)
         {
-            this.mainscrollviewer.Visibility = Visibility.Collapsed;
-            this.topgrid.Visibility = Visibility.Collapsed;
-            this.homePopupBox.Visibility = Visibility.Collapsed;
 
-
-            HomeEmployees x = new HomeEmployees();
-            UserPages.Children.Clear();
-            UserPages.Children.Add(x);
         }
 
         private void ButtonProducts_Click(object sender, RoutedEventArgs e)
         {
-            this.mainscrollviewer.Visibility = Visibility.Collapsed;
-            this.topgrid.Visibility = Visibility.Collapsed;
-            this.homePopupBox.Visibility = Visibility.Collapsed;
 
-            HomeProducts x = new HomeProducts();
-            UserPages.Children.Clear();
-            UserPages.Children.Add(x);
         }
 
         private void ButtonCompanies_Click(object sender, RoutedEventArgs e)
         {
-            this.mainscrollviewer.Visibility = Visibility.Collapsed;
-            this.topgrid.Visibility = Visibility.Collapsed;
-            this.homePopupBox.Visibility = Visibility.Collapsed;
 
-            HomeCompanies x = new HomeCompanies();
-            UserPages.Children.Clear();
-            UserPages.Children.Add(x);
         }
 
         private void ButtonProjects_Click(object sender, RoutedEventArgs e)
         {
-            this.mainscrollviewer.Visibility = Visibility.Collapsed;
-            this.topgrid.Visibility = Visibility.Collapsed;
-            this.homePopupBox.Visibility = Visibility.Collapsed;
 
-            //HomeProjects x = new HomeProjects();
-            //UserPages.Children.Clear();
-            //UserPages.Children.Add(x);
         }
 
         private void ButtonPurchaseSelling_Click(object sender, RoutedEventArgs e)
         {
-            this.mainscrollviewer.Visibility = Visibility.Collapsed;
-            this.topgrid.Visibility = Visibility.Collapsed;
-            this.homePopupBox.Visibility = Visibility.Collapsed;
 
-            HomePurchaseSelling x = new HomePurchaseSelling();
-            UserPages.Children.Clear();
-            UserPages.Children.Add(x);
         }
         #endregion
 
@@ -132,5 +101,35 @@ namespace AlphaElectric.Forms
             Process.Start("http://alphaelectric.shuayb.me/");
         }
         #endregion
+
+        private void ButtonViewCompanies_Click(object sender, RoutedEventArgs e)
+        {
+            this.topgrid.Visibility = Visibility.Collapsed;
+            this.mainscrollviewer.Visibility = Visibility.Collapsed;
+
+            CompanyList x = new CompanyList();
+            UserPages.Children.Clear();
+            UserPages.Children.Add(x);
+        }
+
+        private void ButtonUpdateCompanies_Click(object sender, RoutedEventArgs e)
+        {
+            this.topgrid.Visibility = Visibility.Collapsed;
+            this.mainscrollviewer.Visibility = Visibility.Collapsed;
+
+            CompanyEdit x = new CompanyEdit();
+            UserPages.Children.Clear();
+            UserPages.Children.Add(x);
+        }
+
+        private void ButtonAddNewCompany_Click(object sender, RoutedEventArgs e)
+        {
+            this.topgrid.Visibility = Visibility.Collapsed;
+            this.mainscrollviewer.Visibility = Visibility.Collapsed;
+
+            CompanyAddNew x = new CompanyAddNew();
+            UserPages.Children.Clear();
+            UserPages.Children.Add(x);
+        }
     }
 }

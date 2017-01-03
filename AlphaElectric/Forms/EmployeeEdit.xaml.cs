@@ -94,7 +94,8 @@ namespace AlphaElectric.Forms
             this.PassportTextBox.GetBindingExpression(TextBox.TextProperty).UpdateSource();
             this.JoinDateDatePicker.GetBindingExpression(DatePicker.SelectedDateProperty).UpdateSource();
             this.AddressTextBox.GetBindingExpression(TextBox.TextProperty).UpdateSource();
-            //this.DesignationComboBox.GetBindingExpression(ComboBox.SelectedValueProperty).UpdateSource();
+            this.DesignationComboBox.GetBindingExpression(ComboBox.SelectedValueProperty).UpdateSource();
+            this.SelectEmployeeComboBox.GetBindingExpression(ComboBox.SelectedValueProperty).UpdateSource();
         }
 
         private void InsertButton_Click(object sender, RoutedEventArgs e)
@@ -106,7 +107,10 @@ namespace AlphaElectric.Forms
                 Validation.GetHasError(PhoneTextBox) ||
                 Validation.GetHasError(PassportTextBox) ||
                 Validation.GetHasError(JoinDateDatePicker) ||
-                 Validation.GetHasError(AddressTextBox))
+                Validation.GetHasError(AddressTextBox) ||
+                Validation.GetHasError(DesignationComboBox) ||
+                Validation.GetHasError(SelectEmployeeComboBox)
+                )
             {
                 var sMessageDialog = new MessageDialog
                 {
@@ -117,6 +121,31 @@ namespace AlphaElectric.Forms
                 DialogHost.Show(sMessageDialog, "RootDialog");
                 return;
             }
+
+            if (SelectEmployeeComboBox.SelectedItem == null)
+            {
+                var sMessageDialog = new MessageDialog
+                {
+                    Message = { Text =
+                    "ERROR: Select a Employee!" }
+                };
+
+                DialogHost.Show(sMessageDialog, "RootDialog");
+                return;
+            }
+
+            if (DesignationComboBox.SelectedItem == null)
+            {
+                var sMessageDialog = new MessageDialog
+                {
+                    Message = { Text =
+                    "ERROR: Select a Designation!" }
+                };
+
+                DialogHost.Show(sMessageDialog, "RootDialog");
+                return;
+            }
+
             #endregion
 
             EmployeeFactory fac = new EmployeeFactory();

@@ -92,7 +92,15 @@
                 <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" FontWeight="DemiBold" Style="{StaticResource MaterialDesignHeadlineTextBlock}">Edit Employee Details</TextBlock>
 
                 <TextBlock FontWeight="DemiBold" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" Margin="0 13 8 5">Select Employee</TextBlock>
-                <ComboBox SelectionChanged="SelectEmployeeComboBox_SelectionChanged"  Grid.Row="1" Grid.Column="1" Name="SelectEmployeeComboBox" materialDesign:HintAssist.Hint="Select Designation" MinWidth="72" Margin="0 0 0 0" VerticalAlignment="Bottom"></ComboBox>
+                <ComboBox SelectionChanged="SelectEmployeeComboBox_SelectionChanged"  Grid.Row="1" Grid.Column="1" Name="SelectEmployeeComboBox" materialDesign:HintAssist.Hint="Select" MinWidth="72" Margin="0 0 0 0" VerticalAlignment="Bottom">
+                    <ComboBox.SelectedValue>
+                        <Binding Path="ID" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                            <Binding.ValidationRules>
+                                <domain:NotEmptyValidationRule ValidatesOnTargetUpdated="True"/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </ComboBox.SelectedValue>
+                </ComboBox>
 
                 <TextBlock Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" Margin="16 0 8 0">First Name</TextBlock>
                 <TextBox Grid.Row="2" Grid.Column="1" x:Name="FirstNameTextBox" materialDesign:HintAssist.Hint="Insert First Name">
@@ -171,7 +179,15 @@
                     </TextBox.Text>
                 </TextBox>
                 <TextBlock Grid.Row="8" Grid.Column="0"  VerticalAlignment="Center" Margin="16 0 8 0">Designation</TextBlock>
-                <ComboBox  Grid.Row="8" Grid.Column="1" Name="DesignationComboBox" materialDesign:HintAssist.Hint="Select Designation" MinWidth="72" Margin="0 0 0 0" VerticalAlignment="Bottom"></ComboBox>
+                <ComboBox  Grid.Row="8" Grid.Column="1" Name="DesignationComboBox" materialDesign:HintAssist.Hint="Select Designation" MinWidth="72" Margin="0 0 0 0" VerticalAlignment="Bottom">
+                    <ComboBox.SelectedValue>
+                        <Binding Path="DesignationID" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                            <Binding.ValidationRules>
+                                <domain:NotEmptyValidationRule ValidatesOnTargetUpdated="True"/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </ComboBox.SelectedValue>
+                </ComboBox>
             </Grid>
         </ScrollViewer>
         <!-- start + popupbox -->

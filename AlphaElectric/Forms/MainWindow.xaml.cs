@@ -50,30 +50,30 @@ namespace AlphaElectric.Forms
 
         #region main-buttons
 
-        private void ButtonEmployees_Click(object sender, RoutedEventArgs e)
-        {
+        //private void ButtonEmployees_Click(object sender, RoutedEventArgs e)
+        //{
 
-        }
+        //}
 
-        private void ButtonProducts_Click(object sender, RoutedEventArgs e)
-        {
+        //private void ButtonProducts_Click(object sender, RoutedEventArgs e)
+        //{
 
-        }
+        //}
 
-        private void ButtonCompanies_Click(object sender, RoutedEventArgs e)
-        {
+        //private void ButtonCompanies_Click(object sender, RoutedEventArgs e)
+        //{
 
-        }
+        //}
 
-        private void ButtonProjects_Click(object sender, RoutedEventArgs e)
-        {
+        //private void ButtonProjects_Click(object sender, RoutedEventArgs e)
+        //{
 
-        }
+        //}
 
-        private void ButtonPurchaseSelling_Click(object sender, RoutedEventArgs e)
-        {
+        //private void ButtonPurchaseSelling_Click(object sender, RoutedEventArgs e)
+        //{
 
-        }
+        //}
 
         #endregion
 
@@ -142,6 +142,8 @@ namespace AlphaElectric.Forms
         }
         #endregion
 
+
+        #region treeitems
         private void TreeItem_ProductAdd_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             ProductAddNew x = new ProductAddNew();
@@ -280,7 +282,50 @@ namespace AlphaElectric.Forms
             UserPages.Children.Clear();
             UserPages.Children.Add(x);
         }
+        #endregion
 
+        #region topbar
+        private void TextBlock_MouseLeftButtonDown_1(object sender, MouseButtonEventArgs e)
+        {
+            //emp
+
+            HomeEmployees x = new HomeEmployees();
+            UserPages.Children.Clear();
+            UserPages.Children.Add(x);
+        }
+
+        private void TextBlock_MouseLeftButtonDown_2(object sender, MouseButtonEventArgs e)
+        {
+            //prod
+            HomeProducts x = new HomeProducts();
+            UserPages.Children.Clear();
+            UserPages.Children.Add(x);
+        }
+
+        private void TextBlock_MouseLeftButtonDown_3(object sender, MouseButtonEventArgs e)
+        {
+            //companies
+            HomeCompanies x = new HomeCompanies();
+            UserPages.Children.Clear();
+            UserPages.Children.Add(x);
+        }
+
+        private void TextBlock_MouseLeftButtonDown_4(object sender, MouseButtonEventArgs e)
+        {
+            //proj
+            //HomeProjects x = new HomeProjects();
+            //UserPages.Children.Clear();
+            //UserPages.Children.Add(x);
+        }
+
+        private void TextBlock_MouseLeftButtonDown_5(object sender, MouseButtonEventArgs e)
+        {
+            //purchase/selling
+            HomePurchaseSelling x = new HomePurchaseSelling();
+            UserPages.Children.Clear();
+            UserPages.Children.Add(x);
+        }
+        #endregion
         private void MenuPopupLogoutButton_OnClick(object sender, RoutedEventArgs e)
         {
             this.Hide();
@@ -289,5 +334,8 @@ namespace AlphaElectric.Forms
             x.Show();
             this.Close();
         }
+
+
     }
+
 }

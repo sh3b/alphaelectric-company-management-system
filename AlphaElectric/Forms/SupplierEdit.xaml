@@ -92,7 +92,15 @@
                 <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" FontWeight="DemiBold" Style="{StaticResource MaterialDesignHeadlineTextBlock}">Edit Supplier Details</TextBlock>
 
                 <TextBlock FontWeight="DemiBold" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" Margin="0 13 8 5">Select Supplier</TextBlock>
-                <ComboBox SelectionChanged="SelectSupplierComboBox_SelectionChanged"  Grid.Row="1" Grid.Column="1" Name="SelectSupplierComboBox" materialDesign:HintAssist.Hint="Select Supplier" MinWidth="72" Margin="0 0 0 0" VerticalAlignment="Bottom"></ComboBox>
+                <ComboBox SelectionChanged="SelectSupplierComboBox_SelectionChanged"  Grid.Row="1" Grid.Column="1" Name="SelectSupplierComboBox" materialDesign:HintAssist.Hint="Select Supplier" MinWidth="72" Margin="0 0 0 0" VerticalAlignment="Bottom">
+                    <ComboBox.SelectedValue>
+                        <Binding Path="ID" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                            <Binding.ValidationRules>
+                                <domain:NotEmptyValidationRule ValidatesOnTargetUpdated="True"/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </ComboBox.SelectedValue>
+                </ComboBox>
 
                 <TextBlock Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" Margin="16 0 8 0">Name</TextBlock>
                 <TextBox Grid.Row="2" Grid.Column="1" x:Name="NameTextBox" materialDesign:HintAssist.Hint="Insert Company Full Name">

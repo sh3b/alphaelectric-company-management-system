@@ -67,7 +67,7 @@ namespace AlphaElectric.Forms
             DataGrid.Visibility = Visibility.Collapsed;
             PopupBox.Visibility = Visibility.Collapsed;
 
-            CustomerAddNew x = new CustomerAddNew();
+            CompanyAddNew x = new CompanyAddNew();
             UserPages.Children.Clear();
             UserPages.Children.Add(x);
             PopupBoxWithClose.Visibility = Visibility.Visible;
@@ -84,6 +84,17 @@ namespace AlphaElectric.Forms
             PopupBox.Visibility = Visibility.Visible;
         }
 
+        private void PopUp_EditCompany(object sender, RoutedEventArgs e)
+        {
+            TextBlock_TitleName.Visibility = Visibility.Collapsed;
+            DataGrid.Visibility = Visibility.Collapsed;
+            PopupBox.Visibility = Visibility.Collapsed;
+
+            CompanyEdit x = new CompanyEdit();
+            UserPages.Children.Clear();
+            UserPages.Children.Add(x);
+            PopupBoxWithClose.Visibility = Visibility.Visible;
+        }
     }
 }
     

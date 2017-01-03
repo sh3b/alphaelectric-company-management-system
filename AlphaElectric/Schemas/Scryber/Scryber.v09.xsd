@@ -1,0 +1,167 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema targetNamespace="Scryber.Components, Scryber.Components, Version=0.9.0.0, Culture=neutral, PublicKeyToken=872cbeb81db952fe"
+    elementFormDefault="qualified"
+    xmlns="Scryber.Components, Scryber.Components, Version=0.9.0.0, Culture=neutral, PublicKeyToken=872cbeb81db952fe"
+    xmlns:mstns="Scryber.Components, Scryber.Components, Version=0.9.0.0, Culture=neutral, PublicKeyToken=872cbeb81db952fe"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:data="Scryber.Data, Scryber.Components, Version=0.9.0.0, Culture=neutral, PublicKeyToken=872cbeb81db952fe"
+    xmlns:style="Scryber.Styles, Scryber.Styles, Version=0.9.0.0, Culture=neutral, PublicKeyToken=872cbeb81db952fe"
+    xmlns:mod="Scryber.Modifications, Scryber.Components, Version=0.9.0.0, Culture=neutral, PublicKeyToken=872cbeb81db952fe"
+>
+
+  <xs:include schemaLocation="Scryber.Types.v09.xsd" />
+  <xs:include schemaLocation="Scryber.Components.v09.xsd" />
+  <xs:import namespace="Scryber.Styles, Scryber.Styles, Version=0.9.0.0, Culture=neutral, PublicKeyToken=872cbeb81db952fe" schemaLocation="Scryber.Styles.v09.xsd" />
+  <xs:import namespace="Scryber.Data, Scryber.Components, Version=0.9.0.0, Culture=neutral, PublicKeyToken=872cbeb81db952fe" schemaLocation="Scryber.Data.v09.xsd" />
+
+  <!-- 
+    Root Document type
+  -->
+
+  <xs:complexType name="DocumentDefnType" >
+    <xs:annotation >
+      <xs:documentation xml:lang="en">
+        Describes a top level document that contains all the required content and meta-data to be generated. 
+        Inner elements are Render-Options, Viewer, Outline, Styles, Info and pages (Zero or One times, order is NOT significant)
+      </xs:documentation>
+    </xs:annotation>
+    <xs:all minOccurs="0" >
+      <xs:element name="Render-Options" minOccurs="0" maxOccurs="1"
+                  type="RenderOptionsType" form="unqualified" />
+      <xs:element name="Info" minOccurs="0" maxOccurs="1"
+                  type="InfoTypeList" form="unqualified" />
+      <xs:element name="Viewer" minOccurs="0" maxOccurs="1"
+                  type="ViewerTypeList" form="unqualified" />
+      <xs:element name="Items" minOccurs="0" maxOccurs="1"
+                  type="ItemTypeList" form="unqualified" />
+      <xs:element name="Outline" minOccurs="0" maxOccurs="1"
+                  type="OutlineDefinitionType" form="unqualified" ></xs:element>
+      <xs:element name="Styles" minOccurs="0" maxOccurs="1"
+                  type="style:StyleListType" form="unqualified" ></xs:element>
+      <xs:element name="Pages" minOccurs="0" maxOccurs="1"
+                  type="PageListType" form="unqualified" ></xs:element>
+
+    </xs:all>
+    <xs:attributeGroup ref="DocumentAttributes" />
+  </xs:complexType>
+
+  <xs:attributeGroup name="DocumentAttributes" >
+    <xs:attribute name="auto-bind" type="xs:boolean" use="optional" default="false" />
+    <xs:attribute name="id" type="xs:string" use="optional" />
+    <xs:attribute name="compression" type="CompressionEnum" use="optional" default="Compress" />
+    <xs:attribute name="render-all-names" type="BindableBooleanType" use="optional" default="false" />
+    <xs:attributeGroup ref="CodeClassAttributes" />
+    <xs:attributeGroup ref="ElementEventAttributes" />
+  </xs:attributeGroup>
+
+  <xs:element name="Document" type="DocumentDefnType" />
+
+  <xs:complexType name="RenderOptionsType" >
+    <xs:attribute name="compression-type" form="unqualified" type="BindableCompressionTypeEnum" default="FlateDecode" />
+    <xs:attribute name="pdf-version" form="unqualified" type="BindablePDFVersionEnum" default="1.5"/>
+    <xs:attribute name="output-compliance" form="unqualified" type="BindableOutputComplianceEnum" default="None" />
+    <xs:attribute name="component-names" form="unqualified" type="BindableComponentNamesEnum" default="ExplicitOnly" />
+    <xs:attribute name="string-output" form="unqualified" type="BindableStringOutputEnum" default="Hex" />
+    <xs:attribute name="img-cache-mins" form="unqualified" type="xs:integer" use="optional"/>
+  </xs:complexType>
+  
+  <xs:complexType name="InfoTypeList" >
+    <xs:sequence  >
+      <xs:element name="Title" form="unqualified" minOccurs="0" maxOccurs="1" ></xs:element>
+      <xs:element name="Subject" form="unqualified" minOccurs="0" maxOccurs="1" ></xs:element>
+      <xs:element name="Keywords" form="unqualified" minOccurs="0" maxOccurs="1" ></xs:element>
+      <xs:element name="Author" form="unqualified" minOccurs="0" maxOccurs="1" ></xs:element>
+      <xs:sequence >
+        <xs:element name="Extra" form="qualified" minOccurs="0" maxOccurs="unbounded" >
+          <xs:complexType mixed="true" >
+            <xs:attribute name="name" type="IDType" ></xs:attribute>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:sequence>
+    <xs:attribute name="modified-date" type="BindableStringType" />
+    <xs:attribute name="created-date" type="BindableStringType" />
+    <xs:attribute name="producer" type="BindableStringType" />
+    <xs:attribute name="creator" type="BindableStringType" />
+    <xs:attribute name="trapped" type="BindableBooleanType" />
+  </xs:complexType>
+
+  <xs:complexType name="ViewerTypeList" >
+    <xs:attribute name="hide-toolbar" type="BindableBooleanType" />
+    <xs:attribute name="hide-menubar" type="BindableBooleanType" />
+    <xs:attribute name="hide-windowUI" type="BindableBooleanType" />
+    <xs:attribute name="center-window" type="BindableBooleanType" />
+    <xs:attribute name="fit-window" type="BindableBooleanType" />
+    <xs:attribute name="page-display" type="BindablePageDisplayEnum" />
+    <xs:attribute name="page-layout" type="BindablePageLayoutEnum" />
+  </xs:complexType>
+
+
+  
+  <!-- 
+    CodeClass attribute group
+    Common to all root elements
+  -->
+
+  <xs:attributeGroup name="CodeClassAttributes" >
+    <!--<xs:attribute name="code-file" type="xs:string" use="optional" />
+    <xs:attribute name="inherits" type="xs:string" use="optional" />-->
+  </xs:attributeGroup>
+
+  <!-- 
+      Render Options types and enumerations
+  -->
+  <xs:simpleType name="CompressionTypeEnum" >
+    <xs:restriction base="xs:string" >
+      <xs:enumeration value="None" />
+      <xs:enumeration value="FlateDecode" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="BindableCompressionTypeEnum" >
+    <xs:union memberTypes="CompressionTypeEnum BindableAttributeType" />
+  </xs:simpleType>
+
+  <xs:simpleType name="PDFVersionEnum" >
+    <xs:restriction base="xs:string" >
+      <xs:enumeration value="1.5" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="BindablePDFVersionEnum" >
+    <xs:union memberTypes="PDFVersionEnum BindableAttributeType" />
+  </xs:simpleType>
+
+  <xs:simpleType name="OutputComplianceEnum" >
+    <xs:restriction base="xs:string" >
+      <xs:enumeration value="None" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="BindableOutputComplianceEnum" >
+    <xs:union memberTypes="OutputComplianceEnum BindableAttributeType" />
+  </xs:simpleType>
+
+  <xs:simpleType name="StringOutputEnum" >
+    <xs:restriction base="xs:string" >
+      <xs:enumeration value="Text" />
+      <xs:enumeration value="Hex" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="BindableStringOutputEnum" >
+    <xs:union memberTypes="StringOutputEnum BindableAttributeType" />
+  </xs:simpleType>
+  
+  <xs:simpleType name="ComponentNamesEnum" >
+    <xs:restriction base="xs:string" >
+      <xs:enumeration value="All" />
+      <xs:enumeration value="ExplicitOnly" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="BindableComponentNamesEnum" >
+    <xs:union memberTypes="ComponentNamesEnum BindableAttributeType" />
+  </xs:simpleType>
+
+</xs:schema>

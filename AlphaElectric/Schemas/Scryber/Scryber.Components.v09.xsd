@@ -1,0 +1,997 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<xs:schema targetNamespace="Scryber.Components, Scryber.Components, Version=0.9.0.0, Culture=neutral, PublicKeyToken=872cbeb81db952fe"
+    elementFormDefault="qualified"
+    xmlns="Scryber.Components, Scryber.Components, Version=0.9.0.0, Culture=neutral, PublicKeyToken=872cbeb81db952fe"
+    xmlns:mstns="Scryber.Components, Scryber.Components, Version=0.9.0.0, Culture=neutral, PublicKeyToken=872cbeb81db952fe"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    version="1.1"
+    xmlns:style="Scryber.Styles, Scryber.Styles, Version=0.9.0.0, Culture=neutral, PublicKeyToken=872cbeb81db952fe"
+    xmlns:data="Scryber.Data, Scryber.Components, Version=0.9.0.0, Culture=neutral, PublicKeyToken=872cbeb81db952fe">
+
+  <!-- 
+    Includes 
+  -->
+
+  <xs:include schemaLocation="Scryber.Types.v09.xsd" />
+  <xs:import namespace="Scryber.Styles, Scryber.Styles, Version=0.9.0.0, Culture=neutral, PublicKeyToken=872cbeb81db952fe"
+             schemaLocation="Scryber.Styles.v09.xsd" />
+  
+  <xs:import namespace="Scryber.Data, Scryber.Components, Version=0.9.0.0, Culture=neutral, PublicKeyToken=872cbeb81db952fe"
+              schemaLocation="Scryber.Data.v09.xsd" />
+  
+  
+  <!-- 
+    Root abstract types 
+  -->
+
+  <xs:complexType name="ScryberRootBaseType" abstract="true" >
+  </xs:complexType>
+
+  <xs:element name="ScryberRootBase" type="ScryberRootBaseType" />
+  
+  <!-- base type for all pages, sections and referenced pages -->
+  <xs:complexType name="ScryberPageBaseType" abstract="true" >
+    <xs:complexContent >
+      <xs:extension base="ScryberRootBaseType" ></xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:element name="ScryberPageBase" type="ScryberPageBaseType" abstract="true" />
+
+  
+  
+  <!-- base type for all page content  -->
+  <xs:complexType name="ScryberContentBaseType" abstract="true" >
+    <xs:complexContent >
+      <xs:extension base="ScryberRootBaseType" />
+    </xs:complexContent>
+  </xs:complexType>
+  
+  <xs:element name="ScryberContentBase" abstract="true" type="ScryberContentBaseType" ></xs:element>
+
+  
+  <!-- base type for all graphic paths -->
+  <xs:complexType name="ScryberGraphicBaseType" abstract="true" >
+    <xs:complexContent >
+      <xs:extension base="ScryberContentBaseType" />
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:element name="ScryberGraphicBase" type="ScryberGraphicBaseType" abstract="true" />
+  
+  <!-- base type for rows and cells -->
+  <xs:complexType name="ScryberTableContentBaseType" abstract="true" >
+    <xs:complexContent>
+      <xs:extension base="ScryberContentBaseType" />
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:element name="ScryberTableContentBase" abstract="true" type="ScryberTableContentBaseType" />
+
+  <!-- base type for all list items -->
+  <xs:complexType name="ScryberListItemContentBaseType" abstract="true" >
+    <xs:complexContent>
+      <xs:extension base="ScryberContentBaseType" />
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:element name="ScryberListItemContentBase" abstract="true" type="ScryberListItemContentBaseType" />
+
+  <!-- base type for all layer types -->
+  <xs:complexType name="ScryberLayerBaseType" abstract="true" >
+    <xs:complexContent>
+      <xs:extension base="ScryberContentBaseType" />
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:element name="ScryberLayerBase" abstract="true" type="ScryberLayerBaseType" />
+  
+  
+  <!-- base type for all data sources -->
+  <xs:complexType name="ScryberDataSourceBaseType" abstract="true" >
+    <xs:complexContent>
+      <xs:extension base="ScryberContentBaseType" />
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:element name="ScryberDataSourceBase" abstract="true" type="ScryberDataSourceBaseType" />
+
+  <!-- 
+    Pages List + Binding Constructs
+  -->
+
+  <xs:complexType name="PageListType" >
+    <xs:sequence minOccurs="0" maxOccurs="unbounded" >
+      <xs:choice>
+        <xs:element ref="ScryberPageBase" />
+        <xs:element ref="ScryberDataSourceBase" />
+        <xs:element ref="PlaceHolder" />
+      </xs:choice>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <!-- Outline type -->
+
+  <xs:complexType name="OutlineDefinitionType" >
+    <xs:attribute name="title" type="BindableStringType" use="required" ></xs:attribute>
+    <xs:attributeGroup ref="style:OutlineStyleAttributes" />
+  </xs:complexType>
+  
+  <!-- Item type list -->
+
+  <xs:complexType name="ItemTypeList" >
+    <xs:sequence minOccurs="0" maxOccurs="unbounded" >
+      <xs:element ref="ItemBase" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="ItemTypeBase" abstract="true" ></xs:complexType>
+
+  <!-- Strongly typed items -->
+  <xs:element name="ItemBase" type="ItemTypeBase" abstract="true" />
+
+  <xs:complexType name="ItemValueType" >
+    <xs:complexContent mixed="true">
+      <xs:extension base="ItemTypeBase">
+        <xs:attribute name="value" type="xs:string" use="optional" />
+        <xs:attribute name="key" type="xs:string" use="required" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:element name="Int-Item" type="ItemValueType" substitutionGroup="ItemBase" />
+  <xs:element name="Double-Item" type="ItemValueType" substitutionGroup="ItemBase"/>
+  <xs:element name="Date-Item" type="ItemValueType" substitutionGroup="ItemBase" />
+  <xs:element name="String-Item" type="ItemValueType" substitutionGroup="ItemBase" />
+  <xs:element name="Unit-Item" type="ItemValueType" substitutionGroup="ItemBase"/>
+  <xs:element name="Color-Item" type="ItemValueType" substitutionGroup="ItemBase" />
+  <xs:element name="Thickness-Item" type="ItemValueType" substitutionGroup="ItemBase" />
+
+  <xs:complexType name="ItemEnumType" >
+    <xs:complexContent mixed="true">
+      <xs:extension base="ItemTypeBase">
+        <xs:attribute name="value" type="xs:string" use="optional" />
+        <xs:attribute name="type" type="xs:string" use="required" />
+        <xs:attribute name="key" type="xs:string" use="required" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:element name="Enum-Item" type="ItemEnumType" substitutionGroup="ItemBase" />
+
+  <xs:complexType name="ItemXmlType" >
+    <xs:complexContent>
+      <xs:extension base="ItemTypeBase">
+        <xs:sequence minOccurs="0" maxOccurs="1">
+          <xs:any minOccurs="0" maxOccurs="1" processContents="lax" namespace="##any" />
+        </xs:sequence>
+        <xs:attribute name="key" type="xs:string" use="required" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:element name="Xml-Item" type="ItemXmlType" substitutionGroup="ItemBase" />
+
+  <xs:complexType name="ItemTemplateType" >
+    <xs:complexContent mixed="true">
+      <xs:extension base="ItemTypeBase" >
+        <xs:group ref="AnyPageContentGroup" minOccurs="0" maxOccurs="unbounded" />
+        <xs:attribute name="key" type="xs:string" use="required" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:element name="Template-Item" type="ItemTemplateType" substitutionGroup="ItemBase" />
+  
+  <!--
+  All the child components of a page including text in a single complex type and group
+  -->
+
+  <xs:complexType name="AnyPageContentType" mixed="true" >
+    <xs:group ref="AnyPageContentGroup" minOccurs="0" maxOccurs="unbounded" />
+  </xs:complexType>
+
+  <xs:group name="AnyPageContentGroup" >
+    <xs:sequence >
+      <xs:element ref="ScryberContentBase" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element ref="ScryberGraphicBase" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element ref="ScryberDataSourceBase" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:group>
+
+
+  <!--
+  All the child components of a document including pages, text in a single complex type and group
+  -->
+
+  <xs:complexType name="AnyDocumentContentType" mixed="true" >
+    <xs:group ref="AnyDocumentContentGroup" minOccurs="0" maxOccurs="unbounded" />
+  </xs:complexType>
+
+  <xs:group name="AnyDocumentContentGroup" >
+    <xs:sequence >
+      <xs:element ref="ScryberContentBase" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element ref="ScryberGraphicBase" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element ref="ScryberDataSourceBase" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element ref="ScryberPageBase" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element ref="ScryberTableContentBase" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element ref="ScryberListItemContentBase" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:group>
+  
+  
+  
+  
+  
+  
+  <!-- 
+    Page Type
+  -->
+
+  <xs:group name="AllPageElementsGroup" >
+    <xs:sequence>
+      
+    </xs:sequence>
+  </xs:group>
+  
+  <xs:attributeGroup name="AllPageAttributesGroup" >
+    <xs:attributeGroup ref="PageElementAttributes" />
+    <xs:attributeGroup ref="style:PaperStyleAttributes" />
+    <xs:attributeGroup ref="style:PageNumberAttributes" />
+    <xs:attributeGroup ref="style:InlineElementStyleAttributes" />
+    <xs:attributeGroup ref="style:ColumnAttributes" />
+  </xs:attributeGroup>
+
+  <xs:complexType name="PageType" >
+    <xs:annotation >
+      <xs:documentation xml:lang="en">
+        Describes a single page of content within the pdf documemt. 
+        Inner elements are Style, Outline, Header, Content and Footer (Zero or One times, order is NOT significant)
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="ScryberPageBaseType" >
+        <xs:all minOccurs="0" >
+          <xs:element name="Style" type="style:StyleType" minOccurs="0" maxOccurs="1" form="unqualified" />
+          <xs:element name="Items" type="ItemTypeList" minOccurs="0" maxOccurs="1" form="unqualified"/>
+          <xs:element name="Outline" type="OutlineDefinitionType" minOccurs="0" maxOccurs="1" form="unqualified" />
+          <xs:element name="Header" type="AnyPageContentType" minOccurs="0" maxOccurs="1" form="unqualified" />
+          <xs:element name="Content" type="AnyPageContentType" minOccurs="0" maxOccurs="1" form="unqualified" />
+          <xs:element name="Footer" type="AnyPageContentType" minOccurs="0" maxOccurs="1" form="unqualified" />
+        </xs:all>
+        <xs:attributeGroup ref="AllPageAttributesGroup" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:element name="Page" type="PageType" substitutionGroup="ScryberPageBase" />
+  
+  <!-- 
+    Section Type
+  -->
+  
+  <xs:complexType name="SectionType">
+    <xs:annotation>
+      <xs:documentation xml:lang="en" >Describes one or more pages of content within the pdf document. 
+      Inner elements are Style, Outline, Header, Continuation-Header, Content, Footer, Continuation-Footer (Zero or One times, order is NOT significant)</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="ScryberPageBaseType" >
+        <xs:all minOccurs="0">
+          <xs:element name="Style" type="style:StyleType" minOccurs="0" maxOccurs="1" form="unqualified" />
+          <xs:element name="Items" type="ItemTypeList" minOccurs="0" maxOccurs="1" form="unqualified"/>
+          <xs:element name="Outline" type="OutlineDefinitionType" minOccurs="0" maxOccurs="1" form="unqualified" />
+          <xs:element name="Header" type="AnyPageContentType" minOccurs="0" maxOccurs="1" form="unqualified" />
+          <xs:element name="Continuation-Header" type="AnyPageContentType" minOccurs="0" maxOccurs="1" form="unqualified" />
+          <xs:element name="Content" type="AnyPageContentType" minOccurs="0" maxOccurs="1" form="unqualified" />
+          <xs:element name="Footer" type="AnyPageContentType" minOccurs="0" maxOccurs="1" form="unqualified" />
+          <xs:element name="Continuation-Footer" type="AnyPageContentType" minOccurs="0" maxOccurs="1" form="unqualified" />
+        </xs:all>
+        <xs:attributeGroup ref="AllPageAttributesGroup" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:element name="Section" type="SectionType" substitutionGroup="ScryberPageBase" />
+  
+  
+  <!-- 
+    Page-Ref and Section-Ref type
+  -->
+
+  <xs:complexType name="PageRefType" >
+    <xs:annotation>
+      <xs:documentation xml:lang="en" >A reference to a page or section in an external file or assembly type.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="ScryberPageBaseType" >
+        <xs:attribute name="source" type="xs:string" use="optional" />
+        <xs:attribute name="select" type="xs:string" use="optional" />
+        <xs:attribute name="type" type="xs:string" use="optional" />
+        <xs:attribute name="id" use="optional" type="IDType" />
+        <xs:attributeGroup ref="style:InlineElementStyleAttributes" />
+        <xs:attributeGroup ref="ElementEventAttributes" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:element name="Page-Ref" type="PageRefType" substitutionGroup="ScryberPageBase" />
+  <xs:element name="Section-Ref" type="PageRefType" substitutionGroup="ScryberPageBase" />
+  
+  <!-- 
+     PageGroup 
+  -->
+
+  <xs:complexType name="PageGroupType" >
+    <xs:annotation>
+      <xs:documentation xml:lang="en" >A discreet list of pages or sections</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent >
+      <xs:extension base="ScryberPageBaseType">
+        <xs:all minOccurs="0" >
+          <xs:element name="Outline" minOccurs="0" maxOccurs="1"
+                      type="OutlineDefinitionType" form="unqualified" ></xs:element>
+          <xs:element name="Items" type="ItemTypeList" minOccurs="0" maxOccurs="1" form="unqualified"/>
+          <xs:element name="Style" minOccurs="0" maxOccurs="1"
+                      type="style:StyleType" form="unqualified" ></xs:element>
+          <xs:element name="Pages" minOccurs="0" maxOccurs="1"
+                      type="PageListType" form="unqualified" ></xs:element>
+          <xs:element name="Header" type="AnyPageContentType" minOccurs="0" maxOccurs="1" form="unqualified" />
+          <xs:element name="Continuation-Header" type="AnyPageContentType" minOccurs="0" maxOccurs="1" form="unqualified" />
+          <xs:element name="Footer" type="AnyPageContentType" minOccurs="0" maxOccurs="1" form="unqualified" />
+          <xs:element name="Continuation-Footer" type="AnyPageContentType" minOccurs="0" maxOccurs="1" form="unqualified" />
+        </xs:all>
+        <xs:attributeGroup ref="PageElementAttributes" />
+        <xs:attributeGroup ref="style:PaperStyleAttributes" />
+        <xs:attributeGroup ref="style:InlineElementStyleAttributes" />
+        <xs:attributeGroup ref="style:ColumnAttributes" />
+        <xs:attributeGroup ref="style:PageNumberAttributes" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:element name="PageGroup" type="PageGroupType" substitutionGroup="ScryberPageBase" />
+
+  <!-- 
+  A region break - either Page or Column
+  -->
+  
+  <xs:complexType name="RegionBreakType" >
+    <xs:complexContent >
+      <xs:extension base="ScryberContentBaseType" >
+        <xs:attributeGroup ref="PageElementAttributes" />
+        <xs:attributeGroup ref="style:InlineElementStyleAttributes" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:element name="PageBreak" type="RegionBreakType" substitutionGroup="ScryberContentBase" />
+  <xs:element name="ColumnBreak" type="RegionBreakType" substitutionGroup="ScryberContentBase" />
+
+  
+  <!-- 
+    Headings 
+  -->
+
+  <xs:complexType name="HeadType" mixed="true" >
+    <xs:complexContent >
+      <xs:extension base="InlineContentType" >
+        <xs:attributeGroup ref="PageElementAttributes" />
+        <xs:attributeGroup ref="style:InlineElementStyleAttributes" />
+        <xs:attribute name="text" use="optional" type="BindableStringType" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:element name="H1" type="HeadType" substitutionGroup="ScryberContentBase" ></xs:element>
+  <xs:element name="H2" type="HeadType" substitutionGroup="ScryberContentBase" ></xs:element>
+  <xs:element name="H3" type="HeadType" substitutionGroup="ScryberContentBase" ></xs:element>
+  <xs:element name="H4" type="HeadType" substitutionGroup="ScryberContentBase" ></xs:element>
+  <xs:element name="H5" type="HeadType" substitutionGroup="ScryberContentBase" ></xs:element>
+  <xs:element name="H6" type="HeadType" substitutionGroup="ScryberContentBase" ></xs:element>
+  
+  
+  <!-- 
+    Panel
+  -->
+
+  <xs:complexType name="PanelType" mixed="false" >
+    <xs:complexContent >
+      <xs:extension base="ScryberContentBaseType" >
+        <xs:all minOccurs="0"  >
+          <xs:element name="Style" type="style:StyleType" minOccurs="0" maxOccurs="1" form="unqualified" />
+          <xs:element name="Outline" type="OutlineDefinitionType" minOccurs="0" maxOccurs="1" form="unqualified" />
+          <xs:element name="Content" type="AnyPageContentType" minOccurs="0" maxOccurs="1" form="unqualified" />
+        </xs:all>
+        <xs:attributeGroup ref="PageElementAttributes" />
+        <xs:attributeGroup ref="style:InlineElementStyleAttributes" />
+        <xs:attributeGroup ref="style:ColumnAttributes" />
+        <xs:attributeGroup ref="style:PanelStyleAttributes" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:element name="Panel" type="PanelType" substitutionGroup="ScryberContentBase" />
+
+
+  <!-- 
+    Image element
+  -->
+
+  <xs:complexType name="ImageType" >
+    <xs:complexContent>
+      <xs:extension base="ScryberContentBaseType" >
+        <xs:all minOccurs="0">
+          <xs:element name="Style" type="style:StyleType" minOccurs="0" maxOccurs="1" form="unqualified" />
+          <xs:element name="Outline" type="OutlineDefinitionType" minOccurs="0" maxOccurs="1" form="unqualified" />
+          <xs:element name="Data" type="xs:string" minOccurs="0" maxOccurs="1" form="unqualified" />
+        </xs:all>
+        <xs:attribute name="src" type="xs:string" />
+        <xs:attribute name="img-data" type="BindableStringType" />
+        <xs:attributeGroup ref="PageElementAttributes" />
+        <xs:attributeGroup ref="style:InlineElementStyleAttributes" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:element name="Image" type="ImageType" substitutionGroup="ScryberContentBase" />
+  
+  
+  <!-- 
+   Inline Text elements
+  -->
+
+  <xs:complexType name="TextContentType" mixed="true" >
+    <xs:complexContent>
+      <xs:extension base="ScryberContentBaseType" >
+        <xs:attributeGroup ref="PageElementAttributes" />
+        <xs:attribute name="value" use="optional" type="BindableStringType" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:element name="Text" type="TextContentType" substitutionGroup="ScryberContentBase" />
+  
+  
+  <xs:complexType name="InlineContentType" mixed="true" >
+    <xs:complexContent >
+      <xs:extension base="ScryberContentBaseType" >
+        <xs:sequence>
+          <xs:element name="Style" type="style:StyleType" minOccurs="0" maxOccurs="1" form="unqualified" />
+          <xs:element name="Outline" type="OutlineDefinitionType" minOccurs="0" maxOccurs="1" form="unqualified" />
+          <xs:group ref="AnyPageContentGroup" minOccurs="0" maxOccurs="unbounded" />
+        </xs:sequence>
+        <xs:attributeGroup ref="PageElementAttributes" />
+        <xs:attributeGroup ref="style:InlineElementStyleAttributes" />
+        <xs:attributeGroup ref="style:ColumnAttributes" />
+      </xs:extension>
+    </xs:complexContent>
+    
+  </xs:complexType>
+
+  <xs:element name="B" type="InlineContentType" substitutionGroup="ScryberContentBase" />
+  <xs:element name="I" type="InlineContentType" substitutionGroup="ScryberContentBase" />
+  <xs:element name="U" type="InlineContentType" substitutionGroup="ScryberContentBase" />
+  <xs:element name="Span" type="InlineContentType" substitutionGroup="ScryberContentBase" />
+
+  <!-- 
+    Block content types (Div, Para, Pre, etc)
+  -->
+  
+  <xs:complexType name="BlockContentType" mixed="true" >
+    <xs:complexContent >
+      <xs:extension base="ScryberContentBaseType" >
+        <xs:sequence>
+          <xs:element name="Style" type="style:StyleType" minOccurs="0" maxOccurs="1" form="unqualified" />
+          <xs:element name="Outline" type="OutlineDefinitionType" minOccurs="0" maxOccurs="1" form="unqualified" />
+          <xs:group ref="AnyPageContentGroup" minOccurs="0" maxOccurs="unbounded" />
+        </xs:sequence>
+        <xs:attributeGroup ref="PageElementAttributes" />
+        <xs:attributeGroup ref="style:InlineElementStyleAttributes" />
+        <xs:attributeGroup ref="style:ColumnAttributes" />
+        <xs:attributeGroup ref="style:PanelStyleAttributes" />
+      </xs:extension>
+    </xs:complexContent>
+
+  </xs:complexType>
+  
+  
+  <xs:element name="Div" type="BlockContentType" substitutionGroup="ScryberContentBase" />
+  <xs:element name="Para" type="BlockContentType" substitutionGroup="ScryberContentBase" />
+  <xs:element name="Pre" type="BlockContentType" substitutionGroup="ScryberContentBase" />
+  <xs:element name="Blockquote" type="BlockContentType" substitutionGroup="ScryberContentBase" />
+  <xs:element name="Canvas" type="BlockContentType" substitutionGroup="ScryberContentBase" />
+
+  <!-- 
+      LayerGroups and Layers
+  -->
+  
+  <xs:complexType name="LayerGroupType" mixed="false">
+    <xs:complexContent>
+      <xs:extension base="ScryberContentBaseType" >
+        <xs:sequence>
+          <xs:element name="Style" type="style:StyleType" minOccurs="0" maxOccurs="1" form="unqualified" />
+          <xs:element name="Outline" type="OutlineDefinitionType" minOccurs="0" maxOccurs="1" form="unqualified" />
+          <xs:sequence minOccurs="0" maxOccurs="unbounded" >
+            <xs:element ref="ScryberLayerBase" minOccurs="0" maxOccurs="unbounded" />
+            <xs:element ref="ScryberDataSourceBase" minOccurs="0" maxOccurs="unbounded" />
+          </xs:sequence>
+        </xs:sequence>
+        <xs:attributeGroup ref="PageElementAttributes" />
+        <xs:attributeGroup ref="style:InlineElementStyleAttributes" />
+        <xs:attributeGroup ref="style:ColumnAttributes" />
+        <xs:attributeGroup ref="style:PanelStyleAttributes" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:element name="LayerGroup" type="LayerGroupType" substitutionGroup="ScryberContentBase" />
+
+  <xs:complexType name="LayerType" mixed="true">
+    <xs:complexContent>
+      <xs:extension base="ScryberLayerBaseType" >
+        <xs:sequence>
+          <xs:element name="Style" type="style:StyleType" minOccurs="0" maxOccurs="1" form="unqualified" />
+          <xs:element name="Outline" type="OutlineDefinitionType" minOccurs="0" maxOccurs="1" form="unqualified" />
+          <xs:group ref="AnyPageContentGroup" minOccurs="0" maxOccurs="unbounded" />
+        </xs:sequence>
+        <xs:attributeGroup ref="PageElementAttributes" />
+        <xs:attributeGroup ref="style:InlineElementStyleAttributes" />
+        <xs:attributeGroup ref="style:ColumnAttributes" />
+        <xs:attributeGroup ref="style:PanelStyleAttributes" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:element name="Layer" type="LayerType" substitutionGroup="ScryberLayerBase" />
+
+  <!-- 
+    Label
+  -->
+
+
+  <xs:complexType name="LabelType" mixed="true" >
+    <xs:complexContent >
+      <xs:extension base="ScryberContentBaseType" >
+        <xs:all minOccurs="0">
+          <xs:element name="Style" type="style:StyleType" minOccurs="0" maxOccurs="1" form="unqualified" />
+          <xs:element name="Outline" type="OutlineDefinitionType" minOccurs="0" maxOccurs="1" form="unqualified" />
+        </xs:all>
+        <xs:attributeGroup ref="PageElementAttributes" />
+        <xs:attributeGroup ref="style:InlineElementStyleAttributes" />
+        <xs:attribute name="text" use="optional" type="BindableStringType" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:element name="Label" type="LabelType" substitutionGroup="ScryberContentBase" />
+
+  <!-- 
+    Link 
+  -->
+
+  <xs:complexType name="LinkType" mixed="true" >
+    <xs:complexContent >
+      <xs:extension base="InlineContentType" >
+        <xs:attribute name="file" type="BindableFilePathType" />
+        <xs:attribute name="destination" type="BindableStringType" />
+        <xs:attribute name="destination-fit" type="BindableOutlineFitEnum" />
+        <xs:attribute name="new-window" type="BindableBooleanType" />
+        <xs:attribute name="alt" type="BindableStringType" />
+        <xs:attribute name="action" type="BindableLinkActionEnum" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:element name="Link" type="LinkType" substitutionGroup="ScryberContentBase" />
+
+  
+  <!-- 
+    Line
+  -->
+
+  <xs:complexType name="LineType" abstract="false" >
+    <xs:complexContent>
+      <xs:extension base="ScryberGraphicBaseType" >
+        <xs:all minOccurs="0">
+          <xs:element name="Style" type="style:StyleType" minOccurs="0" maxOccurs="1" form="unqualified" />
+          <xs:element name="Outline" type="OutlineDefinitionType" minOccurs="0" maxOccurs="1" form="unqualified" />
+        </xs:all>
+        <xs:attributeGroup ref="PageElementAttributes" />
+        <xs:attributeGroup ref="style:InlineElementStyleAttributes" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:element name="Line" type="LineType" substitutionGroup="ScryberGraphicBase" />
+
+   <!--
+    Shape (Rect and Ellipse)
+  --> 
+  
+  <xs:complexType name="ScryberShapeBaseType" abstract="false">
+    <xs:complexContent>
+      <xs:extension base="ScryberGraphicBaseType" >
+        <xs:all minOccurs="0">
+          <xs:element name="Style" type="style:StyleType" minOccurs="0" maxOccurs="1" form="unqualified" />
+          <xs:element name="Outline" type="OutlineDefinitionType" minOccurs="0" maxOccurs="1" form="unqualified" />
+        </xs:all>
+        <xs:attributeGroup ref="PageElementAttributes" />
+        <xs:attributeGroup ref="style:InlineElementStyleAttributes" />
+        <xs:attributeGroup ref="style:PolygonBaseStyleAttributes" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+
+  <xs:element name="Ellipse" type="ScryberShapeBaseType" substitutionGroup="ScryberGraphicBase" />
+  <xs:element name="Rect" type="ScryberShapeBaseType" substitutionGroup="ScryberGraphicBase" />
+  
+  <!-- 
+    Polygon / Polygram
+  -->
+
+  <xs:complexType name="PolyType" abstract="false" >
+    <xs:complexContent>
+      <xs:extension base="ScryberShapeBaseType" >
+        <xs:attributeGroup ref="style:PolygonStyleAttributes" />
+        <xs:attributeGroup ref="style:PolyPointsStyleAttributes" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:element name="Poly" type="PolyType" substitutionGroup="ScryberGraphicBase" />
+  <xs:element name="Triangle" type="PolyType" substitutionGroup="ScryberGraphicBase" />
+  
+  <!-- 
+    Path
+  -->
+
+  <xs:complexType name="PathType" abstract="false" >
+    <xs:complexContent>
+      <xs:extension base="ScryberGraphicBaseType" >
+        <xs:all minOccurs="0">
+          <xs:element name="Style" type="style:StyleType" minOccurs="0" maxOccurs="1" form="unqualified" />
+          <xs:element name="Outline" type="OutlineDefinitionType" minOccurs="0" maxOccurs="1" form="unqualified" />
+        </xs:all>
+        <xs:attributeGroup ref="PageElementAttributes" />
+        <xs:attributeGroup ref="style:InlineElementStyleAttributes" />
+        <xs:attributeGroup ref="style:PathStyleAttributes" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  
+  <xs:element name="Path" type="PathType" substitutionGroup="ScryberGraphicBase" />
+  
+  <!-- 
+    User component
+  -->
+
+  <xs:complexType name="UserComponentType" mixed="false" >
+    <xs:complexContent >
+      <xs:extension base="ScryberContentBaseType" >
+        <xs:all minOccurs="0">
+          <xs:element name="Style" type="style:StyleType" minOccurs="0" maxOccurs="1" form="unqualified" />
+          <xs:element name="Items" type="ItemTypeList" minOccurs="0" maxOccurs="1" form="unqualified"/>
+          <xs:element name="Outline" type="OutlineDefinitionType" minOccurs="0" maxOccurs="1" form="unqualified" />
+          <xs:element name="Content" type="AnyPageContentType" minOccurs="0" maxOccurs="1" form="unqualified" />
+        </xs:all>
+        <xs:attributeGroup ref="PageElementAttributes" />
+        <xs:attributeGroup ref="style:InlineElementStyleAttributes" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:element name="UserComponent" type="UserComponentType" />
+  
+  <xs:complexType name="UserComponentRefType" >
+    <xs:complexContent >
+      <xs:extension base="ScryberContentBaseType" >
+        <xs:attribute name="source" use="optional" type="xs:anyURI" />
+        <xs:attribute name="select" type="xs:string" use="optional" />
+        <xs:attribute name="id" use="optional" type="BindableIDType" />
+        <xs:attributeGroup ref="style:InlineElementStyleAttributes" />
+        <xs:attributeGroup ref="ElementEventAttributes" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:element name="Component-Ref" type="UserComponentRefType" substitutionGroup="ScryberContentBase" />
+
+  <!-- 
+    Page of
+  -->
+  
+  <xs:complexType name="PageOfType" mixed="false">
+    <xs:complexContent>
+      <xs:extension base="ScryberContentBaseType" >
+        <xs:all minOccurs="0">
+          <xs:element name="Style" type="style:StyleType" minOccurs="0" maxOccurs="1" form="unqualified" />
+          <xs:element name="Outline" type="OutlineDefinitionType" minOccurs="0" maxOccurs="1" form="unqualified" />
+        </xs:all>
+        <xs:attribute name="component" type="xs:string" use="required" />
+        <xs:attribute name="not-found-replacement" type="xs:string" />
+        <xs:attributeGroup ref="PageElementAttributes" />
+        <xs:attributeGroup ref="style:InlineElementStyleAttributes" />
+        <xs:attributeGroup ref="style:PageNumberDisplayAttributes" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:element name="PageOf" type="PageOfType" substitutionGroup="ScryberContentBase" ></xs:element>
+
+  <!-- 
+    Page number
+  -->
+  
+  <xs:complexType name="PageNumberType" mixed="false">
+    <xs:complexContent >
+      <xs:extension base="ScryberContentBaseType">
+        <xs:all minOccurs="0">
+          <xs:element name="Style" type="style:StyleType" minOccurs="0" maxOccurs="1" form="unqualified" />
+          <xs:element name="Outline" type="OutlineDefinitionType" minOccurs="0" maxOccurs="1" form="unqualified" />
+        </xs:all>
+        <xs:attributeGroup ref="PageElementAttributes" />
+        <xs:attributeGroup ref="style:InlineElementStyleAttributes" />
+        <xs:attributeGroup ref="style:PageNumberDisplayAttributes" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:element name="PageNumber" type="PageNumberType" substitutionGroup="ScryberContentBase" />
+
+  <!-- 
+    Date Type
+  -->
+
+  <xs:complexType name="DateType" mixed="false">
+    <xs:complexContent >
+      <xs:extension base="ScryberContentBaseType" >
+        <xs:all minOccurs="0">
+          <xs:element name="Style" type="style:StyleType" minOccurs="0" maxOccurs="1" form="unqualified" />
+          <xs:element name="Outline" type="OutlineDefinitionType" minOccurs="0" maxOccurs="1" form="unqualified" />
+        </xs:all>
+        <xs:attribute name="value" type="BindableStringType" use="optional" />
+        <xs:attributeGroup ref="style:DateFormatStyleAttributes" />
+        <xs:attributeGroup ref="PageElementAttributes" />
+        <xs:attributeGroup ref="style:InlineElementStyleAttributes" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:element name="Date" type="DateType" substitutionGroup="ScryberContentBase" />
+
+  <!-- 
+    Number
+  -->
+
+  <xs:complexType name="NumberType" mixed="false">
+    <xs:complexContent >
+      <xs:extension base="ScryberContentBaseType" >
+        <xs:all>
+          <xs:element name="Style" type="style:StyleType" minOccurs="0" maxOccurs="1" form="unqualified" />
+          <xs:element name="Outline" type="OutlineDefinitionType" minOccurs="0" maxOccurs="1" form="unqualified" />
+        </xs:all>
+        <xs:attribute name="value" type="BindableFloatType" use="required" />
+        <xs:attributeGroup ref="style:NumberFormatStyleAttributes" />
+        <xs:attributeGroup ref="PageElementAttributes" />
+        <xs:attributeGroup ref="style:InlineElementStyleAttributes" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:element name="Number" type="NumberType" substitutionGroup="ScryberContentBase" />
+
+  <!-- 
+    Br (Line Break)
+  -->
+  
+  <xs:complexType name="BrType" mixed="false" >
+    <xs:complexContent >
+      <xs:extension base="ScryberContentBaseType" >
+        <xs:attributeGroup ref="PageElementAttributes" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:element name="Br" type="BrType" substitutionGroup="ScryberContentBase" />
+
+  <!-- 
+      PlaceHolder
+  -->
+  
+  <xs:complexType name="PlaceHolderType" mixed="false" >
+    <xs:complexContent>
+      <xs:extension base="ScryberContentBaseType" >
+        <xs:sequence>
+          <xs:element name="Namespaces" minOccurs="0" maxOccurs="1" form="unqualified" type="data:Binding-XMLNamespaces" >
+          </xs:element>
+        </xs:sequence>
+        <xs:attribute name="contents" type="BindableStringType" form="unqualified" use="optional" />
+        <xs:attributeGroup ref="PageElementAttributes" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:element name="PlaceHolder" type="PlaceHolderType" substitutionGroup="ScryberContentBase" />
+  
+  <!-- 
+    Table
+  -->
+
+  <xs:complexType name="TableType" >
+    <xs:complexContent >
+      <xs:extension base="ScryberContentBaseType" >
+        <xs:sequence minOccurs="0" >
+          <xs:element name="Style" type="style:StyleType" minOccurs="0" maxOccurs="1" form="unqualified" />
+          <xs:element name="Outline" type="OutlineDefinitionType" minOccurs="0" maxOccurs="1" form="unqualified" />
+          <xs:choice minOccurs="0" maxOccurs="unbounded" >
+            <xs:element name="Row" type="TableRowType" ></xs:element>
+            <xs:element name="Header-Row" type="TableRowType" ></xs:element>
+            <xs:element name="Footer-Row" type="TableRowType" ></xs:element>
+            <xs:element ref="ScryberDataSourceBase" />
+          </xs:choice>
+        </xs:sequence>
+        <xs:attributeGroup ref="PageElementAttributes" />
+        <xs:attributeGroup ref="style:InlineElementStyleAttributes" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:element name="Table" type="TableType" substitutionGroup="ScryberContentBase" />
+
+
+
+  <xs:complexType name="TableRowType" >
+    <xs:complexContent >
+      <xs:extension base="ScryberTableContentBaseType" >
+        <xs:sequence>
+          <xs:element name="Style" type="style:StyleType" minOccurs="0" maxOccurs="1" form="unqualified" />
+          <xs:element name="Outline" type="OutlineDefinitionType" minOccurs="0" maxOccurs="1" form="unqualified" />
+          <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="Cell" type="TableCellType" ></xs:element>
+            <xs:element name="Header-Cell" type="TableCellType" ></xs:element>
+            <xs:element name="Footer-Cell" type="TableCellType" ></xs:element>
+            <xs:element ref="ScryberDataSourceBase" />
+          </xs:choice>
+        </xs:sequence>
+        <xs:attributeGroup ref="PageElementAttributes" />
+        <xs:attributeGroup ref="style:InlineElementNonPostionedStyleAttributes" />
+        <xs:attributeGroup ref="style:TableRowAttributes" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:element name="Row" type="TableRowType" substitutionGroup="ScryberTableContentBase"></xs:element>
+  <xs:element name="Header-Row" type="TableRowType" substitutionGroup="ScryberTableContentBase"></xs:element>
+  <xs:element name="Footer-Row" type="TableRowType" substitutionGroup="ScryberTableContentBase"></xs:element>
+
+
+  <xs:complexType name="TableCellType" mixed="true" >
+    <xs:complexContent >
+      <xs:extension base="ScryberTableContentBaseType" >
+        <xs:sequence maxOccurs="1"  >
+          <xs:element name="Style" type="style:StyleType" minOccurs="0" maxOccurs="1" form="unqualified" />
+          <xs:element name="Outline" type="OutlineDefinitionType" minOccurs="0" maxOccurs="1" form="unqualified" />
+          <xs:sequence minOccurs="0" maxOccurs="unbounded" >
+            <xs:group minOccurs="0" maxOccurs="unbounded" ref="AnyPageContentGroup" />
+          </xs:sequence>
+        </xs:sequence>
+        <xs:attributeGroup ref="PageElementAttributes" />
+        <xs:attributeGroup ref="style:InlineElementStyleAttributes" />
+        <xs:attributeGroup ref="style:TableCellAttributes" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:element name="Cell" type="TableCellType" substitutionGroup="ScryberTableContentBase"></xs:element>
+  <xs:element name="Header-Cell" type="TableCellType" substitutionGroup="ScryberTableContentBase"></xs:element>
+  <xs:element name="Footer-Cell" type="TableCellType" substitutionGroup="ScryberTableContentBase"></xs:element>
+
+
+  <!-- 
+    List type and child types
+  -->
+
+  <xs:complexType name="ListType" >
+    <xs:complexContent >
+      <xs:extension base="ScryberContentBaseType" >
+        <xs:sequence >
+          <xs:element name="Style" type="style:StyleType" minOccurs="0" maxOccurs="1" form="unqualified" />
+          <xs:element name="Outline" type="OutlineDefinitionType" minOccurs="0" maxOccurs="1" form="unqualified" />
+          <xs:choice minOccurs="0" maxOccurs="unbounded" >
+            <xs:element name="Li" type="ListItemType" ></xs:element>
+            <xs:element ref="ScryberDataSourceBase" />
+          </xs:choice>
+        </xs:sequence>
+        <xs:attributeGroup ref="PageElementAttributes" />
+        <xs:attributeGroup ref="style:PanelStyleAttributes" />
+        <xs:attributeGroup ref="style:InlineElementStyleAttributes" />
+        <xs:attributeGroup ref="style:ListStyleAttributes" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:element name="List" type="ListType" substitutionGroup="ScryberContentBase" />
+  <xs:element name="Ol" type="ListType" substitutionGroup="ScryberContentBase" />
+  <xs:element name="Ul" type="ListType" substitutionGroup="ScryberContentBase" />
+
+  <xs:complexType name="ListItemType" mixed="true" >
+    <xs:complexContent>
+      <xs:extension base="ScryberListItemContentBaseType" >
+        <xs:sequence maxOccurs="1" >
+          <xs:element name="Style" type="style:StyleType" minOccurs="0" maxOccurs="1" form="unqualified" />
+          <xs:element name="Outline" type="OutlineDefinitionType" minOccurs="0" maxOccurs="1" form="unqualified" />
+          <xs:sequence minOccurs="0" maxOccurs="unbounded" >
+            <xs:group minOccurs="0" maxOccurs="unbounded" ref="AnyPageContentGroup" />
+          </xs:sequence>
+        </xs:sequence>
+        <xs:attributeGroup ref="PageElementAttributes" />
+        <xs:attributeGroup ref="style:InlineElementStyleAttributes" />
+        <xs:attributeGroup ref="style:ListItemStyleAttributes" />
+        <xs:attributeGroup ref="style:PanelStyleAttributes" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:element name="Li" type="ListItemType" substitutionGroup="ScryberListItemContentBase" ></xs:element>
+
+  <xs:complexType name="DefinitionListType" >
+    <xs:complexContent>
+      <xs:extension base="ScryberContentBaseType" >
+        <xs:sequence>
+          <xs:element name="Style" type="style:StyleType" minOccurs="0" maxOccurs="1" form="unqualified" />
+          <xs:element name="Outline" type="OutlineDefinitionType" minOccurs="0" maxOccurs="1" form="unqualified" />
+          <xs:choice minOccurs="0" maxOccurs="unbounded" >
+            <xs:element name="Di" type="DefinitionListItemType" ></xs:element>
+            <xs:element ref="ScryberDataSourceBase" />
+          </xs:choice>
+        </xs:sequence>
+        <xs:attributeGroup ref="PageElementAttributes" />
+        <xs:attributeGroup ref="style:InlineElementStyleAttributes" />
+        <xs:attributeGroup ref="style:ListStyleAttributes" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:element name="Dl" type="DefinitionListType" substitutionGroup="ScryberContentBase" />
+
+  <xs:complexType name="DefinitionListItemType" mixed="true" >
+    <xs:complexContent>
+      <xs:extension base="ScryberListItemContentBaseType" >
+        <xs:sequence maxOccurs="1" >
+          <xs:element name="Style" type="style:StyleType" minOccurs="0" maxOccurs="1" form="unqualified" />
+          <xs:element name="Outline" type="OutlineDefinitionType" minOccurs="0" maxOccurs="1" form="unqualified" />
+          <xs:sequence minOccurs="0" maxOccurs="unbounded" >
+            <xs:group minOccurs="0" maxOccurs="unbounded" ref="AnyPageContentGroup" />
+          </xs:sequence>
+        </xs:sequence>
+        <xs:attributeGroup ref="PageElementAttributes" />
+        <xs:attributeGroup ref="style:InlineElementStyleAttributes" />
+        <xs:attributeGroup ref="style:ListItemStyleAttributes" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:element name="Di" type="DefinitionListItemType" substitutionGroup="ScryberListItemContentBase" ></xs:element>
+  
+  
+<!--
+  Base Component Type
+-->
+
+  <xs:complexType name="BaseComponentType" >
+    <xs:sequence>
+      <xs:element name="Style" type="style:StyleType" minOccurs="0" maxOccurs="1" form="unqualified" />
+      <xs:element name="Outline" type="OutlineDefinitionType" minOccurs="0" maxOccurs="1" form="unqualified" />
+    </xs:sequence>
+    <xs:attributeGroup ref="PageElementAttributes" />
+    <xs:attributeGroup ref="style:InlineElementStyleAttributes" />
+  </xs:complexType>
+  
+
+ 
+  
+  
+</xs:schema>

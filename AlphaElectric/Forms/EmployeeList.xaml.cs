@@ -42,7 +42,7 @@ namespace AlphaElectric.Forms
             DataGrid.ItemsSource = emplist;
         }
 
-        private void PopUp_AddNewCompany(object sender, RoutedEventArgs e)
+        private void PopUp_AddNewEmployee(object sender, RoutedEventArgs e)
         {
             //Window win = new Window();
             //ProductAddNew eDoc = new ProductAddNew();
@@ -86,6 +86,17 @@ namespace AlphaElectric.Forms
             PopupBox.Visibility = Visibility.Visible;
         }
 
+        private void PopUp_EditEmployee(object sender, RoutedEventArgs e)
+        {
+            TextBlock_TitleName.Visibility = Visibility.Collapsed;
+            DataGrid.Visibility = Visibility.Collapsed;
+            PopupBox.Visibility = Visibility.Collapsed;
+
+            EmployeeEdit x = new EmployeeEdit();
+            UserPages.Children.Clear();
+            UserPages.Children.Add(x);
+            PopupBoxWithClose.Visibility = Visibility.Visible;
+        }
     }
 }
     

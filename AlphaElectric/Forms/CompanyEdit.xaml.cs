@@ -99,8 +99,18 @@ namespace AlphaElectric.Forms
             {
                 var sMessageDialog = new MessageDialog
                 {
-                    Message = { Text =
-                    "ERROR: Fill missing fields!" }
+                    Message = { Text = "ERROR: Fill missing fields!" }
+                };
+
+                DialogHost.Show(sMessageDialog, "RootDialog");
+                return;
+            }
+
+            if (SelectCompanyComboBox.SelectedItem == null)
+            {
+                var sMessageDialog = new MessageDialog
+                {
+                    Message = { Text = "ERROR: Select a Company to edit!" }
                 };
 
                 DialogHost.Show(sMessageDialog, "RootDialog");

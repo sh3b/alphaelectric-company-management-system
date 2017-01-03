@@ -77,7 +77,7 @@
                       AutoGenerateColumns="False" Height="Auto" HorizontalAlignment="Left" Name="DataGrid" Width="{Binding Path=ActualWidth, ElementName=grid}">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding PurchaseOrder.ID }" Header="PO No." Width="Auto"  />
-                <DataGridTextColumn Binding="{Binding PurchaseOrder.PODate, StringFormat=d }" Header="Date" Width="Auto"  />
+                <DataGridTextColumn Binding="{Binding PurchaseOrder.PODate, StringFormat=d,ConverterCulture=en-NZ }" Header="Date" Width="Auto"  />
                 <DataGridTextColumn Binding="{Binding Product.Name}" Header="Product Name" Width="Auto" />
                 <DataGridTextColumn Binding="{Binding Quantity}" Header="Product Qty" Width="Auto" />
                 <DataGridTextColumn Binding="{Binding PurchaseOrder.Contact.CompanyName}" Header="Dealer" Width="Auto"  />

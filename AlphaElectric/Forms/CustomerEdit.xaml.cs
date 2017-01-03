@@ -106,6 +106,18 @@ namespace AlphaElectric.Forms
                 DialogHost.Show(sMessageDialog, "RootDialog");
                 return;
             }
+
+            if (SelectCustomerComboBox.SelectedItem == null)
+            {
+                var sMessageDialog = new MessageDialog
+                {
+                    Message = { Text =
+                    "ERROR: Select a Employee to Edit!" }
+                };
+
+                DialogHost.Show(sMessageDialog, "RootDialog");
+                return;
+            }
             #endregion
 
             ContactFactory fac = new ContactFactory();

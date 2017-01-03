@@ -105,6 +105,13 @@
 
                 <TextBlock Grid.Row="2" Grid.Column="0"  VerticalAlignment="Center" Margin="16 10 8 0">Supplier</TextBlock>
                 <ComboBox  Grid.Row="2" Grid.Column="1" Name="SupplierComboBox" materialDesign:HintAssist.Hint="Select Supplier" MinWidth="72" Margin="0 10 0 0" VerticalAlignment="Bottom">
+                    <ComboBox.SelectedValue>
+                        <Binding Path="ID" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                            <Binding.ValidationRules>
+                                <domain:NotEmptyValidationRule ValidatesOnTargetUpdated="True"/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </ComboBox.SelectedValue>
                 </ComboBox>
 
                 <TextBlock Grid.Row="3" Grid.ColumnSpan="2" FontSize="13" FontWeight="DemiBold" VerticalAlignment="Center" Margin="16 10 8 5">Add Products</TextBlock>
@@ -112,6 +119,13 @@
 
                 <TextBlock Grid.Row="4" Grid.Column="0"  VerticalAlignment="Center" Margin="16 0 8 0">Product</TextBlock>
                 <ComboBox  Grid.Row="4" Grid.Column="1" Name="ProductComboBox" materialDesign:HintAssist.Hint="Add Product" MinWidth="72" Margin="0 0 0 0" VerticalAlignment="Bottom">
+                    <ComboBox.SelectedValue>
+                        <Binding Path="ID" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                            <Binding.ValidationRules>
+                                <domain:NotEmptyValidationRule ValidatesOnTargetUpdated="True"/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </ComboBox.SelectedValue>
                 </ComboBox>
 
                 <TextBlock Grid.Row="5" Grid.Column="0" VerticalAlignment="Center" Margin="16 0 8 0">Quanity</TextBlock>

@@ -170,6 +170,13 @@
 
                 <TextBlock Grid.Row="7" Grid.Column="0"  VerticalAlignment="Center" Margin="16 0 8 0">Designation</TextBlock>
                 <ComboBox  Grid.Row="7" Grid.Column="1" Name="DesignationComboBox" materialDesign:HintAssist.Hint="Select Designation" MinWidth="72" Margin="0 0 0 0" VerticalAlignment="Bottom">
+                    <ComboBox.SelectedValue>
+                        <Binding Path="ID" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                            <Binding.ValidationRules>
+                                <domain:NotEmptyValidationRule ValidatesOnTargetUpdated="True"/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </ComboBox.SelectedValue>
                 </ComboBox>
             </Grid>
         </ScrollViewer>
