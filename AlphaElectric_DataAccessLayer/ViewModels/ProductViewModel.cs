@@ -14,6 +14,14 @@ namespace ViewModels
         public string Name { get; set; }
         public int MakeID { get; set; }
 
+        public int PartTypeID { get; set; }
+        public int PanelTypeID { get; set; }
+        public int SizeID { get; set; }
+        public int PanelIPNumberID { get; set; }
+        public int CertComboBoxID { get; set; }
+
+
+
         public string Error
         {
             get

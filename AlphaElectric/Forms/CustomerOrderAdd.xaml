@@ -152,14 +152,14 @@
                         </Binding>
                     </TextBox.Text>
                 </TextBox>
-                <Button Grid.Row="7" Click="InsertItem_Click"  Style="{StaticResource MaterialDesignRaisedDarkButton}" ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" FontSize="11" Content="Add Item" Grid.Column="1" Height="Auto"  Margin="65,15,5,10" />
+                <Button Grid.Row="7" Click="InsertItem_Click"  Style="{StaticResource MaterialDesignRaisedDarkButton}" ToolTip="Add item to order list." FontSize="11" Content="Add Item" Grid.Column="1" Height="Auto"  Margin="65,15,5,10" />
 
             </Grid>
         </ScrollViewer>
         <!-- start + popupbox -->
         <TextBlock Grid.Row="1"  VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="Auto" RenderTransformOrigin="0.5,0.5" Height="36" Margin="0,0,0,50" >                    
-                            <Button Click="CreateButton_Click" Style="{StaticResource MaterialDesignRaisedDarkButton}" Margin="10 0 40 0" Width="100" ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" Content="Add"/>   
-                            <Button Click="ClearButton_Click"   Style="{StaticResource MaterialDesignRaisedDarkButton}" Margin="0 0 40 0" Width="100"  ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" Content="Clear"/>
+                            <Button Click="CreateButton_Click" Style="{StaticResource MaterialDesignRaisedDarkButton}" Margin="10 0 40 0" Width="100" ToolTip="Create customer order." Content="Add"/>   
+                            <Button Click="ClearButton_Click"   Style="{StaticResource MaterialDesignRaisedDarkButton}" Margin="0 0 40 0" Width="100"  ToolTip="Clear all inserted values, this also removes items added to the order." Content="Clear"/>
         </TextBlock>
         <!-- End + popupbox -->
     </Grid>

@@ -94,7 +94,7 @@ namespace AlphaElectric.Forms
                 var sMessageDialog = new MessageDialog
                 {
                     Message = { Text =
-                    "ERROR: Fill missing fields!" }
+                    "ERROR: Fill required fields!" }
                 };
 
                 DialogHost.Show(sMessageDialog, "RootDialog");

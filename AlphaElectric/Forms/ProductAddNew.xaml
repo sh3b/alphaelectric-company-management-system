@@ -138,7 +138,7 @@
                     <TextBlock Width="75" VerticalAlignment="Center" Margin="16 0 8 0">Type</TextBlock>
                     <ComboBox Name="PartTypeComboBox" materialDesign:HintAssist.Hint="Select Part Type" MinWidth="100" Margin="0,0,0,0" Width="150" VerticalAlignment="Bottom">
                         <ComboBox.SelectedValue>
-                            <Binding Path="ID" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                            <Binding Path="PartTypeID" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
                                 <Binding.ValidationRules>
                                     <domain:NotEmptyValidationRule ValidatesOnTargetUpdated="True"/>
                                 </Binding.ValidationRules>
@@ -151,7 +151,7 @@
                     <TextBlock Width="75" VerticalAlignment="Center" Margin="16 0 8 0">Type</TextBlock>
                     <ComboBox Name="PanelTypeComboBox" materialDesign:HintAssist.Hint="Select Model Type" Width="150" VerticalAlignment="Bottom">
                         <ComboBox.SelectedValue>
-                            <Binding Path="ID" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                            <Binding Path="PanelTypeID" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
                                 <Binding.ValidationRules>
                                     <domain:NotEmptyValidationRule ValidatesOnTargetUpdated="True"/>
                                 </Binding.ValidationRules>
@@ -164,7 +164,7 @@
                     <TextBlock Width="75" VerticalAlignment="Center" Margin="16 0 8 0">Size</TextBlock>
                     <ComboBox Name="SizeComboBox" materialDesign:HintAssist.Hint="Select Dimensions" Width="150" VerticalAlignment="Bottom">
                         <ComboBox.SelectedValue>
-                            <Binding Path="ID" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                            <Binding Path="SizeID" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
                                 <Binding.ValidationRules>
                                     <domain:NotEmptyValidationRule ValidatesOnTargetUpdated="True"/>
                                 </Binding.ValidationRules>
@@ -177,7 +177,7 @@
                     <TextBlock Width="75" VerticalAlignment="Center" Margin="16 0 8 0">Protection</TextBlock>
                     <ComboBox Name="PanelIPNumberComboBox" materialDesign:HintAssist.Hint="Select IP Number" Width="150" VerticalAlignment="Bottom">
                         <ComboBox.SelectedValue>
-                            <Binding Path="ID" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                            <Binding Path="PanelIPNumberID" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
                                 <Binding.ValidationRules>
                                     <domain:NotEmptyValidationRule ValidatesOnTargetUpdated="True"/>
                                 </Binding.ValidationRules>
@@ -190,7 +190,7 @@
                     <TextBlock Width="75" VerticalAlignment="Center" Margin="16 0 8 0">Certification</TextBlock>
                     <ComboBox Name="CertComboBox" materialDesign:HintAssist.Hint="Select ISO Standard" Width="150" VerticalAlignment="Bottom">
                         <ComboBox.SelectedValue>
-                            <Binding Path="ID" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                            <Binding Path="CertComboBoxID" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
                                 <Binding.ValidationRules>
                                     <domain:NotEmptyValidationRule ValidatesOnTargetUpdated="True"/>
                                 </Binding.ValidationRules>
@@ -202,8 +202,8 @@
         </ScrollViewer>
         <!-- start + popupbox -->
         <TextBlock Grid.Row="1"  VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="Auto" RenderTransformOrigin="0.5,0.5" Height="36" Margin="0,0,0,50" >                    
-                            <Button Click="InsertButton_Click" Style="{StaticResource MaterialDesignRaisedDarkButton}" Margin="10 0 40 0" Width="100" ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" Content="Add"/>   
-                            <Button Click="ClearButton_Click"   Style="{StaticResource MaterialDesignRaisedDarkButton}" Margin="0 0 40 0" Width="100"  ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" Content="Clear"/>
+                            <Button Click="InsertButton_Click" Style="{StaticResource MaterialDesignRaisedDarkButton}" Margin="10 0 40 0" Width="100" ToolTip="Add new item to product catalog." Content="Add"/>   
+                            <Button Click="ClearButton_Click"   Style="{StaticResource MaterialDesignRaisedDarkButton}" Margin="0 0 40 0" Width="100"  ToolTip="Clear inserted values." Content="Clear"/>
         </TextBlock>
         <!-- End + popupbox -->
     </Grid>

@@ -157,8 +157,8 @@
         </ScrollViewer>
         <!-- start + popupbox -->
         <TextBlock Grid.Row="1"  VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="Auto" RenderTransformOrigin="0.5,0.5" Height="36" Margin="0,0,0,50" >                    
-                            <Button Click="InsertButton_Click" Style="{StaticResource MaterialDesignRaisedDarkButton}" Margin="10 0 40 0" Width="100" ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" Content="Update"/>   
-                            <Button Click="ClearButton_Click"   Style="{StaticResource MaterialDesignRaisedDarkButton}" Margin="0 0 40 0" Width="100"  ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" Content="Clear"/>
+                            <Button Click="InsertButton_Click" Style="{StaticResource MaterialDesignRaisedDarkButton}" Margin="10 0 40 0" Width="100" ToolTip="Update customer information" Content="Update"/>   
+                            <Button Click="ClearButton_Click"   Style="{StaticResource MaterialDesignRaisedDarkButton}" Margin="0 0 40 0" Width="100"  ToolTip="Clear all values" Content="Clear"/>
         </TextBlock>
         <!-- End + popupbox -->
     </Grid>

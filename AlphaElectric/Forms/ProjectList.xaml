@@ -69,17 +69,19 @@
             <RowDefinition Height="100" />
         </Grid.RowDefinitions>
         <Grid Grid.Row="1" Name="UserPages" Margin="20,0,20,0"></Grid>
-        <TextBlock Name="TextBlock_TitleName" Grid.Row="0" Margin="10 20 10 10" FontWeight="DemiBold" Style="{StaticResource MaterialDesignHeadlineTextBlock}">Company List</TextBlock>
+        <TextBlock Name="TextBlock_TitleName" Grid.Row="0" Margin="10 20 10 10" FontWeight="DemiBold" Style="{StaticResource MaterialDesignHeadlineTextBlock}">Project List</TextBlock>
 
         <DataGrid Grid.Row="1" Grid.Column="0"    ScrollViewer.CanContentScroll="True" 
       ScrollViewer.VerticalScrollBarVisibility="Auto"
       ScrollViewer.HorizontalScrollBarVisibility="Auto"
                       AutoGenerateColumns="False" Height="Auto" HorizontalAlignment="Left" Name="DataGrid" Width="{Binding Path=ActualWidth, ElementName=grid}">
             <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding CompanyName}" Header="Name" Width="Auto"  />
-                <DataGridTextColumn Binding="{Binding Phone}" Header="Phone" Width="Auto" />
-                <DataGridTextColumn Binding="{Binding Email}" Header="Email" Width="Auto" />
-                <DataGridTextColumn Binding="{Binding Address}" Header="Address" Width="Auto" />
+                <DataGridTextColumn Binding="{Binding Name}" Header="Name" Width="Auto"  />
+                <DataGridTextColumn Binding="{Binding DeliveyDate, StringFormat=d,ConverterCulture=en-NZ }" Header="Delivery Date" Width="Auto" />
+                <DataGridTextColumn Binding="{Binding Status}" Header="Status" Width="Auto" />
+                <DataGridTextColumn Binding="{Binding CustomerOrder.ID}" Header="Order ID" Width="Auto" />
+                <DataGridTextColumn Binding="{Binding CustomerOrder.Contact.CompanyName }" Header="Ordered by" Width="Auto" />
+                <DataGridTextColumn Binding="{Binding CustomerOrder.OrderDate, StringFormat=d,ConverterCulture=en-NZ }" Header="Order Date" Width="Auto" />
             </DataGrid.Columns>
         </DataGrid>
         <materialDesign:PopupBox Grid.Row="2"

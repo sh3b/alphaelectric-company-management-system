@@ -91,8 +91,8 @@
 
                 <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" FontWeight="DemiBold" Style="{StaticResource MaterialDesignHeadlineTextBlock}">Edit Project Details</TextBlock>
 
-                <TextBlock FontWeight="DemiBold" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" Margin="0 13 8 5">Select Company</TextBlock>
-                <ComboBox SelectionChanged="SelectCompanyComboBox_SelectionChanged"  Grid.Row="1" Grid.Column="1" Name="SelectCompanyComboBox" materialDesign:HintAssist.Hint="Select Company" MinWidth="72" Margin="0 0 0 0" VerticalAlignment="Bottom">
+                <TextBlock FontWeight="DemiBold" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" Margin="0 13 8 5">Select Project</TextBlock>
+                <ComboBox SelectionChanged="SelectProjectComboBox_SelectionChanged"  Grid.Row="1" Grid.Column="1" Name="SelectProjectComboBox" materialDesign:HintAssist.Hint="Select Company" MinWidth="72" Margin="0 0 0 0" VerticalAlignment="Bottom">
                     <ComboBox.SelectedValue>
                         <Binding Path="ID" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
                             <Binding.ValidationRules>
@@ -105,7 +105,7 @@
                 <TextBlock Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" Margin="16 0 8 0">Name</TextBlock>
                 <TextBox Grid.Row="2" Grid.Column="1" x:Name="NameTextBox" materialDesign:HintAssist.Hint="Insert Company Full Name">
                     <TextBox.Text>
-                        <Binding Path="CompanyName" ValidatesOnDataErrors="True" UpdateSourceTrigger="PropertyChanged" NotifyOnValidationError="True">
+                        <Binding Path="Name" ValidatesOnDataErrors="True" UpdateSourceTrigger="PropertyChanged" NotifyOnValidationError="True">
                             <Binding.ValidationRules>
                                 <domain:NotEmptyValidationRule ValidatesOnTargetUpdated="True" />
                                 <!-- Checks for exceptions during the setting of the source property.Alternatively, set ValidatesOnExceptions to True on the Binding.-->
@@ -115,36 +115,22 @@
                     </TextBox.Text>
                 </TextBox>
 
-                <TextBlock Grid.Row="3" Grid.Column="0"  VerticalAlignment="Center" Margin="16 0 8 0">Phone No.</TextBlock>
-                <TextBox Grid.Row="3" Grid.Column="1" x:Name="PhoneTextBox" materialDesign:HintAssist.Hint="+00-00-0000000">
-                    <TextBox.Text>
-                        <Binding Path="Phone" ValidatesOnDataErrors="True" UpdateSourceTrigger="PropertyChanged" NotifyOnValidationError="True">
+                <TextBlock Grid.Row="3" Grid.Column="0"  VerticalAlignment="Center" Margin="16 0 8 0">Delivery Date</TextBlock>
+                <DatePicker Grid.Row="3" Grid.Column="1" Height="25" Margin="0 5 0 0" x:Name="DeliveryDateDatePicker" Width="150" HorizontalAlignment="Left"  
+                        materialDesign:HintAssist.Hint="Set Delivery Date">
+                    <DatePicker.SelectedDate>
+                        <Binding Path="DeliveryDate" UpdateSourceTrigger="PropertyChanged">
                             <Binding.ValidationRules>
-                                <domain:NotEmptyValidationRule ValidatesOnTargetUpdated="True" />
-                                <!-- Checks for exceptions during the setting of the source property.Alternatively, set ValidatesOnExceptions to True on the Binding.-->
-                                <ExceptionValidationRule/>
+                                <domain:PresentFutureDateValidationRule ValidatesOnTargetUpdated="True" />
                             </Binding.ValidationRules>
                         </Binding>
-                    </TextBox.Text>
-                </TextBox>
+                    </DatePicker.SelectedDate>
+                </DatePicker>
 
-                <TextBlock Grid.Row="4" Grid.Column="0"  VerticalAlignment="Center" Margin="16 0 8 0">E-Mail</TextBlock>
-                <TextBox Grid.Row="4" Grid.Column="1" x:Name="EmailTextBox" materialDesign:HintAssist.Hint="Input Email">
+                <TextBlock Grid.Row="4" Grid.Column="0"  VerticalAlignment="Center" Margin="16 0 8 0">Status</TextBlock>
+                <TextBox Grid.Row="4" Grid.Column="1" x:Name="StatusTextBox" materialDesign:HintAssist.Hint="Input Status">
                     <TextBox.Text>
-                        <Binding Path="Email" ValidatesOnDataErrors="True" UpdateSourceTrigger="PropertyChanged" NotifyOnValidationError="True">
-                            <Binding.ValidationRules>
-                                <domain:NotEmptyValidationRule ValidatesOnTargetUpdated="True" />
-                                <!-- Checks for exceptions during the setting of the source property.Alternatively, set ValidatesOnExceptions to True on the Binding.-->
-                                <ExceptionValidationRule/>
-                            </Binding.ValidationRules>
-                        </Binding>
-                    </TextBox.Text>
-                </TextBox>
-
-                <TextBlock Grid.Row="5" Grid.Column="0"  VerticalAlignment="Center" Margin="16 0 8 0">Address</TextBlock>
-                <TextBox Grid.Row="5" Grid.Column="1" x:Name="AddressTextBox" materialDesign:HintAssist.Hint="Input Address">
-                    <TextBox.Text>
-                        <Binding Path="Address" ValidatesOnDataErrors="True" UpdateSourceTrigger="PropertyChanged" NotifyOnValidationError="True">
+                        <Binding Path="Status" ValidatesOnDataErrors="True" UpdateSourceTrigger="PropertyChanged" NotifyOnValidationError="True">
                             <Binding.ValidationRules>
                                 <domain:NotEmptyValidationRule ValidatesOnTargetUpdated="True" />
                                 <!-- Checks for exceptions during the setting of the source property.Alternatively, set ValidatesOnExceptions to True on the Binding.-->
@@ -157,8 +143,8 @@
         </ScrollViewer>
         <!-- start + popupbox -->
         <TextBlock Grid.Row="1"  VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="Auto" RenderTransformOrigin="0.5,0.5" Height="36" Margin="0,0,0,50" >                    
-                            <Button Click="InsertButton_Click" Style="{StaticResource MaterialDesignRaisedDarkButton}" Margin="10 0 40 0" Width="100" ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" Content="Update"/>   
-                            <Button Click="ClearButton_Click"   Style="{StaticResource MaterialDesignRaisedDarkButton}" Margin="0 0 40 0" Width="100"  ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" Content="Clear"/>
+                            <Button Click="InsertButton_Click" Style="{StaticResource MaterialDesignRaisedDarkButton}" Margin="10 0 40 0" Width="100" ToolTip="Update project information." Content="Update"/>   
+                            <Button Click="ClearButton_Click"   Style="{StaticResource MaterialDesignRaisedDarkButton}" Margin="0 0 40 0" Width="100"  ToolTip="Clear all inserted values and re-select a projct to edit it." Content="Clear"/>
         </TextBlock>
         <!-- End + popupbox -->
     </Grid>

@@ -45,18 +45,24 @@ namespace AlphaElectric.Forms
 
         void UpdateFields()
         {
-            if (SelectCompanyComboBox.SelectedValue != null)
+            if (SelectProjectComboBox.SelectedValue != null)
             {
                 var db = new AlphaElectricEntitiesDB();
-                var id = int.Parse(SelectCompanyComboBox.SelectedValue.ToString());
-                var cust = db.Contacts.Where(x => x.ID == id).FirstOrDefault();
-                if (cust != null)
+                var id = int.Parse(SelectProjectComboBox.SelectedValue.ToString());
+                var proj = db.Projects.Where(x => x.ID == id).FirstOrDefault();
+                if (proj != null)
                 {
-                    NameTextBox.Text = cust.CompanyName;
-                    EmailTextBox.Text = cust.Email;
-                    PhoneTextBox.Text = cust.Phone;
-                    AddressTextBox.Text = cust.Address;
-               }
+                    NameTextBox.Text = proj.Name;
+                    this.DeliveryDateDatePicker.SelectedDate = proj.DeliveyDate;
+                    if (proj.Status == true)
+                    {
+                        this.StatusTextBox.Text = "Ready";
+                    }
+                    else
+                    {
+                        this.StatusTextBox.Text = "Incomplete";
+                    }
+                }
             }
         }
 
@@ -73,19 +79,18 @@ namespace AlphaElectric.Forms
             projlist = new ProjectFactory().SelectAll();
             this.Dispatcher.Invoke(() =>
             {
-                SelectCompanyComboBox.ItemsSource = projlist;
-                SelectCompanyComboBox.DisplayMemberPath = "CompanyName";
-                SelectCompanyComboBox.SelectedValuePath = "ID";
+                SelectProjectComboBox.ItemsSource = projlist;
+                SelectProjectComboBox.DisplayMemberPath = "Name";
+                SelectProjectComboBox.SelectedValuePath = "ID";
             });
         }
 
         private void ForceValidation()
         {
             //this.SelectCustomerComboBox.SelectedItem = null;
+            this.DeliveryDateDatePicker.GetBindingExpression(DatePicker.SelectedDateProperty).UpdateSource();
             this.NameTextBox.GetBindingExpression(TextBox.TextProperty).UpdateSource();
-            this.EmailTextBox.GetBindingExpression(TextBox.TextProperty).UpdateSource();
-            this.PhoneTextBox.GetBindingExpression(TextBox.TextProperty).UpdateSource();
-            this.AddressTextBox.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+            this.StatusTextBox.GetBindingExpression(TextBox.TextProperty).UpdateSource();
         }
 
         private void InsertButton_Click(object sender, RoutedEventArgs e)
@@ -93,24 +98,23 @@ namespace AlphaElectric.Forms
             #region validation 
             ForceValidation();
             if (Validation.GetHasError(NameTextBox) ||
-                Validation.GetHasError(EmailTextBox) ||
-                Validation.GetHasError(PhoneTextBox) ||
-                Validation.GetHasError(AddressTextBox))
+                Validation.GetHasError(DeliveryDateDatePicker) ||
+                Validation.GetHasError(StatusTextBox))
             {
                 var sMessageDialog = new MessageDialog
                 {
-                    Message = { Text = "ERROR: Fill missing fields!" }
+                    Message = { Text = "ERROR: Fill required fields!" }
                 };
 
                 DialogHost.Show(sMessageDialog, "RootDialog");
                 return;
             }
 
-            if (SelectCompanyComboBox.SelectedItem == null)
+            if (SelectProjectComboBox.SelectedItem == null)
             {
                 var sMessageDialog = new MessageDialog
                 {
-                    Message = { Text = "ERROR: Select a Company to edit!" }
+                    Message = { Text = "ERROR: Select a Project to edit!" }
                 };
 
                 DialogHost.Show(sMessageDialog, "RootDialog");
@@ -118,19 +122,40 @@ namespace AlphaElectric.Forms
             }
             #endregion
 
-            //ProjectFactory fac = new ProjectFactory();
-            //if (fac.Update(int.Parse(SelectCompanyComboBox.SelectedValue.ToString()),
-            //    NameTextBox.Text,
-            //    PhoneTextBox.Text,
-            //    EmailTextBox.Text,
-            //    AddressTextBox.Text))
-            //{
-            //    MessageBox.Show("Updated");
-            //    Clear();
-            //    projlist = new ProjectFactory().SelectAll();
-            //}
-            //else
-            //    MessageBox.Show("Not Updated");
+            ProjectFactory fac = new ProjectFactory();
+            bool x = false;
+            if (this.StatusTextBox.Text == "Ready")
+            {
+                x = true;
+            }
+
+            if (fac.Update(int.Parse(SelectProjectComboBox.SelectedValue.ToString()),
+                NameTextBox.Text,
+                x,
+                DeliveryDateDatePicker.SelectedDate.Value))
+            {
+                var sMessageDialog = new MessageDialog
+                {
+                    Message = { Text =
+                    "Updated!" }
+                };
+                DialogHost.Show(sMessageDialog, "RootDialog");
+                Clear();
+                projlist = new ProjectFactory().SelectAll();
+                return;
+            }
+            else
+            {
+                var sMessageDialog = new MessageDialog
+                {
+                    Message = { Text =
+                    "Not updated!" }
+                };
+                DialogHost.Show(sMessageDialog, "RootDialog");
+                Clear();
+                projlist = new ProjectFactory().SelectAll();
+                return;
+            }
         }
 
         private void ClearButton_Click(object sender, RoutedEventArgs e)
@@ -140,11 +165,10 @@ namespace AlphaElectric.Forms
 
         private void Clear()
         {
-            this.SelectCompanyComboBox.SelectedItem = null;
+            this.SelectProjectComboBox.SelectedItem = null;
             this.NameTextBox.Clear();
-            this.EmailTextBox.Clear();
-            this.PhoneTextBox.Clear();
-            this.AddressTextBox.Clear();        }
+            this.StatusTextBox.Clear();
+        }
 
         private void SelectCompanyComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {

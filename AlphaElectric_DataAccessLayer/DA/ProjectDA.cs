@@ -39,7 +39,7 @@ namespace AlphaElectric_DataAccessLayer.DA
             return db.SaveChanges() > 0 ? true : false;
         }
 
-        public bool Update(int id, string name, bool status, DateTime de, int OrderID)
+        public bool Update(int id, string name, bool status, DateTime de)
         {
             var proj = db.Projects.Where(x => x.ID == id).FirstOrDefault();
             if (proj != null)
@@ -47,7 +47,7 @@ namespace AlphaElectric_DataAccessLayer.DA
                 proj.Name = name;
                 proj.Status = status;
                 proj.DeliveyDate = de;
-                proj.CustomerOrderID = OrderID;
+                //proj.CustomerOrderID = OrderID;
             }
             return db.SaveChanges() > 0 ? true : false;
         }
