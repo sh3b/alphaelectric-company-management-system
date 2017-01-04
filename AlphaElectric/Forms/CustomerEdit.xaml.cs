@@ -127,12 +127,26 @@ namespace AlphaElectric.Forms
                 EmailTextBox.Text,
                 AddressTextBox.Text))
             {
-                MessageBox.Show("Updated");
+                var sMessageDialog = new MessageDialog
+                {
+                    Message = { Text =
+                    "Updated Successfull!" }
+                };
+
+                DialogHost.Show(sMessageDialog, "RootDialog");
                 Clear();
                 conlist = new ContactFactory().SelectAll();
             }
             else
-                MessageBox.Show("Not Updated");
+            {
+                var sMessageDialog = new MessageDialog
+                {
+                    Message = { Text =
+                    "Updated Successfull!" }
+                };
+
+                DialogHost.Show(sMessageDialog, "RootDialog");
+            }
         }
 
         private void ClearButton_Click(object sender, RoutedEventArgs e)

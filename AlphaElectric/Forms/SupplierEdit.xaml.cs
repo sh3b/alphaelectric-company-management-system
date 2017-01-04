@@ -126,12 +126,27 @@ namespace AlphaElectric.Forms
                 EmailTextBox.Text,
                 AddressTextBox.Text))
             {
-                MessageBox.Show("Updated");
+                var sMessageDialog = new MessageDialog
+                {
+                    Message = { Text =
+                    "Updated Successfully!" }
+                };
+
+                DialogHost.Show(sMessageDialog, "RootDialog");
                 Clear();
                 conlist = new ContactFactory().SelectAll();
             }
             else
-                MessageBox.Show("Not Updated");
+            {
+                var sMessageDialog = new MessageDialog
+                {
+                    Message = { Text =
+                    "Nothing to update!" }
+                };
+
+                DialogHost.Show(sMessageDialog, "RootDialog");
+                return;
+            }
         }
 
         private void ClearButton_Click(object sender, RoutedEventArgs e)
@@ -145,7 +160,8 @@ namespace AlphaElectric.Forms
             this.NameTextBox.Clear();
             this.EmailTextBox.Clear();
             this.PhoneTextBox.Clear();
-            this.AddressTextBox.Clear();        }
+            this.AddressTextBox.Clear();
+        }
 
         private void SelectSupplierComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {

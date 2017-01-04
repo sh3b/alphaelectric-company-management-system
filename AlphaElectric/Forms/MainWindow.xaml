@@ -1,5 +1,5 @@
 ﻿<src:MetroWindow x:Class="AlphaElectric.Forms.MainwWindow"
-                 Title="AlphaElectric | Home"
+                 Title="AlphaElectric"
                  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -22,7 +22,8 @@
                  Height="700"
                  Width="900"     
                  Loaded="Window_Loaded"
-                 WindowStartupLocation="CenterScreen">
+                 WindowStartupLocation="CenterScreen"
+                 Icon="Resources/icon.ico">
     <UserControl>
         <UserControl.Resources>
             <ResourceDictionary>

@@ -90,7 +90,7 @@ namespace AlphaElectric.Forms
                     "\n1. Muhammad Shoaib" +
                     "\n  3022/FBAS/BSCS/F14B" +
                     "\n2. Muhammad Amir" +
-                    "\n  ____/FBAS/BSCS/F14B" }
+                    "\n  2979/FBAS/BSCS/F14B" }
             };
 
             DialogHost.Show(sMessageDialog, "RootDialog");

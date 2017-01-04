@@ -21,7 +21,7 @@
                       ResizeMode="CanMinimize"
                      
                       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" WindowStartupLocation="CenterScreen"                      
-                      >
+                      Icon="Resources/icon.ico">
     <!-- WindowStyle="None"-->
     <UserControl>
         <UserControl.Resources>
@@ -82,7 +82,7 @@
 
 
 
-                <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource MaterialDesignHeadlineTextBlock}">Login</TextBlock>
+                <TextBlock Grid.Row="0" Style="{StaticResource MaterialDesignHeadlineTextBlock}" Grid.Column="2" Margin="24,0,0,0">Login</TextBlock>
 
                 <!-- Start Name -->
                 <materialDesign:PackIcon Grid.Row="1" Kind="Account" Foreground="{Binding ElementName=NameTextBox, Path=BorderBrush}" Margin="0,18,0,5" Grid.Column="1" />

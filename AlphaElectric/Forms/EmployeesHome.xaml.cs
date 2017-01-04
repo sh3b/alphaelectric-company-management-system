@@ -19,6 +19,7 @@ using System.Windows.Controls.Primitives;
 using AlphaElectric_DataAccessLayer;
 using AlphaElectric_DataAccessLayer.Factories;
 using AlphaElectric.Logic;
+using DevExpress.Xpf.Printing;
 
 namespace AlphaElectric.Forms
 {
@@ -30,7 +31,7 @@ namespace AlphaElectric.Forms
         public HomeEmployees()
         {
             InitializeComponent();
-            WelcomeMessage.Text = "Welcome " + LoggedInUser.Instance.Info.Name + "!";
+            //WelcomeMessage.Text = "Welcome " + LoggedInUser.Instance.Info.Name + "!";
         }
 
         //Executing after loading window
@@ -130,6 +131,12 @@ namespace AlphaElectric.Forms
             EmployeeAddNew x = new EmployeeAddNew();
             UserPages.Children.Clear();
             UserPages.Children.Add(x);
+        }
+
+        private void ButtonPrintEmployeeList_Click(object sender, RoutedEventArgs e)
+        {
+           var report = new AlphaElectric.Reports.EmployeeList();
+            PrintHelper.ShowPrintPreview(this, report);
         }
     }
 }

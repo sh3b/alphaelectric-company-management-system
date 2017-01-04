@@ -170,43 +170,27 @@ namespace AlphaElectric.Forms
             }
             #endregion
 
-            bool flag1 = false;
-            bool flag2 = false;
-
             ProductFactory fac = new ProductFactory();
             if (fac.Update(int.Parse(SelectProductComboBox.SelectedValue.ToString()),
                 SerialNoTextBox.Text,
                 NameTextBox.Text,
                 int.Parse(MakeComboBox.SelectedValue.ToString())))
             {
-                flag1 = true;
+                
             }
-            else
-                flag1 = false;
+            
 
             InventoryFactory fac2 = new InventoryFactory();
             if (fac2.Update(int.Parse(SelectProductComboBox.SelectedValue.ToString()),
                 int.Parse(StockLevelTextBox.Text.ToString())))
             {
-                flag2 = true;
+            
             }
-            else
-                flag2 = false;
 
-            if (flag1 || flag2)
             {
                 var sMessageDialog = new MessageDialog
                 {
                     Message = { Text = "Updated Info!" }
-                };
-
-                DialogHost.Show(sMessageDialog, "RootDialog");
-            }
-            else
-            {
-                var sMessageDialog = new MessageDialog
-                {
-                    Message = { Text = "Unable to update Info" }
                 };
 
                 DialogHost.Show(sMessageDialog, "RootDialog");

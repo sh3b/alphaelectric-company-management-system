@@ -49,10 +49,8 @@
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            <Image Source="Resources/ms-icon-310x310.png" Stretch="Uniform" Width="80" Height="80" />
             <StackPanel Grid.Column="1" Margin="24 0 0 0" VerticalAlignment="Center">
                 <!--<TextBlock Style="{StaticResource MaterialDesignDisplay1TextBlock}" TextWrapping="Wrap"><Run Text="Welcome User_Name!"/></TextBlock>-->
-                <TextBlock Style="{StaticResource MaterialDesignDisplay1TextBlock}" TextWrapping="Wrap"  Name="WelcomeMessage"/>
                 <Button Style="{StaticResource MaterialDesignFlatButton}" Command="{x:Static materialDesign:DrawerHost.OpenDrawerCommand}">
                     <StackPanel Orientation="Horizontal">
                         <materialDesign:PackIcon Kind="Backburger" />
@@ -81,12 +79,15 @@
                                 <RowDefinition Height="Auto" />
                                 <RowDefinition Height="Auto" />
                                 <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="200" />
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
-                            <Image Source="Resources/Contact.png" Grid.RowSpan="5" StretchDirection="Both" VerticalAlignment="Stretch" Stretch="UniformToFill" />
+                            <Image Source="Resources/Contact.png" Grid.RowSpan="6" StretchDirection="Both" VerticalAlignment="Stretch" Stretch="UniformToFill" Margin="-18,-60,0,10" />
                             <TextBlock Grid.Column="1" Style="{StaticResource MaterialDesignHeadlineTextBlock}" Margin="16 16 16 2" Text="Products"/>
                             <TextBlock Grid.Column="1" Grid.Row="1" TextWrapping="Wrap" Margin="16 0 16 8" Foreground="{DynamicResource MaterialDesignBodyLight}"
                                                        VerticalAlignment="Center" Text="There are two kinds of products: Part and Panel."/>
@@ -122,6 +123,16 @@
                                         <StackPanel Orientation="Horizontal">
                                             <materialDesign:PackIcon Kind="PlusNetwork" />
                                             <TextBlock Margin="8 0 0 0" VerticalAlignment="Center"><Run Text="Add New Product"/></TextBlock>
+                                        </StackPanel>
+                                    </Button>
+                                </Grid>
+                            </Border>
+                            <Border Grid.Column="1" Grid.Row="5" BorderThickness="0 1 0 0" BorderBrush="{DynamicResource MaterialDesignDivider}">
+                                <Grid Margin="8">
+                                    <Button FontSize="15" Style="{DynamicResource MaterialDesignFlatButton}" HorizontalAlignment="Left" x:Name="ButtonProductStock" Click="ButtonProductStock_Click">
+                                        <StackPanel Orientation="Horizontal">
+                                            <materialDesign:PackIcon Kind="PlusNetwork" />
+                                            <TextBlock Margin="8 0 0 0" VerticalAlignment="Center"><Run Text="Product Stock"/></TextBlock>
                                         </StackPanel>
                                     </Button>
                                 </Grid>
