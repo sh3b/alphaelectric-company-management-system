@@ -28,26 +28,28 @@ namespace AlphaElectric_DataAccessLayer.DA
             return db.SaveChanges() > 0 ? true : false;
         }
 
-        //CHECK IT
-        public bool Delete(int id)
+        public bool Update(int id, string serialno, string name, int makeid)
         {
             var prod = db.Products.Where(x => x.ID == id).FirstOrDefault();
             if (prod != null)
             {
-                db.Products.Remove(prod);
+                prod.SerialNo = serialno;
+                prod.Name = name;
+                prod.MakeID = makeid;
             }
             return db.SaveChanges() > 0 ? true : false;
         }
 
-        public bool Update(int id, string name)
-        {
-            var prod = db.Products.Where(x => x.ID == id).FirstOrDefault();
-            if (prod != null)
-            {
-                prod.Name = name;
-            }
-            return db.SaveChanges() > 0 ? true : false;
-        }
+        //CHECK IT
+        //public bool Delete(int id)
+        //{
+        //    var prod = db.Products.Where(x => x.ID == id).FirstOrDefault();
+        //    if (prod != null)
+        //    {
+        //        db.Products.Remove(prod);
+        //    }
+        //    return db.SaveChanges() > 0 ? true : false;
+        //}
 
         public List<Part> SelectAllPart()
         {

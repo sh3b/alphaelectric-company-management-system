@@ -39,6 +39,10 @@ namespace AlphaElectric.Forms
         void LoadData()
         {
             List<Product_CustomerOrderBT> custPurchaseBTList = new Product_CustomerOrderBTFactory().SelectAll();
+
+            //Join Projects
+            //List<CustomerOrder> custOrders = new CustomerOrderFactory().SelectAll();
+
             DataGrid.ItemsSource = custPurchaseBTList;
             //proPurchaseBTList.FirstOrDefault().PurchaseOrder.Contact.Phone
         }

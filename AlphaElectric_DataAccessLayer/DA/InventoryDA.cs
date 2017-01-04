@@ -28,17 +28,6 @@ namespace AlphaElectric_DataAccessLayer.DA
             return db.SaveChanges() > 0 ? true : false;
         }
 
-        //CHECK IT
-        public bool Delete(int id)
-        {
-            var inven = db.Inventories.Where(x => x.ID == id).FirstOrDefault();
-            if (inven != null)
-            {
-                db.Inventories.Remove(inven);
-            }
-            return db.SaveChanges() > 0 ? true : false;
-        }
-
         public bool Update(int id, int stocklevel)
         {
             var inven = db.Inventories.Where(x => x.ID == id).FirstOrDefault();
@@ -48,7 +37,19 @@ namespace AlphaElectric_DataAccessLayer.DA
             }
             return db.SaveChanges() > 0 ? true : false;
         }
-        
+
+        //CHECK IT
+        //public bool Delete(int id)
+        //{
+        //    var inven = db.Inventories.Where(x => x.ID == id).FirstOrDefault();
+        //    if (inven != null)
+        //    {
+        //        db.Inventories.Remove(inven);
+        //    }
+        //    return db.SaveChanges() > 0 ? true : false;
+        //}
+
+
         //public List<StudentViewModel> SelectFew()
         //{
         //    return (from s in db.Students

@@ -117,9 +117,9 @@ namespace AlphaElectric.Forms
             this.topgrid.Visibility = Visibility.Collapsed;
             this.mainscrollviewer.Visibility = Visibility.Collapsed;
 
-            //ProductEdit x = new ProductEdit();
-            //UserPages.Children.Clear();
-            //UserPages.Children.Add(x);
+            ProductEdit x = new ProductEdit();
+            UserPages.Children.Clear();
+            UserPages.Children.Add(x);
         }
 
         private void ButtonPanelList_Click(object sender, RoutedEventArgs e)

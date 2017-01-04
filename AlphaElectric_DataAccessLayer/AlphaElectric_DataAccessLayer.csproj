@@ -76,7 +76,6 @@
     <Compile Include="DA\ProductDA.cs" />
     <Compile Include="DA\TypeDA.cs" />
     <Compile Include="DA\SizeTypeDA.cs" />
-    <Compile Include="DA\LocationDA.cs" />
     <Compile Include="DBModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -114,11 +113,7 @@
     <Compile Include="Factories\TypeFactory.cs" />
     <Compile Include="Factories\SizeTypeFactory.cs" />
     <Compile Include="Factories\ProductFactory.cs" />
-    <Compile Include="Factories\LocationFactory.cs" />
     <Compile Include="Inventory.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Location.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Login.cs">

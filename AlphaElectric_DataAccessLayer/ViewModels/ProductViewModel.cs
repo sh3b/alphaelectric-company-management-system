@@ -19,7 +19,7 @@ namespace ViewModels
         public int SizeID { get; set; }
         public int PanelIPNumberID { get; set; }
         public int CertComboBoxID { get; set; }
-
+        public int StockLevel { get; set; }
 
 
         public string Error

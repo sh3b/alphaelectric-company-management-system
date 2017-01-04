@@ -116,6 +116,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Forms\ProductEdit.xaml.cs">
+      <DependentUpon>ProductEdit.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Forms\HomeProjects.xaml.cs">
       <DependentUpon>HomeProjects.xaml</DependentUpon>
     </Compile>
@@ -191,6 +194,10 @@
     <Compile Include="Forms\CustomerList.xaml.cs">
       <DependentUpon>CustomerList.xaml</DependentUpon>
     </Compile>
+    <Page Include="Forms\ProductEdit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Forms\HomeProjects.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

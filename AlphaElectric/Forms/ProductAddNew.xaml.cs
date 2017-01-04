@@ -211,6 +211,12 @@ namespace AlphaElectric.Forms
                 ProductFactory fac = new ProductFactory();
                 if (fac.InsertProduct(x))
                 {
+                    // Adding Stock Level to Zero
+                    var newProduct = new Inventory();
+                    newProduct.ID = x.ID;
+                    newProduct.StockLevel = 0;
+                    var inFac = new InventoryFactory().InsertInventory(newProduct);
+
                     var sMessageDialog = new MessageDialog
                     {
                         Message = { Text = "Added succesfully!" }
@@ -245,6 +251,12 @@ namespace AlphaElectric.Forms
                 ProductFactory fac = new ProductFactory();
                 if (fac.InsertProduct(x))
                 {
+                    // Adding Stock Level to Zero
+                    var newProduct = new Inventory();
+                    newProduct.ID = x.ID;
+                    newProduct.StockLevel = 0;
+                    var inFac = new InventoryFactory().InsertInventory(newProduct);
+
                     var sMessageDialog = new MessageDialog
                     {
                         Message = { Text = "Added succesfully!" }

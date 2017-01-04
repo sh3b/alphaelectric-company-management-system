@@ -59,13 +59,6 @@
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="StockLevel" Type="int" Nullable="false" />
         </EntityType>
-        <EntityType Name="Locations">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
-        </EntityType>
         <EntityType Name="Logins">
           <Key>
             <PropertyRef Name="ID" />
@@ -195,18 +188,6 @@
             </Principal>
             <Dependent Role="Employees">
               <PropertyRef Name="DesignationID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_InventoryLocation">
-          <End Role="Inventories" Type="Self.Inventories" Multiplicity="1" />
-          <End Role="Locations" Type="Self.Locations" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="Inventories">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Locations">
-              <PropertyRef Name="ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -401,7 +382,6 @@
           <EntitySet Name="Designations" EntityType="Self.Designations" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Employees" EntityType="Self.Employees" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Inventories" EntityType="Self.Inventories" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Locations" EntityType="Self.Locations" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Logins" EntityType="Self.Logins" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Makes" EntityType="Self.Makes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PanelShellGradeProtections" EntityType="Self.PanelShellGradeProtections" Schema="dbo" store:Type="Tables" />
@@ -422,10 +402,6 @@
           <AssociationSet Name="FK_EmployeeDesignation" Association="Self.FK_EmployeeDesignation">
             <End Role="Designations" EntitySet="Designations" />
             <End Role="Employees" EntitySet="Employees" />
-          </AssociationSet>
-          <AssociationSet Name="FK_InventoryLocation" Association="Self.FK_InventoryLocation">
-            <End Role="Inventories" EntitySet="Inventories" />
-            <End Role="Locations" EntitySet="Locations" />
           </AssociationSet>
           <AssociationSet Name="FK_Panel_inherits_Product" Association="Self.FK_Panel_inherits_Product">
             <End Role="Products" EntitySet="Products" />
@@ -501,11 +477,6 @@
           </AssociationSet>
           <EntitySet Name="Products" EntityType="AlphaElectricEntities.Product" cg:GetterAccess="Internal" />
           <EntitySet Name="Inventories" EntityType="AlphaElectricEntities.Inventory" />
-          <EntitySet Name="Locations" EntityType="AlphaElectricEntities.Location" />
-          <AssociationSet Name="InventoryLocation" Association="AlphaElectricEntities.InventoryLocation">
-            <End Role="Inventory" EntitySet="Inventories" />
-            <End Role="Location" EntitySet="Locations" />
-          </AssociationSet>
           <AssociationSet Name="ProductInventory" Association="AlphaElectricEntities.ProductInventory">
             <End Role="Product" EntitySet="Products" />
             <End Role="Inventory" EntitySet="Inventories" />
@@ -627,32 +598,10 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="None" />
           <Property Name="StockLevel" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Location" Relationship="AlphaElectricEntities.InventoryLocation" FromRole="Inventory" ToRole="Location" />
           <NavigationProperty Name="Product" Relationship="AlphaElectricEntities.ProductInventory" FromRole="Inventory" ToRole="Product" />
         </EntityType>
-        <EntityType Name="Location">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
-          <NavigationProperty Name="Inventory" Relationship="AlphaElectricEntities.InventoryLocation" FromRole="Location" ToRole="Inventory" />
-        </EntityType>
-        <Association Name="InventoryLocation">
-          <End Type="AlphaElectricEntities.Inventory" Role="Inventory" Multiplicity="1" />
-          <End Type="AlphaElectricEntities.Location" Role="Location" Multiplicity="1" >
-          </End>
-          <ReferentialConstraint>
-            <Principal Role="Inventory">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Location">
-              <PropertyRef Name="ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="ProductInventory">
           <End Type="AlphaElectricEntities.Product" Role="Product" Multiplicity="1" />
           <End Type="AlphaElectricEntities.Inventory" Role="Inventory" Multiplicity="1" />
@@ -1020,14 +969,6 @@
         <MappingFragment StoreEntitySet="Inventories">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="StockLevel" ColumnName="StockLevel" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Locations">
-      <EntityTypeMapping TypeName="IsTypeOf(AlphaElectricEntities.Location)">
-        <MappingFragment StoreEntitySet="Locations">
-          <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

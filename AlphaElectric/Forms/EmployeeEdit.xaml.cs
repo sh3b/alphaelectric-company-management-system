@@ -158,11 +158,20 @@ namespace AlphaElectric.Forms
                 AddressTextBox.Text,
                 int.Parse(DesignationComboBox.SelectedValue.ToString())))
             {
-                MessageBox.Show("Updated");
+                var sMessageDialog = new MessageDialog
+                {
+                    Message = { Text = "Updated Successfully!" }
+                };
                 Clear();
             }
             else
-                MessageBox.Show("Not Updated");
+            {
+                var sMessageDialog = new MessageDialog
+                {
+                    Message = { Text = "Unable to update.." }
+                };
+                Clear();
+            }
         }
 
         private void ClearButton_Click(object sender, RoutedEventArgs e)

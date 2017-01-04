@@ -35,12 +35,14 @@ namespace AlphaElectric_DataAccessLayer.Factories
             return prodDa.SelectAllPanel();
         }
 
-
         public bool InsertProduct(Product prod)
         {
             return prodDa.InsertProduct(prod);
         }
 
-
+        public bool Update(int id, string serialno, string name, int makeid)
+        {
+            return prodDa.Update(id, serialno, name, makeid);
+        }
     }
 }

@@ -4,14 +4,12 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="368f6c008cba43f28917b883d8c032de" Name="Diagram1" ZoomLevel="89" >
+      <Diagram DiagramId="368f6c008cba43f28917b883d8c032de" Name="Diagram1" ZoomLevel="75" >
         <EntityTypeShape EntityType="AlphaElectricEntities.Employee" Width="1.5" PointX="12.75" PointY="8" FillColor="Navy" />
         <EntityTypeShape EntityType="AlphaElectricEntities.Designation" Width="1.5" PointX="13.375" PointY="11.625" />
         <AssociationConnector Association="AlphaElectricEntities.EmployeeDesignation" />
         <EntityTypeShape EntityType="AlphaElectricEntities.Product" Width="1.5" PointX="6.375" PointY="2.125" FillColor="Navy" />
         <EntityTypeShape EntityType="AlphaElectricEntities.Inventory" Width="1.5" PointX="3.875" PointY="0.5" FillColor="Navy" />
-        <EntityTypeShape EntityType="AlphaElectricEntities.Location" Width="1.5" PointX="1" PointY="0.5" />
-        <AssociationConnector Association="AlphaElectricEntities.InventoryLocation" />
         <AssociationConnector Association="AlphaElectricEntities.ProductInventory" />
         <EntityTypeShape EntityType="AlphaElectricEntities.Panel" Width="2.625" PointX="3.125" PointY="6.25" FillColor="Navy" />
         <EntityTypeShape EntityType="AlphaElectricEntities.PanelShellGradeProtection" Width="1.75" PointX="1.25" PointY="3.5" />

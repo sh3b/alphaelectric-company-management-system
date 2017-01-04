@@ -17,7 +17,6 @@ namespace AlphaElectric_DataAccessLayer
         public int ID { get; set; }
         public int StockLevel { get; set; }
     
-        public virtual Location Location { get; set; }
         public virtual Product Product { get; set; }
     }
 }

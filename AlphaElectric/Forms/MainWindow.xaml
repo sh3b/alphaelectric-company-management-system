@@ -60,6 +60,7 @@
                                     </StackPanel>
                                 </TreeViewItem.Header>
                                 <TreeViewItem PreviewMouseLeftButtonDown="TreeItem_ProductAdd_PreviewMouseLeftButtonDown"  Header="Add new"/>
+                                <TreeViewItem PreviewMouseLeftButtonDown="TreeItem_ProductEdit_PreviewMouseLeftButtonDown"  Header="Update"/>
                                 <TreeViewItem>
                                     <TreeViewItem.Header>
                                         <StackPanel Orientation="Horizontal">
@@ -111,8 +112,9 @@
                                         <TextBlock Margin="8 0 0 0">Projects</TextBlock>
                                     </StackPanel>
                                 </TreeViewItem.Header>
-                                <TreeViewItem Header="Add new"/>
-                                <TreeViewItem Header="List"/>
+                                <TreeViewItem PreviewMouseLeftButtonDown="TreeItem_ProjectAdd_PreviewMouseLeftButtonDown" Header="Add new"/>
+                                <TreeViewItem PreviewMouseLeftButtonDown="TreeItem_ProjectEdit_PreviewMouseLeftButtonDown" Header="Modify"/>
+                                <TreeViewItem PreviewMouseLeftButtonDown="TreeItem_ProjectList_PreviewMouseLeftButtonDown" Header="List"/>
                             </TreeViewItem>
                             <TreeViewItem>
                                 <TreeViewItem.Header>

@@ -151,6 +151,13 @@ namespace AlphaElectric.Forms
             UserPages.Children.Add(x);
         }
 
+        private void TreeItem_ProductEdit_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            ProductEdit x = new ProductEdit();
+            UserPages.Children.Clear();
+            UserPages.Children.Add(x);
+        }
+
         private void TreeItem_ProductPartList_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             PartList x = new PartList();
@@ -282,6 +289,28 @@ namespace AlphaElectric.Forms
             UserPages.Children.Clear();
             UserPages.Children.Add(x);
         }
+
+        private void TreeItem_ProjectAdd_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            ProjectAddNew x = new ProjectAddNew();
+            UserPages.Children.Clear();
+            UserPages.Children.Add(x);
+        }
+
+        private void TreeItem_ProjectEdit_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            ProjectEdit x = new ProjectEdit();
+            UserPages.Children.Clear();
+            UserPages.Children.Add(x);
+        }
+
+        private void TreeItem_ProjectList_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            ProjectList x = new ProjectList();
+            UserPages.Children.Clear();
+            UserPages.Children.Add(x);
+        }
+
         #endregion
 
         #region topbar
@@ -337,5 +366,4 @@ namespace AlphaElectric.Forms
 
 
     }
-
 }
