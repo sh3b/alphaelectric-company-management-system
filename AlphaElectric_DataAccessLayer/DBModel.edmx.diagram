@@ -37,8 +37,8 @@
         <EntityTypeShape EntityType="AlphaElectricEntities.PurchaseOrder" Width="1.5" PointX="12.625" PointY="5.625" FillColor="Navy" />
         <EntityTypeShape EntityType="AlphaElectricEntities.Product_PurchaseOrderBT" Width="2.25" PointX="9" PointY="5.625" FillColor="192, 192, 255" />
         <AssociationConnector Association="AlphaElectricEntities.ProductProduct_PurchaseOrderBT" ManuallyRouted="true" >
-          <ConnectorPoint PointX="7.875" PointY="3.4211947816513089" />
-          <ConnectorPoint PointX="9" PointY="6.6941676184830321" />
+          <ConnectorPoint PointX="7.875" PointY="3.3429972365852274" />
+          <ConnectorPoint PointX="9" PointY="6.6813334523171068" />
         </AssociationConnector>
         <AssociationConnector Association="AlphaElectricEntities.PurchaseOrderProduct_PurchaseOrderBT" />
         <EntityTypeShape EntityType="AlphaElectricEntities.Project" Width="1.75" PointX="9.375" PointY="0.5" FillColor="Navy" />

@@ -93,8 +93,8 @@ namespace AlphaElectric.Forms
 
                 // Adding New User
                 //AlphaElectric_DataAccessLayer.Login newUser = new AlphaElectric_DataAccessLayer.Login();
-                //newUser.Username = "shoaib";
-                //newUser.name = "Shoaib Ashraf";
+                //newUser.Username = "aamir";
+                //newUser.Name = "Muhammad aamir";
                 //newUser.Password = Hashing.HashPassword("12345");
                 //db.Logins.Add(newUser);
                 //db.SaveChanges();
