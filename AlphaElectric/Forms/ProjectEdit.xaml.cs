@@ -41,6 +41,7 @@ namespace AlphaElectric.Forms
 
             _vm = new ProjectViewModel();
             this.DataContext = _vm;
+            _vm.DeliveryDate = DateTime.Now;
         }
 
         void UpdateFields()
@@ -170,7 +171,7 @@ namespace AlphaElectric.Forms
             this.StatusTextBox.Clear();
         }
 
-        private void SelectCompanyComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void SelectProjectComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             UpdateFields();
         }

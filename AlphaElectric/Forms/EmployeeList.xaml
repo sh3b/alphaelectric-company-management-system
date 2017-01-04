@@ -77,8 +77,12 @@
                   ScrollViewer.HorizontalScrollBarVisibility="Auto"
                   AutoGenerateColumns="False" 
                   Height="Auto" 
-                  HorizontalAlignment="Left"
-                  Name="DataGrid" Width="{Binding Path=ActualWidth, ElementName=grid}">
+                  HorizontalAlignment="Center"
+                  Name="DataGrid" Width="{Binding Path=ActualWidth, ElementName=grid}"
+                  AlternatingRowBackground="LightGray"
+                  CanUserAddRows="False"
+                  IsReadOnly="True"
+                  >
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding FirstName}" Header="First Name" Width="Auto"  />
                 <DataGridTextColumn Binding="{Binding LastName}" Header="Last Name" Width="Auto" />

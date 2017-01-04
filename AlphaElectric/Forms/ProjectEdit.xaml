@@ -121,7 +121,7 @@
                     <DatePicker.SelectedDate>
                         <Binding Path="DeliveryDate" UpdateSourceTrigger="PropertyChanged">
                             <Binding.ValidationRules>
-                                <domain:PresentFutureDateValidationRule ValidatesOnTargetUpdated="True" />
+                                <domain:NotEmptyValidationRule ValidatesOnTargetUpdated="True" />
                             </Binding.ValidationRules>
                         </Binding>
                     </DatePicker.SelectedDate>

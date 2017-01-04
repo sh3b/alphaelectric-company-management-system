@@ -71,10 +71,18 @@
         <Grid Grid.Row="1" Name="UserPages" Margin="20,0,20,0"></Grid>
         <TextBlock Name="TextBlock_TitleName" Grid.Row="0" Margin="10 20 10 10" FontWeight="DemiBold" Style="{StaticResource MaterialDesignHeadlineTextBlock}">Previous Purchase Orders</TextBlock>
 
-        <DataGrid Grid.Row="1" Grid.Column="0"    ScrollViewer.CanContentScroll="True" 
-      ScrollViewer.VerticalScrollBarVisibility="Auto"
-      ScrollViewer.HorizontalScrollBarVisibility="Auto"
-                      AutoGenerateColumns="False" Height="Auto" HorizontalAlignment="Left" Name="DataGrid" Width="{Binding Path=ActualWidth, ElementName=grid}">
+        <DataGrid Grid.Row="1" 
+                  Grid.Column="0"
+                  ScrollViewer.CanContentScroll="True" 
+                  ScrollViewer.VerticalScrollBarVisibility="Auto"
+                  ScrollViewer.HorizontalScrollBarVisibility="Auto"
+                  AutoGenerateColumns="False"
+                  Height="Auto" 
+                  HorizontalAlignment="Center" 
+                  Name="DataGrid" Width="{Binding Path=ActualWidth, ElementName=grid}"
+                  AlternatingRowBackground="LightGray"
+                  CanUserAddRows="False"
+                  IsReadOnly="True">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding PurchaseOrder.ID }" Header="PO No." Width="Auto"  />
                 <DataGridTextColumn Binding="{Binding PurchaseOrder.PODate, StringFormat=d,ConverterCulture=en-NZ }" Header="Date" Width="Auto"  />
