@@ -30,6 +30,7 @@ namespace AlphaElectric_DataAccessLayer
         public virtual DbSet<Designation> Designations { get; set; }
         internal virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<Inventory> Inventories { get; set; }
+        public virtual DbSet<Location> Locations { get; set; }
         public virtual DbSet<PanelShellGradeProtection> PanelShellGradeProtections { get; set; }
         public virtual DbSet<SizeType> SizeTypes { get; set; }
         public virtual DbSet<Type> Types { get; set; }
