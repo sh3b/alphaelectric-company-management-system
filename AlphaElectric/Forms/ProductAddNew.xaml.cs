@@ -247,15 +247,15 @@ namespace AlphaElectric.Forms
 
                 Product x = new Part();
                 x = part;
-
+                x.Inventory.StockLevel = 0;
                 ProductFactory fac = new ProductFactory();
                 if (fac.InsertProduct(x))
                 {
                     // Adding Stock Level to Zero
-                    var newProduct = new Inventory();
-                    newProduct.ID = x.ID;
-                    newProduct.StockLevel = 0;
-                    var inFac = new InventoryFactory().InsertInventory(newProduct);
+                    //var newProduct = new Inventory();
+                    //newProduct.ID = x.ID;
+                    //newProduct.StockLevel = 0;
+                    //var inFac = new InventoryFactory().InsertInventory(newProduct);
 
                     var sMessageDialog = new MessageDialog
                     {
