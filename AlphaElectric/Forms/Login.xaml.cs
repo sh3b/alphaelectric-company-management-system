@@ -39,6 +39,17 @@ namespace AlphaElectric.Forms
             this.DataContext = _vm;
 
             NameTextBox.Focus();
+
+            //using (var db = new AlphaElectricEntitiesDB())
+            //{
+            //    //Adding New User
+            //    AlphaElectric_DataAccessLayer.Login newUser = new AlphaElectric_DataAccessLayer.Login();
+            //    newUser.Username = "shoaib";
+            //    newUser.Name = "Shoaib Ashraf";
+            //    newUser.Password = Hashing.HashPassword("12345");
+            //    db.Logins.Add(newUser);
+            //    db.SaveChanges();
+            //}
         }
 
         //private void ForceValidation()
@@ -90,14 +101,6 @@ namespace AlphaElectric.Forms
                     NameTextBox.Focus();
                     return;
                 }
-
-                // Adding New User
-                //AlphaElectric_DataAccessLayer.Login newUser = new AlphaElectric_DataAccessLayer.Login();
-                //newUser.Username = "shoaib";
-                //newUser.name = "Shoaib Ashraf";
-                //newUser.Password = Hashing.HashPassword("12345");
-                //db.Logins.Add(newUser);
-                //db.SaveChanges();
 
                 this.Hide();
                 LoggedInUser.Instance.Info = db.Logins.Where(u => u.ID == obj.ID).FirstOrDefault();
