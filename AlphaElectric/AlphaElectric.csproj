@@ -61,34 +61,6 @@
       <HintPath>..\packages\MaterialDesignThemes.2.2.1.750\lib\net45\MaterialDesignThemes.Wpf.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Scryber.Common, Version=0.9.0.0, Culture=neutral, PublicKeyToken=872cbeb81db952fe, processorArchitecture=MSIL">
-      <HintPath>..\packages\scryber.0.9.0.0\lib\net40\Scryber.Common.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Scryber.Components, Version=0.9.0.0, Culture=neutral, PublicKeyToken=872cbeb81db952fe, processorArchitecture=MSIL">
-      <HintPath>..\packages\scryber.0.9.0.0\lib\net40\Scryber.Components.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Scryber.Configuration, Version=0.9.0.0, Culture=neutral, PublicKeyToken=872cbeb81db952fe, processorArchitecture=MSIL">
-      <HintPath>..\packages\scryber.0.9.0.0\lib\net40\Scryber.Configuration.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Scryber.Drawing, Version=0.9.0.0, Culture=neutral, PublicKeyToken=872cbeb81db952fe, processorArchitecture=MSIL">
-      <HintPath>..\packages\scryber.0.9.0.0\lib\net40\Scryber.Drawing.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Scryber.Generation, Version=0.9.0.0, Culture=neutral, PublicKeyToken=872cbeb81db952fe, processorArchitecture=MSIL">
-      <HintPath>..\packages\scryber.0.9.0.0\lib\net40\Scryber.Generation.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Scryber.OpenType, Version=0.9.0.0, Culture=neutral, PublicKeyToken=872cbeb81db952fe, processorArchitecture=MSIL">
-      <HintPath>..\packages\scryber.0.9.0.0\lib\net40\Scryber.OpenType.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Scryber.Styles, Version=0.9.0.0, Culture=neutral, PublicKeyToken=872cbeb81db952fe, processorArchitecture=MSIL">
-      <HintPath>..\packages\scryber.0.9.0.0\lib\net40\Scryber.Styles.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Runtime.Serialization" />
@@ -121,6 +93,9 @@
     </Compile>
     <Compile Include="Forms\HomeProjects.xaml.cs">
       <DependentUpon>HomeProjects.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ProjectAddNew.xaml.cs">
+      <DependentUpon>ProjectAddNew.xaml</DependentUpon>
     </Compile>
     <Compile Include="Forms\ProjectEdit.xaml.cs">
       <DependentUpon>ProjectEdit.xaml</DependentUpon>
@@ -368,21 +343,6 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <None Include="Schemas\Scryber\Scryber.Components.v09.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Schemas\Scryber\Scryber.Data.v09.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Schemas\Scryber\Scryber.Styles.v09.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Schemas\Scryber\Scryber.Types.v09.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Schemas\Scryber\Scryber.v09.xsd">
-      <SubType>Designer</SubType>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
@@ -396,7 +356,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Forms\Resources\Chartridge046_small.jpg" />
     <Resource Include="Forms\Resources\Contact.png" />
     <Resource Include="Forms\Resources\favicon.ico" />
     <Resource Include="Forms\Resources\ms-icon-310x310.png" />
