@@ -39,13 +39,13 @@ namespace AlphaElectric_DataAccessLayer.DA
             return db.SaveChanges() > 0 ? true : false;
         }
 
-        public bool Update(int id, string name, bool status, DateTime de)
+        public bool Update(int id, string name, int statusID, DateTime de)
         {
             var proj = db.Projects.Where(x => x.ID == id).FirstOrDefault();
             if (proj != null)
             {
                 proj.Name = name;
-                proj.Status = status;
+                proj.CustomerOrder.OrderStatusID = statusID;
                 proj.DeliveyDate = de;
                 //proj.CustomerOrderID = OrderID;
             }

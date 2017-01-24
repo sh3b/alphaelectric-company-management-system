@@ -30,9 +30,9 @@ namespace AlphaElectric_DataAccessLayer.Factories
             return projDa.InsertProject(proj);
         }
 
-        public bool Update(int id, string name, bool status, DateTime de)
+        public bool Update(int id, string name, int statusID, DateTime de)
         {
-            return projDa.Update( id,  name,  status,  de);
+            return projDa.Update( id,  name, statusID,  de);
         }
     }
 }

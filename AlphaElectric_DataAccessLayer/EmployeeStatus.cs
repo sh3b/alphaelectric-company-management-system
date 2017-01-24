@@ -12,13 +12,16 @@ namespace AlphaElectric_DataAccessLayer
     using System;
     using System.Collections.Generic;
     
-    public partial class Product_CustomerOrderBT
+    public partial class EmployeeStatus
     {
-        public int ProductID { get; set; }
-        public int CustomerOrderID { get; set; }
-        public int Quantity { get; set; }
+        public EmployeeStatus()
+        {
+            this.Employees = new HashSet<Employee>();
+        }
     
-        public virtual Product Product { get; set; }
-        public virtual CustomerOrder CustomerOrder { get; set; }
+        public int ID { get; set; }
+        public string Name { get; set; }
+    
+        public virtual ICollection<Employee> Employees { get; set; }
     }
 }

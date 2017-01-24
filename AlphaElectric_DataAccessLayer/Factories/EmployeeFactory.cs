@@ -25,6 +25,11 @@ namespace AlphaElectric_DataAccessLayer.Factories
             return empDa.SelectAll();
         }
 
+        public List<Employee> SelectByDesignation(int id)
+        {
+            return empDa.SelectByDesignation(id);
+        }
+
         public bool InsertEmployee(Employee emp)
         {
             return empDa.InsertEmployee(emp);

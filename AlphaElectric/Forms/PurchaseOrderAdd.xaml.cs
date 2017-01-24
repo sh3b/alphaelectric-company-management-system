@@ -139,9 +139,11 @@ namespace AlphaElectric.Forms
                 // Multiple Products
                 foreach (var item in productItemsList)
                 {
-                    Product_PurchaseOrderBT po_prod = new Product_PurchaseOrderBT();
-                    po_prod.ProductID = item.ProductID;
-                    po_prod.PurchaseOrderID = po.ID;
+                    Product_PurchaseOrderBT po_prod = new Product_PurchaseOrderBT()
+                    {
+                        ProductID = item.ProductID,
+                        PurchaseOrderID = po.ID
+                    };
 
                     // LINQ query
                     var query = from prod in db.Product_PurchaseOrderBT
@@ -186,8 +188,8 @@ namespace AlphaElectric.Forms
 
         private void InsertItem_Click(object sender, RoutedEventArgs e)
         {
-            int a;
-            if (string.IsNullOrEmpty(QuantityTextBox.Text) || !(int.TryParse(QuantityTextBox.Text, out a)))
+            #region validation
+            if (string.IsNullOrEmpty(QuantityTextBox.Text) || !(int.TryParse(QuantityTextBox.Text, out int a)))
             {
                 var sMessageDialog = new MessageDialog
                 {
@@ -210,10 +212,13 @@ namespace AlphaElectric.Forms
                 DialogHost.Show(sMessageDialog, "RootDialog");
                 return;
             }
+            #endregion
 
-            ProductItem item = new ProductItem();
-            item.ProductID = int.Parse(ProductComboBox.SelectedValue.ToString());
-            item.Quantity = int.Parse(QuantityTextBox.Text);
+            ProductItem item = new ProductItem()
+            {
+                ProductID = int.Parse(ProductComboBox.SelectedValue.ToString()),
+                Quantity = int.Parse(QuantityTextBox.Text)
+            };
             productItemsList.Add(item);
             ClearItems();
 

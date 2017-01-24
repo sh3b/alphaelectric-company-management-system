@@ -8,60 +8,43 @@ using System.Threading.Tasks;
 
 namespace AlphaElectric_DataAccessLayer.DA
 {
-    class EmployeeDA
+    class OrderStatusDA
     {
         AlphaElectricEntitiesDB db;
 
-        public EmployeeDA()
+        public OrderStatusDA()
         {
             db = new AlphaElectricEntitiesDB();
         }
 
-        public List<Employee> SelectAll()
+        public List<OrderStatus> SelectAll()
         {
-            return db.Employees.ToList();
+            return db.OrderStatus.ToList();
         }
 
-        public List<Employee> SelectByDesignation(int id)
+        public bool InsertOrderStatus(OrderStatus con)
         {
-            var emplist =  db.Employees.Where(x => x.DesignationID == id).ToList();
-
-            foreach (var row in emplist)
-                row.FirstName = row.FirstName + " " + row.LastName;
-
-            return emplist;
-        }
-
-
-        public bool InsertEmployee(Employee emp)
-        {
-            db.Employees.Add(emp);
+            db.OrderStatus.Add(con);
             return db.SaveChanges() > 0 ? true : false;
         }
 
         //CHECK IT
-        public bool Delete(int id)
-        {
-            var emp = db.Employees.Where(x => x.ID == id).FirstOrDefault();
-            if (emp != null)
-            {
-                db.Employees.Remove(emp);
-            }
-            return db.SaveChanges() > 0 ? true : false;
-        }
+        //public bool Delete(int id)
+        //{
+        //    var con = db.OrderStatuss.Where(x => x.ID == id).FirstOrDefault();
+        //    if (con != null)
+        //    {
+        //        db.OrderStatuss.Remove(con);
+        //    }
+        //    return db.SaveChanges() > 0 ? true : false;
+        //}
 
-        public bool Update(int id, string firstname, string lastname, string phone, string passport, DateTime joindate, string address, int desigid)
+        public bool Update(int id, string name)
         {
-            var emp = db.Employees.Where(x => x.ID == id).FirstOrDefault();
-            if (emp != null)
+            var con = db.OrderStatus.Where(x => x.ID == id).FirstOrDefault();
+            if (con != null)
             {
-                emp.FirstName = firstname;
-                emp.LastName = lastname;
-                emp.Phone = phone;
-                emp.Passport = passport;
-                emp.JoinDate = joindate;
-                emp.Address = address;
-                emp.DesignationID = desigid;
+                con.Name = name;
             }
             return db.SaveChanges() > 0 ? true : false;
         }

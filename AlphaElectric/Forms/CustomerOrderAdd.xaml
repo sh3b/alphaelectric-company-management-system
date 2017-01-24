@@ -68,10 +68,12 @@
         </Grid.RowDefinitions>
 
         <ScrollViewer Grid.Row="0" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0 20 0 0">
-            <Grid Margin="0,0,0,10">
+            <Grid Margin="0,0,0,20">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="100" />
                     <ColumnDefinition Width="150" />
+                    <ColumnDefinition Width="30" />
+                    <ColumnDefinition Width="400" />
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
@@ -90,6 +92,24 @@
                 </Grid.RowDefinitions>
 
                 <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Margin="0 10 0 10" FontWeight="DemiBold" Style="{StaticResource MaterialDesignHeadlineTextBlock}">Add Customer Order</TextBlock>
+
+                <DataGrid Grid.RowSpan="8" Grid.Column="3" Grid.Row="1"   
+                  ScrollViewer.CanContentScroll="True" 
+                  ScrollViewer.VerticalScrollBarVisibility="Auto"
+                  ScrollViewer.HorizontalScrollBarVisibility="Auto"
+                  AutoGenerateColumns="False" Height="Auto" 
+                  HorizontalAlignment="Center" Name="DataGrid" 
+                  Width="Auto"
+                  AlternatingRowBackground="LightGray"
+                  CanUserAddRows="False"
+                  IsReadOnly="True">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Binding="{Binding Name}" Header="Name" Width="Auto"  />
+                        <DataGridTextColumn Binding="{Binding SerialNo}" Header="Serial No." Width="Auto" />
+                        <DataGridTextColumn Binding="{Binding Make.Name}" Header="Make" Width="Auto" />
+                        <DataGridTextColumn Binding="{Binding Quantity}" Header="Quantity" Width="Auto" />
+                    </DataGrid.Columns>
+                </DataGrid>
 
                 <TextBlock Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" Margin="16 0 8 0">Order Date</TextBlock>
                 <DatePicker Grid.Row="1" Grid.Column="1" Height="25" Margin="0 5 0 0" x:Name="OrderDateDatePicker" Width="150" HorizontalAlignment="Left"  
@@ -116,10 +136,10 @@
                 </DatePicker>
 
 
-                <TextBlock Grid.Row="3" Grid.Column="0"  VerticalAlignment="Center" Margin="16 10 8 0">Customer </TextBlock>
+                <TextBlock Grid.Row="3" Grid.Column="0"  VerticalAlignment="Center" Margin="16 10 8 0">Customer</TextBlock>
                 <ComboBox  Grid.Row="3" Grid.Column="1" Name="CustomerComboBox" materialDesign:HintAssist.Hint="Select Customer" MinWidth="72" Margin="0 10 0 0" VerticalAlignment="Bottom">
                     <ComboBox.SelectedValue>
-                        <Binding Path="ID" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                        <Binding Path="ContactID" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
                             <Binding.ValidationRules>
                                 <domain:NotEmptyValidationRule ValidatesOnTargetUpdated="True"/>
                             </Binding.ValidationRules>
@@ -127,12 +147,12 @@
                     </ComboBox.SelectedValue>
                 </ComboBox>
 
-                <TextBlock Grid.Row="4" Grid.ColumnSpan="2" FontSize="13" FontWeight="DemiBold" VerticalAlignment="Center" Margin="16 10 8 5">Add Products</TextBlock>
+                <TextBlock Grid.Row="4" Grid.ColumnSpan="2" FontSize="13" FontWeight="DemiBold" VerticalAlignment="Center" Margin="16,12,8,3">Add Products</TextBlock>
 
                 <TextBlock Grid.Row="5" Grid.Column="0"  VerticalAlignment="Center" Margin="16 0 8 0">Product</TextBlock>
                 <ComboBox  Grid.Row="5" Grid.Column="1" Name="ProductComboBox" materialDesign:HintAssist.Hint="Add Product" MinWidth="72" Margin="0 0 0 0" VerticalAlignment="Bottom">
                     <ComboBox.SelectedValue>
-                        <Binding Path="ID" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                        <Binding Path="ProdID" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
                             <Binding.ValidationRules>
                                 <domain:NotEmptyValidationRule ValidatesOnTargetUpdated="True"/>
                             </Binding.ValidationRules>
@@ -140,8 +160,8 @@
                     </ComboBox.SelectedValue>
                 </ComboBox>
 
-                <TextBlock Grid.Row="6" Grid.Column="0" VerticalAlignment="Center" Margin="16 0 8 0">Quanity</TextBlock>
-                <TextBox Grid.Row="6" Grid.Column="1" x:Name="QuantityTextBox" materialDesign:HintAssist.Hint="Input Qty">
+                <TextBlock Grid.Row="6" Grid.Column="0" VerticalAlignment="Center" Margin="16,17,8,8">Quanity</TextBlock>
+                <TextBox Grid.Row="6" Grid.Column="1" x:Name="QuantityTextBox" materialDesign:HintAssist.Hint="Input Qty" Margin="0,13,0,3">
                     <TextBox.Text>
                         <Binding Path="Quantity" ValidatesOnDataErrors="True" UpdateSourceTrigger="PropertyChanged" NotifyOnValidationError="True">
                             <Binding.ValidationRules>
@@ -153,6 +173,28 @@
                     </TextBox.Text>
                 </TextBox>
                 <Button Grid.Row="7" Click="InsertItem_Click"  Style="{StaticResource MaterialDesignRaisedDarkButton}" ToolTip="Add item to order list." FontSize="11" Content="Add Item" Grid.Column="1" Height="Auto"  Margin="65,15,5,10" />
+
+                <TextBlock Grid.Row="8" Grid.ColumnSpan="1" VerticalAlignment="Center" Margin="18,9,6,6">Assigned Emp.</TextBlock>
+                <ComboBox  Grid.Row="8" Grid.Column="1" Name="AssignedEmployeeComboBox" materialDesign:HintAssist.Hint="Select Employee" MinWidth="72" Margin="0,0,0,1" VerticalAlignment="Bottom">
+                    <ComboBox.SelectedValue>
+                        <Binding Path="AssignedEmployeeID" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                            <Binding.ValidationRules>
+                                <domain:NotEmptyValidationRule ValidatesOnTargetUpdated="True"/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </ComboBox.SelectedValue>
+                </ComboBox>
+
+                <TextBlock Grid.Row="9" Grid.Column="0" VerticalAlignment="Center" Margin="16,17,8,8">Order Status</TextBlock>
+                <ComboBox  Grid.Row="9" Grid.Column="1" Name="OrderStatusComboBox" materialDesign:HintAssist.Hint="Set Status" MinWidth="72" Margin="0 10 0 0" VerticalAlignment="Bottom">
+                    <ComboBox.SelectedValue>
+                        <Binding Path="OrderStatusID" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                            <Binding.ValidationRules>
+                                <domain:NotEmptyValidationRule ValidatesOnTargetUpdated="True"/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </ComboBox.SelectedValue>
+                </ComboBox>
 
             </Grid>
         </ScrollViewer>

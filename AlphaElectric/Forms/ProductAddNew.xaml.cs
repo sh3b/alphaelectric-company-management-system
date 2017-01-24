@@ -190,11 +190,9 @@ namespace AlphaElectric.Forms
 
             #endregion
 
-            AlphaElectric_DataAccessLayer.Panel panel = new AlphaElectric_DataAccessLayer.Panel();
-            Part part = new Part();
-
             if ((bool)P_Panel.IsChecked)
             {
+                AlphaElectric_DataAccessLayer.Panel panel = new AlphaElectric_DataAccessLayer.Panel();
                 panel.Name = NameTextBox.Text;
                 panel.SerialNo = SerialNoTextBox.Text;
                 panel.MakeID = int.Parse(MakeComboBox.SelectedValue.ToString());
@@ -205,39 +203,14 @@ namespace AlphaElectric.Forms
                 panel.PanelShellGradeProtectionIPNumber = int.Parse(PanelIPNumberComboBox.SelectedValue.ToString());
                 panel.CertificationID = int.Parse(CertComboBox.SelectedValue.ToString());
 
-                Product x = new AlphaElectric_DataAccessLayer.Panel();
-                x = panel;
-
-                ProductFactory fac = new ProductFactory();
-                if (fac.InsertProduct(x))
-                {
-                    // Adding Stock Level to Zero
-                    var newProduct = new Inventory();
-                    newProduct.ID = x.ID;
-                    newProduct.StockLevel = 0;
-                    var inFac = new InventoryFactory().InsertInventory(newProduct);
-
-                    var sMessageDialog = new MessageDialog
-                    {
-                        Message = { Text = "Added succesfully!" }
-                    };
-                    DialogHost.Show(sMessageDialog, "RootDialog");
-                    ClearButton_Click(null,null);
-                    return;
-                }
-                else
-                {
-                    var sMessageDialog = new MessageDialog
-                    {
-                        Message = { Text = "Couldn't Insert!" }
-                    };
-                    DialogHost.Show(sMessageDialog, "RootDialog");
-                    return;
-                }
+                Product incomingNewProduct = new AlphaElectric_DataAccessLayer.Panel();
+                incomingNewProduct = panel;
+                AddProd(incomingNewProduct);
             }
 
             if ((bool)P_Part.IsChecked)
             {
+                AlphaElectric_DataAccessLayer.Part part = new AlphaElectric_DataAccessLayer.Part();
                 part.Name = NameTextBox.Text;
                 part.SerialNo = SerialNoTextBox.Text;
                 part.MakeID = int.Parse(MakeComboBox.SelectedValue.ToString());
@@ -245,38 +218,39 @@ namespace AlphaElectric.Forms
 
                 part.PaTypeID = int.Parse(PartTypeComboBox.SelectedValue.ToString());
 
-                Product x = new Part();
-                x = part;
-                x.Inventory.StockLevel = 0;
-                ProductFactory fac = new ProductFactory();
-                if (fac.InsertProduct(x))
+                Product incomingNewProduct = new Part();
+                incomingNewProduct = part;
+                AddProd(incomingNewProduct);
+            }
+        }
+
+        private void AddProd(Product incomingNewProduct)
+        {
+            ProductFactory fac = new ProductFactory();
+            if (fac.InsertProduct(incomingNewProduct))
+            {
+                // Adding Stock Level to Zero
+                var newProduct = new Inventory();
+                newProduct.ID = incomingNewProduct.ID;
+                newProduct.StockLevel = 0;
+                var inFac = new InventoryFactory().InsertInventory(newProduct);
+
+                var sMessageDialog = new MessageDialog
                 {
-                    // Adding Stock Level to Zero
-                    //var newProduct = new Inventory();
-                    //newProduct.ID = x.ID;
-                    //newProduct.StockLevel = 0;
-                    //var inFac = new InventoryFactory().InsertInventory(newProduct);
-
-                    var sMessageDialog = new MessageDialog
-                    {
-                        Message = { Text = "Added succesfully!" }
-                    };
-
-                    DialogHost.Show(sMessageDialog, "RootDialog");
-                    ClearButton_Click(null, null);
-                    return;
-                }
-                else
+                    Message = { Text = "Added succesfully!" }
+                };
+                DialogHost.Show(sMessageDialog, "RootDialog");
+                ClearButton_Click(null, null);
+                return;
+            }
+            else
+            {
+                var sMessageDialog = new MessageDialog
                 {
-                    var sMessageDialog = new MessageDialog
-                    {
-                        Message = { Text = "Unable to add.." }
-                    };
-
-                    DialogHost.Show(sMessageDialog, "RootDialog");
-                    ClearButton_Click(null, null);
-                    return;
-                }
+                    Message = { Text = "Couldn't Insert!" }
+                };
+                DialogHost.Show(sMessageDialog, "RootDialog");
+                return;
             }
         }
 

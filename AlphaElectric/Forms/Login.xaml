@@ -70,7 +70,7 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="100" />
                     <ColumnDefinition Width="auto" MinWidth="25" />
-                    <ColumnDefinition Width="149" />
+                    <ColumnDefinition Width="150" />
                     <ColumnDefinition Width="100" />
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
@@ -82,7 +82,7 @@
 
 
 
-                <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource MaterialDesignHeadlineTextBlock}">Login</TextBlock>
+                <TextBlock Grid.Row="0" TextAlignment="Center" Grid.Column="2"  Style="{StaticResource MaterialDesignHeadlineTextBlock}">Login</TextBlock>
 
                 <!-- Start Name -->
                 <materialDesign:PackIcon Grid.Row="1" Kind="Account" Foreground="{Binding ElementName=NameTextBox, Path=BorderBrush}" Margin="0,18,0,5" Grid.Column="1" />

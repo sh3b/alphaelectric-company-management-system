@@ -144,8 +144,7 @@ namespace AlphaElectric.Forms
                 return;
             }
 
-            int a;
-            if (string.IsNullOrEmpty(StockLevelTextBox.Text) || !(int.TryParse(StockLevelTextBox.Text, out a)))
+            if (string.IsNullOrEmpty(StockLevelTextBox.Text) || !(int.TryParse(StockLevelTextBox.Text, out int a)))
             {
                 var sMessageDialog = new MessageDialog
                 {

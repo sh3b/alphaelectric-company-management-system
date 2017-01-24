@@ -122,9 +122,6 @@
     <Compile Include="Forms\HomeProjects.xaml.cs">
       <DependentUpon>HomeProjects.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Forms\ProjectAddNew.xaml.cs">
-      <DependentUpon>ProjectAddNew.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Forms\ProjectEdit.xaml.cs">
       <DependentUpon>ProjectEdit.xaml</DependentUpon>
     </Compile>
@@ -404,9 +401,6 @@
     <Resource Include="Forms\Resources\favicon.ico" />
     <Resource Include="Forms\Resources\ms-icon-310x310.png" />
     <Resource Include="Forms\Resources\ProfilePic.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="LICENSE.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

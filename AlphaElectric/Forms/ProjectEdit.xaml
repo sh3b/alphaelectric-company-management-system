@@ -127,18 +127,16 @@
                     </DatePicker.SelectedDate>
                 </DatePicker>
 
-                <TextBlock Grid.Row="4" Grid.Column="0"  VerticalAlignment="Center" Margin="16 0 8 0">Status</TextBlock>
-                <TextBox Grid.Row="4" Grid.Column="1" x:Name="StatusTextBox" materialDesign:HintAssist.Hint="Input Status">
-                    <TextBox.Text>
-                        <Binding Path="Status" ValidatesOnDataErrors="True" UpdateSourceTrigger="PropertyChanged" NotifyOnValidationError="True">
+                <TextBlock Grid.Row="4" Grid.Column="0"  VerticalAlignment="Center" Margin="16,16,8,6">Status</TextBlock>
+                <ComboBox  Grid.Row="4" Grid.Column="1" Name="OrderStatusComboBox" materialDesign:HintAssist.Hint="Select Status" MinWidth="72" Margin="0 10 0 0" VerticalAlignment="Bottom">
+                    <ComboBox.SelectedValue>
+                        <Binding Path="ID" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
                             <Binding.ValidationRules>
-                                <domain:NotEmptyValidationRule ValidatesOnTargetUpdated="True" />
-                                <!-- Checks for exceptions during the setting of the source property.Alternatively, set ValidatesOnExceptions to True on the Binding.-->
-                                <ExceptionValidationRule/>
+                                <domain:NotEmptyValidationRule ValidatesOnTargetUpdated="True"/>
                             </Binding.ValidationRules>
                         </Binding>
-                    </TextBox.Text>
-                </TextBox>
+                    </ComboBox.SelectedValue>
+                </ComboBox>
             </Grid>
         </ScrollViewer>
         <!-- start + popupbox -->

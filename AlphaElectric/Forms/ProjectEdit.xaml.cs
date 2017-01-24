@@ -55,14 +55,7 @@ namespace AlphaElectric.Forms
                 {
                     NameTextBox.Text = proj.Name;
                     this.DeliveryDateDatePicker.SelectedDate = proj.DeliveyDate;
-                    if (proj.Status == true)
-                    {
-                        this.StatusTextBox.Text = "Ready";
-                    }
-                    else
-                    {
-                        this.StatusTextBox.Text = "Incomplete";
-                    }
+                    OrderStatusComboBox.SelectedValue = proj.CustomerOrder.OrderStatusID;
                 }
             }
         }
@@ -91,7 +84,6 @@ namespace AlphaElectric.Forms
             //this.SelectCustomerComboBox.SelectedItem = null;
             this.DeliveryDateDatePicker.GetBindingExpression(DatePicker.SelectedDateProperty).UpdateSource();
             this.NameTextBox.GetBindingExpression(TextBox.TextProperty).UpdateSource();
-            this.StatusTextBox.GetBindingExpression(TextBox.TextProperty).UpdateSource();
         }
 
         private void InsertButton_Click(object sender, RoutedEventArgs e)
@@ -99,8 +91,7 @@ namespace AlphaElectric.Forms
             #region validation 
             ForceValidation();
             if (Validation.GetHasError(NameTextBox) ||
-                Validation.GetHasError(DeliveryDateDatePicker) ||
-                Validation.GetHasError(StatusTextBox))
+                Validation.GetHasError(DeliveryDateDatePicker))
             {
                 var sMessageDialog = new MessageDialog
                 {
@@ -111,7 +102,7 @@ namespace AlphaElectric.Forms
                 return;
             }
 
-            if (SelectProjectComboBox.SelectedItem == null)
+            if (SelectProjectComboBox.SelectedItem == null || OrderStatusComboBox.SelectedItem == null)
             {
                 var sMessageDialog = new MessageDialog
                 {
@@ -124,15 +115,10 @@ namespace AlphaElectric.Forms
             #endregion
 
             ProjectFactory fac = new ProjectFactory();
-            bool x = false;
-            if (this.StatusTextBox.Text == "Ready")
-            {
-                x = true;
-            }
 
             if (fac.Update(int.Parse(SelectProjectComboBox.SelectedValue.ToString()),
                 NameTextBox.Text,
-                x,
+                int.Parse(OrderStatusComboBox.SelectedValue.ToString()),
                 DeliveryDateDatePicker.SelectedDate.Value))
             {
                 var sMessageDialog = new MessageDialog
@@ -168,7 +154,8 @@ namespace AlphaElectric.Forms
         {
             this.SelectProjectComboBox.SelectedItem = null;
             this.NameTextBox.Clear();
-            this.StatusTextBox.Clear();
+            this.OrderStatusComboBox.SelectedItem = null;
+
         }
 
         private void SelectProjectComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)

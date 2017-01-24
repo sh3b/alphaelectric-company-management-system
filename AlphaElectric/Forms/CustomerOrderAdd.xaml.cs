@@ -33,6 +33,7 @@ namespace AlphaElectric.Forms
         //Adding backgroud worker
         BackgroundWorker worker;
         CustomerOrder co = new CustomerOrder();
+        List<Product> prodList = new ProductFactory().SelectAll();
         List<ProductItem> productItemsList = new List<ProductItem>();
 
         public CustomerOrderAdd()
@@ -57,6 +58,9 @@ namespace AlphaElectric.Forms
         {
             List<Contact> contactlist = new ContactFactory().SelectAll();
             List<Product> prodlist = new ProductFactory().SelectAll();
+            // 5 = 'Purchase/Sales Manager'
+            List<Employee> emplist = new EmployeeFactory().SelectByDesignation(5);
+            List<OrderStatus> orderStatuslist = new OrderStatusFactory().SelectAll();
 
             this.Dispatcher.Invoke(() =>
             {
@@ -67,6 +71,14 @@ namespace AlphaElectric.Forms
                 ProductComboBox.ItemsSource = prodlist;
                 ProductComboBox.DisplayMemberPath = "SerialNo";
                 ProductComboBox.SelectedValuePath = "ID";
+
+                AssignedEmployeeComboBox.ItemsSource = emplist;
+                AssignedEmployeeComboBox.DisplayMemberPath = "FirstName";
+                AssignedEmployeeComboBox.SelectedValuePath = "ID";
+
+                OrderStatusComboBox.ItemsSource = orderStatuslist;
+                OrderStatusComboBox.DisplayMemberPath = "Name";
+                OrderStatusComboBox.SelectedValuePath = "ID";
             });
         }
 
@@ -92,7 +104,9 @@ namespace AlphaElectric.Forms
                 return;
             }
 
-            if (CustomerComboBox.SelectedValue == null)
+            if (CustomerComboBox.SelectedValue == null || 
+                AssignedEmployeeComboBox.SelectedValue == null ||
+                OrderStatusComboBox.SelectedValue == null)
             {
                 var sMessageDialog = new MessageDialog
                 {
@@ -109,7 +123,7 @@ namespace AlphaElectric.Forms
                 var sMessageDialog = new MessageDialog
                 {
                     Message = { Text =
-                    "There are no items in the purchase order,\nadd items!" }
+                    "There are no items in the customer order,\nadd items!" }
                 };
 
                 DialogHost.Show(sMessageDialog, "RootDialog");
@@ -123,6 +137,9 @@ namespace AlphaElectric.Forms
             co.OrderDate = OrderDateDatePicker.SelectedDate.Value;
             co.DeliveryDate = DeliveryDateDatePicker.SelectedDate.Value;
             co.ContactID = int.Parse(CustomerComboBox.SelectedValue.ToString());
+            co.OrderStatusID = int.Parse(OrderStatusComboBox.SelectedValue.ToString());
+            co.EmployeeID = int.Parse(AssignedEmployeeComboBox.SelectedValue.ToString());
+
             CustomerOrderFactory fac = new CustomerOrderFactory();
             fac.InsertCustomerOrder(co);
 
@@ -132,9 +149,11 @@ namespace AlphaElectric.Forms
                 // Multiple Products
                 foreach (var item in productItemsList)
                 {
-                    Product_CustomerOrderBT co_prod = new Product_CustomerOrderBT();
-                    co_prod.ProductID = item.ProductID;
-                    co_prod.CustomerOrderID = co.ID;
+                    Product_CustomerOrderBT co_prod = new Product_CustomerOrderBT()
+                    {
+                        ProductID = item.ProductID,
+                        CustomerOrderID = co.ID
+                    };
 
                     // LINQ query
                     var query = from prod in db.Product_CustomerOrderBT
@@ -179,8 +198,9 @@ namespace AlphaElectric.Forms
 
         private void InsertItem_Click(object sender, RoutedEventArgs e)
         {
-            int a;
-            if (string.IsNullOrEmpty(QuantityTextBox.Text) || !(int.TryParse(QuantityTextBox.Text, out a)))
+
+            #region validation
+            if (string.IsNullOrEmpty(QuantityTextBox.Text) || !(int.TryParse(QuantityTextBox.Text, out int a)))
             {
                 var sMessageDialog = new MessageDialog
                 {
@@ -192,7 +212,10 @@ namespace AlphaElectric.Forms
                 return;
             }
 
-            if (ProductComboBox.SelectedValue == null || int.Parse(QuantityTextBox.Text) <= 0)
+            if (ProductComboBox.SelectedValue == null ||
+                int.Parse(QuantityTextBox.Text) <= 0 ||
+                (ProductComboBox.SelectedValue == null && int.Parse(QuantityTextBox.Text) <= 0) || 
+                (int.Parse(QuantityTextBox.Text) >= 0 && ProductComboBox.SelectedValue == null))
             {
                 var sMessageDialog = new MessageDialog
                 {
@@ -203,12 +226,22 @@ namespace AlphaElectric.Forms
                 DialogHost.Show(sMessageDialog, "RootDialog");
                 return;
             }
+            #endregion
 
-            ProductItem item = new ProductItem();
-            item.ProductID = int.Parse(ProductComboBox.SelectedValue.ToString());
-            item.Quantity = int.Parse(QuantityTextBox.Text);
-            productItemsList.Add(item);
+            ProductItem newItem = new ProductItem()
+            {
+                ProductID = int.Parse(ProductComboBox.SelectedValue.ToString()),
+                Quantity = int.Parse(QuantityTextBox.Text)
+            };
+
+            //If same item added again but with more quantity...
+            var addedProduct = productItemsList.Where(x => x.ProductID == newItem.ProductID).FirstOrDefault();
+            if (addedProduct != null)
+                addedProduct.Quantity += newItem.Quantity;              
+            else
+                productItemsList.Add(newItem);
             ClearItems();
+            LoadData();
 
             if (true)
             {
@@ -222,6 +255,23 @@ namespace AlphaElectric.Forms
             }
         }
 
+        private void LoadData()
+        {
+            //prodList (prod info)
+            //productItemsList (qty)
+
+            DataGrid.ItemsSource = (from prod in prodList
+                                    join prodwithQty in productItemsList
+                                      on prod.ID equals prodwithQty.ProductID
+                                    select new
+                                    {
+                                        prod.Name,
+                                        prod.SerialNo,
+                                        prod.Make,
+                                        prodwithQty.Quantity
+                                    }).ToList();
+        }
+
         private void ClearButton_Click(object sender, RoutedEventArgs e)
         {
             Clear();
@@ -231,9 +281,14 @@ namespace AlphaElectric.Forms
 
         private void Clear()
         {
-            this.CustomerComboBox.SelectedItem = null;
-            this.OrderDateDatePicker.SelectedDate = null;
-            this.DeliveryDateDatePicker.SelectedDate = null;
+            OrderDateDatePicker.SelectedDate = null;
+            DeliveryDateDatePicker.SelectedDate = null;
+
+            CustomerComboBox.SelectedItem = null;
+            AssignedEmployeeComboBox.SelectedItem = null;
+            OrderStatusComboBox.SelectedItem = null;
+
+            DataGrid.ItemsSource = null;
         }
 
         private void ClearItems()

@@ -20,7 +20,7 @@ namespace ViewModels
         public int PanelIPNumberID { get; set; }
         public int CertComboBoxID { get; set; }
         public int StockLevel { get; set; }
-
+        public int Qty { get; set; }
 
         public string Error
         {
@@ -66,4 +66,13 @@ namespace ViewModels
     //    public int CertificationName { get; set; }
     //    public int TypeName { get; set; }
     //}
+
+    public class ProdViewModel : AlphaElectric_DataAccessLayer.Product
+    {
+        public new int ID { get; set; }
+        public new string SerialNo { get; set; }
+        public new string Name { get; set; }
+        public new int MakeID { get; set; }
+        public int Qty { get; set; }
+    }
 }

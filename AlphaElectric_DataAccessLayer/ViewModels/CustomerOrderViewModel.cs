@@ -14,9 +14,12 @@ namespace ViewModels
         public System.DateTime OrderDate { get; set; }
         public System.DateTime DeliveryDate { get; set; }
         public int ContactID { get; set; }
+
+        public int ProdID { get; set; }
         public int Quantity { get; set; }
 
-        public int prodID { get; set; }
+        public int AssignedEmployeeID { get; set; }
+        public int OrderStatusID  { get; set; }
 
         public string Error
         {
