@@ -68,7 +68,7 @@
         </Grid.RowDefinitions>
 
         <ScrollViewer Grid.Row="0" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0 20 0 0">
-            <Grid Margin="0,0,0,10">
+            <Grid Margin="0,0,0,20">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="100" />
                     <ColumnDefinition Width="150" />
@@ -165,7 +165,7 @@
                         </Binding>
                     </DatePicker.SelectedDate>
                 </DatePicker>
-                
+
                 <TextBlock Grid.Row="7" Grid.Column="0" VerticalAlignment="Center" Margin="16 0 8 0">Address</TextBlock>
                 <TextBox Grid.Row="7" Grid.Column="1" x:Name="AddressTextBox" materialDesign:HintAssist.Hint="Input Address">
                     <TextBox.Text>
@@ -178,10 +178,20 @@
                         </Binding>
                     </TextBox.Text>
                 </TextBox>
-                <TextBlock Grid.Row="8" Grid.Column="0"  VerticalAlignment="Center" Margin="16 0 8 0">Designation</TextBlock>
+                <TextBlock Grid.Row="8" Grid.Column="0"  VerticalAlignment="Center" Margin="16 10 8 8">Designation</TextBlock>
                 <ComboBox  Grid.Row="8" Grid.Column="1" Name="DesignationComboBox" materialDesign:HintAssist.Hint="Select Designation" MinWidth="72" Margin="0 0 0 0" VerticalAlignment="Bottom">
                     <ComboBox.SelectedValue>
                         <Binding Path="DesignationID" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                            <Binding.ValidationRules>
+                                <domain:NotEmptyValidationRule ValidatesOnTargetUpdated="True"/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </ComboBox.SelectedValue>
+                </ComboBox>
+                <TextBlock Grid.Row="9" Grid.Column="0"  VerticalAlignment="Center" Margin="16,16,8,7">Status</TextBlock>
+                <ComboBox  Grid.Row="9" Grid.Column="1" Name="EmployeeStatusComboBox" materialDesign:HintAssist.Hint="Select Status" MinWidth="72" Margin="0,0,0,-1" VerticalAlignment="Bottom" Grid.RowSpan="4">
+                    <ComboBox.SelectedValue>
+                        <Binding Path="EmployeeStatusID" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
                             <Binding.ValidationRules>
                                 <domain:NotEmptyValidationRule ValidatesOnTargetUpdated="True"/>
                             </Binding.ValidationRules>

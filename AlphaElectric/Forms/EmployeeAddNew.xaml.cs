@@ -56,11 +56,16 @@ namespace AlphaElectric.Forms
         void Worker_DoWork(object sender, DoWorkEventArgs e)
         {
             List<Designation> emplist = new DesignationFactory().SelectAll();
+            List<EmployeeStatus> empStatusList = new EmployeeStatusFactory().SelectAll();
             this.Dispatcher.Invoke(() =>
             {
                 DesignationComboBox.ItemsSource = emplist;
                 DesignationComboBox.DisplayMemberPath = "Name";
                 DesignationComboBox.SelectedValuePath = "ID";
+
+                EmployeeStatusComboBox.ItemsSource = empStatusList;
+                EmployeeStatusComboBox.DisplayMemberPath = "Name";
+                EmployeeStatusComboBox.SelectedValuePath = "ID";
             });
         }
 
@@ -73,6 +78,7 @@ namespace AlphaElectric.Forms
             this.JoinDateDatePicker.GetBindingExpression(DatePicker.SelectedDateProperty).UpdateSource();
             this.AddressTextBox.GetBindingExpression(TextBox.TextProperty).UpdateSource();
             this.DesignationComboBox.GetBindingExpression(ComboBox.SelectedValueProperty).UpdateSource();
+            this.EmployeeStatusComboBox.GetBindingExpression(ComboBox.SelectedValueProperty).UpdateSource();
         }
 
         private void InsertButton_Click(object sender, RoutedEventArgs e)
@@ -96,12 +102,12 @@ namespace AlphaElectric.Forms
                 return;
             }
 
-            if (DesignationComboBox.SelectedItem == null)
+            if (DesignationComboBox.SelectedItem == null || DesignationComboBox.SelectedItem == null)
             {
                 var sMessageDialog = new MessageDialog
                 {
                     Message = { Text =
-                    "ERROR: Select a Designation!" }
+                    "ERROR: Select a Designation & Status!" }
                 };
 
                 DialogHost.Show(sMessageDialog, "RootDialog");
@@ -117,9 +123,9 @@ namespace AlphaElectric.Forms
             emp.JoinDate = JoinDateDatePicker.SelectedDate.Value;
             emp.Address = AddressTextBox.Text;
             emp.DesignationID = int.Parse(DesignationComboBox.SelectedValue.ToString());
+            emp.EmployeeStatusID = int.Parse(EmployeeStatusComboBox.SelectedValue.ToString());
 
-            EmployeeFactory fac = new EmployeeFactory();
-            if (fac.InsertEmployee(emp))
+            if (new EmployeeFactory().InsertEmployee(emp))
             {
                 var sMessageDialog = new MessageDialog
                 {
@@ -159,6 +165,7 @@ namespace AlphaElectric.Forms
             this.JoinDateDatePicker.SelectedDate = null;
             this.AddressTextBox.Clear();
             this.DesignationComboBox.SelectedItem = null;
+            this.EmployeeStatusComboBox.SelectedItem = null;
         }
     }
 }

@@ -68,7 +68,7 @@
         </Grid.RowDefinitions>
 
         <ScrollViewer Grid.Row="0" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0 20 0 0">
-            <Grid Margin="0,0,0,10">
+            <Grid Margin="0,0,0,20">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="100" />
                     <ColumnDefinition Width="150" />
@@ -128,8 +128,19 @@
                     </TextBox.Text>
                 </TextBox>
 
-                <TextBlock Grid.Row="4" Grid.Column="0" VerticalAlignment="Center" Margin="16 0 8 0">Stock</TextBlock>
-                <TextBox Grid.Row="4" Grid.Column="1" x:Name="StockLevelTextBox" materialDesign:HintAssist.Hint="Input StockLevel">
+                <TextBlock Grid.Row="4" Grid.Column="0"  VerticalAlignment="Center" Margin="16 0 10 0">Make</TextBlock>
+                <ComboBox  Grid.Row="4" Grid.Column="1" Name="MakeComboBox" materialDesign:HintAssist.Hint="Select Make" MinWidth="72" Margin="0 0 0 0" VerticalAlignment="Bottom">
+                    <ComboBox.SelectedValue>
+                        <Binding Path="MakeID" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                            <Binding.ValidationRules>
+                                <domain:NotEmptyValidationRule ValidatesOnTargetUpdated="True"/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </ComboBox.SelectedValue>
+                </ComboBox>
+
+                <TextBlock Grid.Row="5" Grid.Column="0" VerticalAlignment="Center" Margin="16 15 8 10">Stock</TextBlock>
+                <TextBox Grid.Row="5" Grid.Column="1" x:Name="StockLevelTextBox" materialDesign:HintAssist.Hint="Input StockLevel" Margin="0,12,0,4">
                     <TextBox.Text>
                         <Binding Path="StockLevel" ValidatesOnDataErrors="True" UpdateSourceTrigger="PropertyChanged" NotifyOnValidationError="True">
                             <Binding.ValidationRules>
@@ -140,16 +151,18 @@
                         </Binding>
                     </TextBox.Text>
                 </TextBox>
-                <TextBlock Grid.Row="5" Grid.Column="0"  VerticalAlignment="Center" Margin="16 0 8 0">Make</TextBlock>
-                <ComboBox  Grid.Row="5" Grid.Column="1" Name="MakeComboBox" materialDesign:HintAssist.Hint="Select Make" MinWidth="72" Margin="0 0 0 0" VerticalAlignment="Bottom">
+
+                <TextBlock Grid.Row="6" Grid.Column="0"  VerticalAlignment="Center" Margin="16 10 10 5">Location</TextBlock>
+                <ComboBox  Grid.Row="6" Grid.Column="1" Name="LocationComboBox" materialDesign:HintAssist.Hint="Select Location" MinWidth="72" Margin="0 0 0 0" VerticalAlignment="Bottom">
                     <ComboBox.SelectedValue>
-                        <Binding Path="MakeID" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                        <Binding Path="LocationID" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
                             <Binding.ValidationRules>
                                 <domain:NotEmptyValidationRule ValidatesOnTargetUpdated="True"/>
                             </Binding.ValidationRules>
                         </Binding>
                     </ComboBox.SelectedValue>
                 </ComboBox>
+
             </Grid>
         </ScrollViewer>
         <!-- start + popupbox -->

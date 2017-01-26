@@ -8,49 +8,47 @@ using System.Threading.Tasks;
 
 namespace AlphaElectric_DataAccessLayer.DA
 {
-    class InventoryDA
+    class LocationDA
     {
         AlphaElectricEntitiesDB db;
 
-        public InventoryDA()
+        public LocationDA()
         {
             db = new AlphaElectricEntitiesDB();
         }
 
-        public List<Inventory> SelectAll()
+        public List<Location> SelectAll()
         {
-            return db.Inventories.ToList();
+            return db.Locations.ToList();
         }
 
-        public bool InsertInventory(Inventory inven)
+        public bool InsertLocation(Location loc)
         {
-            db.Inventories.Add(inven);
-            return db.SaveChanges() > 0 ? true : false;
-        }
-
-        public bool Update(int id, int stocklevel, int locID)
-        {
-            var inven = db.Inventories.Where(x => x.ID == id).FirstOrDefault();
-            if (inven != null)
-            {
-                inven.LocationID = locID;
-                inven.StockLevel = stocklevel;
-            }
+            db.Locations.Add(loc);
             return db.SaveChanges() > 0 ? true : false;
         }
 
         //CHECK IT
-        //public bool Delete(int id)
-        //{
-        //    var inven = db.Inventories.Where(x => x.ID == id).FirstOrDefault();
-        //    if (inven != null)
-        //    {
-        //        db.Inventories.Remove(inven);
-        //    }
-        //    return db.SaveChanges() > 0 ? true : false;
-        //}
+        public bool Delete(int id)
+        {
+            var desig = db.Locations.Where(x => x.ID == id).FirstOrDefault();
+            if (desig != null)
+            {
+                db.Locations.Remove(desig);
+            }
+            return db.SaveChanges() > 0 ? true : false;
+        }
 
-
+        public bool Update(int id, string name)
+        {
+            var loc = db.Locations.Where(x => x.ID == id).FirstOrDefault();
+            if (loc != null)
+            {
+                loc.Name = name;
+            }
+            return db.SaveChanges() > 0 ? true : false;
+        }
+        
         //public List<StudentViewModel> SelectFew()
         //{
         //    return (from s in db.Students

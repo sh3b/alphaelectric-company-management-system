@@ -50,7 +50,7 @@ namespace AlphaElectric_DataAccessLayer.DA
             return db.SaveChanges() > 0 ? true : false;
         }
 
-        public bool Update(int id, string firstname, string lastname, string phone, string passport, DateTime joindate, string address, int desigid)
+        public bool Update(int id, string firstname, string lastname, string phone, string passport, DateTime joindate, string address, int desigid, int statusid)
         {
             var emp = db.Employees.Where(x => x.ID == id).FirstOrDefault();
             if (emp != null)
@@ -62,6 +62,7 @@ namespace AlphaElectric_DataAccessLayer.DA
                 emp.JoinDate = joindate;
                 emp.Address = address;
                 emp.DesignationID = desigid;
+                emp.EmployeeStatusID = statusid;
             }
             return db.SaveChanges() > 0 ? true : false;
         }

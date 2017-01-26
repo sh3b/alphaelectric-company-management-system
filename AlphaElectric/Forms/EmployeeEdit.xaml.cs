@@ -30,9 +30,7 @@ namespace AlphaElectric.Forms
     public partial class EmployeeEdit : UserControl
     {
         EmployeeViewModel _vm;
-        //Adding backgroud worker
         BackgroundWorker worker;
-        List<Employee> emplist;
 
         public EmployeeEdit()
         {
@@ -58,6 +56,7 @@ namespace AlphaElectric.Forms
                     JoinDateDatePicker.SelectedDate = emp.JoinDate;
                     AddressTextBox.Text = emp.Address;
                     DesignationComboBox.SelectedValue = emp.DesignationID;
+                    EmployeeStatusComboBox.SelectedValue = emp.EmployeeStatusID;
                 }
             }
         }
@@ -72,17 +71,26 @@ namespace AlphaElectric.Forms
 
         void Worker_DoWork(object sender, DoWorkEventArgs e)
         {
-            List<Designation> desiglist = new DesignationFactory().SelectAll();
-            emplist = new EmployeeFactory().SelectAll();
+            var emplist = new EmployeeFactory().SelectAll();
+
+            foreach (var row in emplist)
+                row.FirstName = row.FirstName + " " + row.LastName;
+
+            var desiglist = new DesignationFactory().SelectAll();
+            var empStatusList = new EmployeeStatusFactory().SelectAll();
             this.Dispatcher.Invoke(() =>
             {
+                SelectEmployeeComboBox.ItemsSource = emplist;
+                SelectEmployeeComboBox.DisplayMemberPath = "FirstName";
+                SelectEmployeeComboBox.SelectedValuePath = "ID";
+
                 DesignationComboBox.ItemsSource = desiglist;
                 DesignationComboBox.DisplayMemberPath = "Name";
                 DesignationComboBox.SelectedValuePath = "ID";
 
-                SelectEmployeeComboBox.ItemsSource = emplist;
-                SelectEmployeeComboBox.DisplayMemberPath = "FirstName";
-                SelectEmployeeComboBox.SelectedValuePath = "ID";
+                EmployeeStatusComboBox.ItemsSource = empStatusList;
+                EmployeeStatusComboBox.DisplayMemberPath = "Name";
+                EmployeeStatusComboBox.SelectedValuePath = "ID";
             });
         }
 
@@ -95,6 +103,7 @@ namespace AlphaElectric.Forms
             this.JoinDateDatePicker.GetBindingExpression(DatePicker.SelectedDateProperty).UpdateSource();
             this.AddressTextBox.GetBindingExpression(TextBox.TextProperty).UpdateSource();
             this.DesignationComboBox.GetBindingExpression(ComboBox.SelectedValueProperty).UpdateSource();
+            this.EmployeeStatusComboBox.GetBindingExpression(ComboBox.SelectedValueProperty).UpdateSource();
             this.SelectEmployeeComboBox.GetBindingExpression(ComboBox.SelectedValueProperty).UpdateSource();
         }
 
@@ -134,12 +143,12 @@ namespace AlphaElectric.Forms
                 return;
             }
 
-            if (DesignationComboBox.SelectedItem == null)
+            if (DesignationComboBox.SelectedItem == null || EmployeeStatusComboBox == null)
             {
                 var sMessageDialog = new MessageDialog
                 {
                     Message = { Text =
-                    "ERROR: Select a Designation!" }
+                    "ERROR: Select a Designation & Status!" }
                 };
 
                 DialogHost.Show(sMessageDialog, "RootDialog");
@@ -156,7 +165,8 @@ namespace AlphaElectric.Forms
                 PassportTextBox.Text,
                 JoinDateDatePicker.SelectedDate.Value,
                 AddressTextBox.Text,
-                int.Parse(DesignationComboBox.SelectedValue.ToString())))
+                int.Parse(DesignationComboBox.SelectedValue.ToString()),
+                int.Parse(EmployeeStatusComboBox.SelectedValue.ToString())))
             {
                 var sMessageDialog = new MessageDialog
                 {
@@ -189,6 +199,7 @@ namespace AlphaElectric.Forms
             this.JoinDateDatePicker.SelectedDate = null;
             this.AddressTextBox.Clear();
             this.DesignationComboBox.SelectedItem = null;
+            this.EmployeeStatusComboBox.SelectedItem = null;
         }
 
         private void SelectEmployeeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)

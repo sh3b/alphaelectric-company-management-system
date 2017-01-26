@@ -60,7 +60,7 @@
             </Style>
         </ResourceDictionary>
     </UserControl.Resources>
-    
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
@@ -117,7 +117,7 @@
                     </TextBox.Text>
                 </TextBox>
 
-                <TextBlock Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" Margin="16 0 8 0">Make</TextBlock>
+                <TextBlock Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" Margin="16,10,8,7">Make</TextBlock>
                 <ComboBox  Grid.Row="3" Grid.Column="1" Name="MakeComboBox" materialDesign:HintAssist.Hint="Select Company" MinWidth="72" Margin="0 0 0 0" VerticalAlignment="Bottom">
                     <ComboBox.SelectedValue>
                         <Binding Path="MakeID" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
@@ -128,13 +128,38 @@
                     </ComboBox.SelectedValue>
                 </ComboBox>
 
-                <TextBlock Grid.Row="4" Grid.Column="0" VerticalAlignment="Center" Margin="16 0 8 0">Product Type</TextBlock>
-                <StackPanel  Grid.Row="4" Grid.Column="1" Margin="13,20,0,0" Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Left">
+
+                <TextBlock Grid.Row="4" Grid.Column="0"  VerticalAlignment="Center" Margin="16,15,8,13">Stock Level</TextBlock>
+                <TextBox Grid.Row="4" Grid.Column="1" Name="StockLevelTextBox" materialDesign:HintAssist.Hint="Code">
+                    <TextBox.Text>
+                        <Binding Path="StockLevel" ValidatesOnDataErrors="True" UpdateSourceTrigger="PropertyChanged" NotifyOnValidationError="True">
+                            <Binding.ValidationRules>
+                                <domain:NotEmptyValidationRule ValidatesOnTargetUpdated="True" />
+                                <!-- Checks for exceptions during the setting of the source property.Alternatively, set ValidatesOnExceptions to True on the Binding.-->
+                                <ExceptionValidationRule/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+
+                <TextBlock Grid.Row="5" Grid.Column="0" VerticalAlignment="Center" Margin="16,10,8,7">Location</TextBlock>
+                <ComboBox  Grid.Row="5" Grid.Column="1" Name="LocationComboBox" materialDesign:HintAssist.Hint="Select Location" MinWidth="72" Margin="0" VerticalAlignment="Bottom">
+                    <ComboBox.SelectedValue>
+                        <Binding Path="LocationID" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                            <Binding.ValidationRules>
+                                <domain:NotEmptyValidationRule ValidatesOnTargetUpdated="True"/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </ComboBox.SelectedValue>
+                </ComboBox>
+
+                <TextBlock Grid.Row="6" Grid.Column="0" VerticalAlignment="Center" Margin="16 0 8 0">Product Type</TextBlock>
+                <StackPanel  Grid.Row="6" Grid.Column="1" Margin="13,20,0,0" Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Left">
                     <RadioButton Name="P_Panel" Content="Panel" GroupName="txtBoxGroup" Checked="P_Panel_Checked"/>
                     <RadioButton Name="P_Part" Content="Product" GroupName="txtBoxGroup" Checked="P_Product_Checked"></RadioButton>
                 </StackPanel>
 
-                <StackPanel  Grid.Row="5" Grid.ColumnSpan="2"  Orientation="Horizontal" HorizontalAlignment="Stretch" Height="auto" Name="TxtBxStackPanel4"  Visibility="Collapsed">
+                <StackPanel  Grid.Row="7" Grid.ColumnSpan="2"  Orientation="Horizontal" HorizontalAlignment="Stretch" Height="auto" Name="TxtBxStackPanel4"  Visibility="Collapsed">
                     <TextBlock Width="75" VerticalAlignment="Center" Margin="16 0 8 0">Type</TextBlock>
                     <ComboBox Name="PartTypeComboBox" materialDesign:HintAssist.Hint="Select Part Type" MinWidth="100" Margin="0,0,0,0" Width="150" VerticalAlignment="Bottom">
                         <ComboBox.SelectedValue>
@@ -147,7 +172,7 @@
                     </ComboBox>
                 </StackPanel>
 
-                <StackPanel  Grid.Row="5" Grid.ColumnSpan="2"  Orientation="Horizontal" HorizontalAlignment="Stretch" Height="auto" Name="TxtBxStackPanel3"  Visibility="Collapsed">
+                <StackPanel  Grid.Row="8" Grid.ColumnSpan="2"  Orientation="Horizontal" HorizontalAlignment="Stretch" Height="auto" Name="TxtBxStackPanel3"  Visibility="Collapsed">
                     <TextBlock Width="75" VerticalAlignment="Center" Margin="16 0 8 0">Type</TextBlock>
                     <ComboBox Name="PanelTypeComboBox" materialDesign:HintAssist.Hint="Select Model Type" Width="150" VerticalAlignment="Bottom">
                         <ComboBox.SelectedValue>
@@ -160,7 +185,7 @@
                     </ComboBox>
                 </StackPanel>
 
-                <StackPanel  Grid.Row="6" Grid.ColumnSpan="2"  Orientation="Horizontal"  HorizontalAlignment="Stretch" Height="auto" Name="TxtBxStackPanel2"  Visibility="Collapsed">
+                <StackPanel  Grid.Row="9" Grid.ColumnSpan="2"  Orientation="Horizontal"  HorizontalAlignment="Stretch" Height="auto" Name="TxtBxStackPanel2"  Visibility="Collapsed">
                     <TextBlock Width="75" VerticalAlignment="Center" Margin="16 0 8 0">Size</TextBlock>
                     <ComboBox Name="SizeComboBox" materialDesign:HintAssist.Hint="Select Dimensions" Width="150" VerticalAlignment="Bottom">
                         <ComboBox.SelectedValue>
@@ -173,7 +198,7 @@
                     </ComboBox>
                 </StackPanel>
 
-                <StackPanel  Grid.Row="7" Grid.ColumnSpan="2"  Orientation="Horizontal" HorizontalAlignment="Stretch" Height="auto" Name="TxtBxStackPanel1"  Visibility="Collapsed">
+                <StackPanel  Grid.Row="10" Grid.ColumnSpan="2"  Orientation="Horizontal" HorizontalAlignment="Stretch" Height="auto" Name="TxtBxStackPanel1"  Visibility="Collapsed">
                     <TextBlock Width="75" VerticalAlignment="Center" Margin="16 0 8 0">Protection</TextBlock>
                     <ComboBox Name="PanelIPNumberComboBox" materialDesign:HintAssist.Hint="Select IP Number" Width="150" VerticalAlignment="Bottom">
                         <ComboBox.SelectedValue>
@@ -186,11 +211,11 @@
                     </ComboBox>
                 </StackPanel>
 
-                <StackPanel  Grid.Row="8" Grid.ColumnSpan="2"  Orientation="Horizontal" HorizontalAlignment="Stretch" Height="auto" Name="TxtBxStackPanel0"  Visibility="Collapsed">
+                <StackPanel  Grid.Row="11" Grid.ColumnSpan="2"  Orientation="Horizontal" HorizontalAlignment="Stretch" Height="auto" Name="TxtBxStackPanel0"  Visibility="Collapsed">
                     <TextBlock Width="75" VerticalAlignment="Center" Margin="16 0 8 0">Certification</TextBlock>
                     <ComboBox Name="CertComboBox" materialDesign:HintAssist.Hint="Select ISO Standard" Width="150" VerticalAlignment="Bottom">
                         <ComboBox.SelectedValue>
-                            <Binding Path="CertComboBoxID" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                            <Binding Path="CertID" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
                                 <Binding.ValidationRules>
                                     <domain:NotEmptyValidationRule ValidatesOnTargetUpdated="True"/>
                                 </Binding.ValidationRules>

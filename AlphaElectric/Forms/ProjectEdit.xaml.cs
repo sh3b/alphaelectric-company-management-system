@@ -48,9 +48,8 @@ namespace AlphaElectric.Forms
         {
             if (SelectProjectComboBox.SelectedValue != null)
             {
-                var db = new AlphaElectricEntitiesDB();
                 var id = int.Parse(SelectProjectComboBox.SelectedValue.ToString());
-                var proj = db.Projects.Where(x => x.ID == id).FirstOrDefault();
+                var proj = new AlphaElectricEntitiesDB().Projects.Where(x => x.ID == id).FirstOrDefault();
                 if (proj != null)
                 {
                     NameTextBox.Text = proj.Name;
@@ -71,11 +70,19 @@ namespace AlphaElectric.Forms
         void Worker_DoWork(object sender, DoWorkEventArgs e)
         {
             projlist = new ProjectFactory().SelectAll();
+            var orderStatusList = new OrderStatusFactory().SelectAll();
+
+            
             this.Dispatcher.Invoke(() =>
             {
                 SelectProjectComboBox.ItemsSource = projlist;
                 SelectProjectComboBox.DisplayMemberPath = "Name";
                 SelectProjectComboBox.SelectedValuePath = "ID";
+
+                OrderStatusComboBox.ItemsSource = orderStatusList;
+                OrderStatusComboBox.DisplayMemberPath = "Name";
+                OrderStatusComboBox.SelectedValuePath = "ID";
+
             });
         }
 
@@ -102,7 +109,7 @@ namespace AlphaElectric.Forms
                 return;
             }
 
-            if (SelectProjectComboBox.SelectedItem == null || OrderStatusComboBox.SelectedItem == null)
+            if (SelectProjectComboBox.SelectedItem == null)
             {
                 var sMessageDialog = new MessageDialog
                 {
@@ -112,11 +119,21 @@ namespace AlphaElectric.Forms
                 DialogHost.Show(sMessageDialog, "RootDialog");
                 return;
             }
+
+            if ( OrderStatusComboBox.SelectedItem == null)
+            {
+                var sMessageDialog = new MessageDialog
+                {
+                    Message = { Text = "ERROR: Select Status!" }
+                };
+
+                DialogHost.Show(sMessageDialog, "RootDialog");
+                return;
+            }
+
             #endregion
 
-            ProjectFactory fac = new ProjectFactory();
-
-            if (fac.Update(int.Parse(SelectProjectComboBox.SelectedValue.ToString()),
+            if (new ProjectFactory().Update(int.Parse(SelectProjectComboBox.SelectedValue.ToString()),
                 NameTextBox.Text,
                 int.Parse(OrderStatusComboBox.SelectedValue.ToString()),
                 DeliveryDateDatePicker.SelectedDate.Value))
@@ -153,8 +170,8 @@ namespace AlphaElectric.Forms
         private void Clear()
         {
             this.SelectProjectComboBox.SelectedItem = null;
-            this.NameTextBox.Clear();
             this.OrderStatusComboBox.SelectedItem = null;
+            this.NameTextBox.Clear();
 
         }
 

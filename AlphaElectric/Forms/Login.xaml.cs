@@ -38,20 +38,23 @@ namespace AlphaElectric.Forms
             _vm = new ViewModels.LoginViewModel();
             this.DataContext = _vm;
 
+            NameTextBox.Text = "shoaib";
+            PasswordBox.Password = "12345";
+
             NameTextBox.Focus();
 
-            using (var db = new AlphaElectricEntitiesDB())
-            {
-                //Adding New User
-                AlphaElectric_DataAccessLayer.Login newUser = new AlphaElectric_DataAccessLayer.Login()
-                {
-                    Username = "shoaib",
-                    Name = "Shoaib Ashraf",
-                    Password = Hashing.HashPassword("12345")
-                };
-                db.Logins.Add(newUser);
-                db.SaveChanges();
-            }
+            //using (var db = new AlphaElectricEntitiesDB())
+            //{
+            //    //Adding New User
+            //    AlphaElectric_DataAccessLayer.Login newUser = new AlphaElectric_DataAccessLayer.Login()
+            //    {
+            //        Username = "shoaib",
+            //        Name = "Shoaib Ashraf",
+            //        Password = Hashing.HashPassword("12345")
+            //    };
+            //    db.Logins.Add(newUser);
+            //    db.SaveChanges();
+            //}
         }
 
         //private void ForceValidation()

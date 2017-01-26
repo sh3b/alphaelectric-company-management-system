@@ -8,49 +8,48 @@ using System.Threading.Tasks;
 
 namespace AlphaElectric_DataAccessLayer.DA
 {
-    class InventoryDA
+    class Panel_ProjectBTDA
     {
         AlphaElectricEntitiesDB db;
 
-        public InventoryDA()
+        public Panel_ProjectBTDA()
         {
             db = new AlphaElectricEntitiesDB();
         }
 
-        public List<Inventory> SelectAll()
+        public List<Panel_ProjectBT> SelectAll()
         {
-            return db.Inventories.ToList();
+            return db.Panel_ProjectBT.ToList();
         }
 
-        public bool InsertInventory(Inventory inven)
+        public bool InsertPanel_ProjectBT(Panel_ProjectBT panelProjBT)
         {
-            db.Inventories.Add(inven);
-            return db.SaveChanges() > 0 ? true : false;
-        }
-
-        public bool Update(int id, int stocklevel, int locID)
-        {
-            var inven = db.Inventories.Where(x => x.ID == id).FirstOrDefault();
-            if (inven != null)
-            {
-                inven.LocationID = locID;
-                inven.StockLevel = stocklevel;
-            }
+            db.Panel_ProjectBT.Add(panelProjBT);
             return db.SaveChanges() > 0 ? true : false;
         }
 
         //CHECK IT
         //public bool Delete(int id)
         //{
-        //    var inven = db.Inventories.Where(x => x.ID == id).FirstOrDefault();
-        //    if (inven != null)
+        //    var cert = db.Panel_ProjectBTs.Where(x => x.ID == id).FirstOrDefault();
+        //    if (cert != null)
         //    {
-        //        db.Inventories.Remove(inven);
+        //        db.Panel_ProjectBTs.Remove(cert);
         //    }
         //    return db.SaveChanges() > 0 ? true : false;
         //}
 
-
+        //public bool Update(int id, string name, string descrip)
+        //{
+        //    var cert = db.Panel_ProjectBTs.Where(x => x.ID == id).FirstOrDefault();
+        //    if (cert != null)
+        //    {
+        //        cert.Name = name;
+        //        cert.Description = descrip;
+        //    }
+        //    return db.SaveChanges() > 0 ? true : false;
+        //}
+        
         //public List<StudentViewModel> SelectFew()
         //{
         //    return (from s in db.Students

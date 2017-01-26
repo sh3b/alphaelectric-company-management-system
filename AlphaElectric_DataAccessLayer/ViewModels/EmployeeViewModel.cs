@@ -17,8 +17,7 @@ namespace ViewModels
         public System.DateTime JoinDate { get; set; }
         public string Address { get; set; }
         public int DesignationID { get; set; }
-
-
+        public int EmployeeStatusID { get; set; }
 
         public string Error
         {

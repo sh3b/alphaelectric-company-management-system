@@ -33,7 +33,6 @@ namespace AlphaElectric.Forms
         //Adding backgroud worker
         BackgroundWorker worker;
         List<Product> prodlist;
-        List<Inventory> inventorylist;
 
         public ProductEdit()
         {
@@ -41,29 +40,6 @@ namespace AlphaElectric.Forms
 
             _vm = new ProductViewModel();
             this.DataContext = _vm;
-        }
-
-        void UpdateFields()
-        {
-            if (SelectProductComboBox.SelectedValue != null)
-            {
-                prodlist = new ProductFactory().SelectAll();
-                var id = int.Parse(SelectProductComboBox.SelectedValue.ToString());
-                var prod = prodlist.Where(x => x.ID == id).FirstOrDefault();
-                if (prod != null)
-                {
-                    SerialNoTextBox.Text = prod.SerialNo;
-                    NameTextBox.Text = prod.Name;
-                    MakeComboBox.SelectedValue = prod.MakeID;
-                }
-
-                inventorylist = new InventoryFactory().SelectAll();
-                var inven = inventorylist.Where(x => x.ID == id).FirstOrDefault();
-                if (inven != null)
-                {
-                    StockLevelTextBox.Text = inven.StockLevel.ToString();
-                }
-            }
         }
 
         //Executing after loading window, refer to XAML
@@ -78,6 +54,7 @@ namespace AlphaElectric.Forms
         {
             prodlist = new ProductFactory().SelectAll();
             List<Make> mklist = new MakeFactory().SelectAll();
+            List<Location> locList = new LocationFactory().SelectAll();
             this.Dispatcher.Invoke(() =>
             {
                 MakeComboBox.ItemsSource = mklist;
@@ -87,6 +64,10 @@ namespace AlphaElectric.Forms
                 SelectProductComboBox.ItemsSource = prodlist;
                 SelectProductComboBox.DisplayMemberPath = "Name";
                 SelectProductComboBox.SelectedValuePath = "ID";
+
+                LocationComboBox.ItemsSource = locList;
+                LocationComboBox.DisplayMemberPath = "Name";
+                LocationComboBox.SelectedValuePath = "ID";
             });
         }
 
@@ -96,6 +77,7 @@ namespace AlphaElectric.Forms
             this.StockLevelTextBox.GetBindingExpression(TextBox.TextProperty).UpdateSource();
             this.NameTextBox.GetBindingExpression(TextBox.TextProperty).UpdateSource();
             this.MakeComboBox.GetBindingExpression(ComboBox.SelectedValueProperty).UpdateSource();
+            this.LocationComboBox.GetBindingExpression(ComboBox.SelectedValueProperty).UpdateSource();
             this.SelectProductComboBox.GetBindingExpression(ComboBox.SelectedValueProperty).UpdateSource();
         }
 
@@ -107,6 +89,7 @@ namespace AlphaElectric.Forms
                 Validation.GetHasError(StockLevelTextBox) ||
                 Validation.GetHasError(NameTextBox) ||
                 Validation.GetHasError(MakeComboBox) ||
+                Validation.GetHasError(LocationComboBox) ||
                 Validation.GetHasError(SelectProductComboBox)
                 )
             {
@@ -144,6 +127,18 @@ namespace AlphaElectric.Forms
                 return;
             }
 
+            if (LocationComboBox.SelectedItem == null)
+            {
+                var sMessageDialog = new MessageDialog
+                {
+                    Message = { Text =
+                    "ERROR: Select a Location!" }
+                };
+
+                DialogHost.Show(sMessageDialog, "RootDialog");
+                return;
+            }
+
             if (string.IsNullOrEmpty(StockLevelTextBox.Text) || !(int.TryParse(StockLevelTextBox.Text, out int a)))
             {
                 var sMessageDialog = new MessageDialog
@@ -172,8 +167,7 @@ namespace AlphaElectric.Forms
             bool flag1 = false;
             bool flag2 = false;
 
-            ProductFactory fac = new ProductFactory();
-            if (fac.Update(int.Parse(SelectProductComboBox.SelectedValue.ToString()),
+            if (new ProductFactory().Update(int.Parse(SelectProductComboBox.SelectedValue.ToString()),
                 SerialNoTextBox.Text,
                 NameTextBox.Text,
                 int.Parse(MakeComboBox.SelectedValue.ToString())))
@@ -183,9 +177,9 @@ namespace AlphaElectric.Forms
             else
                 flag1 = false;
 
-            InventoryFactory fac2 = new InventoryFactory();
-            if (fac2.Update(int.Parse(SelectProductComboBox.SelectedValue.ToString()),
-                int.Parse(StockLevelTextBox.Text.ToString())))
+            if (new InventoryFactory().Update(int.Parse(SelectProductComboBox.SelectedValue.ToString()),
+                int.Parse(StockLevelTextBox.Text.ToString()),
+               int.Parse(LocationComboBox.SelectedValue.ToString())))
             {
                 flag2 = true;
             }
@@ -212,6 +206,33 @@ namespace AlphaElectric.Forms
             }
         }
 
+        private void SelectProductComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            UpdateFields();
+        }
+
+        void UpdateFields()
+        {
+            if (SelectProductComboBox.SelectedValue != null)
+            {
+                var id = int.Parse(SelectProductComboBox.SelectedValue.ToString());
+                var prod = new ProductFactory().SelectAll().Where(x => x.ID == id).FirstOrDefault();
+                if (prod != null)
+                {
+                    SerialNoTextBox.Text = prod.SerialNo;
+                    NameTextBox.Text = prod.Name;
+                    MakeComboBox.SelectedValue = prod.MakeID;
+                }
+
+                var inven = new InventoryFactory().SelectAll().Where(x => x.ID == id).FirstOrDefault();
+                if (inven != null)
+                {
+                    LocationComboBox.SelectedValue = inven.LocationID;
+                    StockLevelTextBox.Text = inven.StockLevel.ToString();
+                }
+            }
+        }
+
         private void ClearButton_Click(object sender, RoutedEventArgs e)
         {
             Clear();
@@ -224,12 +245,6 @@ namespace AlphaElectric.Forms
             this.SerialNoTextBox.Clear();
             this.NameTextBox.Clear();
             this.StockLevelTextBox.Clear();
-        }
-
-
-        private void SelectProductComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            UpdateFields();
         }
     }
 }

@@ -8,49 +8,47 @@ using System.Threading.Tasks;
 
 namespace AlphaElectric_DataAccessLayer.DA
 {
-    class InventoryDA
+    class EmployeeStatusDA
     {
         AlphaElectricEntitiesDB db;
 
-        public InventoryDA()
+        public EmployeeStatusDA()
         {
             db = new AlphaElectricEntitiesDB();
         }
 
-        public List<Inventory> SelectAll()
+        public List<EmployeeStatus> SelectAll()
         {
-            return db.Inventories.ToList();
+            return db.EmployeeStatus.ToList();
         }
 
-        public bool InsertInventory(Inventory inven)
+        public bool InsertEmployeeStatus(EmployeeStatus empStatus)
         {
-            db.Inventories.Add(inven);
-            return db.SaveChanges() > 0 ? true : false;
-        }
-
-        public bool Update(int id, int stocklevel, int locID)
-        {
-            var inven = db.Inventories.Where(x => x.ID == id).FirstOrDefault();
-            if (inven != null)
-            {
-                inven.LocationID = locID;
-                inven.StockLevel = stocklevel;
-            }
+            db.EmployeeStatus.Add(empStatus);
             return db.SaveChanges() > 0 ? true : false;
         }
 
         //CHECK IT
-        //public bool Delete(int id)
-        //{
-        //    var inven = db.Inventories.Where(x => x.ID == id).FirstOrDefault();
-        //    if (inven != null)
-        //    {
-        //        db.Inventories.Remove(inven);
-        //    }
-        //    return db.SaveChanges() > 0 ? true : false;
-        //}
+        public bool Delete(int id)
+        {
+            var empStatus = db.EmployeeStatus.Where(x => x.ID == id).FirstOrDefault();
+            if (empStatus != null)
+            {
+                db.EmployeeStatus.Remove(empStatus);
+            }
+            return db.SaveChanges() > 0 ? true : false;
+        }
 
-
+        public bool Update(int id, string name)
+        {
+            var empStatus = db.EmployeeStatus.Where(x => x.ID == id).FirstOrDefault();
+            if (empStatus != null)
+            {
+                empStatus.Name = name;
+            }
+            return db.SaveChanges() > 0 ? true : false;
+        }
+        
         //public List<StudentViewModel> SelectFew()
         //{
         //    return (from s in db.Students

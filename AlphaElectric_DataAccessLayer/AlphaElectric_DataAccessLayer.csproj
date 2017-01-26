@@ -61,7 +61,10 @@
     <Compile Include="CustomerOrder.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="DA\LocationDA.cs" />
+    <Compile Include="DA\EmployeeStatusDA.cs" />
     <Compile Include="DA\OrderStatusDA.cs" />
+    <Compile Include="DA\Panel_ProjectBTDA.cs" />
     <Compile Include="DA\ProjectDA.cs" />
     <Compile Include="DA\Product_CustomerOrderBTDA.cs" />
     <Compile Include="DA\Product_PurchaseOrderBTDA.cs" />
@@ -102,7 +105,10 @@
     <Compile Include="EmployeeStatus.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Factories\LocationFactory.cs" />
+    <Compile Include="Factories\EmployeeStausFactory.cs" />
     <Compile Include="Factories\OrderStatusFactory.cs" />
+    <Compile Include="Factories\Panel_ProjectBTFactory.cs" />
     <Compile Include="Factories\ProjectFactory.cs" />
     <Compile Include="Factories\Product_CustomerOrderBTFactory.cs" />
     <Compile Include="Factories\Product_PurchaseOrderBTFactory.cs" />
@@ -207,6 +213,7 @@
     <Content Include="DBModel16.edmx.sql" />
     <Content Include="DBModel19.edmx.sql" />
     <Content Include="DBModel2.edmx.sql" />
+    <Content Include="DBModel20.edmx.sql" />
     <Content Include="DBModel3.edmx.sql" />
     <Content Include="DBModel4.edmx.sql" />
     <Content Include="DBModel6.edmx.sql" />

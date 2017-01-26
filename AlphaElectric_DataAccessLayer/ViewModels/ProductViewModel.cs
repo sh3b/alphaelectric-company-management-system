@@ -13,12 +13,13 @@ namespace ViewModels
         public string SerialNo { get; set; }
         public string Name { get; set; }
         public int MakeID { get; set; }
+        public int LocationID { get; set; }
 
         public int PartTypeID { get; set; }
         public int PanelTypeID { get; set; }
         public int SizeID { get; set; }
         public int PanelIPNumberID { get; set; }
-        public int CertComboBoxID { get; set; }
+        public int CertID { get; set; }
         public int StockLevel { get; set; }
         public int Qty { get; set; }
 

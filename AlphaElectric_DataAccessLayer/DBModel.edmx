@@ -1502,12 +1502,12 @@
     </edmx:Options>
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="fbbdc60accda492ba4a58e3f47ba00d4" Name="Diagram1" ZoomLevel="105">
+      <Diagram DiagramId="fbbdc60accda492ba4a58e3f47ba00d4" Name="Diagram1" ZoomLevel="67">
         <EntityTypeShape EntityType="AlphaElectricEntities.Employee" Width="1.5" PointX="15.375" PointY="10.5" IsExpanded="true" FillColor="Olive" />
         <EntityTypeShape EntityType="AlphaElectricEntities.Designation" Width="1.5" PointX="17.75" PointY="10.125" IsExpanded="true" />
         <EntityTypeShape EntityType="AlphaElectricEntities.Product" Width="1.5" PointX="7.125" PointY="3.5" IsExpanded="true" FillColor="Olive" />
         <EntityTypeShape EntityType="AlphaElectricEntities.Inventory" Width="1.5" PointX="4.375" PointY="2" IsExpanded="true" />
-        <EntityTypeShape EntityType="AlphaElectricEntities.Location" Width="1.5" PointX="0.5" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="AlphaElectricEntities.Location" Width="1.5" PointX="0.75" PointY="0.875" IsExpanded="true" />
         <EntityTypeShape EntityType="AlphaElectricEntities.Panel" Width="1.5" PointX="2.75" PointY="6.875" IsExpanded="true" FillColor="192, 192, 0" />
         <EntityTypeShape EntityType="AlphaElectricEntities.PanelShellGradeProtection" Width="1.5" PointX="0.5" PointY="5.125" IsExpanded="true" />
         <EntityTypeShape EntityType="AlphaElectricEntities.SizeType" Width="1.5" PointX="0.5" PointY="7.375" IsExpanded="true" />

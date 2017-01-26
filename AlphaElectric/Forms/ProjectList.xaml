@@ -85,12 +85,16 @@
                   IsReadOnly="True"
                   >
             <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding Name}" Header="Name" Width="Auto"  />
-                <DataGridTextColumn Binding="{Binding DeliveyDate, StringFormat=d,ConverterCulture=en-NZ }" Header="Delivery Date" Width="Auto" />
-                <DataGridTextColumn Binding="{Binding Status}" Header="Status" Width="Auto" />
-                <DataGridTextColumn Binding="{Binding CustomerOrder.ID}" Header="Order ID" Width="Auto" />
-                <DataGridTextColumn Binding="{Binding CustomerOrder.Contact.CompanyName }" Header="Ordered by" Width="Auto" />
-                <DataGridTextColumn Binding="{Binding CustomerOrder.OrderDate, StringFormat=d,ConverterCulture=en-NZ }" Header="Order Date" Width="Auto" />
+                <DataGridTextColumn Binding="{Binding ProjectID}" Header="Proj ID" Width="Auto"  />
+                <DataGridTextColumn Binding="{Binding Project.Name}" Header="Name" Width="Auto"  />
+                <DataGridTextColumn Binding="{Binding Project.DeliveyDate, StringFormat=d,ConverterCulture=en-NZ }" Header="Delivery Date" Width="Auto" />
+                <DataGridTextColumn Binding="{Binding Project.CustomerOrder.OrderStatus.Name}" Header="Status" Width="Auto" />
+                <DataGridTextColumn Binding="{Binding Project.CustomerOrder.ID}" Header="Order ID" Width="Auto" />
+                <DataGridTextColumn Binding="{Binding Project.CustomerOrder.Contact.CompanyName }" Header="Ordered by" Width="Auto" />
+                <DataGridTextColumn Binding="{Binding Project.CustomerOrder.OrderDate, StringFormat=d,ConverterCulture=en-NZ }" Header="Order Date" Width="Auto" />
+                <DataGridTextColumn Binding="{Binding Project.CustomerOrder.Employee.FirstName }" Header="Managed by" Width="Auto" />
+                <DataGridTextColumn Binding="{Binding Panel.Name }" Header="Panel" Width="Auto" />
+                <DataGridTextColumn Binding="{Binding Quantity }" Header="Quantity" Width="Auto" />
             </DataGrid.Columns>
         </DataGrid>
         <materialDesign:PopupBox Grid.Row="2"

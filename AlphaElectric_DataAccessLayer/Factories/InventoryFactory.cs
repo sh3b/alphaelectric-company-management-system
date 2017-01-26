@@ -30,9 +30,9 @@ namespace AlphaElectric_DataAccessLayer.Factories
             return invenDa.InsertInventory(inven);
         }
 
-        public bool Update(int id, int stocklevel)
+        public bool Update(int id, int stocklevel, int locID)
         {
-            return invenDa.Update(id, stocklevel);
+            return invenDa.Update(id, stocklevel, locID);
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using AlphaElectric_DataAccessLayer;
+using AlphaElectric_DataAccessLayer.Factories;
 using MahApps.Metro.Controls;
 using MaterialDesignThemes.Wpf;
 using System;
@@ -37,7 +38,16 @@ namespace AlphaElectric.Forms
 
         void LoadData()
         {
-            DataGrid.ItemsSource = new AlphaElectricEntitiesDB().Projects.ToList();
+            var dataList = new Panel_ProjectBTFactory().SelectAll();
+
+            foreach (var row in dataList)
+            {
+                row.Project.CustomerOrder.Employee.FirstName = 
+                    row.Project.CustomerOrder.Employee.FirstName + " "
+                    + row.Project.CustomerOrder.Employee.LastName;
+            };
+
+            DataGrid.ItemsSource = dataList;
         }
 
         private void PopUp_AddNewCompany(object sender, RoutedEventArgs e)

@@ -30,7 +30,6 @@ namespace AlphaElectric.Forms
     public partial class ProductAddNew : UserControl
     {
         ProductViewModel _vm;
-        //Adding backgroud worker
         BackgroundWorker worker;
 
         public ProductAddNew()
@@ -39,8 +38,6 @@ namespace AlphaElectric.Forms
 
             _vm = new ProductViewModel();
             this.DataContext = _vm;
-            ClearButton_Click(null, null);
-
         }
 
         //Executing after loading window, refer to XAML
@@ -49,7 +46,6 @@ namespace AlphaElectric.Forms
             worker = new BackgroundWorker();
             worker.DoWork += Worker_DoWork;
             worker.RunWorkerAsync();
-
         }
 
         void Worker_DoWork(object sender, DoWorkEventArgs e)
@@ -60,6 +56,7 @@ namespace AlphaElectric.Forms
             List<PanelShellGradeProtection> shellgradelist = new PanelShellGradeProtectionFactory().SelectAll();
             List<Certification> certlist = new CertificationFactory().SelectAll();
             List<PaType> parttypelist = new PaTypeFactory().SelectAll();
+            List<Location> locationlist = new LocationFactory().SelectAll();
 
             this.Dispatcher.Invoke(() =>
             {
@@ -89,6 +86,11 @@ namespace AlphaElectric.Forms
                 PartTypeComboBox.ItemsSource = parttypelist;
                 PartTypeComboBox.DisplayMemberPath = "Name";
                 PartTypeComboBox.SelectedValuePath = "ID";
+
+                //Location
+                LocationComboBox.ItemsSource = locationlist;
+                LocationComboBox.DisplayMemberPath = "Name";
+                LocationComboBox.SelectedValuePath = "ID";
             });
         }
 
@@ -120,13 +122,15 @@ namespace AlphaElectric.Forms
         {
             NameTextBox.GetBindingExpression(TextBox.TextProperty).UpdateSource();
             SerialNoTextBox.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+            StockLevelTextBox.GetBindingExpression(TextBox.TextProperty).UpdateSource();
         }
+
 
         private void InsertButton_Click(object sender, RoutedEventArgs e)
         {
             #region validation 
             ForceValidation();
-            if (Validation.GetHasError(NameTextBox) || Validation.GetHasError(SerialNoTextBox))
+            if (Validation.GetHasError(NameTextBox) || Validation.GetHasError(SerialNoTextBox) || Validation.GetHasError(StockLevelTextBox))
             {
                 var sMessageDialog = new MessageDialog
                 {
@@ -137,8 +141,7 @@ namespace AlphaElectric.Forms
                 DialogHost.Show(sMessageDialog, "RootDialog");
                 return;
             }
-
-            if (!(bool)P_Panel.IsChecked && !(bool)P_Part.IsChecked)
+            else if (!(bool)P_Panel.IsChecked && !(bool)P_Part.IsChecked)
             {
                 var sMessageDialog = new MessageDialog
                 {
@@ -149,11 +152,10 @@ namespace AlphaElectric.Forms
                 DialogHost.Show(sMessageDialog, "RootDialog");
                 return;
             }
-
-
-            if ((bool)P_Panel.IsChecked)
+            else if ((bool)P_Panel.IsChecked)
             {
                 if (MakeComboBox.SelectedValue == null ||
+                    LocationComboBox.SelectedValue == null ||
                     PanelTypeComboBox.SelectedValue == null ||
                     SizeComboBox.SelectedValue == null ||
                     PanelIPNumberComboBox.SelectedValue == null ||
@@ -170,10 +172,10 @@ namespace AlphaElectric.Forms
                     return;
                 }
             }
-
-            if ((bool)P_Part.IsChecked)
+            else if ((bool)P_Part.IsChecked)
             {
                 if (MakeComboBox.SelectedValue == null ||
+                    LocationComboBox.SelectedValue == null ||
                     PartTypeComboBox.SelectedValue == null
                     )
                 {
@@ -192,55 +194,67 @@ namespace AlphaElectric.Forms
 
             if ((bool)P_Panel.IsChecked)
             {
-                AlphaElectric_DataAccessLayer.Panel panel = new AlphaElectric_DataAccessLayer.Panel();
-                panel.Name = NameTextBox.Text;
-                panel.SerialNo = SerialNoTextBox.Text;
-                panel.MakeID = int.Parse(MakeComboBox.SelectedValue.ToString());
-                panel.Name = NameTextBox.Text;
-
-                panel.TypeID = int.Parse(PanelTypeComboBox.SelectedValue.ToString());
-                panel.SizeTypeID = int.Parse(SizeComboBox.SelectedValue.ToString());
-                panel.PanelShellGradeProtectionIPNumber = int.Parse(PanelIPNumberComboBox.SelectedValue.ToString());
-                panel.CertificationID = int.Parse(CertComboBox.SelectedValue.ToString());
+                AlphaElectric_DataAccessLayer.Panel panel = new AlphaElectric_DataAccessLayer.Panel()
+                {
+                    Name = NameTextBox.Text,
+                    SerialNo = SerialNoTextBox.Text,
+                    MakeID = int.Parse(MakeComboBox.SelectedValue.ToString()),
+                    TypeID = int.Parse(PanelTypeComboBox.SelectedValue.ToString()),
+                    SizeTypeID = int.Parse(SizeComboBox.SelectedValue.ToString()),
+                    PanelShellGradeProtectionIPNumber = int.Parse(PanelIPNumberComboBox.SelectedValue.ToString()),
+                    CertificationID = int.Parse(CertComboBox.SelectedValue.ToString())
+                };
 
                 Product incomingNewProduct = new AlphaElectric_DataAccessLayer.Panel();
                 incomingNewProduct = panel;
                 AddProd(incomingNewProduct);
+                AddProdToLocation(incomingNewProduct,
+                    int.Parse(StockLevelTextBox.Text),
+                    int.Parse(LocationComboBox.SelectedValue.ToString()));
             }
 
             if ((bool)P_Part.IsChecked)
             {
-                AlphaElectric_DataAccessLayer.Part part = new AlphaElectric_DataAccessLayer.Part();
-                part.Name = NameTextBox.Text;
-                part.SerialNo = SerialNoTextBox.Text;
-                part.MakeID = int.Parse(MakeComboBox.SelectedValue.ToString());
-                part.Name = NameTextBox.Text;
+                Part part = new AlphaElectric_DataAccessLayer.Part()
+                {
+                    Name = NameTextBox.Text,
+                    SerialNo = SerialNoTextBox.Text,
+                    MakeID = int.Parse(MakeComboBox.SelectedValue.ToString()),
 
-                part.PaTypeID = int.Parse(PartTypeComboBox.SelectedValue.ToString());
+                    PaTypeID = int.Parse(PartTypeComboBox.SelectedValue.ToString())
+                };
 
                 Product incomingNewProduct = new Part();
                 incomingNewProduct = part;
                 AddProd(incomingNewProduct);
+                AddProdToLocation(incomingNewProduct, 
+                    int.Parse(StockLevelTextBox.Text), 
+                    int.Parse(LocationComboBox.SelectedValue.ToString()));
             }
+
+            ClearButton_Click(null, null);
+        }
+
+        private void AddProdToLocation(Product prod, int stockLevel, int locID)
+        {
+            var inven = new Inventory()
+            {
+                ID = prod.ID,
+                StockLevel = stockLevel,
+                LocationID = locID,
+            };
+            new InventoryFactory().InsertInventory(inven);
         }
 
         private void AddProd(Product incomingNewProduct)
         {
-            ProductFactory fac = new ProductFactory();
-            if (fac.InsertProduct(incomingNewProduct))
+            if (new ProductFactory().InsertProduct(incomingNewProduct))
             {
-                // Adding Stock Level to Zero
-                var newProduct = new Inventory();
-                newProduct.ID = incomingNewProduct.ID;
-                newProduct.StockLevel = 0;
-                var inFac = new InventoryFactory().InsertInventory(newProduct);
-
                 var sMessageDialog = new MessageDialog
                 {
                     Message = { Text = "Added succesfully!" }
                 };
                 DialogHost.Show(sMessageDialog, "RootDialog");
-                ClearButton_Click(null, null);
                 return;
             }
             else
@@ -257,6 +271,7 @@ namespace AlphaElectric.Forms
         private void ClearButton_Click(object sender, RoutedEventArgs e)
         {
             NameTextBox.Clear();
+            StockLevelTextBox.Clear();
             SerialNoTextBox.Clear();
 
             MakeComboBox.SelectedItem = null;
@@ -265,6 +280,7 @@ namespace AlphaElectric.Forms
             SizeComboBox.SelectedItem = null;
             PanelTypeComboBox.SelectedItem = null;
             PartTypeComboBox.SelectedItem = null;
+            LocationComboBox.SelectedItem = null;
         }
     }
 }

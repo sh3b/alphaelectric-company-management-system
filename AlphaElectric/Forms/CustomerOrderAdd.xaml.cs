@@ -32,7 +32,6 @@ namespace AlphaElectric.Forms
         CustomerOrderViewModel _vm;
         //Adding backgroud worker
         BackgroundWorker worker;
-        CustomerOrder co = new CustomerOrder();
         List<Product> prodList = new ProductFactory().SelectAll();
         List<ProductItem> productItemsList = new List<ProductItem>();
 
@@ -134,14 +133,18 @@ namespace AlphaElectric.Forms
             bool flag = false;
 
             // Creating PO 
-            co.OrderDate = OrderDateDatePicker.SelectedDate.Value;
-            co.DeliveryDate = DeliveryDateDatePicker.SelectedDate.Value;
-            co.ContactID = int.Parse(CustomerComboBox.SelectedValue.ToString());
-            co.OrderStatusID = int.Parse(OrderStatusComboBox.SelectedValue.ToString());
-            co.EmployeeID = int.Parse(AssignedEmployeeComboBox.SelectedValue.ToString());
+            CustomerOrder co = new CustomerOrder()
+            {
+                OrderDate = OrderDateDatePicker.SelectedDate.Value,
+                DeliveryDate = DeliveryDateDatePicker.SelectedDate.Value,
+                ContactID = int.Parse(CustomerComboBox.SelectedValue.ToString()),
+                OrderStatusID = int.Parse(OrderStatusComboBox.SelectedValue.ToString()),
+                EmployeeID = int.Parse(AssignedEmployeeComboBox.SelectedValue.ToString())
+            };
 
-            CustomerOrderFactory fac = new CustomerOrderFactory();
-            fac.InsertCustomerOrder(co);
+            //CustomerOrderFactory fac = new CustomerOrderFactory();
+            //fac.InsertCustomerOrder(co);
+            new CustomerOrderFactory().InsertCustomerOrder(co);
 
             // Adding Products to PO
             using (var db = new AlphaElectricEntitiesDB())
@@ -156,10 +159,10 @@ namespace AlphaElectric.Forms
                     };
 
                     // LINQ query
-                    var query = from prod in db.Product_CustomerOrderBT
-                                where prod.CustomerOrderID == co.ID
-                                && prod.ProductID == co_prod.ProductID
-                                select prod;
+                    var query = from row in db.Product_CustomerOrderBT
+                                where row.CustomerOrderID == co.ID
+                                && row.ProductID == co_prod.ProductID
+                                select row;
 
                     if (query.ToList().Count == 0)
                     {

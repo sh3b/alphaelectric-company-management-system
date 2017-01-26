@@ -91,6 +91,7 @@
                 <DataGridTextColumn Binding="{Binding JoinDate, StringFormat=d,ConverterCulture=en-NZ}" Header="Join Date" Width="Auto"  />
                 <DataGridTextColumn Binding="{Binding Address}" Header="Address" Width="Auto"  />
                 <DataGridTextColumn Binding="{Binding Designation.Name}" Header="Designation" Width="Auto"  />
+                <DataGridTextColumn Binding="{Binding EmployeeStatus.Name}" Header="Status" Width="Auto"  />
             </DataGrid.Columns>
         </DataGrid>
         <materialDesign:PopupBox
