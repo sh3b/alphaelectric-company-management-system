@@ -1502,7 +1502,7 @@
     </edmx:Options>
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="fbbdc60accda492ba4a58e3f47ba00d4" Name="Diagram1" ZoomLevel="67">
+      <Diagram DiagramId="fbbdc60accda492ba4a58e3f47ba00d4" Name="Diagram1" ZoomLevel="45">
         <EntityTypeShape EntityType="AlphaElectricEntities.Employee" Width="1.5" PointX="15.375" PointY="10.5" IsExpanded="true" FillColor="Olive" />
         <EntityTypeShape EntityType="AlphaElectricEntities.Designation" Width="1.5" PointX="17.75" PointY="10.125" IsExpanded="true" />
         <EntityTypeShape EntityType="AlphaElectricEntities.Product" Width="1.5" PointX="7.125" PointY="3.5" IsExpanded="true" FillColor="Olive" />

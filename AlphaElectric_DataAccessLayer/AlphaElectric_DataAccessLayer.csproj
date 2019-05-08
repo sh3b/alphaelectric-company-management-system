@@ -199,27 +199,12 @@
       <LastGenOutput>DBModel.Context.cs</LastGenOutput>
       <DependentUpon>DBModel.edmx</DependentUpon>
     </Content>
-    <Content Include="DBModel.edmx.sql" />
     <Content Include="DBModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>DBModel.cs</LastGenOutput>
       <DependentUpon>DBModel.edmx</DependentUpon>
     </Content>
-    <Content Include="DBModel11.edmx.sql" />
-    <Content Include="DBModel12.edmx.sql" />
-    <Content Include="DBModel13.edmx.sql" />
-    <Content Include="DBModel14.edmx.sql" />
-    <Content Include="DBModel15.edmx.sql" />
-    <Content Include="DBModel16.edmx.sql" />
-    <Content Include="DBModel19.edmx.sql" />
-    <Content Include="DBModel2.edmx.sql" />
-    <Content Include="DBModel20.edmx.sql" />
-    <Content Include="DBModel3.edmx.sql" />
-    <Content Include="DBModel4.edmx.sql" />
-    <Content Include="DBModel6.edmx.sql" />
-    <Content Include="DBModel7.edmx.sql" />
-    <Content Include="DBModel8.edmx.sql" />
-    <Content Include="DBModel9.edmx.sql" />
+    <Content Include="DBModel_2019.edmx.sql" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

@@ -87,10 +87,9 @@ namespace AlphaElectric.Forms
                 //Message = { Text = ((ButtonBase)sender).Content.ToString() }
                 Message = { Text = 
                     "Developed by\n" +
-                    "\n1. Muhammad Shoaib" +
-                    "\n  3022/FBAS/BSCS/F14B" +
-                    "\n2. Muhammad Amir" +
-                    "\n  ____/FBAS/BSCS/F14B" }
+                    "\n1. Shuayb Ashraf" +
+                    "\n  3022/FBAS/BSCS/F14B"
+                }
             };
 
             DialogHost.Show(sMessageDialog, "RootDialog");

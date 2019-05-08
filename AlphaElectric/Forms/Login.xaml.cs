@@ -38,7 +38,7 @@ namespace AlphaElectric.Forms
             _vm = new ViewModels.LoginViewModel();
             this.DataContext = _vm;
 
-            NameTextBox.Text = "shoaib";
+            NameTextBox.Text = "shuayb";
             PasswordBox.Password = "12345";
 
             NameTextBox.Focus();
@@ -48,8 +48,8 @@ namespace AlphaElectric.Forms
             //    //Adding New User
             //    AlphaElectric_DataAccessLayer.Login newUser = new AlphaElectric_DataAccessLayer.Login()
             //    {
-            //        Username = "shoaib",
-            //        Name = "Shoaib Ashraf",
+            //        Username = "shuayb",
+            //        Name = "Shuayb Ashraf",
             //        Password = Hashing.HashPassword("12345")
             //    };
             //    db.Logins.Add(newUser);

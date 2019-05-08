@@ -359,7 +359,6 @@
     <Resource Include="Forms\Resources\Contact.png" />
     <Resource Include="Forms\Resources\favicon.ico" />
     <Resource Include="Forms\Resources\ms-icon-310x310.png" />
-    <Resource Include="Forms\Resources\ProfilePic.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

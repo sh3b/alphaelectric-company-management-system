@@ -66,7 +66,7 @@
         </UserControl.Resources>
 
         <materialDesign:DialogHost Identifier="RootDialog" SnackbarMessageQueue="{Binding MessageQueue, ElementName=MainSnackbar}">
-            <Grid Margin="20,80,20,0" VerticalAlignment="Top">
+            <Grid Margin="0,50,00,0" VerticalAlignment="Top">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="100" />
                     <ColumnDefinition Width="auto" MinWidth="25" />
@@ -122,7 +122,7 @@
                 </PasswordBox>
                 <!-- End Password -->
 
-                <TextBlock Grid.ColumnSpan="4"  Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="94,17,20,9" Width="260" RenderTransformOrigin="0.5,0.5" Height="36" >
+                <TextBlock Grid.ColumnSpan="4"  Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="72,19.99,1.604,0.089" Width="318" RenderTransformOrigin="0.5,0.5" Height="36" >
                          
                     <Button Click="LoginButton_Click"
                         Style="{StaticResource MaterialDesignRaisedDarkButton}" Margin="10 0 40 0" Width="100"
