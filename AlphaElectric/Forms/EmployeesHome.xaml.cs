@@ -1,25 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using System.ComponentModel;
-using MahApps.Metro.Controls;
 using System.Diagnostics;
-using MaterialDesignThemes.Wpf;
-using System.Windows.Controls.Primitives;
-using AlphaElectric_DataAccessLayer;
-using AlphaElectric_DataAccessLayer.Factories;
-using AlphaElectric.Logic;
-using DevExpress.Xpf.Printing;
+//using DevExpress.Xpf.Printing;
 
 namespace AlphaElectric.Forms
 {
@@ -133,10 +116,10 @@ namespace AlphaElectric.Forms
             UserPages.Children.Add(x);
         }
 
-        private void ButtonPrintEmployeeList_Click(object sender, RoutedEventArgs e)
-        {
-           var report = new AlphaElectric.Reports.EmployeeList();
-            PrintHelper.ShowPrintPreview(this, report);
-        }
+        //private void ButtonPrintEmployeeList_Click(object sender, RoutedEventArgs e)
+        //{
+        //   var report = new AlphaElectric.Reports.EmployeeList();
+        //    PrintHelper.ShowPrintPreview(this, report);
+        //}
     }
 }

@@ -66,6 +66,7 @@
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\MahApps.Metro.1.3.0\lib\net45\System.Windows.Interactivity.dll</HintPath>
       <Private>True</Private>
@@ -88,6 +89,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Forms\ProdStockList.xaml.cs">
+      <DependentUpon>ProdStockList.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Forms\ProductEdit.xaml.cs">
       <DependentUpon>ProductEdit.xaml</DependentUpon>
     </Compile>
@@ -166,6 +170,22 @@
     <Compile Include="Forms\CustomerList.xaml.cs">
       <DependentUpon>CustomerList.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Reports\CompaniesListReport.cs" />
+    <Compile Include="Reports\CompaniesListReport.Designer.cs">
+      <DependentUpon>CompaniesListReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\EmployeeListReport.cs" />
+    <Compile Include="Reports\EmployeeListReport.Designer.cs">
+      <DependentUpon>EmployeeListReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\ProjectList.cs" />
+    <Compile Include="Reports\ProjectList.Designer.cs">
+      <DependentUpon>ProjectList.cs</DependentUpon>
+    </Compile>
+    <Page Include="Forms\ProdStockList.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Forms\ProductEdit.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -338,6 +358,15 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reports\CompaniesListReport.resx">
+      <DependentUpon>CompaniesListReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\EmployeeListReport.resx">
+      <DependentUpon>EmployeeListReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\ProjectList.resx">
+      <DependentUpon>ProjectList.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -359,6 +388,12 @@
     <Resource Include="Forms\Resources\Contact.png" />
     <Resource Include="Forms\Resources\favicon.ico" />
     <Resource Include="Forms\Resources\ms-icon-310x310.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Forms\Resources\icon.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Forms\Resources\icon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,23 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
+﻿using System.Windows;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using System.ComponentModel;
 using MahApps.Metro.Controls;
 using System.Diagnostics;
 using MaterialDesignThemes.Wpf;
-using System.Windows.Controls.Primitives;
-using AlphaElectric_DataAccessLayer;
-using AlphaElectric_DataAccessLayer.Factories;
 using AlphaElectric.Logic;
 
 namespace AlphaElectric.Forms
@@ -87,8 +72,8 @@ namespace AlphaElectric.Forms
                 //Message = { Text = ((ButtonBase)sender).Content.ToString() }
                 Message = { Text = 
                     "Developed by\n" +
-                    "\n1. Shuayb Ashraf" +
-                    "\n  3022/FBAS/BSCS/F14B"
+                    "\n Shuayb Ashraf" +
+                    "\n 3022/FBAS/BSCS/F14B"
                 }
             };
 

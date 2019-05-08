@@ -121,7 +121,7 @@
                                     </Button>
                                 </Grid>
                             </Border>
-                            <Border Grid.Column="1" Grid.Row="5" BorderThickness="0 1 0 0" BorderBrush="{DynamicResource MaterialDesignDivider}">
+                            <!--<Border Grid.Column="1" Grid.Row="5" BorderThickness="0 1 0 0" BorderBrush="{DynamicResource MaterialDesignDivider}">
                                 <Grid Margin="8">
                                     <Button FontSize="15" Style="{DynamicResource MaterialDesignFlatButton}" HorizontalAlignment="Left" x:Name="ButtonPurchaseSelling2" Click="ButtonPrintEmployeeList_Click">
                                         <StackPanel Orientation="Horizontal">
@@ -130,7 +130,7 @@
                                         </StackPanel>
                                     </Button>
                                 </Grid>
-                            </Border>
+                            </Border>-->
                         </Grid>
                     </materialDesign:Card>
                     <!-- end material card -->
