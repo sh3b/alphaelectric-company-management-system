@@ -49,10 +49,8 @@
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            <Image Source="Resources/ms-icon-310x310.png" Stretch="Uniform" Width="80" Height="80" />
             <StackPanel Grid.Column="1" Margin="24 0 0 0" VerticalAlignment="Center">
                 <!--<TextBlock Style="{StaticResource MaterialDesignDisplay1TextBlock}" TextWrapping="Wrap"><Run Text="Welcome User_Name!"/></TextBlock>-->
-                <TextBlock Style="{StaticResource MaterialDesignDisplay1TextBlock}" TextWrapping="Wrap"  Name="WelcomeMessage"/>
                 <Button Style="{StaticResource MaterialDesignFlatButton}" Command="{x:Static materialDesign:DrawerHost.OpenDrawerCommand}">
                     <StackPanel Orientation="Horizontal">
                         <materialDesign:PackIcon Kind="Backburger" />
@@ -96,6 +94,12 @@
                                         <StackPanel Orientation="Horizontal">
                                             <materialDesign:PackIcon Kind="Buffer" />
                                             <TextBlock Margin="8 0 0 0" VerticalAlignment="Center"><Run Text="View Projects"/></TextBlock>
+                                        </StackPanel>
+                                    </Button>
+                                    <Button FontSize="15" Style="{DynamicResource MaterialDesignFlatButton}" HorizontalAlignment="Right" x:Name="ButtonProducts" Click="ButtonProjectListPrint_Click" Margin="0,0,-42,0">
+                                        <StackPanel Orientation="Horizontal">
+                                            <materialDesign:PackIcon Kind="Printer" />
+                                            <TextBlock Margin="10 0 50 0" VerticalAlignment="Center"><Run Text="Print Projects"/></TextBlock>
                                         </StackPanel>
                                     </Button>
                                 </Grid>

@@ -30,7 +30,7 @@ namespace AlphaElectric.Forms
         public HomeProducts()
         {
             InitializeComponent();
-            WelcomeMessage.Text = "Welcome " + LoggedInUser.Instance.Info.Name + "!";
+            //WelcomeMessage.Text = "Welcome " + LoggedInUser.Instance.Info.Name + "!";
         }
 
         //Executing after loading window
@@ -138,6 +138,16 @@ namespace AlphaElectric.Forms
             this.mainscrollviewer.Visibility = Visibility.Collapsed;
 
             PartList x = new PartList();
+            UserPages.Children.Clear();
+            UserPages.Children.Add(x);
+        }
+
+        private void ButtonProductStock_Click(object sender, RoutedEventArgs e)
+        {
+            this.topgrid.Visibility = Visibility.Collapsed;
+            this.mainscrollviewer.Visibility = Visibility.Collapsed;
+
+            ProdStockList x = new ProdStockList();
             UserPages.Children.Clear();
             UserPages.Children.Add(x);
         }

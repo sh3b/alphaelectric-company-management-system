@@ -30,7 +30,7 @@ namespace AlphaElectric.Forms
         public HomePurchaseSelling()
         {
             InitializeComponent();
-            WelcomeMessage.Text = "Welcome " + LoggedInUser.Instance.Info.Name + "!";
+            //WelcomeMessage.Text = "Welcome " + LoggedInUser.Instance.Info.Name + "!";
         }
 
         //Executing after loading window

@@ -805,7 +805,7 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="None" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="StockLevel" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Product" Relationship="AlphaElectricEntities.ProductInventory" FromRole="Inventory" ToRole="Product" />
           <NavigationProperty Name="Location" Relationship="AlphaElectricEntities.LocationInventory" FromRole="Inventory" ToRole="Location" />
