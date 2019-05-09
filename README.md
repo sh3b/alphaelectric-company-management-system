@@ -34,7 +34,7 @@ It uses Material Design for front-end and for backend 2-Tier Architecture (Facto
 *	Supplier Management
 *	Purchase Order Management
 *	Customer Order Management
-•	Login System
+*	Login System
 
 
 ## Getting Started
